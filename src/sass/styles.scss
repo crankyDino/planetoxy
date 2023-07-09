@@ -1,0 +1,34 @@
+@use "./index" as *;
+
+body {
+  background-color: var(--black);
+}
+
+//HERO SECTION
+.title--name {
+  & h1 {
+    font-family: var(--font-secondary);
+    font-size: 3em;
+    font-weight: 900;
+    margin: 13% 0 0 0;
+  }
+}
+
+.title--intro {
+  & p {
+    font-size: 1.5em;
+  }
+}
+
+.title--smiley {
+  margin-top: 16%;
+  margin-left: -4%;
+}
+
+.about-me--headline {
+  font-family: var(--font-chintzy);
+  letter-spacing: 0.6rem;
+  word-spacing: -0.5em;
+  font-size: 2rem;
+  margin-bottom: 0;
+}

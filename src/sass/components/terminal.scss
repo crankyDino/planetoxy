@@ -1,0 +1,94 @@
+.terminal {
+  border: solid 6px var(--light-gray);
+  background-color: var(--black);
+  width: 100%;
+  max-width: 620px;
+  height: 300px;
+}
+
+.terminal--window-nav {
+  border-bottom: solid 6px var(--light-gray);
+  justify-content: space-between;
+  padding: 6px 10px;
+}
+
+.terminal--nav-controls {
+  margin: auto 0;
+  & button {
+    height: 30px;
+    width: 26px;
+    justify-content: center;
+    display: flex;
+    padding: 5px 0;
+    border-radius: 0;
+
+    &:hover {
+      & svg {
+        & path {
+          fill: var(--green);
+        }
+        & rect,
+        line,
+        circle {
+          stroke: var(--green);
+        }
+
+        & path:last-child {
+          fill: var(--red);
+        }
+      }
+    }
+  }
+}
+
+.terminal--icon {
+  width: 12%;
+  height: auto;
+}
+
+.terminal--control-icon {
+  width: 66%; //this breaks on chrome if set to 100%
+  height: auto;
+}
+
+.terminal--text {
+  overflow: hidden;
+  // word-wrap: break-word;
+  text-overflow: ellipsis;
+}
+
+.terminal--screen {
+  overflow: hidden;
+  text-overflow: clip;
+  background-color: var(--black);
+  & pre {
+    margin-bottom: 0;
+  }
+
+  & p,
+  h6 {
+    margin-top: 0;
+    margin-bottom: 3px;
+    & strong {
+      font-weight: 700;
+    }
+  }
+
+  & p,
+  a {
+    font-family: var(--font-terminal);
+    color: var(--green);
+  }
+}
+
+.cli {
+  width: fit-content;
+  max-width: 50%;
+  border-right: solid var(--green) 8px;
+  animation: blink 1s linear infinite;
+  color: var(--green);
+  &:hover {
+    cursor: text;
+  }
+}
+

@@ -1,0 +1,19 @@
+:root {
+  --light-gray: #d9d9d9;
+  --black: #161616;
+  --green: #72db31;
+  --red: darkred;
+  --light-red: salmon;
+  --orange: #E77236;
+}
+
+.green {
+  color: var(--green) !important;
+}
+
+.gray {
+  color: var(--light-gray) !important;
+}
+.orange {
+  color: var(--orange) !important;
+}
