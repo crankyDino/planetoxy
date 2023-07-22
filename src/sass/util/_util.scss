@@ -8,15 +8,16 @@ body {
   margin: auto;
 }
 
-.dh-content {
+.content {
   justify-content: center;
   position: relative;
   flex-direction: column;
   align-items: center;
   // margin-bottom: 1em;
+  padding: 0 0.8em;
 }
 
-.dh-container {
+.container {
   display: flex;
   flex-direction: column;
   padding: 1em;
@@ -94,6 +95,12 @@ nav {
 .dh-mt-2 {
   margin-top: 2em !important;
 }
+.dh-my-1 {
+  margin: 1em 0 !important;
+}
+.dh-my-2 {
+  margin: 2em 0 !important;
+}
 
 // margin bottom
 .dh-mb-0 {
@@ -110,13 +117,13 @@ nav {
 }
 
 // margin
-.dh-center-hv {
+.center-hv {
   margin: auto !important;
 }
-.dh-center-v {
+.center-v {
   margin: 0 auto !important;
 }
-.dh-center-h {
+.center-h {
   margin: auto 0 !important;
 }
 
@@ -132,4 +139,16 @@ nav {
 
 .pad-x-1 {
   padding: 0 10px !important;
+}
+
+
+.flow-hide{
+  overflow: hidden !important;
+}
+.flow-auto{
+  overflow: auto !important;
+}
+
+.content-center{
+  justify-content: center;
 }

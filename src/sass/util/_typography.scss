@@ -21,6 +21,7 @@ li {
   line-height: 1.5em;
   padding-left: 1.3em;
   margin: auto;
+  
   & li::marker {
     content: "> ";
   }
@@ -33,6 +34,7 @@ li {
     // --webkit-initial-letter: 2;
     // initial-letter: 2;
     font-size: 2em;
+    font-weight: bold;
   }
   &::before {
     content: "";
@@ -43,7 +45,7 @@ li {
     height: 2.6em;
     position: absolute;
     z-index: -1;
+    transform: translateX(-11px) translateX(0px);
     // animation: blink 1s linear infinite;
   }
-  
 }

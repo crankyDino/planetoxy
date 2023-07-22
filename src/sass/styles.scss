@@ -8,7 +8,7 @@ body {
 .title--name {
   & h1 {
     font-family: var(--font-secondary);
-    font-size: 3em;
+    font-size: 2.6em;
     font-weight: 900;
     margin: 13% 0 0 0;
   }
@@ -16,7 +16,7 @@ body {
 
 .title--intro {
   & p {
-    font-size: 1.5em;
+    font-size: 1.1em;
   }
 }
 
@@ -29,6 +29,21 @@ body {
   font-family: var(--font-chintzy);
   letter-spacing: 0.6rem;
   word-spacing: -0.5em;
-  font-size: 2rem;
+  font-size: 1.8rem;
   margin-bottom: 0;
+}
+
+.skills ul li {
+  width: 50%;
+}
+
+.headshot {
+  width: 48%;
+
+  &::before {
+    content: "";
+    border: 1px solid var(--orange);
+    width: 48%;
+    height: 100%;
+  }
 }

@@ -9,14 +9,15 @@ body {
   margin: auto;
 }
 
-.dh-content {
+.content {
   justify-content: center;
   position: relative;
   flex-direction: column;
   align-items: center;
+  padding: 0 0.8em;
 }
 
-.dh-container {
+.container {
   display: flex;
   flex-direction: column;
   padding: 1em;
@@ -94,6 +95,14 @@ nav .nav--options .nav--item {
   margin-top: 2em !important;
 }
 
+.dh-my-1 {
+  margin: 1em 0 !important;
+}
+
+.dh-my-2 {
+  margin: 2em 0 !important;
+}
+
 .dh-mb-0 {
   margin: 0 !important;
 }
@@ -110,15 +119,15 @@ nav .nav--options .nav--item {
   margin-bottom: 2em !important;
 }
 
-.dh-center-hv {
+.center-hv {
   margin: auto !important;
 }
 
-.dh-center-v {
+.center-v {
   margin: 0 auto !important;
 }
 
-.dh-center-h {
+.center-h {
   margin: auto 0 !important;
 }
 
@@ -132,6 +141,18 @@ nav .nav--options .nav--item {
 
 .pad-x-1 {
   padding: 0 10px !important;
+}
+
+.flow-hide {
+  overflow: hidden !important;
+}
+
+.flow-auto {
+  overflow: auto !important;
+}
+
+.content-center {
+  justify-content: center;
 }
 
 :root {
@@ -199,6 +220,7 @@ li {
 }
 .paragraph::first-letter {
   font-size: 2em;
+  font-weight: bold;
 }
 .paragraph::before {
   content: "";
@@ -208,6 +230,7 @@ li {
   height: 2.6em;
   position: absolute;
   z-index: -1;
+  transform: translateX(-11px) translateX(0px);
 }
 
 @keyframes blink {
@@ -220,7 +243,7 @@ li {
   background-color: var(--black);
   width: 100%;
   max-width: 620px;
-  height: 300px;
+  height: 260px;
 }
 
 .terminal--window-nav {
@@ -335,13 +358,13 @@ body {
 
 .title--name h1 {
   font-family: var(--font-secondary);
-  font-size: 3em;
+  font-size: 2.6em;
   font-weight: 900;
   margin: 13% 0 0 0;
 }
 
 .title--intro p {
-  font-size: 1.5em;
+  font-size: 1.1em;
 }
 
 .title--smiley {
@@ -353,6 +376,20 @@ body {
   font-family: var(--font-chintzy);
   letter-spacing: 0.6rem;
   word-spacing: -0.5em;
-  font-size: 2rem;
+  font-size: 1.8rem;
   margin-bottom: 0;
+}
+
+.skills ul li {
+  width: 50%;
+}
+
+.headshot {
+  width: 48%;
+}
+.headshot::before {
+  content: "";
+  border: 1px solid var(--orange);
+  width: 48%;
+  height: 100%;
 }
