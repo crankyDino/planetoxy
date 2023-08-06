@@ -76,12 +76,23 @@ nav {
 .dh-flex-even {
   justify-content: space-evenly !important;
 }
+.dh-flex-center {
+  justify-content: center !important;
+}
 
 .dh-flex-col {
   flex-direction: column !important;
 }
 .dh-flex-left {
   align-items: flex-start !important;
+}
+
+.align-x{
+  align-items: center;
+}
+
+.dh-flex-row {
+  flex-direction: row !important;
 }
 
 // alignment
@@ -141,14 +152,13 @@ nav {
   padding: 0 10px !important;
 }
 
-
-.flow-hide{
+.flow-hide {
   overflow: hidden !important;
 }
-.flow-auto{
+.flow-auto {
   overflow: auto !important;
 }
 
-.content-center{
+.content-center {
   justify-content: center;
 }

@@ -16,7 +16,9 @@
   <body>
     <section class="container">
       <nav class="dh-flex navbar">
-        <a href="#"><img src="./assets/vectors/GLOBE.svg" alt="" /></a>
+        <a href="#" class="dh-flex"
+          ><img src="./assets/vectors/GLOBE.svg" alt=""
+        /></a>
 
         <ul class="dh-flex dh-list nav--options">
           <li class="nav--item"><a href="#">blog</a></li>
@@ -183,15 +185,14 @@
 
           <div id="terminal_screen" class="terminal--screen pad-x-1-half">
             <h6 class="dh-mt-none terminal-art">
-              <pre class="green terminal--art--container">
+              <pre class="green terminal--art">
      ____  _       _ __        __   __  ___                 
     / __ \(_)___ _(_) /_____ _/ /  / / / (_)___  ____  (_)__ 
    / / / / / __ `/ / __/ __ `/ /  / /_/ / / __ \/ __ \/ / _ \
   / /_/ / / /_/ / / /_/ /_/ / /  / __  / / /_/ / /_/ / /  __/
  /_____/_/\__, /_/\__/\__,_/_/  /_/ /_/_/ .___/ .___/_/\___/ 
-         /____/                        /_/   /_/     © 2022
-            </pre
-              >
+         /____/                        /_/   /_/     © <span id="terminal-date">2023</span>
+            </pre>
             </h6>
 
             <p class="terminal--text">Welcome...</p>
@@ -279,8 +280,47 @@
             src="./assets/bitmap/IMG_20200408_170956paint.jpg"
             alt=""
           />
+          <!-- <img
+            class="headshot headshot-frame"
+            src="./assets/vectors/headshot_frame.svg"
+            alt=""
+          /> -->
+          <span class="headshot headshot-frame">
+            <svg
+              width="175"
+              height="215"
+              viewBox="0 0 175 245"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M0.844727 1.40002H173.876V243.621H0.844727V1.40002Z"
+                stroke="#E77236"
+                stroke-width="4"
+              />
+            </svg>
+          </span>
         </div>
       </section>
     </div>
+
+    <footer class="container dh-flex-row dh-flex-even align-x">
+      <!-- <p>something</p> -->
+      <div class="container socials dh-flex-row dh-justify align-x">
+        <a href="digitalhippie.xyz"
+          ><img style="width: 2em" src="./assets/vectors/dh_logo.svg" alt=""
+        /></a>
+        <a href="https://github.com/DigitalHippieStudios"
+          ><img src="./assets/vectors/github.svg" alt=""
+        /></a>
+        <a href="https://www.linkedin.com/in/bamodise/"
+          ><img src="./assets/vectors/linkedin.svg" alt=""
+        /></a>
+        <a href="https://twitter.com/DigitalHippie_"
+          ><img src="./assets/vectors/twitter.svg" alt=""
+        /></a>
+      </div>
+      <!-- <p>Digital Hippie</p> -->
+    </footer>
   </body>
 </html>

@@ -37,13 +37,32 @@ body {
   width: 50%;
 }
 
+footer {
+  background-color: var(--orange);
+  p {
+    font-size: 0.8em;
+    text-align: center;
+  }
+}
+
+.socials {
+  a:not(:last-child) {
+    padding-right: 1em;
+  }
+
+  a {
+    img {
+      width: 1.6em;
+    }
+  }
+}
+
 .headshot {
   width: 48%;
-
-  &::before {
-    content: "";
-    border: 1px solid var(--orange);
-    width: 48%;
-    height: 100%;
-  }
+}
+.headshot-frame {
+  position: absolute;
+  transform: translateX(-13%) translateY(8%);
+  width: 47%;
+  z-index: -1;
 }
