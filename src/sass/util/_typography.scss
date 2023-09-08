@@ -20,8 +20,9 @@ li {
   height: 100px;
   line-height: 1.5em;
   padding-left: 1.3em;
-  margin: auto;
-  
+  margin: 0;
+  max-width: 22em;
+
   & li::marker {
     content: "> ";
   }

@@ -14,7 +14,7 @@
   </head>
 
   <body>
-    <section class="container">
+    <section class="container nav--container">
       <nav class="dh-flex navbar">
         <a href="#" class="dh-flex"
           ><img src="./assets/vectors/GLOBE.svg" alt=""
@@ -28,9 +28,9 @@
       </nav>
     </section>
 
-    <div class="container">
+    <div class="container content--container">
       <!-- ANTIHERO -->
-      <section class="dh-flex">
+      <section class="dh-flex antihero">
         <div id="terminal_window" class="terminal">
           <div class="terminal--window-nav dh-flex">
             <div class="terminal--title center-h dh-flex gap-1-half">
@@ -215,66 +215,68 @@
             </div>
           </div>
         </div>
-      </section>
 
-      <!-- tagline shnadis -->
-      <section class="content dh-flex dh-mb-2">
-        <div class="title dh-flex">
-          <div class="title--intro"><p>Hi, I'm</p></div>
-          <div class="title--name"><h1>ASHLEY</h1></div>
+        <!-- tagline shnadis -->
+        <div class="content dh-flex dh-mb-2 title--container">
+          <div class="title dh-flex">
+            <div class="title--intro"><p>Hi, I'm</p></div>
+            <div class="title--name"><h1>ASHLEY</h1></div>
 
-          <div class="title--smiley">
-            <img src="./assets/vectors/smiley.svg" alt="" />
+            <div class="title--smiley">
+              <img src="./assets/vectors/smiley.svg" alt="" />
+            </div>
           </div>
-        </div>
 
-        <div class="tagline">
-          <p>
-            <strong>I Make</strong>
-            cool websites, take pretty pictures and film epic videos
-          </p>
-        </div>
-
-        <div class="w-100 dh-flex dh-flex-even">
-          <button class="btn solid"><a href="">PROJECTS</a></button>
-          <button class="btn outline">HIT ME UP!</button>
+          <div class="w-100 tagline-container container">
+            <div class="tagline">
+              <p>
+                <strong>I Make</strong>
+                cool websites, take pretty pictures and film epic videos
+              </p>
+            </div>
+            <div class="w-100 dh-flex dh-flex-even cta-group">
+              <button class="btn solid"><a href="">PROJECTS</a></button>
+              <button class="btn outline">HIT ME UP!</button>
+            </div>
+          </div>
         </div>
       </section>
 
       <!-- about me -->
       <section class="content dh-flex dh-flex-left">
-        <div class="about-me">
-          <h2 class="about-me--headline dh-mb-1-hlf">
-            A <strong class="orange">Bit</strong> About Me
-          </h2>
-          <p class="paragraph">
-            I am a self-taught Web Developer, Graphic Designer and Videographer
-            from South Africa. I also enjoy playing around with Machine Learning
-            and Blockchain technologies. I made this website using vanilla
-            HTML/CSS & Javascript.
-          </p>
+        <div class="about-me--container">
+          <div class="about-me">
+            <h2 class="about-me--headline dh-mb-1-hlf">
+              A <strong class="orange">Bit</strong> About Me
+            </h2>
+            <p class="paragraph">
+              I am a self-taught Web Developer, Graphic Designer and
+              Videographer from South Africa. I also enjoy playing around with
+              Machine Learning and Blockchain technologies. I made this website
+              using vanilla HTML/CSS & Javascript.
+            </p>
+          </div>
+
+          <div class="skills w-100 dh-mb-1">
+            <h3 class="orange dh-mb-1-hlf">Technologies I’ve worked with</h3>
+            <ul class="list flow-hide">
+              <!-- tech -->
+              <li>Typescript</li>
+              <li>ASP.NET 7</li>
+              <li>Angular</li>
+              <li>Arduinos</li>
+
+              <!-- design -->
+              <li>Corel Draw</li>
+              <li>Blender</li>
+              <li>Figma</li>
+              <li>DaVinci Resolve</li>
+            </ul>
+          </div>
+
+          <button class="btn solid btn-font-2">REQUEST CV</button>
         </div>
-
-        <div class="skills w-100 dh-mb-1">
-          <h3 class="orange dh-mb-1-hlf">Technologies I’ve worked with</h3>
-          <ul class="list flow-hide">
-            <!-- tech -->
-            <li>Typescript</li>
-            <li>ASP.NET 7</li>
-            <li>Angular</li>
-            <li>Arduinos</li>
-
-            <!-- design -->
-            <li>Corel Draw</li>
-            <li>Blender</li>
-            <li>Figma</li>
-            <li>DaVinci Resolve</li>
-          </ul>
-        </div>
-
-        <button class="btn solid btn-font-2">REQUEST CV</button>
-
-        <div class="headshot_frame dh-flex content-center dh-my-1">
+        <div class="headshot--container content-center dh-my-1 pad-y-1">
           <img
             class="headshot"
             src="./assets/bitmap/IMG_20200408_170956paint.jpg"
@@ -287,6 +289,7 @@
           /> -->
           <span class="headshot headshot-frame">
             <svg
+              class="pictureFrame"
               width="175"
               height="215"
               viewBox="0 0 175 245"

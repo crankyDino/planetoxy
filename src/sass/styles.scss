@@ -4,6 +4,10 @@ body {
   background-color: var(--black);
 }
 
+.antihero {
+  flex-direction: column;
+}
+
 //HERO SECTION
 .title--name {
   & h1 {
@@ -57,12 +61,121 @@ footer {
   }
 }
 
-.headshot {
-  width: 48%;
+.tagline {
+  font-size: 1.2em;
+  text-align: justify;
 }
+
+.headshot {
+  // width: 100%;
+  width: 147px;
+}
+.headshot--container {
+  margin: auto !important;
+  width: 48%;
+  position: relative;
+}
+// .headshot-frame {
+//   position: absolute;
+//   transform: translateX(-13%) translateY(8%);
+//   width: 47%;
+//   z-index: -1;
+// }
+
 .headshot-frame {
   position: absolute;
-  transform: translateX(-13%) translateY(8%);
-  width: 47%;
+  transform: translateX(-48%) translateY(8%);
+  /* height: 66%; */
   z-index: -1;
+  top: 8px;
+  left: 39px;
+}
+
+@media only screen and (min-width: 520px) {
+  .tagline-container {
+    flex-direction: row;
+  }
+  .tagline {
+    padding-right: 26px;
+  }
+  .title--container {
+    align-items: flex-start;
+  }
+  .cta-group {
+    flex-direction: column;
+  }
+}
+
+.cta-group {
+  column-gap: 12px;
+}
+
+@media only screen and (min-width: 828px) {
+  .tagline-container {
+    flex-direction: column;
+    // align-items: flex-start;
+  }
+  .antihero {
+    flex-direction: row;
+  }
+  .cta-group {
+    flex-direction: row;
+  }
+  .skills {
+    width: 33% !important;
+  }
+
+  .headshot-frame {
+    // width: 33% !important;
+    top: 25px;
+  }
+  // .pictureFrame {
+  //   height: 245px;
+  // }
+  .about-me {
+    width: 50% !important;
+  }
+}
+
+@media only screen and (min-width: 1100px) {
+  .cta-group {
+    flex-direction: column;
+    row-gap: 18px;
+    align-items: flex-end;
+  }
+  .tagline {
+    & p {
+      text-align: end;
+    }
+    padding-right: 0;
+  }
+
+  .title--container {
+    align-items: flex-end;
+    padding-right: 0;
+  }
+  .antihero {
+    display: grid;
+    grid-template-columns: 4fr 2fr;
+  }
+  .content--container {
+    max-width: 77vw;
+    margin: auto;
+  }
+  .nav--container {
+    max-width: 90vw;
+    margin: auto;
+  }
+  .about-me--container {
+    flex-direction: row;
+  }
+  .headshot--container {
+    width: 28% !important;
+  }
+  section.content.dh-flex.dh-flex-left {
+    flex-direction: row;
+  }
+  .about-me--headline {
+    font-size: 3em;
+  }
 }
