@@ -3,6 +3,9 @@
 body {
   background-color: var(--black);
 }
+li{
+  list-style: none;
+}
 
 .antihero {
   flex-direction: column;
