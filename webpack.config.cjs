@@ -4,19 +4,19 @@ const CopyPlugin = require("copy-webpack-plugin");
 // import path from "path"
 
 module.exports = {
-  mode: "development",
-  entry: { index: path.resolve(__dirname, "src/scripts/index.ts") },
+  mode: "production",
+  entry: { index: path.resolve(__dirname, "public/scripts/index.js") },
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "[name][contenthash].js",
     clean: true,
     assetModuleFilename: "[name][ext]",
   },
-  devtool: "source-map",
+  //   devtool: "source-map",
   module: {
     rules: [
       {
-        test: /\.css$/,
+        test: /\.scss$/,
         use: ["style-loader", "css-loader", "sass-loader"],
       },
       {
@@ -37,7 +37,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: "Webpack App",
+      title: "planetOxy",
       filename: "index.html",
       template: "public/index.html",
     }),
@@ -46,6 +46,10 @@ module.exports = {
         {
           from: "public/assets",
           to: "assets",
+        },
+        {
+          from: "public/css",
+          to: "css",
         },
       ],
     }),

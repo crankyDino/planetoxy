@@ -6,7 +6,6 @@
   "type": "module",
   "author": "olepiob",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "build:ts": "tsc",
     "build:sass": "sass  --no-source-map src/sass:public/css",
     "copy:html": "copyfiles -u 1 ./src/*.html public",
@@ -20,6 +19,7 @@
     "serve": "browser-sync start --server public --files public",
     "start": "tsc && npm-run-all copy --parallel watch serve",
     "build": "tsc && npm-run-all copy:html build:*",
+    "build:webpack": "webpack",
     "postbuild": "postcss public/css/*.css -u autoprefixer cssnano -r --no-map"
   },
   "keywords": [],
@@ -31,6 +31,7 @@
     "autoprefixer": "^10.4.2",
     "babel-loader": "^9.1.3",
     "browser-sync": "^2.27.7",
+    "copy-webpack-plugin": "^11.0.0",
     "copyfiles": "^2.4.1",
     "css-loader": "^6.8.1",
     "cssnano": "^5.0.17",
