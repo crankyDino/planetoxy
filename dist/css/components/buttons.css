@@ -1,0 +1,27 @@
+.btn {
+  width: 9rem;
+  height: 2.375rem;
+  flex-shrink: 0;
+  color: var(--light-gray);
+  font-family: var(--font-primary);
+  font-weight: 700;
+  text-align: center;
+  letter-spacing: 0.15438rem;
+}
+.btn.solid {
+  border: navy;
+  background: var(--orange);
+}
+.btn.outline {
+  border: 3px solid var(--orange);
+  background: none;
+}
+.btn.lrg {
+  width: 10.5rem;
+  height: 3rem;
+}
+
+.btn-font-2 {
+  font-family: var(--font-tertiary) !important;
+  font-weight: black;
+}
