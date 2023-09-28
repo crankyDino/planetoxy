@@ -46,6 +46,10 @@
   height: auto;
 }
 
+.terminal-art {
+  font-size: clamp(0.8vw, 8px, 2vw);
+}
+
 .terminal--control-icon {
   width: 66%; //this breaks on chrome if set to 100%
   height: auto;
@@ -92,9 +96,8 @@
   }
 }
 
-
-@media only screen and (min-width:820px) {
-  .terminal{
+@media only screen and (min-width: 820px) {
+  .terminal {
     height: 320px;
   }
 }
