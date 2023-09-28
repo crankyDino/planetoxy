@@ -1,13 +1,10 @@
-# CONFIGURATION STEPS
+# Run it
 
-Install TS
-> npm i typescript --save--dev 
-
-Install types for TS
->  npm i -D @types/node    
-
-Create "tsconfig" file 
-> npx tsc --init
+environment set up
+> npm i
 
 run dev server
 > npm start
+
+build for prod
+> npm run build:prod:webpack
