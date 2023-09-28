@@ -6,8 +6,6 @@
   "type": "module",
   "author": "olepiob",
   "scripts": {
-    "build:ts": "tsc",
-    "build:sass": "sass  --no-source-map src/sass:public/css",
     "copy:html": "copyfiles -u 1 ./src/*.html public",
     "copy:assets": "copyfiles -u 1 ./src/assets/**/* public",
     "copy": "npm-run-all --parallel copy:*",
@@ -19,7 +17,10 @@
     "serve": "browser-sync start --server public --files public",
     "start": "tsc && npm-run-all copy --parallel watch serve",
     "build": "tsc && npm-run-all copy:html build:*",
+    "build:ts": "tsc",
+    "build:sass": "sass  --no-source-map src/sass:public/css",
     "build:webpack": "webpack",
+    "build:prod:webpack": "tsc && npm-run-all copy --parallel build:*",
     "postbuild": "postcss public/css/*.css -u autoprefixer cssnano -r --no-map"
   },
   "keywords": [],
