@@ -4,6 +4,7 @@
   width: 100%;
   max-width: 620px;
   height: 260px;
+  margin: auto;
 }
 
 .terminal--window-nav {
@@ -96,8 +97,9 @@
   }
 }
 
-@media only screen and (min-width: 820px) {
+@media only screen and (min-width: 720px) {
   .terminal {
-    height: 320px;
+    height: 328px;
+    margin: 0;
   }
 }
