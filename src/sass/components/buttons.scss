@@ -22,11 +22,14 @@
     width: 10.5rem;
     height: 3rem;
   }
-
 }
 
-
-.btn-font-2{
-    font-family: var(--font-tertiary) !important;
-    font-weight: black;
+.btn-font-2 {
+  font-family: var(--font-tertiary) !important;
+  font-weight: black;
+}
+.btn-font-1-hv {
+  font-family: var(--font-primary) !important;
+  font-weight: 700;
+  font-size: 14px;
 }
