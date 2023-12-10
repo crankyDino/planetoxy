@@ -49,7 +49,7 @@ $y-size-lrg: 3rem;
   .btn-#{$clr}-outline {
     @include btn(transparent, $val);
     &:hover {
-      background-color: lighten($val, 15);
+      background-color: $val;
       color: color-complement($val);
     }
   }

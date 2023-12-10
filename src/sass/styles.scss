@@ -3,6 +3,7 @@
 body {
   background-color: $black;
 }
+
 li {
   list-style: none;
 }
@@ -12,32 +13,31 @@ li {
 }
 
 //HERO SECTION
-.title--name {
+.title__name {
   & h1 {
-    font-family: var(--font-secondary);
+    font-family: $font-secondary;
     font-size: 2.6em;
     font-weight: 900;
     margin: 13% 0 0 0;
   }
 }
 
-.title--intro {
+.title__intro {
   & p {
     font-size: 1.1em;
   }
 }
 
-.title--smiley {
+.title__smiley {
   margin-top: 16%;
   margin-left: -4%;
 }
 
-.about-me--headline {
-  font-family: var(--font-chintzy);
+.about-me__headline {
+  font-family: $font-chintzy;
   letter-spacing: 0.6rem;
   word-spacing: -0.5em;
   font-size: 1.8rem;
-  margin-bottom: 0;
 }
 
 .skills ul li {
@@ -45,7 +45,7 @@ li {
 }
 
 footer {
-  background-color: var(--orange);
+  background-color: $orange;
   padding: 0;
   p {
     font-size: 0.8em;
@@ -110,8 +110,6 @@ footer {
   align-items: center;
 }
 
-
-
 @media only screen and (min-width: 520px) {
   .tagline-container {
     flex-direction: row;
@@ -119,7 +117,7 @@ footer {
   // .tagline {
   //   padding-right: 26px;
   // }
-  .title--container {
+  .title__container {
     align-items: flex-start;
   }
   .cta-group {
@@ -142,7 +140,7 @@ footer {
     // align-items: flex-start;
   }
 
-  .title--container {
+  .title__container {
     width: 33%;
   }
 
@@ -187,7 +185,7 @@ footer {
     padding-right: 0;
   }
 
-  .title--container {
+  .title__container {
     align-items: flex-end;
     padding-right: 0;
     width: 100%;
@@ -203,9 +201,7 @@ footer {
     margin: auto;
   }
 
- 
-
-  .about-me--container {
+  .about-me__container {
     flex-direction: row;
   }
 
@@ -213,7 +209,7 @@ footer {
     width: 28% !important;
   }
 
-  .about-me--headline {
+  .about-me__headline {
     font-size: 3em;
   }
 

@@ -34,6 +34,11 @@ $palette: (
   "pink": $pink,
 );
 
+$alignment: (
+  "margin": "margin",
+  "padding": "padding",
+);
+
 //sizing
 $base-width: 80vw !default;
 $min-width: 16px !default;
@@ -43,6 +48,7 @@ $min-height: 16px !default;
 // spacing
 $base-padding: 0.75rem !default;
 $base-margin: 0.75rem !default;
+$base-gap: 10px !default;
 
 // borders
 $base-border-thickness: 1px !default;
@@ -70,6 +76,8 @@ $utilities: (
   "width": (
     "prefix": "w",
     "values": (
+      "max": 100%,
+      "half": 50%,
       "0": 0,
       "1": $min-width,
       "2": $min-width * 2,
@@ -147,6 +155,8 @@ $utilities: (
   "margin": (
     "prefix": "m",
     "values": (
+      "auto": auto,
+      "default": $base-margin + 0.25,
       "0": 0,
       "1": $base-margin,
       "2": $base-margin * 2,
@@ -158,6 +168,8 @@ $utilities: (
   "margin-left": (
     "prefix": "ml",
     "values": (
+      "auto": auto,
+      "default": $base-margin + 0.25,
       "0": 0,
       "1": $base-margin,
       "2": $base-margin * 2,
@@ -169,6 +181,8 @@ $utilities: (
   "margin-right": (
     "prefix": "mr",
     "values": (
+      "auto": auto,
+      "default": $base-margin + 0.25,
       "0": 0,
       "1": $base-margin,
       "2": $base-margin * 2,
@@ -180,6 +194,8 @@ $utilities: (
   "margin-top": (
     "prefix": "mt",
     "values": (
+      "auto": auto,
+      "default": $base-margin + 0.25,
       "0": 0,
       "1": $base-margin,
       "2": $base-margin * 2,
@@ -191,7 +207,10 @@ $utilities: (
   "margin-bottom": (
     "prefix": "mb",
     "values": (
+      "auto": auto,
+      "default": $base-margin + 0.25,
       "0": 0,
+      "half": $base-margin - 0.25,
       "1": $base-margin,
       "2": $base-margin * 2,
       "3": $base-margin * 4,
@@ -199,7 +218,6 @@ $utilities: (
       "5": $base-margin * 8,
     ),
   ),
-
   "opacity": (
     "prefix": "o",
     "values": (
@@ -244,6 +262,57 @@ $utilities: (
       "lg": $font-size-lg,
       "xl": $font-size-xl,
       "xxl": $font-size-xxl,
+    ),
+  ),
+  "flex-direction": (
+    "prefix": "flex",
+    "values": (
+      "row": row,
+      "col": column,
+      "reverse": reverse,
+      "col-rev": reverse,
+    ),
+  ),
+  "overflow": (
+    "prefix": "flow",
+    "values": (
+      "auto": auto,
+      "hide": hidden,
+      "scroll": scroll,
+      "show": visible,
+    ),
+  ),
+  "justify-content": (
+    "prefix": "justify",
+    "values": (
+      "center": center,
+      "left": left,
+      "right": right,
+      "around": space-around,
+      "between": space-between,
+      "even": space-evenly,
+    ),
+  ),
+  "align-items": (
+    "prefix": "align",
+    "values": (
+      "center": center,
+      "left": left,
+      "right": right,
+      "f-left": flex-start,
+      "end": end,
+    ),
+  ),
+  "gap": (
+    "prefix": "gap",
+    "values": (
+      "0": 0,
+      "1": $base-gap,
+      "2": $base-gap * 2,
+      "3": $base-gap * 2.5,
+      "4": $base-gap * 3.5,
+      "5": $base-gap * 5,
+      "6": $base-gap * 6,
     ),
   ),
 );

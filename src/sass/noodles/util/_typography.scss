@@ -10,7 +10,9 @@ h4,
 h5,
 h6,
 li,
-span {
+span,
+strong,
+small {
   font-family: $font-primary;
   text-decoration: none;
   color: $light-gray;
@@ -19,4 +21,8 @@ span {
 h1 {
   border: 0;
   margin-bottom: $base-margin;
+}
+
+.nowrap{
+  text-wrap: nowrap;
 }

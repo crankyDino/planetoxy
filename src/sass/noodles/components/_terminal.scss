@@ -9,13 +9,13 @@
   margin: auto;
 }
 
-.terminal--window-nav {
+.terminal__window__navbar {
   border-bottom: solid 6px $light-gray;
   justify-content: space-between;
   padding: 6px 10px;
 }
 
-.terminal--nav-controls {
+.terminal__navbar__controls {
   margin: auto 0;
   & button {
     height: 30px;
@@ -44,7 +44,7 @@
   }
 }
 
-.terminal--icon {
+.terminal__icon {
   width: 12%;
   height: auto;
 }
@@ -53,18 +53,18 @@
   font-size: clamp(0.8vw, 8px, 2vw);
 }
 
-.terminal--control-icon {
+.terminal__control-icon {
   width: 66%; //this breaks on chrome if set to 100%
   height: auto;
 }
 
-.terminal--text {
+.terminal__text {
   overflow: hidden;
   // word-wrap: break-word;
   text-overflow: ellipsis;
 }
 
-.terminal--screen {
+.terminal__screen {
   overflow: hidden;
   text-overflow: clip;
   background-color: $black;

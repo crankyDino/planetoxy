@@ -25,11 +25,11 @@ $layout-values: flex-start, flex-end, center, space-between, space-around;
 }
 
 @each $key, $val in $grid-gaps {
-  .gap-#{$key} > * {
+  .layout-gap-#{$key} > * {
     padding: $val;
   }
 
-  .gap-#{$key} {
+  .layout-gap-#{$key} {
     margin-left: -$val;
     margin-right: -$val;
   }

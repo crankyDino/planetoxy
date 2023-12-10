@@ -1,15 +1,54 @@
+@use "./variables" as *;
+
 .content {
-    justify-content: center;
-    position: relative;
-    flex-direction: column;
-    align-items: center;
-    // margin-bottom: 1em;
-    padding: 0 0.8em;
+  justify-content: center;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  // margin-bottom: 1em;
+  padding: 0 0.8em;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  padding: 1em;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  height: 100px;
+  line-height: 1.5em;
+  padding-left: 1.3em;
+  // padding-left: 0.3em;
+  margin: 0;
+  max-width: 22em;
+
+  & li::marker {
+    content: "> ";
   }
-  
-  .container {
-    display: flex;
-    flex-direction: column;
-    padding: 1em;
+}
+
+.paragraph {
+  margin-top: 0;
+  &::first-letter {
+    // --webkit-initial-letter: 2;
+    // initial-letter: 2;
+    font-size: 2em;
+    font-weight: bold;
   }
-  
+  &::before {
+    content: "";
+    // border: solid 2px;
+    width: 2em;
+    background-color: $orange;
+    display: block;
+    height: 2.6em;
+    position: absolute;
+    z-index: -1;
+    transform: translateX(-11px) translateX(0px);
+    // animation: blink 1s linear infinite;
+  }
+}
