@@ -1,6 +1,8 @@
+@use "../util/" as *;
+
 .terminal {
-  border: solid 6px var(--light-gray);
-  background-color: var(--black);
+  border: solid 6px $light-gray;
+  background-color: $black;
   width: 100%;
   max-width: 620px;
   height: 260px;
@@ -8,7 +10,7 @@
 }
 
 .terminal--window-nav {
-  border-bottom: solid 6px var(--light-gray);
+  border-bottom: solid 6px $light-gray;
   justify-content: space-between;
   padding: 6px 10px;
 }
@@ -26,16 +28,16 @@
     &:hover {
       & svg {
         & path {
-          fill: var(--green);
+          fill: $green;
         }
         & rect,
         line,
         circle {
-          stroke: var(--green);
+          stroke: $green;
         }
 
         & path:last-child {
-          fill: var(--red);
+          fill: $red;
         }
       }
     }
@@ -65,7 +67,7 @@
 .terminal--screen {
   overflow: hidden;
   text-overflow: clip;
-  background-color: var(--black);
+  background-color: $black;
   & pre {
     margin-bottom: 0;
   }
@@ -81,17 +83,17 @@
 
   & p,
   a {
-    font-family: var(--font-terminal);
-    color: var(--green);
+    font-family: $font-terminal;
+    color: $green;
   }
 }
 
 .cli {
   width: fit-content;
   max-width: 50%;
-  border-right: solid var(--green) 8px;
+  border-right: solid $green 8px;
   animation: blink 1s linear infinite;
-  color: var(--green);
+  color: $green;
   &:hover {
     cursor: text;
   }

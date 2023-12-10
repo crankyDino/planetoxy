@@ -1,10 +1,23 @@
-# Run it
+# Planet Oxy
+
+welcome to my world.
+
+### Run it
 
 environment set up
-> npm i
+
+```sh
+npm i
+```
 
 run dev server
-> npm start
+
+```sh
+npm start
+```
 
 build for prod
-> npm run build:prod:webpack
+
+```sh
+npm run build:prod:webpack
+```

@@ -1,8 +1,3 @@
-@forward './util/util';
-@forward './util/colours';
-@forward './util/fonts';
-@forward './util/typography';
-@forward './util/animations';
-@forward './components/terminal.scss';
-@forward './components/buttons.scss';
-@forward './components/sidebar.scss';
+@forward "./util/util";
+
+@import "./noodles/";

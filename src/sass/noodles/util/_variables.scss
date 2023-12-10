@@ -1,0 +1,249 @@
+@use "sass:math";
+
+//colours
+$white: #ddd !default;
+$light-gray: #d9d9d9 !default;
+$black: #161616 !default;
+$green: #72db31 !default;
+$red: darkred !default;
+$light-red: salmon !default;
+$orange: #e77236 !default;
+$blue: #326dee !default;
+$pink: #ffd7ba !default;
+
+//theme
+$status: (
+  "primary": $orange,
+  "secondary": $light-red,
+  "success": $green,
+  "error": $red,
+  "info": $blue,
+  "inactive": $light-gray,
+);
+
+$palette: (
+  "blue": $blue,
+  "red": $red,
+  "yellow": #e6e619,
+  "green": #19e635,
+  "orange": $orange,
+  "purple": #9900ff,
+  "gray": #808080,
+  "black": $black,
+  "white": $white,
+  "pink": $pink,
+);
+
+//sizing
+$base-width: 80vw !default;
+$min-width: 16px !default;
+$base-height: 80vh !default;
+$min-height: 16px !default;
+
+// spacing
+$base-padding: 0.75rem !default;
+$base-margin: 0.75rem !default;
+
+// borders
+$base-border-thickness: 1px !default;
+$base-border-radius: 20px !default;
+
+// box-shadow
+$base-box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.1) !default;
+
+// font sizes
+$base-font-size: 1rem !default;
+$font-size-sm: $base-font-size * 0.75 !default;
+$font-size-lg: $base-font-size * 1.5 !default;
+$font-size-xl: $base-font-size * 2 !default;
+$font-size-xxl: $base-font-size * 3 !default;
+
+$breakpoints: (
+  "xs": 0,
+  "sm": 480px,
+  "md": 720px,
+  "lg": 960px,
+  "xl": 1200px,
+);
+
+$utilities: (
+  "width": (
+    "prefix": "w",
+    "values": (
+      "0": 0,
+      "1": $min-width,
+      "2": $min-width * 2,
+      "3": $min-width * 4,
+      "4": $min-width * 6,
+      "5": $min-width * 8,
+    ),
+  ),
+  "height": (
+    "prefix": "h",
+    "values": (
+      "0": 0,
+      "1": $min-height,
+      "2": $min-height * 2,
+      "3": $min-height * 4,
+      "4": $min-height * 6,
+      "5": $min-height * 8,
+    ),
+  ),
+  "padding": (
+    "prefix": "p",
+    "values": (
+      "0": 0,
+      "1": $base-padding,
+      "2": $base-padding * 2,
+      "3": $base-padding * 4,
+      "4": $base-padding * 6,
+      "5": $base-padding * 8,
+    ),
+  ),
+  "padding-left": (
+    "prefix": "pl",
+    "values": (
+      "0": 0,
+      "1": $base-padding,
+      "2": $base-padding * 2,
+      "3": $base-padding * 4,
+      "4": $base-padding * 6,
+      "5": $base-padding * 8,
+    ),
+  ),
+  "padding-right": (
+    "prefix": "pr",
+    "values": (
+      "0": 0,
+      "1": $base-padding,
+      "2": $base-padding * 2,
+      "3": $base-padding * 4,
+      "4": $base-padding * 6,
+      "5": $base-padding * 8,
+    ),
+  ),
+  "padding-top": (
+    "prefix": "pt",
+    "values": (
+      "0": 0,
+      "1": $base-padding,
+      "2": $base-padding * 2,
+      "3": $base-padding * 4,
+      "4": $base-padding * 6,
+      "5": $base-padding * 8,
+    ),
+  ),
+  "padding-bottom": (
+    "prefix": "pb",
+    "values": (
+      "0": 0,
+      "1": $base-padding,
+      "2": $base-padding * 2,
+      "3": $base-padding * 4,
+      "4": $base-padding * 6,
+      "5": $base-padding * 8,
+    ),
+  ),
+  "margin": (
+    "prefix": "m",
+    "values": (
+      "0": 0,
+      "1": $base-margin,
+      "2": $base-margin * 2,
+      "3": $base-margin * 4,
+      "4": $base-margin * 6,
+      "5": $base-margin * 8,
+    ),
+  ),
+  "margin-left": (
+    "prefix": "ml",
+    "values": (
+      "0": 0,
+      "1": $base-margin,
+      "2": $base-margin * 2,
+      "3": $base-margin * 4,
+      "4": $base-margin * 6,
+      "5": $base-margin * 8,
+    ),
+  ),
+  "margin-right": (
+    "prefix": "mr",
+    "values": (
+      "0": 0,
+      "1": $base-margin,
+      "2": $base-margin * 2,
+      "3": $base-margin * 4,
+      "4": $base-margin * 6,
+      "5": $base-margin * 8,
+    ),
+  ),
+  "margin-top": (
+    "prefix": "mt",
+    "values": (
+      "0": 0,
+      "1": $base-margin,
+      "2": $base-margin * 2,
+      "3": $base-margin * 4,
+      "4": $base-margin * 6,
+      "5": $base-margin * 8,
+    ),
+  ),
+  "margin-bottom": (
+    "prefix": "mb",
+    "values": (
+      "0": 0,
+      "1": $base-margin,
+      "2": $base-margin * 2,
+      "3": $base-margin * 4,
+      "4": $base-margin * 6,
+      "5": $base-margin * 8,
+    ),
+  ),
+
+  "opacity": (
+    "prefix": "o",
+    "values": (
+      "10": 0.1,
+      "20": 0.2,
+      "30": 0.3,
+      "40": 0.4,
+      "50": 0.5,
+      "60": 0.6,
+      "70": 0.7,
+      "80": 0.8,
+      "90": 0.9,
+      "100": 1,
+    ),
+  ),
+  "border-radius": (
+    "prefix": "br",
+    "values": (
+      "default": $base-border-radius,
+      "none": 0,
+      "xs": math.div($base-border-radius, 4),
+      "sm": math.div($base-border-radius, 2),
+      "lg": $base-border-radius * 2,
+      "full": 50%,
+    ),
+  ),
+  "display": (
+    "prefix": "d",
+    "values": (
+      "none": none,
+      "block": block,
+      "flex": flex,
+      "inline": inline,
+      "inline-block": inline-block,
+    ),
+  ),
+  "font-size": (
+    "prefix": "font",
+    "values": (
+      "sm": $font-size-sm,
+      "md": $base-font-size,
+      "lg": $font-size-lg,
+      "xl": $font-size-xl,
+      "xxl": $font-size-xxl,
+    ),
+  ),
+);

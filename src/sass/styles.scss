@@ -1,7 +1,7 @@
 @use "./index" as *;
 
 body {
-  background-color: var(--black);
+  background-color: $black;
 }
 li {
   list-style: none;
@@ -110,10 +110,7 @@ footer {
   align-items: center;
 }
 
-.content--container,
-.nav--container {
-  margin: auto;
-}
+
 
 @media only screen and (min-width: 520px) {
   .tagline-container {
@@ -206,10 +203,7 @@ footer {
     margin: auto;
   }
 
-  .nav--container {
-    max-width: 90vw;
-    margin: auto;
-  }
+ 
 
   .about-me--container {
     flex-direction: row;

@@ -1,0 +1,91 @@
+@use "../util/" as *;
+
+$x-size-lrg: 10.5rem;
+$y-size-lrg: 3rem;
+
+@mixin btn(
+  $bg-color: $light-gray,
+  $stroke-color: none,
+  $x-size: 9rem,
+  $y-size: 2.375rem
+) {
+  width: $x-size;
+  height: $y-size;
+  flex-shrink: 0;
+  font-family: $font-primary;
+  font-weight: 700;
+  text-align: center;
+  letter-spacing: 0.15438rem;
+  padding: 0;
+  background-color: $bg-color;
+  border: 3px solid $stroke-color;
+}
+
+.btn {
+  @include btn;
+  &:hover {
+    border: solid $light-gray;
+    background-color: lighten($light-gray, 15);
+  }
+}
+
+.btn-lrg {
+  @include btn(default, default, $x-size-lrg, $y-size-lrg);
+  &:hover {
+    border: solid $light-gray;
+    background-color: lighten($light-gray, 15);
+  }
+}
+
+@each $clr, $val in $status {
+  .btn-#{$clr} {
+    @include btn($val);
+    &:hover {
+      background-color: lighten($val, 15);
+      color: color-complement($val);
+    }
+  }
+
+  .btn-#{$clr}-outline {
+    @include btn(transparent, $val);
+    &:hover {
+      background-color: lighten($val, 15);
+      color: color-complement($val);
+    }
+  }
+
+  .btn-#{$clr}-lrg {
+    @include btn($val, none, $x-size-lrg, $y-size-lrg);
+    &:hover {
+      background-color: lighten($val, 15);
+      color: color-complement($val);
+    }
+  }
+
+  .btn-#{$clr}-outline-lrg {
+    @include btn(transparent, $val, $x-size-lrg, $y-size-lrg);
+    &:hover {
+      background-color: lighten($val, 15);
+      color: color-complement($val);
+    }
+  }
+}
+
+.btn-font-2 {
+  font-family: $font-tertiary !important;
+  font-weight: black;
+}
+
+.btn-font-1-hv {
+  font-family: $font-primary !important;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+button {
+  color: white;
+  border: 0;
+  background: $light-gray;
+  // border-radius: $base-border-radius;
+  padding: $base-padding;
+}
