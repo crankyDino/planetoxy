@@ -3,15 +3,18 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Welcome To Planet Oxy</title>
+
     <!--styles-->
     <link rel="stylesheet" href="./css/styles.css" />
     <link rel="stylesheet" href="./css/styles.css" />
+
     <!--scripts-->
     <script src="scripts/index.js" type="module"></script>
-    <title>Welcome To Planet Oxy</title>
   </head>
+
   <body>
-    <section class="container navbar__container">
+    <!-- <section class="container navbar__container">
       <nav class="d-flex navbar">
         <a href="#" class="d-flex"
           ><img src="./assets/vectors/GLOBE.svg" alt=""
@@ -23,7 +26,8 @@
           <li class="navbar__item"><a href="#">contact</a></li>
         </ul>
       </nav>
-    </section>
+    </section> -->
+
     <div class="sidebar__container">
       <div class="sidebar">
         <ul>
@@ -53,7 +57,7 @@
 
     <div class="container content--container">
       <!-- ANTIHERO -->
-      <section id="antihero" class="d-flex flex-col mb-2">
+      <section class="d-flex antihero mb-2">
         <div id="terminal_window" class="terminal">
           <div class="terminal__window__navbar d-flex">
             <div class="terminal__title center-h d-flex gap-1-half">
@@ -198,19 +202,20 @@
                     fill="#1E1E1E"
                   />
                 </svg>
+
               </button>
             </div>
           </div>
           <div id="terminal_screen" class="terminal__screen p-x-1">
             <h6 class="mt-none terminal-art">
               <pre class="green terminal__art">
-    ____  _       _ __        __   __  ___                 
-   / __ \(_)___ _(_) /_____ _/ /  / / / (_)___  ____  (_)__ 
-  / / / / / __ `/ / __/ __ `/ /  / /_/ / / __ \/ __ \/ / _ \
- / /_/ / / /_/ / / /_/ /_/ / /  / __  / / /_/ / /_/ / /  __/
-/_____/_/\__, /_/\__/\__,_/_/  /_/ /_/_/ .___/ .___/_/\___/ 
-               /____/                        /_/   /_/     © <span id="terminal-date" class="green">2023</span>
-                  </pre>
+     ____  _       _ __        __   __  ___                 
+    / __ \(_)___ _(_) /_____ _/ /  / / / (_)___  ____  (_)__ 
+   / / / / / __ `/ / __/ __ `/ /  / /_/ / / __ \/ __ \/ / _ \
+  / /_/ / / /_/ / / /_/ /_/ / /  / __  / / /_/ / /_/ / /  __/
+ /_____/_/\__, /_/\__/\__,_/_/  /_/ /_/_/ .___/ .___/_/\___/ 
+         /____/                        /_/   /_/     © <span id="terminal-date" class="green">2023</span>
+            </pre>
             </h6>
 
             <p class="terminal__text">Welcome...</p>
@@ -234,26 +239,24 @@
           </div>
         </div>
 
-        <div class="d-flex flex-col align-end">
+        <div class="content d-flex mb-2 title__container">
           <div class="title d-flex">
             <div class="title__intro nowrap"><p>Hi, I'm</p></div>
-            <div class="d-flex flex-row">
-              <div class="title__name"><h1>ASHLEY</h1></div>
+            <div class="title__name"><h1>ASHLEY</h1></div>
 
-              <div class="title__smiley">
-                <img src="./assets/vectors/smiley.svg" alt="" />
-              </div>
+            <div class="title__smiley">
+              <img src="./assets/vectors/smiley.svg" alt="" />
             </div>
           </div>
 
           <div class="w-100 tagline-container container">
-            <div class="pl-1 text-right mb-2">
+            <div class="tagline mb-2">
               <p>
                 <strong>I Make</strong>
                 cool websites, take pretty pictures and film epic videos
               </p>
             </div>
-            <div class="w-max d-flex flex-col gap-1 justify-even align-end">
+            <div class="w-max d-flex flex-row gap-1 justify-even">
               <button class="btn-primary">
                 <a href="">PROJECTS</a>
               </button>
@@ -268,7 +271,7 @@
         <div class="about-me__container">
           <div class="about-me">
             <h2 class="about-me__headline mb-half">
-              A <strong class="orange font-chintzy">Bit</strong> About Me
+              A <strong class="orange">Bit</strong> About Me
             </h2>
             <p class="paragraph">
               I am a self-taught Web Developer, Graphic Designer and
@@ -323,7 +326,7 @@
       </section>
     </div>
 
-    <footer class="d-flex flex-row justify-between align-center p-x-4 p-y-1">
+    <footer class="container d-flex flex-row justify-even align-center">
       <!-- <p>something</p> -->
       <div class="socials d-flex-row dh-justify align-x">
         <a href="digitalhippie.xyz"
@@ -338,8 +341,8 @@
         <a href="https://twitter.com/DigitalHippie_"
           ><img src="./assets/vectors/twitter.svg" alt=""
         /></a>
-      </div>
-      <p>Digital Hippie</p>
+      </div> 
+       <p>Digital Hippie</p>
     </footer>
   </body>
 </html>

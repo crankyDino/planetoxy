@@ -73,6 +73,17 @@ $breakpoints: (
 );
 
 $utilities: (
+  "font-size": (
+    "prefix": "font",
+    "values": (
+      "half": $min-width / 2,
+      "0": 0,
+      "sm": $font-size-sm,
+      "lg": $font-size-lg,
+      "xl": $font-size-xl,
+      "xxl": $font-size-xxl,
+    ),
+  ),
   "width": (
     "prefix": "w",
     "values": (
@@ -254,16 +265,6 @@ $utilities: (
       "inline-block": inline-block,
     ),
   ),
-  "font-size": (
-    "prefix": "font",
-    "values": (
-      "sm": $font-size-sm,
-      "md": $base-font-size,
-      "lg": $font-size-lg,
-      "xl": $font-size-xl,
-      "xxl": $font-size-xxl,
-    ),
-  ),
   "flex-direction": (
     "prefix": "flex",
     "values": (
@@ -297,10 +298,26 @@ $utilities: (
     "prefix": "align",
     "values": (
       "center": center,
+      "start": flex-start,
+      "end": flex-end,
+      "self-end": self-end,
+    ),
+  ),
+  "text-align": (
+    "prefix": "text",
+    "values": (
+      "center": center,
       "left": left,
       "right": right,
-      "f-left": flex-start,
-      "end": end,
+      "justify": justify,
+      "init": initial,
+    ),
+  ),
+  "text-wrap": (
+    "prefix": "text",
+    "values": (
+      "wrap": wrap,
+      "no-wrap": nowrap,
     ),
   ),
   "gap": (

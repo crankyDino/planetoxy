@@ -25,10 +25,10 @@
   // padding-left: 0.3em;
   margin: 0;
   max-width: 22em;
-
+  
   & li::marker {
     content: "> ";
-  }
+  }  
 }
 
 .paragraph {
@@ -52,3 +52,5 @@
     // animation: blink 1s linear infinite;
   }
 }
+
+//

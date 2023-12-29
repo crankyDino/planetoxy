@@ -63,11 +63,13 @@ img {
       @if (map-has-key($alignment, $property)) {
         @if ($v != 0) {
           .#{$prefix}-x-#{$k} {
-            #{$property}: 0 $v;
+            #{$property}-left: $v;
+            #{$property}-right: $v;
           }
 
           .#{$prefix}-y-#{$k} {
-            #{$property}: $v 0;
+            #{$property}-top: $v;
+            #{$property}-bottom: $v;
           }
         }
       }

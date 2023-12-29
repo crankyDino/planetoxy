@@ -23,6 +23,12 @@ h1 {
   margin-bottom: $base-margin;
 }
 
-.nowrap{
+.nowrap {
   text-wrap: nowrap;
+}
+
+@each $family, $property in $fonts {
+  .#{$family} {
+    font-family: #{$property};
+  }
 }

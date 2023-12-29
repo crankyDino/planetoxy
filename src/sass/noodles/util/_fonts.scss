@@ -10,13 +10,11 @@ $font-secondary: "Hanuman" !default;
 $font-terminal: "Comic Neue" !default;
 $font-tertiary: "Montserrat" !default;
 $font-chintzy: "Chintzy" !default;
-// :root {
-//   --font-primary: "Space Mono";
-//   --font-secondary: "Hanuman";
-//   --font-terminal: "Comic Neue";
-//   --font-tertiary: "Montserrat";
-//   --font-chintzy: "Chintzy";
-// }
-// $fonts:(
 
-// )
+$fonts: (
+  "font-1": $font-primary,
+  "font-2": $font-secondary,
+  "font-3": $font-tertiary,
+  "font-terminal": $font-terminal,
+  "font-chintzy": $font-chintzy,
+);
