@@ -65,18 +65,20 @@ $font-size-xl: $base-font-size * 2 !default;
 $font-size-xxl: $base-font-size * 3 !default;
 
 $breakpoints: (
-  "xs": 0,
-  "sm": 480px,
-  "md": 720px,
-  "lg": 960px,
-  "xl": 1200px,
+  "sm": 320px,
+  "md": 375px,
+  "lg": 425px,
+  "tablet": 780px,
+  "hd": 1024px,
+  "uhd": 1440px,
+  "uuhd": 2560px,
 );
 
 $utilities: (
   "font-size": (
     "prefix": "font",
     "values": (
-      "half": $min-width / 2,
+      "half": $base-font-size / 2,
       "0": 0,
       "sm": $font-size-sm,
       "lg": $font-size-lg,
@@ -89,78 +91,60 @@ $utilities: (
     "values": (
       "max": 100%,
       "half": 50%,
+      "min": $min-width,
       "0": 0,
-      "1": $min-width,
-      "2": $min-width * 2,
-      "3": $min-width * 4,
-      "4": $min-width * 6,
-      "5": $min-width * 8,
+      "base": $min-width,
+      // "2": $min-width * 2,
+      // "3": $min-width * 4,
+      // "4": $min-width * 6,
+      // "5": $min-width * 8,
+      // "6": $min-width * 10,
+      // "7": $min-width * 12,
+      // "8": $min-width * 14,
+      // "9": $min-width * 16,
+      // "10":$min-width * 18,,,,,,,,
     ),
   ),
   "height": (
     "prefix": "h",
     "values": (
       "0": 0,
-      "1": $min-height,
-      "2": $min-height * 2,
-      "3": $min-height * 4,
-      "4": $min-height * 6,
-      "5": $min-height * 8,
+      "base": $base-height,
     ),
   ),
   "padding": (
     "prefix": "p",
     "values": (
       "0": 0,
-      "1": $base-padding,
-      "2": $base-padding * 2,
-      "3": $base-padding * 4,
-      "4": $base-padding * 6,
-      "5": $base-padding * 8,
+      "base": $base-padding,
     ),
   ),
   "padding-left": (
     "prefix": "pl",
     "values": (
       "0": 0,
-      "1": $base-padding,
-      "2": $base-padding * 2,
-      "3": $base-padding * 4,
-      "4": $base-padding * 6,
-      "5": $base-padding * 8,
+      "base": $base-padding,
     ),
   ),
   "padding-right": (
     "prefix": "pr",
     "values": (
       "0": 0,
-      "1": $base-padding,
-      "2": $base-padding * 2,
-      "3": $base-padding * 4,
-      "4": $base-padding * 6,
-      "5": $base-padding * 8,
+      "base": $base-padding,
     ),
   ),
   "padding-top": (
     "prefix": "pt",
     "values": (
       "0": 0,
-      "1": $base-padding,
-      "2": $base-padding * 2,
-      "3": $base-padding * 4,
-      "4": $base-padding * 6,
-      "5": $base-padding * 8,
+      "base": $base-padding,
     ),
   ),
   "padding-bottom": (
     "prefix": "pb",
     "values": (
       "0": 0,
-      "1": $base-padding,
-      "2": $base-padding * 2,
-      "3": $base-padding * 4,
-      "4": $base-padding * 6,
-      "5": $base-padding * 8,
+      "base": $base-padding,
     ),
   ),
   "margin": (
@@ -169,11 +153,7 @@ $utilities: (
       "auto": auto,
       "default": $base-margin + 0.25,
       "0": 0,
-      "1": $base-margin,
-      "2": $base-margin * 2,
-      "3": $base-margin * 4,
-      "4": $base-margin * 6,
-      "5": $base-margin * 8,
+      "base": $base-margin,
     ),
   ),
   "margin-left": (
@@ -182,11 +162,7 @@ $utilities: (
       "auto": auto,
       "default": $base-margin + 0.25,
       "0": 0,
-      "1": $base-margin,
-      "2": $base-margin * 2,
-      "3": $base-margin * 4,
-      "4": $base-margin * 6,
-      "5": $base-margin * 8,
+      "base": $base-margin,
     ),
   ),
   "margin-right": (
@@ -195,11 +171,7 @@ $utilities: (
       "auto": auto,
       "default": $base-margin + 0.25,
       "0": 0,
-      "1": $base-margin,
-      "2": $base-margin * 2,
-      "3": $base-margin * 4,
-      "4": $base-margin * 6,
-      "5": $base-margin * 8,
+      "base": $base-margin,
     ),
   ),
   "margin-top": (
@@ -208,11 +180,7 @@ $utilities: (
       "auto": auto,
       "default": $base-margin + 0.25,
       "0": 0,
-      "1": $base-margin,
-      "2": $base-margin * 2,
-      "3": $base-margin * 4,
-      "4": $base-margin * 6,
-      "5": $base-margin * 8,
+      "base": $base-margin,
     ),
   ),
   "margin-bottom": (
@@ -222,11 +190,7 @@ $utilities: (
       "default": $base-margin + 0.25,
       "0": 0,
       "half": $base-margin - 0.25,
-      "1": $base-margin,
-      "2": $base-margin * 2,
-      "3": $base-margin * 4,
-      "4": $base-margin * 6,
-      "5": $base-margin * 8,
+      "base": $base-margin,
     ),
   ),
   "opacity": (
@@ -272,6 +236,14 @@ $utilities: (
       "col": column,
       "reverse": reverse,
       "col-rev": reverse,
+    ),
+  ),
+  "flex-wrap": (
+    "prefix": "flex",
+    "values": (
+      "wrap": wrap,
+      "nowrap": nowrap,
+      "reverse": wrap-reverse,
     ),
   ),
   "overflow": (
@@ -333,3 +305,51 @@ $utilities: (
     ),
   ),
 );
+
+@mixin sm {
+  @media (max-width: map-get($breakpoints, "sm")) {
+    @content;
+  }
+}
+
+@mixin md {
+  @media (max-width: map-get($breakpoints, "md")) {
+    @content;
+  }
+}
+
+@mixin lg {
+  @media (max-width: map-get($breakpoints, "lg")) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (max-width: map-get($breakpoints, "tablet")) {
+    @content;
+  }
+}
+
+@mixin hd {
+  @media (max-width: map-get($breakpoints, "hd")) {
+    @content;
+  }
+}
+
+@mixin uhd {
+  @media (max-width: map-get($breakpoints, "uhd")) {
+    @content;
+  }
+}
+
+@mixin uuhd {
+  @media (max-width: map-get($breakpoints, "uuhd")) {
+    @content;
+  }
+}
+
+@mixin breakpoint($bp: 0) {
+  @media (max-width: $bp) {
+    @content;
+  }
+}

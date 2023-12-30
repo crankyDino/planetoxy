@@ -1,19 +1,24 @@
 @use "../util/" as *;
+@use "../util/fonts" as *;
 
 $x-size-lrg: 10.5rem;
 $y-size-lrg: 3rem;
+$x-size-sm: 7.3rem;
+$y-size-sm: 2.2rem;
 
 @mixin btn(
   $bg-color: $light-gray,
   $stroke-color: none,
   $x-size: 9rem,
-  $y-size: 2.375rem
+  $y-size: 2.375rem,
+  $font-size: $base-font-size
 ) {
   width: $x-size;
   height: $y-size;
   flex-shrink: 0;
   font-family: $font-primary;
   font-weight: 700;
+  font-size: $font-size;
   text-align: center;
   letter-spacing: 0.15438rem;
   padding: 0;
@@ -54,8 +59,24 @@ $y-size-lrg: 3rem;
     }
   }
 
+  .btn-#{$clr}-sm {
+    @include btn($val, transparent, $x-size-sm, $y-size-sm, $font-size-sm);
+    &:hover {
+      background-color: lighten($val, 15);
+      color: color-complement($val);
+    }
+  }
+
+  .btn-#{$clr}-outline-sm {
+    @include btn(transparent, $val, $x-size-sm, $y-size-sm, $font-size-sm);
+    &:hover {
+      background-color: lighten($val, 15);
+      color: color-complement($val);
+    }
+  }
+
   .btn-#{$clr}-lrg {
-    @include btn($val, none, $x-size-lrg, $y-size-lrg);
+    @include btn($val, transparent, $x-size-lrg, $y-size-lrg, $font-size-lg);
     &:hover {
       background-color: lighten($val, 15);
       color: color-complement($val);
@@ -63,7 +84,7 @@ $y-size-lrg: 3rem;
   }
 
   .btn-#{$clr}-outline-lrg {
-    @include btn(transparent, $val, $x-size-lrg, $y-size-lrg);
+    @include btn(transparent, $val, $x-size-lrg, $y-size-lrg, $font-size-lg);
     &:hover {
       background-color: lighten($val, 15);
       color: color-complement($val);

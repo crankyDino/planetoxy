@@ -41,14 +41,6 @@ $layout-values: flex-start, flex-end, center, space-between, space-around;
   }
 }
 
-@include xs {
-  @for $i from 1 through $grid-columns {
-    .col-#{$i}-xs {
-      flex-grow: 0;
-      width: math.div($i * 100%, $grid-columns);
-    }
-  }
-}
 @include sm {
   @for $i from 1 through $grid-columns {
     .col-#{$i}-sm {
@@ -57,6 +49,7 @@ $layout-values: flex-start, flex-end, center, space-between, space-around;
     }
   }
 }
+
 @include md {
   @for $i from 1 through $grid-columns {
     .col-#{$i}-md {
@@ -65,6 +58,7 @@ $layout-values: flex-start, flex-end, center, space-between, space-around;
     }
   }
 }
+
 @include lg {
   @for $i from 1 through $grid-columns {
     .col-#{$i}-lg {
@@ -73,9 +67,37 @@ $layout-values: flex-start, flex-end, center, space-between, space-around;
     }
   }
 }
-@include xl {
+
+@include tablet {
   @for $i from 1 through $grid-columns {
-    .col-#{$i}-xl {
+    .col-#{$i}-tablet {
+      flex-grow: 0;
+      width: math.div($i * 100%, $grid-columns);
+    }
+  }
+}
+
+@include hd {
+  @for $i from 1 through $grid-columns {
+    .col-#{$i}-hd {
+      flex-grow: 0;
+      width: math.div($i * 100%, $grid-columns);
+    }
+  }
+}
+
+@include uhd {
+  @for $i from 1 through $grid-columns {
+    .col-#{$i}-4k {
+      flex-grow: 0;
+      width: math.div($i * 100%, $grid-columns);
+    }
+  }
+}
+
+@include uuhd {
+  @for $i from 1 through $grid-columns {
+    .col-#{$i}-8k {
       flex-grow: 0;
       width: math.div($i * 100%, $grid-columns);
     }

@@ -53,7 +53,10 @@
 
     <div class="container content--container">
       <!-- ANTIHERO -->
-      <section id="antihero" class="d-flex flex-col mb-2">
+      <section
+        id="antihero"
+        class="d-flex flex-row justify-between align-center m-0 mb-2 flex-col-tablet"
+      >
         <div id="terminal_window" class="terminal">
           <div class="terminal__window__navbar d-flex">
             <div class="terminal__title center-h d-flex gap-1-half">
@@ -201,7 +204,7 @@
               </button>
             </div>
           </div>
-          <div id="terminal_screen" class="terminal__screen p-x-1">
+          <div id="terminal_screen" class="terminal__screen">
             <h6 class="mt-none terminal-art">
               <pre class="green terminal__art">
     ____  _       _ __        __   __  ___                 
@@ -234,11 +237,11 @@
           </div>
         </div>
 
-        <div class="d-flex flex-col align-end">
-          <div class="title d-flex">
-            <div class="title__intro nowrap"><p>Hi, I'm</p></div>
-            <div class="d-flex flex-row">
-              <div class="title__name"><h1>ASHLEY</h1></div>
+        <div class="d-flex flex-col align-end px-1 w-22 w-18-md w-16-sm">
+          <div class="d-flex flex-col pt-1 w-max">
+            <p class="nowrap">Hi, I'm</p>
+            <div class="d-flex flex-row justify-right">
+              <h1 class="font-2 font-xxl">ASHLEY</h1>
 
               <div class="title__smiley">
                 <img src="./assets/vectors/smiley.svg" alt="" />
@@ -246,25 +249,24 @@
             </div>
           </div>
 
-          <div class="w-100 tagline-container container">
-            <div class="pl-1 text-right mb-2">
-              <p>
-                <strong>I Make</strong>
-                cool websites, take pretty pictures and film epic videos
-              </p>
-            </div>
-            <div class="w-max d-flex flex-col gap-1 justify-even align-end">
-              <button class="btn-primary">
+          <div class="w-max tagline-container px-1">
+            <p class="text-right mb-2 text-justify">
+              <strong>I Make</strong>
+              cool websites, take pretty pictures and film epic videos
+            </p>
+
+            <div class="w-max d-flex flex-row gap-1 justify-even align-end">
+              <button class="btn-primary-sm">
                 <a href="">PROJECTS</a>
               </button>
-              <button class="btn-primary-outline">HIT ME UP!</button>
+              <button class="btn-primary-outline-sm">HIT ME UP!</button>
             </div>
           </div>
         </div>
       </section>
 
       <!-- about me -->
-      <section class="d-flex">
+      <section class="d-flex flex-col pt-1">
         <div class="about-me__container">
           <div class="about-me">
             <h2 class="about-me__headline mb-half">
@@ -278,7 +280,7 @@
             </p>
           </div>
 
-          <div class="skills w-100 mb-1">
+          <div class="skills w-max mb-1">
             <h3 class="orange mb-half">Technologies I’ve worked with</h3>
             <ul class="list flow-hide">
               <li>Typescript</li>
@@ -323,7 +325,7 @@
       </section>
     </div>
 
-    <footer class="d-flex flex-row justify-between align-center p-x-4 p-y-1">
+    <footer class="d-flex flex-row justify-between align-center px-4 py-1">
       <!-- <p>something</p> -->
       <div class="socials d-flex-row dh-justify align-x">
         <a href="digitalhippie.xyz"
