@@ -28,23 +28,35 @@
       <div class="sidebar">
         <ul>
           <li>
+            <a href="https://twitter.com/DigitalHippie_"
+              ><img
+                style="width: 1.4rem"
+                src="./assets/vectors/dh_logo.svg"
+                alt=""
+            /></a>
+          </li>
+          <li>
             <a href="https://github.com/DigitalHippieStudios"
-              ><img src="./assets/vectors/github.svg" alt=""
+              ><img
+                style="width: 1.2rem"
+                src="./assets/vectors/github.svg"
+                alt=""
             /></a>
           </li>
           <li>
             <a href="https://www.linkedin.com/in/bamodise/"
-              ><img src="./assets/vectors/linkedin.svg" alt=""
+              ><img
+                style="width: 1.2rem"
+                src="./assets/vectors/linkedin.svg"
+                alt=""
             /></a>
           </li>
           <li>
             <a href="https://twitter.com/DigitalHippie_"
-              ><img src="./assets/vectors/twitter.svg" alt=""
-            /></a>
-          </li>
-          <li>
-            <a href="https://twitter.com/DigitalHippie_"
-              ><img src="./assets/vectors/twitter.svg" alt=""
+              ><img
+                style="width: 1.2rem"
+                src="./assets/vectors/twitter.svg"
+                alt=""
             /></a>
           </li>
         </ul>
@@ -238,9 +250,9 @@
         </div>
 
         <div
-          class="d-flex flex-col align-end align-center-md align-end-hd align-start-tablet px-1 w-16 w-max-md w-32-hd gap-6-hd"
+          class="d-flex flex-col align-end align-center-md align-end-hd align-start-tablet px-2-md w-16 w-max-md w-32-hd gap-6-hd"
         >
-          <div class="d-flex flex-col pt-1 w-max w-18-md flex-row-hd">
+          <div class="d-flex flex-col w-max w-14-md flex-row-hd justify-right">
             <p class="nowrap">Hi, I'm</p>
             <div class="d-flex flex-row justify-right">
               <h1 class="font-2 font-xxl">ASHLEY</h1>
@@ -251,9 +263,9 @@
             </div>
           </div>
 
-          <div class="w-max px-1 d-flex-tablet flex-col-hd">
+          <div class="w-max d-flex-tablet flex-col-hd gap-2">
             <p
-              class="mb-2 text-justify font-lg-tablet font-md-hd text-right-tablet"
+              class="mb-2 mb-auto-tablet text-justify font-lg-tablet font-md-hd text-right-hd"
             >
               <strong>I Make</strong>
               cool websites, take pretty pictures and film epic videos
@@ -272,19 +284,23 @@
       </section>
 
       <!-- about me -->
-      <section class="d-flex flex-col pt-1 flex-row-tablet">
-        <div class="about-me__container">
-          <div class="about-me">
-            <h2 class="about-me__headline mb-half">
-              A <strong class="orange font-chintzy">Bit</strong> About Me
-            </h2>
-            <p class="paragraph">
-              I am a self-taught Web Developer, Graphic Designer and
-              Videographer from South Africa. I also enjoy playing around with
-              Machine Learning and Blockchain technologies. I made this website
-              using vanilla HTML/CSS & Javascript.
-            </p>
-          </div>
+      <section
+        class="d-flex flex-col pt-1 px-2-md flex-row-tablet gap-2 justify-between mb-2-hd"
+      >
+        <div id="about_me" class="w-max">
+          <h2
+            style="word-spacing: -0.5rem"
+            id="about_me_headline"
+            class="mb-half font-chintzy kern-6 font-xxl"
+          >
+            A <strong class="orange font-chintzy font-xxl">Bit</strong> About Me
+          </h2>
+          <p class="paragraph w-max w-sixth-hd">
+            I am a self-taught Web Developer, Graphic Designer and Videographer
+            from South Africa. I also enjoy playing around with Machine Learning
+            and Blockchain technologies. I made this website using vanilla
+            HTML/CSS & Javascript.
+          </p>
 
           <div class="skills w-max mb-1">
             <h3 class="orange mb-half">Technologies I’ve worked with</h3>
@@ -301,16 +317,20 @@
             </ul>
           </div>
 
-          <button class="btn-primary-lrg">REQUEST CV</button>
+          <button class="btn-primary">REQUEST CV</button>
         </div>
-        <div class="headshot--container content-center dh-my-1 pad-y-1">
+        <div
+          id="pictureFrame"
+          style="width: fit-content"
+          class="m-auto pos-relative mb-2 center mb-auto-tablet"
+        >
           <div>
             <img
               class="headshot"
               src="./assets/bitmap/IMG_20200408_170956paint.jpg"
               alt=""
             />
-            <span class="headshot headshot-frame">
+            <span id="headshot" class="picture-frame-shadow">
               <svg
                 class="pictureFrame"
                 width="175"
@@ -331,23 +351,42 @@
       </section>
     </div>
 
-    <footer class="d-flex flex-row justify-between align-center px-4 py-1">
+    <footer
+      class="d-flex flex-row gap-4 gap-2-tablet gap-3-hd justify-between align-center px-2 px-5-md py-1 px-18-tablet px-25-hd px-35-uhd"
+    >
       <!-- <p>something</p> -->
-      <div class="socials d-flex-row dh-justify align-x">
-        <a href="digitalhippie.xyz"
-          ><img style="width: 2em" src="./assets/vectors/dh_logo.svg" alt=""
+      <div id="socials" class="d-flex d-flex-row gap-1 align-center">
+        <a target="_blank" href="https:://digitalhippie.xyz"
+          ><img
+            style="width: 1.4rem"
+            class="w-1-8-tablet"
+            src="./assets/vectors/dh_logo.svg"
+            alt=""
         /></a>
-        <a href="https://github.com/DigitalHippieStudios"
-          ><img src="./assets/vectors/github.svg" alt=""
+        <a target="_blank" href="https://github.com/DigitalHippieStudios"
+          ><img
+            style="width: 1.4rem"
+            class="w-1-8-tablet"
+            src="./assets/vectors/github.svg"
+            alt=""
         /></a>
-        <a href="https://www.linkedin.com/in/bamodise/"
-          ><img src="./assets/vectors/linkedin.svg" alt=""
+        <a target="_blank" href="https://www.linkedin.com/in/bamodise/"
+          ><img
+            style="width: 1.4rem"
+            class="w-1-8-tablet"
+            src="./assets/vectors/linkedin.svg"
+            alt=""
         /></a>
-        <a href="https://twitter.com/DigitalHippie_"
-          ><img src="./assets/vectors/twitter.svg" alt=""
+        <a target="_blank" href="https://twitter.com/DigitalHippie_"
+          ><img
+            style="width: 1.4rem"
+            class="w-1-8-tablet"
+            src="./assets/vectors/twitter.svg"
+            alt=""
         /></a>
       </div>
-      <p>Digital Hippie</p>
+
+      <p class="font-sm font-md-tablet weight-bold kern-1">Digital Hippie</p>
     </footer>
   </body>
 </html>

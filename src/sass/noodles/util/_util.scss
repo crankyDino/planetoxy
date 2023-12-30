@@ -2,7 +2,7 @@
 @use "./variables" as *;
 @use "./fonts" as *;
 
-$variants: 50;
+$variants: 35;
 
 *,
 *::after,
@@ -157,7 +157,7 @@ img {
               #{$property}-right
             );
 
-            .#{$prefix}y-#{$k}-#{$variant} {
+            .#{$prefix}y-#{$variant} {
               #{$property}-top: $v;
               #{$property}-bottom: $v;
             }
