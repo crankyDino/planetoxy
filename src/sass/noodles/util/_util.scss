@@ -46,48 +46,61 @@ img {
   // max-width: 100%;
 }
 
-@mixin makeResponsive($prop, $prefix, $variant, $val) {
+@mixin generateBreakpoints($prefix, $variant, $val, $props...) {
   // @each $bp, $screenSize in $breakpoints {
   @include sm {
     .#{$prefix}-#{$variant}-sm {
-      #{$prop}: $val !important;
+      @each $prop in $props {
+        #{$prop}: $val !important;
+      }
     }
-    // $res: responsiveUtil()
-    // }
-  }
-  @include md {
-    .#{$prefix}-#{$variant}-md {
-      #{$prop}: $val !important;
-    }
-  }
 
-  @include lg {
-    .#{$prefix}-#{$variant}-lg {
-      #{$prop}: $val !important;
+    @include md {
+      .#{$prefix}-#{$variant}-md {
+        @each $prop in $props {
+          #{$prop}: $val !important;
+        }
+      }
     }
-  }
 
-  @include tablet {
-    .#{$prefix}-#{$variant}-tablet {
-      #{$prop}: $val !important;
+    @include lg {
+      .#{$prefix}-#{$variant}-lg {
+        @each $prop in $props {
+          #{$prop}: $val !important;
+        }
+      }
     }
-  }
 
-  @include hd {
-    .#{$prefix}-#{$variant}-hd {
-      #{$prop}: $val !important;
+    @include tablet {
+      .#{$prefix}-#{$variant}-tablet {
+        @each $prop in $props {
+          #{$prop}: $val !important;
+        }
+      }
     }
-  }
 
-  @include uhd {
-    .#{$prefix}-#{$variant}-uhd {
-      #{$prop}: $val !important;
+    @include hd {
+      .#{$prefix}-#{$variant}-hd {
+        @each $prop in $props {
+          #{$prop}: $val !important;
+        }
+      }
     }
-  }
 
-  @include uuhd {
-    .#{$prefix}-#{$variant}-uuhd {
-      #{$prop}: $val !important;
+    @include uhd {
+      .#{$prefix}-#{$variant}-uhd {
+        @each $prop in $props {
+          #{$prop}: $val !important;
+        }
+      }
+    }
+
+    @include uuhd {
+      .#{$prefix}-#{$variant}-uuhd {
+        @each $prop in $props {
+          #{$prop}: $val !important;
+        }
+      }
     }
   }
 }
@@ -108,26 +121,54 @@ img {
           .#{$prefix}-#{$variant} {
             #{$property}: $v * $variant;
           }
-
-          @include makeResponsive($property, $prefix, $variant, $v * $variant);
+          @include generateBreakpoints(
+            $prefix,
+            $variant,
+            $v * $variant,
+            $property
+          );
         }
       } @else {
         .#{$prefix}-#{$k} {
           #{$property}: $v;
         }
+        @include generateBreakpoints($prefix, $k, $v, $property);
       }
 
-      // @debug $v;
       @if (map-has-key($alignment, $property)) {
         @if ($v != 0) {
-          .#{$prefix}x-#{$k} {
-            #{$property}-left: $v;
-            #{$property}-right: $v;
-          }
+          $base: $v;
+          @for $variant from 1 through $variants {
+            @if ($k== "base") {
+              $t: $variant/100;
+              $v: $base * $variant;
+            }
 
-          .#{$prefix}y-#{$k} {
-            #{$property}-top: $v;
-            #{$property}-bottom: $v;
+            .#{$prefix}x-#{$variant} {
+              #{$property}-left: $v;
+              #{$property}-right: $v;
+            }
+
+            @include generateBreakpoints(
+              #{$prefix}x,
+              $variant,
+              $v,
+              #{$property}-left,
+              #{$property}-right
+            );
+
+            .#{$prefix}y-#{$k}-#{$variant} {
+              #{$property}-top: $v;
+              #{$property}-bottom: $v;
+            }
+
+            @include generateBreakpoints(
+              #{$prefix}y,
+              $variant,
+              $v,
+              #{$property}-top,
+              #{$property}-bottom
+            );
           }
         }
       }
@@ -154,11 +195,14 @@ img {
 // @include lg {
 // }
 
-@include tablet {
-  .flex-col-tablet {
-    flex-direction: column;
-  }
-}
+// @include tablet {
+//   .flex-col-tablet {
+//     flex-direction: column;
+//   }
+//   .flex-row-tablet {
+//     flex-direction: column;
+//   }
+// }
 
 // @include hd {
 // }

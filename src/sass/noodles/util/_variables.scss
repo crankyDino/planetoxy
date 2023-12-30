@@ -60,15 +60,15 @@ $base-box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.1) !default;
 // font sizes
 $base-font-size: 1rem !default;
 $font-size-sm: $base-font-size * 0.75 !default;
-$font-size-lg: $base-font-size * 1.5 !default;
-$font-size-xl: $base-font-size * 2 !default;
-$font-size-xxl: $base-font-size * 3 !default;
+$font-size-lg: $base-font-size * 1.25 !default;
+$font-size-xl: $base-font-size * 1.75 !default;
+$font-size-xxl: $base-font-size * 2.5 !default;
 
 $breakpoints: (
   "sm": 320px,
   "md": 375px,
   "lg": 425px,
-  "tablet": 780px,
+  "tablet": 768px,
   "hd": 1024px,
   "uhd": 1440px,
   "uuhd": 2560px,
@@ -81,6 +81,7 @@ $utilities: (
       "half": $base-font-size / 2,
       "0": 0,
       "sm": $font-size-sm,
+      "md": $base-font-size,
       "lg": $font-size-lg,
       "xl": $font-size-xl,
       "xxl": $font-size-xxl,
@@ -91,7 +92,8 @@ $utilities: (
     "values": (
       "max": 100%,
       "half": 50%,
-      "min": $min-width,
+      "min": $base-width,
+      "fit": fit-content,
       "0": 0,
       "base": $min-width,
       // "2": $min-width * 2,
@@ -102,7 +104,7 @@ $utilities: (
       // "7": $min-width * 12,
       // "8": $min-width * 14,
       // "9": $min-width * 16,
-      // "10":$min-width * 18,,,,,,,,
+      // "10":$min-width * 18,,,,,,,,,,,,
     ),
   ),
   "height": (
@@ -307,49 +309,49 @@ $utilities: (
 );
 
 @mixin sm {
-  @media (max-width: map-get($breakpoints, "sm")) {
+  @media (min-width: map-get($breakpoints, "sm")) {
     @content;
   }
 }
 
 @mixin md {
-  @media (max-width: map-get($breakpoints, "md")) {
+  @media (min-width: map-get($breakpoints, "md")) {
     @content;
   }
 }
 
 @mixin lg {
-  @media (max-width: map-get($breakpoints, "lg")) {
+  @media (min-width: map-get($breakpoints, "lg")) {
     @content;
   }
 }
 
 @mixin tablet {
-  @media (max-width: map-get($breakpoints, "tablet")) {
+  @media (min-width: map-get($breakpoints, "tablet")) {
     @content;
   }
 }
 
 @mixin hd {
-  @media (max-width: map-get($breakpoints, "hd")) {
+  @media (min-width: map-get($breakpoints, "hd")) {
     @content;
   }
 }
 
 @mixin uhd {
-  @media (max-width: map-get($breakpoints, "uhd")) {
+  @media (min-width: map-get($breakpoints, "uhd")) {
     @content;
   }
 }
 
 @mixin uuhd {
-  @media (max-width: map-get($breakpoints, "uuhd")) {
+  @media (min-width: map-get($breakpoints, "uuhd")) {
     @content;
   }
 }
 
 @mixin breakpoint($bp: 0) {
-  @media (max-width: $bp) {
+  @media (min-width: $bp) {
     @content;
   }
 }
