@@ -50,7 +50,7 @@
 }
 
 .terminal-art {
-  font-size: clamp(0.8vw, 8px, 2vw);
+  font-size: clamp(0.7vw, 8px, 2vw);
 }
 
 .terminal__control-icon {
@@ -75,7 +75,7 @@
   & p,
   h6 {
     margin-top: 0;
-    margin-bottom: 3px;
+    // margin-bottom: 3px;
     & strong {
       font-weight: 700;
     }
