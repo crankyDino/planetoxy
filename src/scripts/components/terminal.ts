@@ -13,7 +13,6 @@ export function getCommand() {
   window.onclick = (ev: Event) => {
     const target = ev.target as HTMLElement;
 
-
     if (!target.className.includes("terminal")) {
       console.log(target);
       console.log("bye bitch biatch");
@@ -30,14 +29,14 @@ const keydown_Handler = (ev: KeyboardEvent) => {
       console.log("click clack biatch");
       return;
     }
-
+    
     if (
       ev.code !== ev.key &&
       !ev.code.includes("Left") &&
       !ev.code.includes("Right")
     ) {
       cmd.innerText += ev.key;
-      console.log("brosky");
+      console.log(cmd.innerText);
       return;
     }
 

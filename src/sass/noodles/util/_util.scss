@@ -1,6 +1,7 @@
 @use "sass:list";
 @use "./variables" as *;
 @use "./fonts" as *;
+@use "sass:math";
 
 $variants: 35;
 
@@ -140,7 +141,7 @@ img {
           $base: $v;
           @for $variant from 1 through $variants {
             @if ($k== "base") {
-              $t: $variant/100;
+              $t: math.div($variant, 100);
               $v: $base * $variant;
             }
 

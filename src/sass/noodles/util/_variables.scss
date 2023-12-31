@@ -80,7 +80,7 @@ $utilities: (
   "font-size": (
     "prefix": "font",
     "values": (
-      "half": $base-font-size / 2,
+      "half": math.div($base-font-size, 2),
       "0": 0,
       "sm": $font-size-sm,
       "md": $base-font-size,
