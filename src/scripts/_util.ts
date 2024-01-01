@@ -1,4 +1,4 @@
 export function logging() {
-  console.log("heeeey, I'm logging here");
+  console.log("heeeey, I'm logging here test");
 }
 
