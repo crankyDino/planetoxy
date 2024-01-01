@@ -1,8 +1,11 @@
-const cssnano = require("cssnano");
-const autoprefixer = require("autoprefixer");
-const uncss = require("postcss-uncss");
+// const cssnano = require("cssnano");
+// const autoprefixer = require("autoprefixer");
+// const uncss = require("postcss-uncss");
+import cssnano from "cssnano";
+import autoprefixer from "autoprefixer";
+import uncss from "postcss-uncss";
 
-module.exports = {
+const plugins = {
   plugins: [
     cssnano({
       preset: "default",
@@ -11,7 +14,9 @@ module.exports = {
       browsers: ["last 2 versions", "> 5%"],
     }),
     uncss({
-      html: ["./index.html"],
+      html: ["./*.html"],
     }),
   ],
 };
+
+export default plugins;

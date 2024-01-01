@@ -43,10 +43,6 @@ hr {
   border-top: 1px dotted #efefef;
 }
 
-img {
-  // max-width: 100%;
-}
-
 @mixin generateBreakpoints($prefix, $variant, $val, $props...) {
   // @each $bp, $screenSize in $breakpoints {
   @include sm {
@@ -55,52 +51,52 @@ img {
         #{$prop}: $val !important;
       }
     }
+  }
 
-    @include md {
-      .#{$prefix}-#{$variant}-md {
-        @each $prop in $props {
-          #{$prop}: $val !important;
-        }
+  @include md {
+    .#{$prefix}-#{$variant}-md {
+      @each $prop in $props {
+        #{$prop}: $val !important;
       }
     }
+  }
 
-    @include lg {
-      .#{$prefix}-#{$variant}-lg {
-        @each $prop in $props {
-          #{$prop}: $val !important;
-        }
+  @include lg {
+    .#{$prefix}-#{$variant}-lg {
+      @each $prop in $props {
+        #{$prop}: $val !important;
       }
     }
+  }
 
-    @include tablet {
-      .#{$prefix}-#{$variant}-tablet {
-        @each $prop in $props {
-          #{$prop}: $val !important;
-        }
+  @include tablet {
+    .#{$prefix}-#{$variant}-tablet {
+      @each $prop in $props {
+        #{$prop}: $val !important;
       }
     }
+  }
 
-    @include hd {
-      .#{$prefix}-#{$variant}-hd {
-        @each $prop in $props {
-          #{$prop}: $val !important;
-        }
+  @include hd {
+    .#{$prefix}-#{$variant}-hd {
+      @each $prop in $props {
+        #{$prop}: $val !important;
       }
     }
+  }
 
-    @include uhd {
-      .#{$prefix}-#{$variant}-uhd {
-        @each $prop in $props {
-          #{$prop}: $val !important;
-        }
+  @include uhd {
+    .#{$prefix}-#{$variant}-uhd {
+      @each $prop in $props {
+        #{$prop}: $val !important;
       }
     }
+  }
 
-    @include uuhd {
-      .#{$prefix}-#{$variant}-uuhd {
-        @each $prop in $props {
-          #{$prop}: $val !important;
-        }
+  @include uuhd {
+    .#{$prefix}-#{$variant}-uuhd {
+      @each $prop in $props {
+        #{$prop}: $val !important;
       }
     }
   }

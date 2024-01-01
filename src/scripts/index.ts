@@ -1,7 +1,6 @@
-// import fs from 'fs'
-import { logging } from './_util.js';
-import { getCommand } from './components/terminal.js';
+import { logging } from "./_util.js";
+import { getCommand } from "./components/terminal.js";
 
-logging()
+logging();
 
-getCommand()
+getCommand();
