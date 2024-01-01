@@ -1,0 +1,17 @@
+name: Deploy to Prod
+
+on:
+  push:
+    branches: [more-cow-bell]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/set-node@v2
+        with:
+          node-versoion: 18
+      - run: npm ci
+      - run: npm run build
