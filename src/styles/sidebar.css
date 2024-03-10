@@ -1,0 +1,29 @@
+.sidebar {
+  display: none !important;
+}
+
+@media only screen and (min-width: 730px) {
+  .sidebar {
+    display: block !important;
+    background-color: #e77236 !important;
+    position: sticky !important;
+    top: 250px !important;
+  }
+  .sidebar ul {
+    padding: 10px !important;
+  }
+  .sidebar li:last-child {
+    padding-bottom: 0 !important;
+  }
+  .sidebar li {
+    padding-bottom: 10px !important;
+  }
+  .sidebar li a img {
+    width: 20px !important;
+  }
+  .sidebar__container {
+    position: absolute !important;
+    height: 100vh !important;
+    z-index: 999 !important;
+  }
+}

@@ -5,39 +5,39 @@ export default {
     extend: {
       colors: {
         white: {
-          "dh-white": "#ddd",
+          dh: "#ddd",
         },
         "light-gray": {
-          "dh-light-gray": "#d9d9d9",
+          dh: "#d9d9d9",
         },
         black: {
-          "dh-black": "#161616",
+          dh: "#161616",
         },
         green: {
-          "dh-green": "#72db31",
+          dh: "#72db31",
         },
         red: {
-          "dh-red": " darkred",
+          dh: " darkred",
         },
-        light: {
-          "dh-light": " salmon",
+        "light-pink": {
+          "dh": " salmon",
         },
         orange: {
-          "dh-orange": "#e77236",
+          dh: "#e77236",
         },
         blue: {
-          "dh-blue": "#326dee",
+          dh: "#326dee",
         },
         pink: {
-          "dh-pink": "#ffd7ba",
+          dh: "#ffd7ba",
         },
       },
       fontFamily: {
-        chintzy: [Chintzy],
-        comic: [Comic],
+        chintzy: ["Chintzy"],
+        comic: ["Comic"],
         "space-mono": ["Space Mono"],
-        hanuman: [Hanuman],
-        montserrat: [Montserrat],
+        hanuman: ["Hanuman"],
+        montserrat: ["Montserrat"],
       },
     },
   },

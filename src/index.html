@@ -6,20 +6,20 @@
     <!--styles-->
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@300;400;700&family=Hanuman:wght@300;400;900&family=Montserrat:wght@200;300;400;900&family=Space+Mono:wght@400;700&display=swap" />
-    <link rel="stylesheet" href="./styles/noodles.css" />
+    <!-- <link rel="stylesheet" href="./styles/noodles.css" /> -->
     <link rel="stylesheet" href="./styles/style.css" />
     <!--scripts-->
     <script src="scripts/index.js" type="module"></script>
     <title>Welcome To Planet Oxy</title>
   </head>
-  <body>
-    <section class="flex flex-col col-auto py-4 pt-2 pb-4 navbar__container">
-      <nav class="flex flex-row justify-between">
+  <body class="bg-black-dh bg-light">
+    <section class="flex flex-row p-4 pb-6 container m-auto">
+      <nav class="flex flex-row w-full justify-between">
         <a href="#" class="flex"
           ><img src="./assets/vectors/GLOBE.svg" alt=""
         /></a>
 
-        <ul class="flex flex-row gap-2 underline__list">
+        <ul class="flex flex-row gap-2 font-space-mono text-white-dh underline__list">
           <li class=""><a href="#">blog</a></li>
           <li class=""><a href="#">projects</a></li>
           <li class=""><a href="#">contact</a></li>
@@ -70,10 +70,10 @@
         <!-- ANTIHERO -->
         <section
           id="antihero"
-          class="container grid grid-cols-2 justify-between items-center gap-2 m-auto mb-2 px-6"
+          class="container flex flex-row justify-between justify-items-end items-center gap-2 m-auto pb-8 px-32"
         >
         <!-- terminal -->
-          <div id="terminal_window" class="terminal overflow-hidden col-span-full">
+          <div id="terminal_window" class="terminal overflow-hidden w-full ">
             <div class="terminal__window__navbar">
               <div style="display: flex;" class="terminal__title">
                 <svg
@@ -263,14 +263,14 @@
           </div>
 
           <div
-            class="flex flex-col col-start-4 col-span-2 items-end md:items-center lg:items-end /align-start-tablet/ px-2-md w-16 w-max-md w-32-hd gap-6-hd"
+            class="flex flex-col gap-14 items-end w-[33vw] h-full text-white-dh"
           >
             <div
-              class="flex flex-col w-max w-14-md flex-row-hd justify-right"
+              class="flex flex-col h-fit justify-start"
             >
-              <p class="text-nowrap">Hi, I'm</p>
+              <p class="text-nowrap font-space-mono text-lg ">Hi, I'm</p>
               <div class="flex flex-row justify-right">
-                <h1 class="font-2 font-xxl">ASHLEY</h1>
+                <h1 class="font-hanuman font-bold text-5xl">ASHLEY</h1>
 
                 <div class="title__smiley">
                   <img src="./assets/vectors/smiley.svg" alt="" />
@@ -278,34 +278,44 @@
               </div>
             </div>
 
-            <div class="w-max flex-tablet flex-col-hd gap-2">
+            <div class="w-full flex flex-col items-end gap-4">
               <p
-                class="mb-2 mb-auto-tablet text-justify font-lg-tablet font-md-hd text-right-hd"
+                class="mb-2 text-right font-space-mono text-xl w-4/6"
               >
                 <strong>I Make</strong>
                 cool websites, take pretty pictures and film epic videos
               </p>
 
               <div
-                class="w-max flex flex-row flex-col-tablet gap-1 justify-even align-end"
+                class="w-max flex flex-col gap-3 justify-even content-end"
               >
-                <button class="btn-primary-sm btn-primary-lg-tablet">
+                <button class="btn bg-orange-dh text-white-dh">
                   <a href="">PROJECTS</a>
                 </button>
-                <dialog id="contactDialog">
-                  <div class="card">
+                <dialog class="w-1/3 h-4/6 p-3 font-space-mono" id="contactDialog">
+                  <div class="flex flex-row justify-between">
                     <h3 class="card-title">Hey I'm modaling here</h3>
+                    <span>x</span>
                   </div>
-                  <div class="card-body">
+                    <form class="flex flex-col px-12" action="submit">
+                      <label for="firstname">First name:</label>
+                      <input type="text" id="firstname" name="firstname" class="border-[2px] border-black-dh">
+                      <label for="surname" >Last name:</label>
+                      <input type="text" id="surname" name="surname" class="border-[2px] border-black-dh">
+                      <label for="reason" >Reason</label>
+                      <textarea type="text" id="reason" name="reason" rows="8" class="border-[2px] border-black-dh" >
+                      </textarea>
+                    </form>
+                  <div class="card-body px-12 py-6">
                     <button
                       id="btnContactDialogClose"
-                      class="btn-primary-outline-sm"
+                      class="btn bg-orange-dh  text-white-dh"
                     >
                       HIT ME UP!
                     </button>
                   </div>
                 </dialog>
-                <button id="btnContactDialog" class="btn-primary-outline-sm">
+                <button id="btnContactDialog" class="btn bg-transparent border-[3px] border-orange-dh text-white-dh">
                   HIT ME UP!
                 </button>
               </div>
@@ -318,53 +328,53 @@
           class="flex flex-col pt-1 px-2-md flex-row-tablet gap-2 justify-between mb-2-hd"
         > -->
         <section
-          class="container grid grid-cols-2 justify-between items-center gap-2 m-auto mb-2 px-6"
+          class="container flex flex-row justify-between justify-items-end items-center gap-2 m-auto mb-2 px-32"
         >
-          <div id="about_me" class="w-full">
+          <div id="about_me" class="w-1/2 col-auto text-white-dh space-y-2">
             <h2
               style="word-spacing: -0.5rem"
               id="about_me_headline"
-              class="mb-half text- kern-6 font-xxl"
+              class="mb-3 !font-hanuman text-5xl"
             >
-              A <strong class="text-dh-orange font-chintzy font-xxl">Bit</strong> About
+              A <strong class="text-dh-orange font-hanuman text-5xl">Bit</strong> About
               Me
             </h2>
-            <p class="paragraph w-max w-sixth-hd mb-2">
+            <p class="paragraph w-full font-space-mono mb-2 before:w-8 first-letter:text-[2rem] first-letter:font-bold">
               I am a self-taught Web Developer, Graphic Designer and
               Videographer from South Africa. I also enjoy playing around with
               Machine Learning and Blockchain technologies. I made this website
               using vanilla HTML/CSS & Javascript.
             </p>
 
-            <div class="skills w-max mb-1">
-              <h3 class="text-dh-orange">Technologies I've worked with</h3>
-              <ul class="list flow-hide">
-                <li>Angular</li>
-                <li>ASP.NET</li>
-                <li>MySQL</li>
-                <li>Azure</li>
+            <div class="skills w-full mb-1">
+              <h3 class="text-orange-dh font-space-mono font-bold text-2xl">Technologies I've worked with</h3>
+              <ul style="line-height: 1.5em;" class="flex flex-col flex-wrap pl-1.5 m-0 max-w-80 h-24 font-space-mono list-none overflow-hidden">
+                <li>> Angular</li>
+                <li>> ASP.NET</li>
+                <li>> MySQL</li>
+                <li>> Azure</li>
                 <!--  -->
-                <li>Figma</li>
-                <li>DaVinci Resolve</li>
-                <li>Corel Draw</li>
-                <li>Blender</li>
+                <li>> Figma</li>
+                <li>> DaVinci Resolve</li>
+                <li>> Corel Draw</li>
+                <li>> Blender</li>
               </ul>
             </div>
 
-            <button class="btn-primary">REQUEST CV</button>
+            <button class="btn bg-orange-dh border-[3px] border-orange-dh text-white-dh">REQUEST CV</button>
           </div>
           <div
             id="pictureFrame"
             style="width: fit-content"
-            class="m-auto pos-relative mb-2 center mb-auto-tablet"
+            class="!m-auto relative mb-2 col-start-2 col-span-2"
           >
             <div>
               <img
-                class="headshot"
+                class="headshot w-36"
                 src="./assets/bitmap/IMG_20200408_170956paint.jpg"
                 alt=""
               />
-              <span id="headshot" class="picture-frame-shadow">
+              <span style="transform:translateX(-42%) translateY(-89%)" id="pictureFrame" class="w-36 absolute z-[-1] left-9">
                 <svg
                   class="pictureFrame"
                   width="175"
@@ -387,41 +397,41 @@
     </div>
 
     <footer
-      class="flex flex-row gap-4 gap-2-tablet gap-3-hd justify-between items-center px-2 px-5-md py-1 px-18-tablet px-25-hd px-35-uhd"
+      class="flex mt-8 px-32 h-12 bg-orange-dh "
     >
       <!-- <p>something</p> -->
-      <div id="socials" class="flex flex-row gap-1 items-center">
+      <div id="socials" class="m-auto flex flex-row gap-4 w-fit items-center">
         <a target="_blank" href="https://digitalhippie.xyz"
           ><img
-            style="width: 1.4rem"
-            class="w-1-8-tablet"
+            style="width: 1.8rem"
+            
             src="./assets/vectors/dh_logo.svg"
             alt=""
         /></a>
         <a target="_blank" href="https://github.com/DigitalHippieStudios"
           ><img
             style="width: 1.4rem"
-            class="w-1-8-tablet"
+            
             src="./assets/vectors/github.svg"
             alt=""
         /></a>
         <a target="_blank" href="https://www.linkedin.com/in/bamodise/"
           ><img
             style="width: 1.4rem"
-            class="w-1-8-tablet"
+            
             src="./assets/vectors/linkedin.svg"
             alt=""
         /></a>
         <a target="_blank" href="https://twitter.com/DigitalHippie_"
           ><img
             style="width: 1.4rem"
-            class="w-1-8-tablet"
+            
             src="./assets/vectors/twitter.svg"
             alt=""
         /></a>
       </div>
 
-      <p class="font-sm font-md-tablet weight-bold kern-1">Digital Hippie</p>
+      <!-- <p class="font-sm font-md-tablet weight-bold kern-1">Digital Hippie</p> -->
     </footer>
   </body>
 </html>

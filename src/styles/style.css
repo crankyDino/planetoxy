@@ -1,5 +1,31 @@
 @import url("terminal.css");
+@import url("sidebar.css");
+/* @import url("../assets/fonts/Chintzy/chintzy.ttf"); */
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: "Chintzy";
+  font-style: normal;
+  src: url(../assets/fonts/Chintzy/chintzy.ttf) format("ttf");
+}
+
+@layer components {
+  .btn {
+    letter-spacing: 0.15438;
+    @apply w-36 h-9 flex-shrink-0 bg-light-gray-dh text-black-dh font-space-mono font-bold text-center;
+  }
+}
+
+.paragraph::before {
+  content: "";
+  width: 2em;
+  display: block;
+  height: 2.6em;
+  position: absolute;
+  z-index: -1;
+  transform: translateX(-11px) translateX(0px);
+  @apply bg-orange-dh;
+}
