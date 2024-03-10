@@ -267,7 +267,7 @@ $utilities: (
     ),
   ),
   "overflow": (
-    "prefix": "flow",
+    "prefix": "overflow",
     "values": (
       "auto": auto,
       "hide": hidden,
@@ -322,6 +322,12 @@ $utilities: (
       "4": $base-gap * 3.5,
       "5": $base-gap * 5,
       "6": $base-gap * 6,
+    ),
+  ),
+  "background": (
+    "prefix": "bg",
+    "values": (
+      "none": none,
     ),
   ),
 );

@@ -1,5 +1,32 @@
+@use "./colors" as *;
+@use "./variables" as *;
+@use "sass:math";
+
 @keyframes blink {
   50% {
     opacity: 0;
+  }
+}
+
+.underline__list {
+  li {
+    position: relative;
+    padding: math.div($base-gap,1.8);
+
+    ::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      height: 1.6px;
+      width: 100%;
+      background: $orange;
+      scale: 0 1.5;
+      transition: scale 250ms;
+    }
+
+    :hover::after{
+      scale: 1 1.5;
+    }
   }
 }

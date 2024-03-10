@@ -17,10 +17,10 @@
           ><img src="./assets/vectors/GLOBE.svg" alt=""
         /></a>
 
-        <ul class="d-flex flex-row navbar__options">
-          <li class="navbar__item"><a href="#">blog</a></li>
-          <li class="navbar__item"><a href="#">projects</a></li>
-          <li class="navbar__item"><a href="#">contact</a></li>
+        <ul class="d-flex flex-row underline__list">
+          <li class=""><a href="#">blog</a></li>
+          <li class=""><a href="#">projects</a></li>
+          <li class=""><a href="#">contact</a></li>
         </ul>
       </nav>
     </section>
@@ -70,7 +70,7 @@
           id="antihero"
           class="d-flex flex-col flex-row-hd justify-between align-center gap-2 m-0 mb-2"
         >
-          <div id="terminal_window" class="terminal">
+          <div id="terminal_window" class="terminal overflow-hidden">
             <div class="terminal__window__navbar d-flex">
               <div class="terminal__title center-h d-flex gap-1-half">
                 <svg
@@ -217,7 +217,11 @@
                 </button>
               </div>
             </div>
-            <div id="terminal_screen" class="terminal__screen pl-1 mt-1">
+            <div
+              id="terminal_screen"
+              style="height: 75%"
+              class="terminal__screen overflow-auto pl-1 mt-1"
+            >
               <h6 class="mt-none terminal-art">
                 <pre class="green terminal__art">
     ____  _       _ __        __   __  ___                 
@@ -225,27 +229,31 @@
   / / / / / __ `/ / __/ __ `/ /  / /_/ / / __ \/ __ \/ / _ \
  / /_/ / / /_/ / / /_/ /_/ / /  / __  / / /_/ / /_/ / /  __/
 /_____/_/\__, /_/\__/\__,_/_/  /_/ /_/_/ .___/ .___/_/\___/ 
-               /____/                        /_/   /_/     © <span id="terminal-date" class="green">2023</span>
+        /____/                        /_/   /_/     © <span id="terminal-date" class="green">2023</span>
                   </pre>
               </h6>
 
               <p class="terminal__text">Welcome...</p>
-              <p class="terminal__text">
-                For assistance, please type <strong class="green">Help</strong>
-              </p>
-              <div class="terminal__cli d-flex gap-1-half">
-                <p class="terminal__text center-h">
-                  guest@<strong class="terminal__text"
-                    ><a href="https://www.digitalhippie.xyz" target="_blank"
-                      >digitalhippie.xyz</a
-                    ></strong
-                  >:~$
-                </p>
-                <span
-                  id="terminal_input"
-                  class="cli terminal__text"
-                  type="text"
-                ></span>
+              <p class="terminal__text"></p>
+              <div id="terminal_input_area_container" class="d-flex flex-col">
+                <div
+                  id="terminal_input_area"
+                  data-rowid="0"
+                  class="terminal__cli d-flex gap-1-half"
+                >
+                  <p class="terminal__text center-h">
+                    guest@<strong class="terminal__text"
+                      ><a href="https://www.digitalhippie.xyz" target="_blank"
+                        >digitalhippie.xyz</a
+                      ></strong
+                    >:~$
+                  </p>
+                  <span
+                    id="terminal_input"
+                    class="cli terminal__text"
+                    type="text"
+                  ></span>
+                </div>
               </div>
             </div>
           </div>
@@ -280,7 +288,22 @@
                 <button class="btn-primary-sm btn-primary-lg-tablet">
                   <a href="">PROJECTS</a>
                 </button>
-                <button class="btn-primary-outline-sm">HIT ME UP!</button>
+                <dialog id="contactDialog">
+                  <div class="card">
+                    <h3 class="card-title">Hey I'm modaling here</h3>
+                  </div>
+                  <div class="card-body">
+                    <button
+                      id="btnContactDialogClose"
+                      class="btn-primary-outline-sm"
+                    >
+                      HIT ME UP!
+                    </button>
+                  </div>
+                </dialog>
+                <button id="btnContactDialog" class="btn-primary-outline-sm">
+                  HIT ME UP!
+                </button>
               </div>
             </div>
           </div>

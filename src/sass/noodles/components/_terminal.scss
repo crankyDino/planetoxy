@@ -65,7 +65,6 @@
 }
 
 .terminal__screen {
-  overflow: hidden;
   text-overflow: clip;
   background-color: $black;
   & pre {
@@ -89,13 +88,17 @@
 }
 
 .cli {
-  width: fit-content;
-  max-width: 50%;
-  border-right: solid $green 8px;
-  animation: blink 1s linear infinite;
   color: $green;
-  &:hover {
-    cursor: text;
+  &#terminal_input::after {
+    content: "";
+    color: $green;
+    width: fit-content;
+    max-width: 50%;
+    border-right: solid $green 8px;
+    animation: blink 1s linear infinite;
+    &:hover {
+      cursor: text;
+    }
   }
 }
 
