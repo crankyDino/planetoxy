@@ -6,7 +6,7 @@
 
   let command: HTMLSpanElement | null = null;
   let terminalContainer: HTMLDivElement | null = null;
-  
+
   onMount(() => {
     console.log("terminal works");
   });
@@ -205,11 +205,11 @@
           <!-- svelte-ignore a11y-interactive-supports-focus -->
           <span
             bind:this={command}
-            on:keydown={() =>
-              command ? t.getCommand(command.textContent) : ""}
-            on:mouseenter={() =>
+            on:keydown={(key) =>
               command
-                ? t.runCommand(command.textContent, terminalContainer)
+                ? key.code === "Enter"
+                  ? t.runCommand(command.textContent, terminalContainer)
+                  : t.getCommand(command.textContent)
                 : ""}
             role="textbox"
             class="inline-block

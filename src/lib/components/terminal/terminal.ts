@@ -16,6 +16,7 @@ export function getCommand(command: string | null | undefined) {
         console.log("not it");
         return
     }
+    // runCommand(command)
 
 }
 
