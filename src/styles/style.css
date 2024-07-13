@@ -1,5 +1,5 @@
 @import url("animations/typewriter.css");
-/* @import url("util/util.css"); */
+@import url("util/util.css");
 /* @import url("../assets/fonts/pokemon_classic/Pokemon/Classic.ttf"); */
 
 @tailwind base;
@@ -20,6 +20,13 @@
   font-family: "Pokemon Classic";
   font-style: normal;
   src: url(../assets/fonts/pokemon_classic/Pokemon\ Classic.ttf) format("ttf");
+}
+
+@font-face {
+  font-family: "Space Mono";
+  font-style: normal;
+  src: url(https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap)
+    format("ttf");
 }
 
 @layer components {
