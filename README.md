@@ -4,7 +4,6 @@ welcome to my world.
 
 ## Run It
 ```bash
-//launch
 npm run launch
 ```
 
