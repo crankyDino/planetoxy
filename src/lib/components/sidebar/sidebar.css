@@ -30,9 +30,9 @@
         font-size: 0.75em;
       }
     }
-    &a:hover img {
-      width: 4.8vw;
-    }
+  }
+  li a:hover img {
+    width: 4.8vw;
   }
 
   .sidebar li a {
