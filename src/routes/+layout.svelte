@@ -6,6 +6,8 @@
 </script>
 
 <Navbar />
-<Sidebar />
-<slot />
+<div class="h-100% min-h-[100vh]">
+  <Sidebar />
+  <slot />
+</div>
 <Footer />

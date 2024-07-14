@@ -42,6 +42,7 @@ export default {
         "space-mono": ["Space Mono"],
         hanuman: ["Hanuman"],
         montserrat: ["Montserrat"],
+        quirkyrobot: ["QuirkyRobot"],
       },
     },
   },

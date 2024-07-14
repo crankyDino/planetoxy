@@ -23,6 +23,8 @@ export const chips = initChips();
 // resetForm(form);  //handle when clearing 
 
 export function submitHitMeUp(form: HTMLFormElement) {
+    console.log(validateForm(form));
+
     if (!validateForm(form)) {
         return
     }

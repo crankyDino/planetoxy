@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  div.w-full.h-fit.flex.flex-row.items-end.px-\[4vw\].pt-6:before {
+    content: "";
+    background-image: url("../assets/bitmap/beat tape cover.jpg");
+    filter: contrast(120%) saturate(68%) brightness(88%) hue-rotate(36deg)
+      hue-rotate(348deg);
+    width: 85%;
+    z-index: -1;
+    position: absolute;
+    height: 11%;
+    transition: transform 300ms ease-in-out;
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+}
+
+/* div.w-full.h-fit.flex.flex-row.items-end.px-\[4vw\].pt-6:after {
+  content: "";
+  background-image: url("../assets/bitmap/beat tape cover.jpg");
+  width: 85%;
+  z-index: -1;
+  position: absolute;
+  height: 11%;
+
+  transition: transform 300ms ease-in-out;
+  transform: scaleX(0);
+  transform-origin: bottom;
+} */
+
+div.w-full.h-fit.flex.flex-row.items-end.px-\[4vw\].pt-6:hover:before,
+div.w-full.h-fit.flex.flex-row.items-end.px-\[4vw\].pt-6:hover:after {
+  transform: scaleX(1);
+}

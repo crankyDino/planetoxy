@@ -11,9 +11,7 @@ function dialogState() {
         open: () => update(() => "open"),
     }
 }
-
 export const state = dialogState()
-
 
 export function toggleDialog(dialog: HTMLDialogElement, dialogState: TDialogState) {
     if (!dialog) {

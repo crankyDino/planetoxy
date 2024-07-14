@@ -177,9 +177,9 @@
 >
   <div id="about_me" class="w-full md:w-3/4 col-auto text-white-dh space-y-5">
     <h2
-      style="word-spacing: -0.5rem; letter-spacing: 3.6px"
+      style="word-spacing: -0.5rem; "
       id="about_me_headline"
-      class="shadow--solid__about-me font-semibold mb-4 !font-pokemon-classic text-[10vw] md:text-4xl lg:text-5xl"
+      class="shadow--solid__about-me tracking-[3.6px] font-semibold mb-4 !font-pokemon-classic text-[10vw] md:text-4xl lg:text-5xl"
     >
       A
       <!-- <strong

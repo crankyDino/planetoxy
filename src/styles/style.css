@@ -23,10 +23,9 @@
 }
 
 @font-face {
-  font-family: "Space Mono";
+  font-family: "QuirkyRobot";
   font-style: normal;
-  src: url(https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap)
-    format("ttf");
+  src: url(../assets/fonts/quirky-robot/QuirkyRobot.ttf) format("ttf");
 }
 
 @layer components {
