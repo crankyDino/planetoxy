@@ -3,22 +3,24 @@
 @tailwind utilities;
 
 @layer components {
-  div.w-full.h-fit.flex.flex-row.items-end.px-\[4vw\].pt-6:before {
+  .blog__item--hover::before {
     content: "";
-    background-image: url("../assets/bitmap/beat tape cover.jpg");
-    filter: contrast(120%) saturate(68%) brightness(88%) hue-rotate(36deg)
-      hue-rotate(348deg);
-    width: 85%;
+    /* background-image: url("../assets/bitmap/beat tape cover.jpg"); */
+    /* filter: contrast(86%) saturate(68%) brightness(88%) hue-rotate(20deg)
+      hue-rotate(314deg) blur(4px) opacity(.3); */
+    /* mix-blend-mode: soft-light; */
+    @apply bg-orange-dh;
+    width: 100%;
     z-index: -1;
     position: absolute;
-    height: 11%;
+    height: 100%;
     transition: transform 300ms ease-in-out;
     transform: scaleX(0);
-    transform-origin: left;
+    transform-origin: right;
   }
 }
 
-/* div.w-full.h-fit.flex.flex-row.items-end.px-\[4vw\].pt-6:after {
+/* .blog__item--hover:after {
   content: "";
   background-image: url("../assets/bitmap/beat tape cover.jpg");
   width: 85%;
@@ -31,7 +33,46 @@
   transform-origin: bottom;
 } */
 
-div.w-full.h-fit.flex.flex-row.items-end.px-\[4vw\].pt-6:hover:before,
-div.w-full.h-fit.flex.flex-row.items-end.px-\[4vw\].pt-6:hover:after {
-  transform: scaleX(1);
+@layer components {
+  .blog__item--hover:hover:before,
+  .blog__item--hover:hover:after {
+    transform: scaleX(1);
+  }
+
+  .blog__item--hover div h4,
+  .blog__item--hover span {
+    transition: color, background, cubic-bezier(0.44, 0.64, 0.56, 1.25) 180ms;
+  }
+  .blog__item--hover:hover div h4 {
+    @apply text-black-dh;
+  }
+  .blog__item__block:hover {
+    .blog__item__elem {
+      @apply !bg-red-700;
+    }
+    & .blog__item__underline {
+      @apply !w-[33%] !h-[20px];
+    }
+  }
+
+  .blog__item--hover:hover span {
+    @apply bg-black-dh;
+  }
+}
+
+pre b {
+  padding: 1.6px;
+  animation: wave 4000ms infinite ease-in-out alternate;
+}
+/* pre {
+  transform: rotate(80deg);
+} */
+
+@keyframes wave {
+  from {
+    padding: 0.3px;
+  }
+  to {
+    padding: 1.6px;
+  }
 }

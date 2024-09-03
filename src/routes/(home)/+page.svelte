@@ -5,8 +5,9 @@
   } from "$lib/components/carousel/carousel";
   import Carousel from "$lib/components/carousel/carousel.svelte";
   import ContactDialog from "$lib/components/contact-dialog/contact-dialog.svelte";
+  import StaggeredCarousel from "$lib/components/staggered-carousel/staggered-carousel.svelte";
   import { state } from "$lib/handlers/dialog.handler/dialog.handler";
-  import Terminal from "../lib/components/terminal/terminal.svelte";
+  import Terminal from "../../lib/components/terminal/terminal.svelte";
   let things: Map<number, ICarouselItem> = new Map<number, ICarouselItem>();
   let moreThings: Map<number, ICarouselItem> = new Map<number, ICarouselItem>();
   things.set(0, {
@@ -265,7 +266,9 @@
   >
     Portfolio
   </h3>
-  <Carousel carouselItems={things} carouselType={"card"} />
+  <!-- <Carousel carouselItems={things} carouselType={"card"} /> -->
+  <StaggeredCarousel carouselItems={things} carouselType={"card"}
+  ></StaggeredCarousel>
 </section>
 <section class="grid grid-rows-1 py-12">
   <Carousel

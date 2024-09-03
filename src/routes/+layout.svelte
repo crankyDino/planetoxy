@@ -7,7 +7,6 @@
 
 <Navbar />
 <div class="h-100% min-h-[100vh]">
-  <Sidebar />
   <slot />
 </div>
 <Footer />

@@ -34,6 +34,9 @@ export default {
         pink: {
           dh: "#ffd7ba",
         },
+        gray: {
+          dh: "#c4c4c4",
+        },
       },
       fontFamily: {
         chintzy: ["chintzy"],

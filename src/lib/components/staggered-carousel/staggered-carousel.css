@@ -11,7 +11,7 @@ button:hover {
   filter: grayscale(100%);
   opacity: 25%;
 }
-.carousel__content img{
+.carousel__content img {
   transition: scale 60ms ease-out;
 }
 .carousel {
