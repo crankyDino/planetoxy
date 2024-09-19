@@ -1,11 +1,18 @@
 <script lang="ts">
-  import type { IData, IMeta } from "$lib/models/article.model";
+  import { onMount } from "svelte";
   import "./blog.css";
-  export let data;
+  export let data: any;
 
-  let articles: Array<IData> = data!.articles!;
-  let meta: IMeta = data!.meta!;
-  console.log(data);
+  let { Articles } = data;
+  let posts: any[] = [];
+  /* @type { import('./$houdini').PageData } */
+  // console.log($Articles.data.allArticle);
+  console.log(posts);
+  onMount(() => {
+    if (!$Articles.fetching) {
+      posts = $Articles.data.allArticle;
+    }
+  });
 </script>
 
 <h3
@@ -14,8 +21,8 @@
   blog
 </h3>
 
-{#each articles as article}
-  <a href="/blog/{article.attributes.title}" class="block w-fit">
+{#each posts as post}
+  <a href="/blog/{post.slug.current}" class="block w-fit">
     <div
       class="blog__item__block w-[90vw] md:w-[70vw] h-fit flex flex-row pl-[4vw] pt-6"
     >
@@ -30,13 +37,13 @@
             <h4
               class="col-span-8 md:col-span-10 text-white-dh pt-3 font-hanuman font-extrabold text-2xl md:text-6xl min-w-[33%] overflow-hidden text-nowrap text-ellipsis w-[75%]"
             >
-              {article.attributes.title}
+              {post.title}
             </h4>
             <div
               class="col-span-4 md:col-span-2 m-auto w-fit md:min-w-[33%] text-end text-nowrap"
             >
               <p class="font-quirkyrobot tracking-[.2em] text-white-dh">
-                {article.attributes.publishedAt.split("T")[0]}
+                {post.published?.split("T")[0]}
               </p>
               <p class="font-quirkyrobot text-white-dh tracking-[.11em]">
                 /// read more
@@ -59,6 +66,7 @@
     </div>
   </a>
 {/each}
+
 <pre
   hidden
   id="tiresult"

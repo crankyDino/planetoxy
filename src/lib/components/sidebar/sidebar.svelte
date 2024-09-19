@@ -27,7 +27,7 @@
         class="!flex gap-3 items-center"
       >
         <p class="hidden text-white-dh text-nowrap text-[0px]">Github</p>
-        <img style="width: 1.72rem" src="../assets/vectors/github.svg" alt="" />
+        <img style="width: 1.72rem" src="/assets/vectors/github.svg" alt="" />
       </a>
     </li>
     <li>
@@ -37,11 +37,7 @@
         class="!flex gap-3 items-center"
       >
         <p class="hidden text-white-dh text-nowrap text-[0px]">Linkedin</p>
-        <img
-          style="width: 1.72rem"
-          src="../assets/vectors/linkedin.svg"
-          alt=""
-        />
+        <img style="width: 1.72rem" src="/assets/vectors/linkedin.svg" alt="" />
       </a>
     </li>
     <li>
@@ -51,11 +47,7 @@
         class="!flex gap-3 items-center"
       >
         <p class="hidden text-white-dh text-nowrap text-[0px]">Twitter</p>
-        <img
-          style="width: 1.72rem"
-          src="../assets/vectors/twitter.svg"
-          alt=""
-        />
+        <img style="width: 1.72rem" src="/assets/vectors/twitter.svg" alt="" />
       </a>
     </li>
   </ul>

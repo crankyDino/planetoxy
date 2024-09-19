@@ -1,0 +1,33 @@
+query Article($article: String!) {
+  allArticle(where: { slug: { current: { eq: $article } } }) {
+    _id
+    title
+    slug {
+      current
+    }
+    tags {
+      tagName
+    }
+    author
+    published
+    header {
+      hotspot {
+        x
+        y
+      }
+      asset {
+        url
+      }
+    }
+    paragraphRaw
+    media {
+      _id
+      contentUrl
+      content {
+        asset {
+          url
+        }
+      }
+    }
+  }
+}
