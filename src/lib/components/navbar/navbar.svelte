@@ -1,24 +1,54 @@
 <script lang="ts">
-  import { page } from "$app/stores";
-  console.log($page);
+  import { page, navigating } from "$app/stores";
+  import { onMount } from "svelte";
+  let navbar: HTMLElement;
+  let pageTop: number = 0;
+  let pageTopPrev: number = 0;
+  let pageTitle: string = "nowhere";
+  function byeBye(ev: UIEvent) {
+    if (pageTop < pageTopPrev) {
+      navbar.style.top = "0";
+    } else {
+      navbar.style.top = "-80px";
+    }
+    pageTopPrev = pageTop;
+  }
+  $: {
+    pageTitle = $page.url.pathname;
+  }
 </script>
 
+<svelte:window bind:scrollY={pageTop} on:scroll={byeBye} />
+
 <section
+  bind:this={navbar}
+  style="transition:top 0.3s;scroll-behavior: smooth;"
   class="flex flex-row bg-black-dh px-8 md:px-16 pt-4 pb-6 m-auto sticky top-0"
 >
   <nav class="flex flex-row w-full justify-between">
     <a href="/" class="flex"><img src="/assets/vectors/GLOBE.svg" alt="" /></a>
-
     <ul
-      class="flex flex-row gap-4 font-space-mono text-white-dh underline__list"
+      class="flex flex-row my-auto gap-4 font-space-mono text-white-dh underline__list"
     >
-      <li class="dh_underline h-[1.8em] hover:cursor-pointer">
+      <li
+        class="{pageTitle?.includes('blog')
+          ? 'dh__underline--active'
+          : ''} dh__underline h-[1.8em]"
+      >
         <a href="/blog">blog</a>
       </li>
-      <li class="dh_underline h-[1.8em] hover:cursor-pointer">
+      <li
+        class="{pageTitle?.includes('projects')
+          ? 'dh__underline--active'
+          : ''} dh__underline h-[1.8em]"
+      >
         <a href="/projects">projects</a>
       </li>
-      <li class="dh_underline h-[1.8em] hover:cursor-pointer">
+      <li
+        class="{pageTitle?.includes('portfolio')
+          ? 'dh__underline--active'
+          : ''} dh__underline h-[1.8em]"
+      >
         <a href="/portfolio">portfolio</a>
       </li>
     </ul>

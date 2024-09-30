@@ -20,6 +20,7 @@
       post = $Article.data.allArticle[0];
       header = $Article.data.allArticle[0].header;
       media = $Article.data.allArticle[0].media;
+      console.log(media, header);
     }
   });
 </script>
@@ -42,13 +43,11 @@
     style="background-image: url({header.asset.url}); background-size: 100%"
   ></div>
   <div class="md:pl-12 lg:pl-40">
-    <section
-      class="grid grid-cols-12 w-full px-4 gap-y-6 relative bottom-7 md:bottom-12 lg:bottom-8 py-0"
-    >
+    <section class="grid grid-cols-12 w-full px-4 gap-y-6 py-0">
       <div class="grid sm:flex flex-col col-span-12 md:flex-row w-fit">
-        <div class="w-full overflow-clip text-ellipsis">
+        <div class="w-full">
           <h1
-            class="bg-black-dh w-fit max-w-[45vw] md:w-[50vw] font-hanuman font-extrabold text-orange-dh text-[1.5em] md:text-6xl text-wrap lg:text-nowrap p-2 md:p-4 md:pb-6"
+            class="bg-black-dh relative bottom-7 md:bottom-12 lg:bottom-8 w-fit max-w-[45vw] md:w-[50vw] font-hanuman font-extrabold text-orange-dh text-[1.5em] md:text-6xl text-wrap lg:text-nowrap p-2 md:p-4 md:pb-6"
           >
             {post.title}
           </h1>

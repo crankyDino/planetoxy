@@ -10,6 +10,13 @@
   --dh-orange: #e77236;
 }
 
+body,
+img:hover,
+a:hover,
+button:hover {
+  cursor: url(/assets/bitmap/cursor-pointer-finger.png) format("ttf");
+}
+
 @font-face {
   font-family: "Chintzy";
   font-style: normal;
@@ -172,17 +179,17 @@ canvas {
 }
 
 /* Nav Menu Underline */
-.dh_underline::before {
+.dh__underline::before {
   transform: scaleX(0);
   transform-origin: bottom right;
 }
 
-.dh_underline:hover::before {
+.dh__underline:hover::before {
   transform: scaleX(1);
   transform-origin: bottom left;
 }
 
-.dh_underline::before {
+.dh__underline::before {
   content: "";
   display: block;
   position: absolute;
@@ -197,7 +204,7 @@ canvas {
   border-bottom-color: var(--dh-orange);
 }
 
-.dh_underline {
+.dh__underline {
   position: relative;
   width: fit-content;
 }

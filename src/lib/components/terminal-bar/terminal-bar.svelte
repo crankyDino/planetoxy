@@ -1,15 +1,16 @@
 <script lang="ts">
   import { beforeUpdate } from "svelte";
   import "../terminal/terminal.css";
-  import { path } from "./terminal-bar";
+  import { page } from "$app/stores";
   let command: HTMLInputElement | null = null;
-
-
-  // $: path.set(window?.location?.pathname ?? "/..."), $path;
+  let path: string = "nowhere";
+  $: {
+    path = $page.url.pathname;
+  }
 </script>
 
-<div class="w-full bg-[#292929] flex flex-row text-green-dh">
-  <p class="pl-8">guest@home{ $path ??"/..."} ></p>
+<div class="w-full bg-[#292929] flex flex-row text-green-dh sticky top-0">
+  <p class="pl-8">guest@<a href="/">home</a>{path ?? "/..."}</p>
   <input
     bind:this={command}
     type="text"

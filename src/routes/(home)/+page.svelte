@@ -11,115 +11,115 @@
   let things: Map<number, ICarouselItem> = new Map<number, ICarouselItem>();
   let moreThings: Map<number, ICarouselItem> = new Map<number, ICarouselItem>();
   things.set(0, {
-    content: "../assets/bitmap/beat tape cover.jpg",
+    content: "/assets/bitmap/beat tape cover.jpg",
     date: new Date("2020"),
     title: "Rare Cludff fdghdfg hdfgghfgdfghb",
     type: "poster",
   });
   things.set(1, {
-    content: "../assets/bitmap/Black Coke Media -- Logo.jpg",
+    content: "/assets/bitmap/Black Coke Media -- Logo.jpg",
     date: new Date("2020"),
     title: "Rare Club",
     type: "poster",
   });
   things.set(2, {
-    content: "../assets/bitmap/Elevation Sign Mockup.png",
+    content: "/assets/bitmap/Elevation Sign Mockup.png",
     date: new Date("2020"),
     title: "Rare Club",
     type: "poster",
   });
   things.set(3, {
-    content: "../assets/bitmap/skate_reel.jpg",
+    content: "/assets/bitmap/skate_reel.jpg",
     date: new Date("2020"),
     title: "Rare Club",
     type: "poster",
   });
   things.set(4, {
-    content: "../assets/bitmap/Untitled-2.png",
+    content: "/assets/bitmap/Untitled-2.png",
     date: new Date("2020"),
     title: "Rare Club",
     type: "poster",
   });
   things.set(5, {
-    content: "../assets/bitmap/skate_reel.jpg",
+    content: "/assets/bitmap/skate_reel.jpg",
     date: new Date("2020"),
     title: "Rare Club",
     type: "poster",
   });
   things.set(6, {
-    content: "../assets/bitmap/Untitled-2.png",
+    content: "/assets/bitmap/Untitled-2.png",
     date: new Date("2020"),
     title: "Rare Club",
     type: "poster",
   });
   moreThings.set(0, {
-    content: "../assets/vectors/logos/adobe-photoshop.svg",
+    content: "/assets/vectors/logos/adobe-photoshop.svg",
     date: new Date("2020"),
     title: "Rare Club",
     type: "poster",
   });
   moreThings.set(1, {
-    content: "../assets/vectors/logos/css3.svg",
+    content: "/assets/vectors/logos/css3.svg",
     date: new Date("2020"),
     title: "Rare Club",
     type: "poster",
   });
   moreThings.set(2, {
-    content: "../assets/vectors/logos/adobe-illustrator.svg",
+    content: "/assets/vectors/logos/adobe-illustrator.svg",
     date: new Date("2020"),
     title: "Rare Club",
     type: "poster",
   });
   moreThings.set(3, {
-    content: "../assets/vectors/logos/android.svg",
+    content: "/assets/vectors/logos/android.svg",
     date: new Date("2020"),
     title: "Rare Club",
     type: "poster",
   });
   moreThings.set(4, {
-    content: "../assets/vectors/logos/html5.svg",
+    content: "/assets/vectors/logos/html5.svg",
     date: new Date("2020"),
     title: "Rare Club",
     type: "poster",
   });
   moreThings.set(5, {
-    content: "../assets/vectors/logos/adobe-photoshop.svg",
+    content: "/assets/vectors/logos/adobe-photoshop.svg",
     date: new Date("2020"),
     title: "Rare Club",
     type: "poster",
   });
   moreThings.set(6, {
-    content: "../assets/vectors/logos/css3.svg",
+    content: "/assets/vectors/logos/css3.svg",
     date: new Date("2020"),
     title: "Rare Club",
     type: "poster",
   });
   moreThings.set(7, {
-    content: "../assets/vectors/logos/blender.svg",
+    content: "/assets/vectors/logos/blender.svg",
     date: new Date("2020"),
     title: "Rare Club",
     type: "poster",
   });
   moreThings.set(8, {
-    content: "../assets/vectors/logos/javascript.svg",
+    content: "/assets/vectors/logos/javascript.svg",
     date: new Date("2020"),
     title: "Rare Club",
     type: "poster",
   });
   moreThings.set(9, {
-    content: "../assets/vectors/logos/figma.svg",
+    content: "/assets/vectors/logos/figma.svg",
     date: new Date("2020"),
     title: "Rare Club",
     type: "poster",
   });
   moreThings.set(10, {
-    content: "../assets/vectors/logos/go.svg",
+    content: "/assets/vectors/logos/go.svg",
     date: new Date("2020"),
     title: "Rare Club",
     type: "poster",
   });
   moreThings.set(9, {
-    content: "../assets/vectors/logos/python-outline.svg",
+    content: "/assets/vectors/logos/python-outline.svg",
     date: new Date("2020"),
     title: "Rare Club",
     type: "poster",
@@ -234,7 +234,7 @@
     <div>
       <img
         class="headshot w-36 relative z-[-1]"
-        src="../assets/bitmap/IMG_20200408_170956paint.jpg"
+        src="/assets/bitmap/IMG_20200408_170956paint.jpg"
         alt=""
       />
       <span
