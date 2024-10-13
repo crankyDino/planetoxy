@@ -12,35 +12,81 @@
   let post: any = null;
   let header: any = null;
   let media: any = null;
+  let bannerBox: HTMLDivElement;
 
+  let posX = 0;
+  let posY = 0;
+  let offset = 0;
   console.log(post);
+  /**
+   * TODO: figure out a better method than setTimeout
+   */
+  function alignBanner() {
+    let x = setTimeout(() => {
+      if (bannerBox) {
+        console.log("x", header.hotspot.x);
+        console.log("y", header.hotspot.y);
+        console.log("h", header.hotspot.height);
+        console.log("w", header.hotspot.width);
+        console.log("offset", bannerBox.offsetHeight);
+
+        // posX = header.hotspot.x;
+        // posY = header.hotspot.y;
+        posX = header.hotspot.width;
+        posY = header.hotspot.height;
+        offset = bannerBox.offsetHeight;
+
+        // const digitsBeforeDecimal =
+        //   Math.floor(Math.log10(header.hotspot.height)) + 1; // Number of digits before the decimal point
+        // const scaledNum =
+        //   header.hotspot.height / Math.pow(10, digitsBeforeDecimal); // Scale the number down
+        // const result = parseFloat(scaledNum.toFixed(4));
+
+        // console.log(result);
+        // header.hotspot.height = (bannerBox.offsetHeight * result) / 100;
+      }
+      clearTimeout(x);
+    }, 0);
+  }
+
   onMount(() => {
     console.log($Article);
     if (!$Article.fetching) {
       post = $Article.data.allArticle[0];
       header = $Article.data.allArticle[0].header;
       media = $Article.data.allArticle[0].media;
-      console.log(media, header);
+      alignBanner();
     }
+
+    // header.hotspot.width =
+    // (bannerBox.offsetHeight * header.hotspot.width) / 100;
   });
 </script>
 
 <Sidebar />
 {#if post}
   <!-- 
-<p class="text-white-dh">
-  {$Article.data.allArticle[0].author}
-</p> -->
+  <p class="text-white-dh">
+    {$Article.data.allArticle[0].author}
+    </p> -->
 
   <!-- <div
-  class="h-[9em] md:h-1/3 lg:h-96 overflow-hidden -z-10 w-full bg-fixed md:!bg-top bg-no-repeat"
-  style="background-image: url({header.asset
+    class="h-[9em] md:h-1/3 lg:h-96 overflow-hidden -z-10 w-full bg-fixed md:!bg-top bg-no-repeat"
+    style="background-image: url({header.asset
     .url}); background-size: 125%; background-position:0rem 5rem"
-></div> -->
+    ></div> -->
 
-  <div
+  <!-- <div
+    bind:this={bannerBox}
     class="banner h-[9em] md:h-60 lg:h-96 overflow-hidden -z-10 w-full bg-fixed bg-no-repeat"
-    style="background-image: url({header.asset.url}); background-size: 100%"
+    style="background-image: url({header.asset
+    .url}); background-size: 100%; background-position:{`${header.hotspot.width * 100}% ${header.hotspot.height * 100}%`}"
+    ></div> -->
+  <div
+    bind:this={bannerBox}
+    class="banner h-[9em] md:h-60 lg:h-96 overflow-hidden -z-10 w-full bg-fixed bg-no-repeat"
+    style="background-image: url({header.asset
+      .url}); background-size: 100%; background-position:calc({posX}% ) calc(({posY}% + ({offset}px / 3.8)) - min({offset}px, 100vh / 2))"
   ></div>
   <div class="md:pl-12 lg:pl-40">
     <section class="grid grid-cols-12 w-full px-4 gap-y-6 py-0">
@@ -67,7 +113,7 @@
           </div>
         </div>
         <div
-          class="text-nowrap px-2 md:pr-0 md:pl-4 flex flex-row gap-2 h-fit w-full overflow-auto top-[34%] relative"
+          class="text-nowrap px-2 md:pr-0 md:pl-4 flex flex-row gap-2 h-fit w-full overflow-auto top-[34%] md:top-[10px] relative"
         >
           {#each post.tags as tag}
             <p

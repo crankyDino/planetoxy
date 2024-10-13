@@ -14,6 +14,8 @@ query Article($article: String!) {
       hotspot {
         x
         y
+        width
+        height
       }
       asset {
         url

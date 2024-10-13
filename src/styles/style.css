@@ -1,6 +1,6 @@
 @import url("animations/typewriter.css");
 @import url("util/util.css");
-/* @import url("../assets/fonts/pokemon_classic/Pokemon/Classic.ttf"); */
+/* @import url("/assets/fonts/pokemon_classic/Pokemon/Classic.ttf"); */
 
 @tailwind base;
 @tailwind components;
@@ -20,19 +20,19 @@ button:hover {
 @font-face {
   font-family: "Chintzy";
   font-style: normal;
-  src: url(../assets/fonts/Chintzy/chintzy.ttf) format("ttf");
+  src: url(/assets/fonts/Chintzy/chintzy.ttf) format("ttf");
 }
 
 @font-face {
   font-family: "Pokemon Classic";
   font-style: normal;
-  src: url(../assets/fonts/pokemon_classic/Pokemon\ Classic.ttf) format("ttf");
+  src: url(/assets/fonts/pokemon_classic/Pokemon\ Classic.ttf) format("ttf");
 }
 
 @font-face {
   font-family: "QuirkyRobot";
   font-style: normal;
-  src: url(../assets/fonts/quirky-robot/QuirkyRobot.ttf) format("ttf");
+  src: url(/assets/fonts/quirky-robot/QuirkyRobot.ttf) format("ttf");
 }
 
 @layer components {
