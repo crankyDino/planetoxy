@@ -93,10 +93,10 @@ pre.terminal__art__ascii {
   text-overflow: ellipsis;
 }
 
-.terminal__input-area__container {
+/* .terminal__input-area__container {
   display: flex;
   flex-direction: column;
-}
+} */
 
 div.terminal__screen {
   text-overflow: clip;
@@ -135,7 +135,7 @@ div.terminal__screen {
   color: var(--green);
   /* border-right: solid var(--green) 8px; */
   /* animation: blink 1s linear infinite; */
-  &#terminal_input::after {
+  &#terminal_input_carte::after {
     content: "";
     color: var(--green);
     width: fit-content;

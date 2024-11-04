@@ -9,13 +9,41 @@
 
   onMount(() => {
     console.log("terminal works");
+    command = document.querySelector("#terminal_input");
+    command?.addEventListener("keydown", (ev) => commandInput(ev.key));
+    console.log(command);
   });
+
+  function commandInput(key: any) {
+    if (!command) {
+      return;
+    }
+    switch (key.code) {
+      case "Enter": {
+        // const newInput = document.querySelector<HTMLSpanElement>("#terminal_input");
+        console.log(command);
+        key.preventDefault();
+        t.runCommand(command.textContent, terminalContainer);
+
+        command = document.querySelector("#terminal_input");
+        // command?.addEventListener("keydown", (ev) => commandInput(ev.key));
+        break;
+      }
+      default: {
+        t.getCommand(command.textContent);
+        break;
+      }
+    }
+  }
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <!-- svelte-ignore a11y-no-static-element-interactions -->
+<!-- on:click={() => e.focusOnElement<HTMLSpanElement|null>(command)} -->
+
+<!-- prettier-ignore-->
 <div
-  on:click={() => e.focusOnElement(command)}
+  on:click={() => command?.focus()}
   id="terminal_window"
   class="terminal overflow-hidden w-full"
 >
@@ -190,7 +218,7 @@
     <div
       bind:this={terminalContainer}
       id="terminal_input_area_container"
-      class="terminal__input-area__container"
+      class="terminal_input_area_container flex flex-col"
     >
       <div id="terminal_input_area" class="terminal__cli">
         <p class="terminal__text">
@@ -200,17 +228,13 @@
               target="_blank"
               class="terminal__text">digitalhippie.xyz</a
             ></strong
-          >:~$
-          <!-- svelte-ignore missing-declaration -->
-          <!-- svelte-ignore a11y-interactive-supports-focus -->
-          <span
-            bind:this={command}
-            on:keydown={(key) =>
-              command
-                ? key.code === "Enter"
-                  ? t.runCommand(command.textContent, terminalContainer)
-                  : t.getCommand(command.textContent)
-                : ""}
+            >:~$
+            <!-- bind:this={command} -->
+            <!-- svelte-ignore missing-declaration -->
+            <!-- svelte-ignore a11y-interactive-supports-focus -->
+            <!-- on:keydown={(key) => commandInput(key)} -->
+            <span
+            id="terminal_input"
             role="textbox"
             class="inline-block
             border-none
@@ -224,7 +248,7 @@
             contenteditable
           ></span>
         </p>
-        <span id="terminal_input" class="cli terminal__text"></span>
+        <span id="terminal_input_carte" class="cli terminal__text"></span>
       </div>
     </div>
   </div>

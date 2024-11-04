@@ -1,5 +1,4 @@
-import type { MouseEventHandler } from 'svelte/elements';
-import './terminal.css'
+import './terminal.css';
 import { commands } from '$lib/models/commands';
 import * as m from './matrix';
 
@@ -16,95 +15,40 @@ export function getCommand(command: string | null | undefined) {
         console.log("not it");
         return
     }
-    // runCommand(command)
-
 }
 
-// let history: Array<string> = []
-// const keydown_Handler = (ev: KeyboardEvent) => {
-//     const cmd = document.getElementById("terminal_input");
-//     switch (ev.code) {
-//         case "Space":
-//             cmd.innerText += `\u00a0`;
-//             console.log("click clack biatch");
-//             window.scrollTo(0, window.scrollX);
-//             break;
-//         case "Backspace":
-//             cmd.innerText = `${cmd?.innerText.slice(0, cmd.innerText.length - 1)}`;
-//             break;
-//         case "Enter":
-//             if (cmd.innerText.trim() && cmd.innerText.trim().length > 0) {
-//                 history.push(cmd.innerText.trim())
-//             }
-//             const runner = cmd.innerText.trim()
-//             runCommand(runner)
-//             newLine();
-//             break;
-//         case "ArrowUp":
-//             console.log(history);
 
-//             cmd.innerText = rewind("forward", cmd.innerText.trim())
-//             break;
-//         case "ArrowDown":
-//             console.log(history);
+function newLine(terminal_input_area_container: HTMLDivElement, terminal_input_area: HTMLDivElement, terminal_input: HTMLSpanElement): void {
 
-//             cmd.innerText = rewind("backward", cmd.innerText.trim())
-//             break;
-//         default:
-//             if (ev.code.includes("Key") || ev.code.includes("Digit")) {
-//                 cmd.innerText += ev.key;
-//                 // console.log(cmd.innerText);
-//             }
-//             break;
-//     }
-// };
+    const rowIdNo: number = terminal_input_area_container.childElementCount;
+    const rowId: string = "command_row_" + rowIdNo.toString();
 
-// function rewind(direction: "forward" | "backward", position: string) {
-//     if (!history.length || history.length <= 0) {
-//         return ""
-//     }
-
-//     if (!position || position === "") {
-//         return history[history.length - 1]
-//     }
-
-//     const i = history.findIndex((x, i) => x === position ? i : "")
-
-//     if (direction === "forward") {
-//         return history[i - 1]
-//     }
-
-//     return history[i + 1]
-// }
-
-function newLine(): void {
-    // const terminal_input_area_container = document.getElementById(
-    //     "terminal_input_area_container"
-    // );
-    // const rowIdNo: number = terminal_input_area_container.childElementCount;
-    // const rowId: string = "command_row_" + rowIdNo.toString();
-
-    // // document.getElementById("terminal_input_area").dataset.rowId = rowIdNo.toString();
+    // document.getElementById("terminal_input_area").dataset.rowId = rowIdNo.toString();
 
     // document.getElementById("terminal_input_area").id = rowId;
 
-    // const inputArea = document.createElement("div");
-    // inputArea.innerHTML = document.getElementById(rowId).innerHTML;
-    // inputArea.classList.add(...document.getElementById(rowId).classList.values());
-    // inputArea.id = "terminal_input_area";
-    // (inputArea.querySelector("#terminal_input") as HTMLElement).innerText = "";
+    terminal_input_area.id = rowId;
+    // terminal_input_area.id = rowId;
 
-    // document.getElementById("terminal_input").id =
-    //     "row_input_" + rowIdNo.toString();
+    const newInputArea = document.createElement("div");
+    newInputArea.innerHTML = terminal_input_area.innerHTML; //clone old input into new area
+    newInputArea.classList.add(...terminal_input_area.classList.values());
+    newInputArea.id = "terminal_input_area";
+    (newInputArea.querySelector("#terminal_input") as HTMLElement).innerText = "";
 
-    // terminal_input_area_container.appendChild(inputArea);
-    // inputArea.scrollIntoView();
-    // window.scrollTo(0, window.scrollX);
-    // // terminal_input_area_container.scroll(0,findPosition(document.getElementById(inputArea.id))[0])
+    terminal_input.id = "row_input_" + rowIdNo.toString();
+
+    terminal_input_area_container.appendChild(newInputArea);
+    console.log(terminal_input_area_container);
+    // terminal_input.removeAttribute("contenteditable");
+    newInputArea.scrollIntoView();
+    window.scrollTo(0, window.scrollX);
+    terminal_input_area_container.scroll(0, findPosition(newInputArea)[0])
 }
 
 
 
+let history: Array<string> = []
 function findPosition(elem: HTMLElement): number[] {
     let currTop = 0;
     if (elem.offsetParent) {
@@ -115,15 +59,27 @@ function findPosition(elem: HTMLElement): number[] {
     return [currTop];
 }
 
-export function runCommand(command: string | null, parent: HTMLElement | null) {
+export function runCommand(command: string | null, parent: HTMLDivElement | null) {
     console.log("response");
-    if (!command || !parent) {
-        return
+    // debugger
+    if (!command
+        || !parent
+        || !parent.querySelector("#terminal_input")
+        || !parent.querySelector("#terminal_input_area")
+    ) {
+        return;
     }
+    // console.log(parent.children);
+    // console.log(parent.querySelector("#terminal_input"));
+    const terminal_input: HTMLDivElement = parent.querySelector("#terminal_input")!
+    const terminal_input_area: HTMLDivElement = parent.querySelector("#terminal_input_area")!
+
+    newLine(parent, terminal_input_area, terminal_input);
+
     const availableCommands = Object.values(commands)
     const prompt = availableCommands.some((x) => x.includes(command)) ? command.trim() : null
+    if (!prompt) { return; }
 
-    // if (prompt)
     //   switch (prompt) {
     switch (command) {
         case "freeze":
