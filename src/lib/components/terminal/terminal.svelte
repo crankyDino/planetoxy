@@ -225,10 +225,6 @@
               class="terminal__text">digitalhippie.xyz</a
             ></strong
             >:~$
-            <!-- bind:this={command} -->
-            <!-- svelte-ignore missing_declaration -->
-            <!-- svelte-ignore a11y_interactive_supports_focus -->
-            <!-- on:keydown={(key) => commandInput(key)} -->
             <span
             id="terminal_input"
             role="textbox"

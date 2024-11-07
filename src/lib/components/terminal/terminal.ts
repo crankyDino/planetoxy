@@ -18,36 +18,49 @@ export function getCommand(command: string | null | undefined) {
 }
 
 
-function newLine(terminal_input_area_container: HTMLDivElement, terminal_input_area: HTMLDivElement, terminal_input: HTMLSpanElement): void {
+function newLine({ terminal_input, terminal_input_area, parent, response = "" }: { parent: HTMLDivElement, terminal_input_area: HTMLDivElement, terminal_input: HTMLSpanElement, response?: string | null }): void {
 
-    const rowIdNo: number = terminal_input_area_container.childElementCount;
+    const rowIdNo: number = parent.childElementCount;
     const rowId: string = "command_row_" + rowIdNo.toString();
 
     const newInputArea = terminal_input_area.cloneNode(true) as HTMLDivElement;
     //process rev command
     terminal_input_area.id = rowId;
-    terminal_input_area_container.querySelector("#terminal_input_carte")?.remove()
+    parent.querySelector("#terminal_input_carte")?.remove()
     terminal_input.removeAttribute("contenteditable");
     terminal_input.id = "row_input_" + rowIdNo.toString();
 
     //setup new input
+    if (response) {
+        const responseBlock = terminal_input_area.cloneNode() as HTMLDivElement
+        responseBlock.innerText = response;
+        responseBlock.classList.replace("terminal__cli", "terminal__text");
+        responseBlock.style.paddingBottom = '.28em'
+        parent.appendChild(responseBlock);
+    }
+
     newInputArea.id = "terminal_input_area";
     (newInputArea.querySelector("#terminal_input") as HTMLElement).innerText = "";
-    terminal_input_area_container.appendChild(newInputArea);
+    parent.appendChild(newInputArea);
+
+
     newInputArea.focus();
     newInputArea.scrollIntoView();
     window.scrollTo(0, window.scrollX);
     (newInputArea.querySelector("#terminal_input") as HTMLSpanElement).focus()
-    terminal_input_area_container.scroll(0, findPosition(newInputArea)[0])
+    parent.scroll(0, findPosition(newInputArea)[0])
 }
 
 
 
 let history: Array<string> = []
+/**
+ * Helps scroll into view i guess...?
+ * 
+ * @param elem 
+ * @returns 
+ */
 function findPosition(elem: HTMLElement): number[] {
-    console.log(elem);
-    console.log(elem);
-    
     let currTop = 0;
     if (elem.offsetParent) {
         do {
@@ -58,7 +71,6 @@ function findPosition(elem: HTMLElement): number[] {
 }
 
 export function runCommand(command: string | null, parent: HTMLDivElement | null) {
-    console.log("runCommand()");
     // debugger
     if (!command
         || !parent
@@ -67,12 +79,13 @@ export function runCommand(command: string | null, parent: HTMLDivElement | null
     ) {
         return;
     }
-    // console.log(parent.children);
-    // console.log(parent.querySelector("#terminal_input"));
+
     const terminal_input: HTMLDivElement = parent.querySelector("#terminal_input")!
     const terminal_input_area: HTMLDivElement = parent.querySelector("#terminal_input_area")!
 
-    newLine(parent, terminal_input_area, terminal_input);
+    let response = `'${command}' is not a command`
+
+    newLine({ parent, terminal_input_area, terminal_input, response });
 
     const availableCommands = Object.values(commands)
     const prompt = availableCommands.some((x) => x.includes(command)) ? command.trim() : null
