@@ -23,26 +23,21 @@ function newLine(terminal_input_area_container: HTMLDivElement, terminal_input_a
     const rowIdNo: number = terminal_input_area_container.childElementCount;
     const rowId: string = "command_row_" + rowIdNo.toString();
 
-    // document.getElementById("terminal_input_area").dataset.rowId = rowIdNo.toString();
-
-    // document.getElementById("terminal_input_area").id = rowId;
-
+    const newInputArea = terminal_input_area.cloneNode(true) as HTMLDivElement;
+    //process rev command
     terminal_input_area.id = rowId;
-    // terminal_input_area.id = rowId;
-
-    const newInputArea = document.createElement("div");
-    newInputArea.innerHTML = terminal_input_area.innerHTML; //clone old input into new area
-    newInputArea.classList.add(...terminal_input_area.classList.values());
-    newInputArea.id = "terminal_input_area";
-    (newInputArea.querySelector("#terminal_input") as HTMLElement).innerText = "";
-
+    terminal_input_area_container.querySelector("#terminal_input_carte")?.remove()
+    terminal_input.removeAttribute("contenteditable");
     terminal_input.id = "row_input_" + rowIdNo.toString();
 
+    //setup new input
+    newInputArea.id = "terminal_input_area";
+    (newInputArea.querySelector("#terminal_input") as HTMLElement).innerText = "";
     terminal_input_area_container.appendChild(newInputArea);
-    console.log(terminal_input_area_container);
-    // terminal_input.removeAttribute("contenteditable");
+    newInputArea.focus();
     newInputArea.scrollIntoView();
     window.scrollTo(0, window.scrollX);
+    (newInputArea.querySelector("#terminal_input") as HTMLSpanElement).focus()
     terminal_input_area_container.scroll(0, findPosition(newInputArea)[0])
 }
 
@@ -50,6 +45,9 @@ function newLine(terminal_input_area_container: HTMLDivElement, terminal_input_a
 
 let history: Array<string> = []
 function findPosition(elem: HTMLElement): number[] {
+    console.log(elem);
+    console.log(elem);
+    
     let currTop = 0;
     if (elem.offsetParent) {
         do {
@@ -60,7 +58,7 @@ function findPosition(elem: HTMLElement): number[] {
 }
 
 export function runCommand(command: string | null, parent: HTMLDivElement | null) {
-    console.log("response");
+    console.log("runCommand()");
     // debugger
     if (!command
         || !parent

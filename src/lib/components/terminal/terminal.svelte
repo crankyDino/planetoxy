@@ -4,29 +4,20 @@
   import * as e from "../../util/element";
   import * as t from "./terminal";
 
-  let command: HTMLSpanElement | null = $state(null);
+  let command: HTMLSpanElement | null;
   let terminalContainer: HTMLDivElement | null = $state(null);
 
-  onMount(() => {
-    console.log("terminal works");
-    command = document.querySelector("#terminal_input");
-    command?.addEventListener("keydown", (ev) => commandInput(ev.key));
-    console.log(command);
-  });
-
-  function commandInput(key: any) {
+  function commandInput(ev: any) {
     if (!command) {
       return;
     }
-    switch (key.code) {
+    switch (ev.key) {
       case "Enter": {
-        // const newInput = document.querySelector<HTMLSpanElement>("#terminal_input");
-        console.log(command);
-        key.preventDefault();
+        ev.preventDefault();
         t.runCommand(command.textContent, terminalContainer);
 
         command = document.querySelector("#terminal_input");
-        // command?.addEventListener("keydown", (ev) => commandInput(ev.key));
+        command?.addEventListener("keydown", commandInput);
         break;
       }
       default: {
@@ -35,6 +26,11 @@
       }
     }
   }
+
+  onMount(() => {
+    command = document.querySelector("#terminal_input");
+    command?.addEventListener("keydown", commandInput);
+  });
 </script>
 
 <!-- svelte-ignore a11y_click_events_have_key_events -->
