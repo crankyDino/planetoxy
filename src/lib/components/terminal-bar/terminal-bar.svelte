@@ -1,12 +1,14 @@
 <script lang="ts">
-  import { beforeUpdate } from "svelte";
+  import { run } from 'svelte/legacy';
+
+  
   import "../terminal/terminal.css";
   import { page } from "$app/stores";
-  let command: HTMLInputElement | null = null;
-  let path: string = "nowhere";
-  $: {
+  let command: HTMLInputElement | null = $state(null);
+  let path: string = $state("nowhere");
+  run(() => {
     path = $page.url.pathname;
-  }
+  });
 </script>
 
 <div class="w-full bg-[#292929] flex flex-row text-green-dh sticky top-0 z-50">
@@ -17,7 +19,7 @@
     bind:this={command}
     type="text"
     class="bg-transparent w-full focus-within:outline-none"
-    on:keydown={(key) => {
+    onkeydown={(key) => {
       if (key.code === "Enter" && command) {
         command.value = "";
       }

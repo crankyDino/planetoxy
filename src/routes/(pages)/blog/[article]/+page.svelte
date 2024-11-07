@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { PUBLIC_STRAPI_URL } from "$env/static/public";
+  // import { PUBLIC_STRAPI_URL } from "$env/static/public";
   import { page } from "$app/stores";
   import type { IArticle } from "$lib/models/article.model";
   import { onMount } from "svelte";
@@ -7,16 +7,20 @@
   import Sidebar from "$lib/components/sidebar/sidebar.svelte";
 
   let title = $page.url.pathname;
-  export let data: any;
-  let { Article } = data;
-  let post: any = null;
-  let header: any = null;
-  let media: any = null;
-  let bannerBox: HTMLDivElement;
+  interface Props {
+    data: any;
+  }
 
-  let posX = 0;
-  let posY = 0;
-  let offset = 0;
+  let { data }: Props = $props();
+  let { Article } = data;
+  let post: any = $state(null);
+  let header: any = $state(null);
+  let media: any = $state(null);
+  let bannerBox: HTMLDivElement | null = $state(null);
+
+  let posX = $state(0);
+  let posY = $state(0);
+  let offset = $state(0);
   console.log(post);
   /**
    * TODO: figure out a better method than setTimeout

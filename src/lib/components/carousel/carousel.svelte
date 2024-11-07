@@ -7,14 +7,23 @@
     type TCarouselDirection,
     type TCarouselType,
   } from "./carousel";
-  let carousel: HTMLDivElement | null = null;
-  export let carouselType: TCarouselType = "icon";
-  export let grayscale: boolean = false;
-  export let direction: TCarouselDirection = "right";
-  export let carouselItems: Map<number, ICarouselItem> = new Map<
+  let carousel: HTMLDivElement | null = $state(null);
+  interface Props {
+    carouselType?: TCarouselType;
+    grayscale?: boolean;
+    direction?: TCarouselDirection;
+    carouselItems?: Map<number, ICarouselItem>;
+  }
+
+  let {
+    carouselType = "icon",
+    grayscale = false,
+    direction = "right",
+    carouselItems = new Map<
     number,
     ICarouselItem
-  >();
+  >()
+  }: Props = $props();
 
   onMount(() => {
     if (carousel) {

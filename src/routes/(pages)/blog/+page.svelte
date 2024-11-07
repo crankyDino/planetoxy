@@ -1,10 +1,14 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import "./blog.css";
-  export let data: any;
+  interface Props {
+    data: any;
+  }
+
+  let { data }: Props = $props();
 
   let { Articles } = data;
-  let posts: any[] = [];
+  let posts: any[] = $state([]);
   /* @type { import('./$houdini').PageData } */
   // console.log($Articles.data.allArticle);
   console.log(posts);

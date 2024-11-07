@@ -4,8 +4,8 @@
   import * as e from "../../util/element";
   import * as t from "./terminal";
 
-  let command: HTMLSpanElement | null = null;
-  let terminalContainer: HTMLDivElement | null = null;
+  let command: HTMLSpanElement | null = $state(null);
+  let terminalContainer: HTMLDivElement | null = $state(null);
 
   onMount(() => {
     console.log("terminal works");
@@ -37,13 +37,13 @@
   }
 </script>
 
-<!-- svelte-ignore a11y-click-events-have-key-events -->
-<!-- svelte-ignore a11y-no-static-element-interactions -->
+<!-- svelte-ignore a11y_click_events_have_key_events -->
+<!-- svelte-ignore a11y_no_static_element_interactions -->
 <!-- on:click={() => e.focusOnElement<HTMLSpanElement|null>(command)} -->
 
 <!-- prettier-ignore-->
 <div
-  on:click={() => command?.focus()}
+  onclick={() => command?.focus()}
   id="terminal_window"
   class="terminal overflow-hidden w-full"
 >
@@ -230,8 +230,8 @@
             ></strong
             >:~$
             <!-- bind:this={command} -->
-            <!-- svelte-ignore missing-declaration -->
-            <!-- svelte-ignore a11y-interactive-supports-focus -->
+            <!-- svelte-ignore missing_declaration -->
+            <!-- svelte-ignore a11y_interactive_supports_focus -->
             <!-- on:keydown={(key) => commandInput(key)} -->
             <span
             id="terminal_input"

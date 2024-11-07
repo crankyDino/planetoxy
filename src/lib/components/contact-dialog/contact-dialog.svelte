@@ -1,18 +1,18 @@
 <script lang="ts">
+  import { run } from "svelte/legacy";
+
   import { onMount } from "svelte";
   import { chips, submitHitMeUp } from "./contact-dialog";
   import {
-    state,
+    dialogState,
     toggleDialog,
   } from "$lib/handlers/dialog.handler/dialog.handler";
   import { focusOnElement } from "$lib/util/element";
   import { initForm, resetForm } from "$lib/handlers/form.handler/form.handler";
 
   let dialog: HTMLDialogElement;
-  let form: HTMLFormElement | null = null;
-  let reason: HTMLInputElement | null = null;
-
-  $: toggleDialog(dialog, $state);
+  let form: HTMLFormElement | null = $state(null);
+  let reason: HTMLInputElement | null = $state(null);
 
   onMount(() => {
     if (form) {
@@ -42,7 +42,7 @@
   >
     <h3 class="card-title font-bold text-[#fff] pl-9">Hit Me Up</h3>
     <button
-      on:mousedown={() => state.close()}
+      onmousedown={() => dialogState.close}
       id="btnCloseHmuForm"
       class="text-[#fff] text-center w-6 rounded-md hover:text-orange-dh hover:bg-[#fff]"
     >
@@ -128,11 +128,11 @@
 
     <div class="form__group grid h-fit">
       <label class="text-black-dh text-sm" for="hmuReason">Reason</label>
-      <!-- svelte-ignore a11y-no-static-element-interactions -->
+      <!-- svelte-ignore a11y_no_static_element_interactions -->
       <div
         id="hmuReasonList"
         class="bg-[#fff] flex flex-row flex-wrap bg-white border-[2px] border-black-dh w-full gap-3 px-4 py-2 h-fit min-h-10 items-center"
-        on:focus={() => {
+        onfocus={() => {
           reason ? reason.focus() : "";
         }}
       >
@@ -141,7 +141,7 @@
             class="rounded-xl bg-orange-dh font-semibold text-[#fff] flex flex-row h-[1.6em] px-2 items-start"
             >{chip[1]}<button
               class="pl-1 pr-[3px]"
-              on:mousedown={(ev) => {
+              onmousedown={(ev) => {
                 chips.deleteChip(chip[0]);
               }}>x</button
             ></span
@@ -149,7 +149,7 @@
         {/each}
         <input
           bind:this={reason}
-          on:keydown={(k) => {
+          onkeydown={(k) => {
             if (k.code === "Enter" && reason && reason?.value != "") {
               chips.createChip(reason.value);
               reason.value = "";
@@ -196,7 +196,7 @@
 
     <div class="card-body py-3 self-end">
       <button
-        on:mousedown={() => (form ? reset(form) : "")}
+        onmousedown={() => (form ? reset(form) : "")}
         id="clear"
         class="pointer-events-auto btn bg-gray-400 text-zinc-50"
       >
@@ -206,7 +206,7 @@
         type="submit"
         id="btnSubmitHmuForm"
         class="pointer-events-auto btn bg-orange-dh text-zinc-50"
-        on:mousedown={() => (form ? submitHitMeUp(form) : "")}
+        onmousedown={() => (form ? submitHitMeUp(form) : "")}
       >
         HIT ME UP!
       </button>
