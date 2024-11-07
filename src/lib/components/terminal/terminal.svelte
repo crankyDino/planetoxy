@@ -234,7 +234,7 @@
             min-w-1
             w-auto
             resize
-            caret-transparent
+            caret-transparent--off
             focus-visible:outline-none
             "
             contenteditable

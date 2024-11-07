@@ -52,7 +52,6 @@ function newLine({ terminal_input, terminal_input_area, parent, response = "" }:
 }
 
 
-
 let history: Array<string> = []
 /**
  * Helps scroll into view i guess...?
@@ -83,40 +82,32 @@ export function runCommand(command: string | null, parent: HTMLDivElement | null
     const terminal_input: HTMLDivElement = parent.querySelector("#terminal_input")!
     const terminal_input_area: HTMLDivElement = parent.querySelector("#terminal_input_area")!
 
-    let response = `'${command}' is not a command`
 
-    newLine({ parent, terminal_input_area, terminal_input, response });
 
+    let response: string = `'${command}' is not a command`
     const availableCommands = Object.values(commands)
-    const prompt = availableCommands.some((x) => x.includes(command)) ? command.trim() : null
-    if (!prompt) { return; }
 
-    //   switch (prompt) {
     switch (command) {
         case "freeze":
             m.freeze()
             break;
         case "help":
-            console.log("uhmmmmmmmmmmm");
-            // const cmd = document.getElementById("terminal_input");
-            let response: string = ""
             response = "List of Commands \n"
             response += "------------------\n"
             availableCommands.forEach((x) => {
-                response += ";\n"
                 response += x
+                response += ";\n"
             })
             console.log(response);
-            parent.innerText = response
-            // cmd.innerText = `${response}`
             break;
         case "hello alice":
-            // case "rain":
-            // m.rain()
             break;
         default:
             console.log("??????????");
             break;
     }
+
+    newLine({ parent, terminal_input_area, terminal_input, response });
+
 }
 
