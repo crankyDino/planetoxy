@@ -1,6 +1,5 @@
 import './terminal.css';
 import { commands } from '$lib/models/commands';
-import * as m from './matrix';
 
 // export let command: string = ""
 // export let terminalWindow: HTMLDivElement | null = null;
@@ -36,6 +35,7 @@ function newLine({ terminal_input, terminal_input_area, parent, response = "" }:
         responseBlock.innerText = response;
         responseBlock.classList.replace("terminal__cli", "terminal__text");
         responseBlock.style.paddingBottom = '.28em'
+        responseBlock.style.lineHeight = '1.2em'
         parent.appendChild(responseBlock);
     }
 
@@ -70,7 +70,6 @@ function findPosition(elem: HTMLElement): number[] {
 }
 
 export function runCommand(command: string | null, parent: HTMLDivElement | null) {
-    // debugger
     if (!command
         || !parent
         || !parent.querySelector("#terminal_input")
@@ -81,33 +80,15 @@ export function runCommand(command: string | null, parent: HTMLDivElement | null
 
     const terminal_input: HTMLDivElement = parent.querySelector("#terminal_input")!
     const terminal_input_area: HTMLDivElement = parent.querySelector("#terminal_input_area")!
+    let response: string = `'${command}' is not a command`;
 
+    console.log(commands.has(command));
 
-
-    let response: string = `'${command}' is not a command`
-    const availableCommands = Object.values(commands)
-
-    switch (command) {
-        case "freeze":
-            m.freeze()
-            break;
-        case "help":
-            response = "List of Commands \n"
-            response += "------------------\n"
-            availableCommands.forEach((x) => {
-                response += x
-                response += ";\n"
-            })
-            console.log(response);
-            break;
-        case "hello alice":
-            break;
-        default:
-            console.log("??????????");
-            break;
+    if (commands.has(command)) {
+        const cmd = commands.get(command)
+        response = cmd?.fn ? cmd.fn() : " "
     }
 
     newLine({ parent, terminal_input_area, terminal_input, response });
-
 }
 
