@@ -6,7 +6,7 @@
   import Carousel from "$lib/components/carousel/carousel.svelte";
   import ContactDialog from "$lib/components/contact-dialog/contact-dialog.svelte";
   import StaggeredCarousel from "$lib/components/staggered-carousel/staggered-carousel.svelte";
-  import { state } from "$lib/handlers/dialog.handler/dialog.handler";
+  import { dialogState } from "$lib/handlers/dialog.handler/dialog.handler";
   import Terminal from "../../lib/components/terminal/terminal.svelte";
   let things: Map<number, ICarouselItem> = new Map<number, ICarouselItem>();
   let moreThings: Map<number, ICarouselItem> = new Map<number, ICarouselItem>();
@@ -162,7 +162,7 @@
         <a href="./projects">PROJECTS</a>
       </button>
       <button
-        on:click={() => state.open()}
+        onclick={() => dialogState.open}
         id="btnOpenHmuForm"
         class="btn bg-transparent border-[3px] border-orange-dh text-white-dh"
       >
