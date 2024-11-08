@@ -6,10 +6,15 @@
   import Carousel from "$lib/components/carousel/carousel.svelte";
   import ContactDialog from "$lib/components/contact-dialog/contact-dialog.svelte";
   import StaggeredCarousel from "$lib/components/staggered-carousel/staggered-carousel.svelte";
-  import { dialogState } from "$lib/handlers/dialog.handler/dialog.handler";
+  import {
+    dialogState,
+    type TDialogState,
+  } from "$lib/handlers/dialog.handler/dialog.handler";
   import Terminal from "../../lib/components/terminal/terminal.svelte";
   let things: Map<number, ICarouselItem> = new Map<number, ICarouselItem>();
   let moreThings: Map<number, ICarouselItem> = new Map<number, ICarouselItem>();
+  let dialog: any;
+
   things.set(0, {
     content: "/assets/bitmap/beat tape cover.jpg",
     date: new Date("2020"),
@@ -162,7 +167,7 @@
         <a href="./projects">PROJECTS</a>
       </button>
       <button
-        onclick={() => dialogState.open}
+        onclick={() => dialog.open()}
         id="btnOpenHmuForm"
         class="btn bg-transparent border-[3px] border-orange-dh text-white-dh"
       >
@@ -278,7 +283,7 @@
     grayscale={true}
   />
 </section>
-<ContactDialog />
+<ContactDialog bind:this={dialog} />
 
 <style>
   .paragraph::before {

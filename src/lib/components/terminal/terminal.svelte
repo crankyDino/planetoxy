@@ -4,7 +4,7 @@
   import * as e from "../../util/element";
   import * as t from "./terminal";
 
-  let command: HTMLSpanElement | null;
+  let command: HTMLSpanElement | null = $state(null);
   let terminalContainer: HTMLDivElement | null = $state(null);
 
   function commandInput(ev: any) {

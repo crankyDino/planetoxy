@@ -6,12 +6,15 @@
   import {
     dialogState,
     toggleDialog,
+    type TDialogState,
   } from "$lib/handlers/dialog.handler/dialog.handler";
   import { focusOnElement } from "$lib/util/element";
   import { initForm, resetForm } from "$lib/handlers/form.handler/form.handler";
 
-  let dialog: HTMLDialogElement;
-  let form: HTMLFormElement | null = $state(null);
+  let pos: TDialogState = $state("closed");
+  let dialog = $state<HTMLDialogElement>();
+  // let { open } = $props();
+  let form: HTMLFormElement;
   let reason: HTMLInputElement | null = $state(null);
 
   onMount(() => {
@@ -19,6 +22,10 @@
       initForm(form);
     }
   });
+  
+  export function open(){
+    if(dialog){dialogState().openDialog(dialog)}
+  }
 
   function reset(form: HTMLFormElement): void {
     if (!form) {
@@ -27,6 +34,10 @@
     resetForm(form);
     chips.clear();
   }
+
+  // export function toggle(position: TDialogState): void {
+  //   // pos =
+  // }
 </script>
 
 <dialog
@@ -42,7 +53,7 @@
   >
     <h3 class="card-title font-bold text-[#fff] pl-9">Hit Me Up</h3>
     <button
-      onmousedown={() => dialogState.close}
+      onclick={() => dialogState().closeDialog(dialog!, form)}
       id="btnCloseHmuForm"
       class="text-[#fff] text-center w-6 rounded-md hover:text-orange-dh hover:bg-[#fff]"
     >
