@@ -6,10 +6,7 @@
   import Carousel from "$lib/components/carousel/carousel.svelte";
   import ContactDialog from "$lib/components/contact-dialog/contact-dialog.svelte";
   import StaggeredCarousel from "$lib/components/staggered-carousel/staggered-carousel.svelte";
-  import {
-    dialogState,
-    type TDialogState,
-  } from "$lib/handlers/dialog.handler/dialog.handler";
+
   import Terminal from "../../lib/components/terminal/terminal.svelte";
   let things: Map<number, ICarouselItem> = new Map<number, ICarouselItem>();
   let moreThings: Map<number, ICarouselItem> = new Map<number, ICarouselItem>();

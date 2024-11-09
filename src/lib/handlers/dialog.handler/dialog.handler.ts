@@ -6,35 +6,35 @@ export function dialogState() {
     let modalState: TDialogState = 'closed';
 
     return {
-        openDialog,
-        closeDialog,
+        open,
+        close,
         set toggle(_state: TDialogState) { modalState = _state }
     }
 }
 
-export function toggleDialog(dialog: HTMLDialogElement, dialogState: TDialogState) {
+function toggleDialog(dialog: HTMLDialogElement, dialogState: TDialogState) {
     if (!dialog) {
         return;
     }
 
     switch (dialogState) {
         case "open":
-            openDialog(dialog);
+            open(dialog);
             break;
         default:
-            closeDialog(dialog);
+            close(dialog);
             break;
     }
 }
 
-export function openDialog(dialog: HTMLDialogElement) {
+function open(dialog: HTMLDialogElement) {
     if (!dialog) {
         return;
     }
     dialog.showModal();
 }
 
-export function closeDialog(dialog: HTMLDialogElement, form?: HTMLFormElement) {
+function close(dialog: HTMLDialogElement, form?: HTMLFormElement) {
     if (!dialog) {
         return;
     }

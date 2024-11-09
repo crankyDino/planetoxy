@@ -28,11 +28,11 @@
   function alignBanner() {
     let x = setTimeout(() => {
       if (bannerBox) {
-        console.log("x", header.hotspot.x);
-        console.log("y", header.hotspot.y);
-        console.log("h", header.hotspot.height);
-        console.log("w", header.hotspot.width);
-        console.log("offset", bannerBox.offsetHeight);
+        // console.log("x", header.hotspot.x);
+        // console.log("y", header.hotspot.y);
+        // console.log("h", header.hotspot.height);
+        // console.log("w", header.hotspot.width);
+        // console.log("offset", bannerBox.offsetHeight);
 
         // posX = header.hotspot.x;
         // posY = header.hotspot.y;
@@ -54,11 +54,11 @@
   }
 
   onMount(() => {
-    console.log($Article);
     if (!$Article.fetching) {
       post = $Article.data.allArticle[0];
       header = $Article.data.allArticle[0].header;
       media = $Article.data.allArticle[0].media;
+      console.log($Article);
       alignBanner();
     }
 
@@ -147,13 +147,14 @@
             {/each}
 
             <div class="flex flex-row gap-x-8">
+              {media.content}
               {#each media as card}
-                {#if card.content}
+                {#if card.contentUrl}
                   <img
                     class=" pl-2"
                     width="150"
-                    src={card.content?.asset.url}
-                    alt={card.content?.asset.url}
+                    src={card.contentUrl}
+                    alt={card.contentUrl}
                   />
                 {/if}
               {/each}
@@ -166,12 +167,12 @@
 
   <div class="flex flex-row gap-x-8">
     {#each media as card}
-      {#if card.content}
+      {#if card.contentUrl}
         <img
           class=" pl-2"
           width="150"
-          src={card.content?.asset.url}
-          alt={card.content?.asset.url}
+          src={card.contentUrl}
+          alt={card.contentUrl}
         />
       {/if}
     {/each}

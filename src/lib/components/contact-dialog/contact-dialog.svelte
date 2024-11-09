@@ -5,7 +5,6 @@
   import { chips, submitHitMeUp } from "./contact-dialog";
   import {
     dialogState,
-    toggleDialog,
     type TDialogState,
   } from "$lib/handlers/dialog.handler/dialog.handler";
   import { focusOnElement } from "$lib/util/element";
@@ -24,7 +23,7 @@
   });
   
   export function open(){
-    if(dialog){dialogState().openDialog(dialog)}
+    if(dialog){dialogState().open(dialog)}
   }
 
   function reset(form: HTMLFormElement): void {
@@ -34,10 +33,6 @@
     resetForm(form);
     chips.clear();
   }
-
-  // export function toggle(position: TDialogState): void {
-  //   // pos =
-  // }
 </script>
 
 <dialog
@@ -53,7 +48,7 @@
   >
     <h3 class="card-title font-bold text-[#fff] pl-9">Hit Me Up</h3>
     <button
-      onclick={() => dialogState().closeDialog(dialog!, form)}
+      onclick={() => dialogState().close(dialog!, form)}
       id="btnCloseHmuForm"
       class="text-[#fff] text-center w-6 rounded-md hover:text-orange-dh hover:bg-[#fff]"
     >
