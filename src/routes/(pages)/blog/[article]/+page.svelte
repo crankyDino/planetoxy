@@ -1,27 +1,29 @@
 <script lang="ts">
   // import { PUBLIC_STRAPI_URL } from "$env/static/public";
   import { page } from "$app/stores";
-  import type { IArticle } from "$lib/models/article.model";
+  // import type { IArticle } from "$lib/models/article.model";
   import { onMount } from "svelte";
   import "./article.css";
   import Sidebar from "$lib/components/sidebar/sidebar.svelte";
+  import type { IArticleMedia } from "$lib/models/article.model";
+  // import { getMedia } from "./+page";
+
+  // let getMedia = $props();
 
   let title = $page.url.pathname;
-  interface Props {
-    data: any;
-  }
 
-  let { data }: Props = $props();
-  let { Article } = data;
+  /* @type { import('./$houdini').PageData } */
+  let { data } = $props();
+  let { Article, getMedia } = $state(data);
   let post: any = $state(null);
   let header: any = $state(null);
-  let media: any = $state(null);
+  let paragraphMedia: Array<IArticleMedia> = $state([]);
+  let media: any = $state([]);
   let bannerBox: HTMLDivElement | null = $state(null);
 
   let posX = $state(0);
   let posY = $state(0);
   let offset = $state(0);
-  console.log(post);
   /**
    * TODO: figure out a better method than setTimeout
    */
@@ -54,13 +56,45 @@
   }
 
   onMount(() => {
-    if (!$Article.fetching) {
-      post = $Article.data.allArticle[0];
-      header = $Article.data.allArticle[0].header;
-      media = $Article.data.allArticle[0].media;
-      console.log($Article);
-      alignBanner();
-    }
+    Article()
+      .then((res: any) => {
+        let { data } = res;
+        post = data.allArticle[0];
+        header = data.allArticle[0].header;
+        media = data.allArticle[0].media;
+      })
+      .finally(() => {
+        let key: string = "";
+        (post.paragraphRaw as any[]).map((p: any) => {
+          if (p.style === "normal") {
+            key = p._key;
+          }
+          if (p._type.includes("reference")) {
+            const ref = p._ref;
+            theMedia(ref, key);
+          }
+          console.log(post);
+        });
+      });
+
+    const theMedia = (ref: string, key: string) => {
+      getMedia(ref)
+        .then((res: any) => {
+          console.log(res);
+          paragraphMedia.push({
+            contentUrl: res[0].contentUrl,
+            description: res[0].description,
+            title: res[0].title,
+            type: res[0].type,
+            ref: key,
+          });
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    };
+
+    // alignBanner();
 
     // header.hotspot.width =
     // (bannerBox.offsetHeight * header.hotspot.width) / 100;
@@ -131,7 +165,7 @@
 
       <div class="col-span-12 md:col-span-8 lg:col-span-6 space-y-3">
         {#each post.paragraphRaw as paragraph}
-          {#if paragraph.style === "h2"}
+          {#if paragraph.style?.includes("h")}
             <h3
               class=" font-quirkyrobot text-gray-dh h-8 max-h-full pl-2 text-[2em] mb-[1rem]"
             >
@@ -145,20 +179,19 @@
                 {body.text}
               </div>
             {/each}
-
-            <div class="flex flex-row gap-x-8">
-              {media.content}
-              {#each media as card}
-                {#if card.contentUrl}
-                  <img
-                    class=" pl-2"
-                    width="150"
-                    src={card.contentUrl}
-                    alt={card.contentUrl}
-                  />
-                {/if}
-              {/each}
-            </div>
+            {#if paragraphMedia.length > 0 && paragraphMedia.some((p) => p.ref === paragraph._key)}
+              <div class="flex flex-row gap-x-8 text-gray-dh h-[12%]">
+                {#each paragraphMedia as card}
+                  {#if card.contentUrl && card.ref === paragraph._key}
+                    <img
+                      class=" pl-2"
+                      src={card.contentUrl}
+                      alt={card.contentUrl}
+                    />
+                  {/if}
+                {/each}
+              </div>
+            {/if}
           {/if}
         {/each}
       </div>

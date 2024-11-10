@@ -3,7 +3,7 @@ export interface IArticle {
   title: string,
   author: string,
   tags: Array<ITag>,
-  paragraphRaw:any
+  paragraphRaw: any
   published: Date
 }
 export interface ISlug {
@@ -11,4 +11,11 @@ export interface ISlug {
 }
 export interface ITag {
   tagName: string
+}
+export interface IArticleMedia {
+  contentUrl: string,
+  description: string,
+  title: string,
+  type: string,
+  ref: string,
 }

@@ -21,9 +21,11 @@
       initForm(form);
     }
   });
-  
-  export function open(){
-    if(dialog){dialogState().open(dialog)}
+
+  export function open() {
+    if (dialog) {
+      dialogState().open(dialog);
+    }
   }
 
   function reset(form: HTMLFormElement): void {
@@ -48,7 +50,7 @@
   >
     <h3 class="card-title font-bold text-[#fff] pl-9">Hit Me Up</h3>
     <button
-      onclick={() => dialogState().close(dialog!, form)}
+      onclick={() => (dialog ? dialogState().close(dialog, form) : "")}
       id="btnCloseHmuForm"
       class="text-[#fff] text-center w-6 rounded-md hover:text-orange-dh hover:bg-[#fff]"
     >

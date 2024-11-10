@@ -1,6 +1,8 @@
 // import { STRAPI_URL } from "$env/static/private";
 // import type { IData } from "$lib/models/article.model.js";
 
+
+
 // // export function getArticles(): Promise<any> {
 // //     try {
 // //         const URL = `${STRAPI_URL}/articles`
