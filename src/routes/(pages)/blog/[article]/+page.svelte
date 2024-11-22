@@ -1,18 +1,12 @@
 <script lang="ts">
-  // import { PUBLIC_STRAPI_URL } from "$env/static/public";
   import { page } from "$app/stores";
-  // import type { IArticle } from "$lib/models/article.model";
   import { onMount } from "svelte";
   import "./article.css";
   import Sidebar from "$lib/components/sidebar/sidebar.svelte";
   import type { IArticleMedia } from "$lib/models/article.model";
-  // import { getMedia } from "./+page";
-
-  // let getMedia = $props();
 
   let title = $page.url.pathname;
 
-  /* @type { import('./$houdini').PageData } */
   let { data } = $props();
   let { Article, getMedia } = $state(data);
   let post: any = $state(null);
@@ -104,11 +98,7 @@
 <Sidebar />
 {#if post}
   <!-- 
-  <p class="text-white-dh">
-    {$Article.data.allArticle[0].author}
-    </p> -->
-
-  <!-- <div
+ <div
     class="h-[9em] md:h-1/3 lg:h-96 overflow-hidden -z-10 w-full bg-fixed md:!bg-top bg-no-repeat"
     style="background-image: url({header.asset
     .url}); background-size: 125%; background-position:0rem 5rem"
@@ -120,6 +110,7 @@
     style="background-image: url({header.asset
     .url}); background-size: 100%; background-position:{`${header.hotspot.width * 100}% ${header.hotspot.height * 100}%`}"
     ></div> -->
+
   <div
     bind:this={bannerBox}
     class="banner h-[9em] md:h-60 lg:h-96 overflow-hidden -z-10 w-full bg-fixed bg-no-repeat"
@@ -167,7 +158,7 @@
         {#each post.paragraphRaw as paragraph}
           {#if paragraph.style?.includes("h")}
             <h3
-              class=" font-quirkyrobot text-gray-dh h-8 max-h-full pl-2 text-[2em] mb-[1rem]"
+              class=" font-quirkyrobot text-gray-dh h-24 w-[75vw] max-h-full pl-2 text-[6em] mb-[1rem]"
             >
               {paragraph.children[0].text}
             </h3>
@@ -175,16 +166,16 @@
 
           {#if paragraph.style === "normal"}
             {#each paragraph.children as body}
-              <div class="font-quirkyrobot text-gray-dh pl-2">
+              <div class="font-space-mono text-gray-dh pl-2 text-[.85]">
                 {body.text}
               </div>
             {/each}
             {#if paragraphMedia.length > 0 && paragraphMedia.some((p) => p.ref === paragraph._key)}
-              <div class="flex flex-row gap-x-8 text-gray-dh h-[12%]">
+              <div class="flex flex-row gap-x-8 text-gray-dh">
                 {#each paragraphMedia as card}
                   {#if card.contentUrl && card.ref === paragraph._key}
                     <img
-                      class=" pl-2"
+                      class="pl-2 !h-full !w-[45%]"
                       src={card.contentUrl}
                       alt={card.contentUrl}
                     />
@@ -198,11 +189,13 @@
     </section>
   </div>
 
-  <div class="flex flex-row gap-x-8">
+  <div
+    class="flex flex-row gap-x-8 h-full absolute z-10 top-[40em] left-[58em]"
+  >
     {#each media as card}
       {#if card.contentUrl}
         <img
-          class=" pl-2"
+          class=" pl-2 h-80 w-full"
           width="150"
           src={card.contentUrl}
           alt={card.contentUrl}
