@@ -1,0 +1,16 @@
+query PortfolioCarousel($ref: String!) {
+  allCarousel(where: { slug: { eq: $ref } }) {
+    _id
+    slug
+    title
+    media {
+      contentUrl
+      link
+      title
+      projectType
+      dateCreated
+      description
+      type
+    }
+  }
+}

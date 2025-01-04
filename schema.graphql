@@ -98,6 +98,51 @@ input BooleanFilter {
   neq: Boolean
 }
 
+type Carousel implements Document {
+  """Date the document was created"""
+  _createdAt: DateTime
+
+  """Document ID"""
+  _id: ID
+  _key: String
+
+  """Current document revision"""
+  _rev: String
+
+  """Document type"""
+  _type: String
+
+  """Date the document was last modified"""
+  _updatedAt: DateTime
+  media: [Frame]
+  slug: String
+  title: String
+}
+
+input CarouselFilter {
+  """Apply filters on document level"""
+  _: Sanity_DocumentFilter
+  _createdAt: DatetimeFilter
+  _id: IDFilter
+  _key: StringFilter
+  _rev: StringFilter
+  _type: StringFilter
+  _updatedAt: DatetimeFilter
+  slug: StringFilter
+  title: StringFilter
+}
+
+input CarouselSorting {
+  _createdAt: SortOrder
+  _id: SortOrder
+  _key: SortOrder
+  _rev: SortOrder
+  _type: SortOrder
+  _updatedAt: SortOrder
+  slug: SortOrder
+  title: SortOrder
+}
+
 type CrossDatasetReference {
   _dataset: String
   _key: String
@@ -273,9 +318,13 @@ type Frame implements Document {
 
   """Date the document was last modified"""
   _updatedAt: DateTime
+  client: String
   content: File
   contentUrl: String
-  descriptionRaw: JSON
+  dateCreated: Date
+  description: String
+  link: String
+  projectType: String
   title: String
   type: String
 }
@@ -289,8 +338,13 @@ input FrameFilter {
   _rev: StringFilter
   _type: StringFilter
   _updatedAt: DatetimeFilter
+  client: StringFilter
   content: FileFilter
   contentUrl: StringFilter
+  dateCreated: DateFilter
+  description: StringFilter
+  link: StringFilter
+  projectType: StringFilter
   title: StringFilter
   type: StringFilter
 }
@@ -302,8 +356,13 @@ input FrameSorting {
   _rev: SortOrder
   _type: SortOrder
   _updatedAt: SortOrder
+  client: SortOrder
   content: FileSorting
   contentUrl: SortOrder
+  dateCreated: SortOrder
+  description: SortOrder
+  link: SortOrder
+  projectType: SortOrder
   title: SortOrder
   type: SortOrder
 }
@@ -401,6 +460,10 @@ type RootQuery {
     """Article document ID"""
     id: ID!
   ): Article
+  Carousel(
+    """Carousel document ID"""
+    id: ID!
+  ): Carousel
   Document(
     """Document document ID"""
     id: ID!
@@ -430,6 +493,15 @@ type RootQuery {
     sort: [ArticleSorting!]
     where: ArticleFilter
   ): [Article!]!
+  allCarousel(
+    """Max documents to return"""
+    limit: Int
+
+    """Offset at which to start returning documents from"""
+    offset: Int
+    sort: [CarouselSorting!]
+    where: CarouselFilter
+  ): [Carousel!]!
   allDocument(
     """Max documents to return"""
     limit: Int

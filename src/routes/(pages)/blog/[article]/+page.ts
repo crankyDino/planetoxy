@@ -1,6 +1,7 @@
 import { PUBLIC_SANITY_APP_ID } from '$env/static/public';
 import { createClient } from '@sanity/client';
 import { load_Article } from '$houdini';
+import type { LoadEvent } from '@sveltejs/kit';
 
 const client = createClient({
     projectId: PUBLIC_SANITY_APP_ID,
@@ -10,9 +11,8 @@ const client = createClient({
 })
 
 // let article = $props()
-export async function load(event) {
+export async function load(event: LoadEvent) {
     const { params } = event;
-
     async function fetchMedia(refId: string) {
         const query = `*[_type=='frame' && _id == '${refId}']{title, type, contentUrl, description}`;
         return await client.fetch(query);
@@ -22,15 +22,12 @@ export async function load(event) {
         return fetchMedia(_ref)
     }
 
-    const getArticle = async () => {
-        const prom = {
-            ...(await load_Article({
-                event,
-                variables: { article: params.article }
-            }))
-        }
-        return await prom.Article.fetch();
-    }
-    return { getMedia: getMedia, Article: getArticle }
-}
+    const loadArticle = {
+        ...await load_Article({
+            event,
+            variables: { article: params.article! }
+        })
+    };
 
+    return { getMedia, loadArticle };
+}

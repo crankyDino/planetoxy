@@ -1,4 +1,4 @@
-query Article($article: String!) {
+query Article($article: String!) @cache(policy: CacheOrNetwork) {
   allArticle(where: { slug: { current: { eq: $article } } }) {
     _id
     title

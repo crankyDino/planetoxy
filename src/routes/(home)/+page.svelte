@@ -1,130 +1,27 @@
 <script lang="ts">
-  import type {
-    ICarouselItem,
-    TCarouselType,
-  } from "$lib/components/carousel/carousel";
+  import type { ICarouselItem } from "$lib/components/carousel/carousel";
   import Carousel from "$lib/components/carousel/carousel.svelte";
   import ContactDialog from "$lib/components/contact-dialog/contact-dialog.svelte";
   import StaggeredCarousel from "$lib/components/staggered-carousel/staggered-carousel.svelte";
+  import { onMount } from "svelte";
 
   import Terminal from "../../lib/components/terminal/terminal.svelte";
-  let things: Map<number, ICarouselItem> = new Map<number, ICarouselItem>();
   let moreThings: Map<number, ICarouselItem> = new Map<number, ICarouselItem>();
   let dialog: any;
 
-  things.set(0, {
-    content: "/assets/bitmap/beat tape cover.jpg",
-    date: new Date("2020"),
-    title: "Rare Cludff fdghdfg hdfgghfgdfghb",
-    type: "poster",
-  });
-  things.set(1, {
-    content: "/assets/bitmap/Black Coke Media -- Logo.jpg",
-    date: new Date("2020"),
-    title: "Rare Club",
-    type: "poster",
-  });
-  things.set(2, {
-    content: "/assets/bitmap/Elevation Sign Mockup.png",
-    date: new Date("2020"),
-    title: "Rare Club",
-    type: "poster",
-  });
-  things.set(3, {
-    content: "/assets/bitmap/skate_reel.jpg",
-    date: new Date("2020"),
-    title: "Rare Club",
-    type: "poster",
-  });
-  things.set(4, {
-    content: "/assets/bitmap/Untitled-2.png",
-    date: new Date("2020"),
-    title: "Rare Club",
-    type: "poster",
-  });
-  things.set(5, {
-    content: "/assets/bitmap/skate_reel.jpg",
-    date: new Date("2020"),
-    title: "Rare Club",
-    type: "poster",
-  });
-  things.set(6, {
-    content: "/assets/bitmap/Untitled-2.png",
-    date: new Date("2020"),
-    title: "Rare Club",
-    type: "poster",
-  });
-  moreThings.set(0, {
-    content: "/assets/vectors/logos/adobe-photoshop.svg",
-    date: new Date("2020"),
-    title: "Rare Club",
-    type: "poster",
-  });
-  moreThings.set(1, {
-    content: "/assets/vectors/logos/css3.svg",
-    date: new Date("2020"),
-    title: "Rare Club",
-    type: "poster",
-  });
-  moreThings.set(2, {
-    content: "/assets/vectors/logos/adobe-illustrator.svg",
-    date: new Date("2020"),
-    title: "Rare Club",
-    type: "poster",
-  });
-  moreThings.set(3, {
-    content: "/assets/vectors/logos/android.svg",
-    date: new Date("2020"),
-    title: "Rare Club",
-    type: "poster",
-  });
-  moreThings.set(4, {
-    content: "/assets/vectors/logos/html5.svg",
-    date: new Date("2020"),
-    title: "Rare Club",
-    type: "poster",
-  });
-  moreThings.set(5, {
-    content: "/assets/vectors/logos/adobe-photoshop.svg",
-    date: new Date("2020"),
-    title: "Rare Club",
-    type: "poster",
-  });
-  moreThings.set(6, {
-    content: "/assets/vectors/logos/css3.svg",
-    date: new Date("2020"),
-    title: "Rare Club",
-    type: "poster",
-  });
-  moreThings.set(7, {
-    content: "/assets/vectors/logos/blender.svg",
-    date: new Date("2020"),
-    title: "Rare Club",
-    type: "poster",
-  });
-  moreThings.set(8, {
-    content: "/assets/vectors/logos/javascript.svg",
-    date: new Date("2020"),
-    title: "Rare Club",
-    type: "poster",
-  });
-  moreThings.set(9, {
-    content: "/assets/vectors/logos/figma.svg",
-    date: new Date("2020"),
-    title: "Rare Club",
-    type: "poster",
-  });
-  moreThings.set(10, {
-    content: "/assets/vectors/logos/go.svg",
-    date: new Date("2020"),
-    title: "Rare Club",
-    type: "poster",
-  });
-  moreThings.set(9, {
-    content: "/assets/vectors/logos/python-outline.svg",
-    date: new Date("2020"),
-    title: "Rare Club",
-    type: "poster",
+  import type { PageData } from "./$houdini";
+
+  interface Props {
+    data: PageData;
+  }
+  const { data } = $props();
+  const { PortfolioCarousel } = $derived(data);
+
+  onMount(() => {
+    // console.log($inspect($PortfolioCarousel));
+    // portfolioCarousel.PortfolioCarousel.fetch().then(({ data }: any) => {
+    //   carouselMedia = data.allCarousel[0].media;
+    // });
   });
 </script>
 
@@ -161,7 +58,7 @@
       class="hero__cta w-max flex flex-row sm:flex-col lg:flex-row xl:flex-col gap-3 justify-even content-end"
     >
       <button class="btn bg-orange-dh text-white-dh">
-        <a href="./projects">PROJECTS</a>
+        <a href="https://medium.com/@bamodise">MY BLOG</a>
       </button>
       <button
         onclick={() => dialog.open()}
@@ -208,16 +105,16 @@
       </h3>
       <ul
         style="line-height: 1.5em"
-        class="flex flex-col flex-wrap pl-1.5 m-0 max-w-80 h-24 font-space-mono list-none overflow-hidden"
+        class="flex flex-col flex-wrap pl-1.5 m-0 max-w-xl h-24 font-space-mono list-none overflow-hidden"
       >
         <li>> Angular</li>
         <li>> ASP.NET</li>
         <li>> MySQL</li>
         <li>> Azure</li>
         <!--  -->
+        <li>> Svelte</li>
         <li>> Figma</li>
         <li>> DaVinci Resolve</li>
-        <li>> Corel Draw</li>
         <li>> Blender</li>
       </ul>
     </div>
@@ -262,6 +159,7 @@
     </div>
   </div>
 </section>
+
 <section class="grid grid-rows-1 pt-8">
   <h3
     class="shadow--solid__portfolio font-pokemon-classic container pb-2 text-center mb-2 px-8 md:px-16 lg:pl-32 text-white-dh text-[8vw] md:text-2xl lg:text-4xl"
@@ -269,8 +167,12 @@
     Portfolio
   </h3>
   <!-- <Carousel carouselItems={things} carouselType={"card"} /> -->
-  <StaggeredCarousel carouselItems={things} carouselType={"card"}
-  ></StaggeredCarousel>
+  {#if !$PortfolioCarousel.fetching && $PortfolioCarousel?.data}
+    <StaggeredCarousel
+      carouselItems={$PortfolioCarousel.data.allCarousel[0].media}
+      carouselType={"card"}
+    ></StaggeredCarousel>
+  {/if}
 </section>
 <section class="grid grid-rows-1 py-12">
   <Carousel
@@ -283,14 +185,4 @@
 <ContactDialog bind:this={dialog} />
 
 <style>
-  .paragraph::before {
-    content: "";
-    width: 2em;
-    display: block;
-    height: 2.6em;
-    position: absolute;
-    z-index: -1;
-    transform: translateX(-11px) translateX(0px);
-    @apply bg-orange-dh;
-  }
 </style>

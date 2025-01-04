@@ -1,5 +1,6 @@
 @import url("animations/typewriter.css");
 @import url("util/util.css");
+@import url("util/icons.css");
 /* @import url("/assets/fonts/pokemon_classic/Pokemon/Classic.ttf"); */
 
 @tailwind base;

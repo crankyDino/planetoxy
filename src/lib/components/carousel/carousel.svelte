@@ -48,7 +48,7 @@
           {#if carouselType === "card"}
             <img
               class="carousel__image h-fit w-[12rem] max-w-[14rem]"
-              src={item[1].content}
+              src={item[1].contentUrl}
               alt=""
             />
             <div class="carousel__label w-full pl-2 overflow-clip">
@@ -62,13 +62,13 @@
                 {item[1].type}
               </p>
               <p class="text-sm text-gray-400 w-fit">
-                {item[1].date.getFullYear()}
+                {item[1].dateCreated.getFullYear()}
               </p>
             </div>
           {:else}
             <img
               class="carousel__image h-fit w-[4rem] max-w-[4rem]"
-              src={item[1].content}
+              src={item[1].contentUrl}
               alt=""
             />
           {/if}

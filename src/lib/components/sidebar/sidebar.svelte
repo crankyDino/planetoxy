@@ -42,12 +42,13 @@
     </li>
     <li>
       <a
-        href="https://twitter.com/DigitalHippie_"
+        href="https://www.instagram.com/digitalhippie.xyz"
         target="_blank"
         class="!flex gap-3 items-center"
       >
         <p class="hidden text-white-dh text-nowrap text-[0px]">Twitter</p>
-        <img style="width: 1.72rem" src="/assets/vectors/twitter.svg" alt="" />
+        <span class="instagram--solid"></span>
+        <!-- <img style="width: 1.72rem" src="/assets/vectors/icon-instagram-outlined.svg" alt="" /> -->
       </a>
     </li>
   </ul>

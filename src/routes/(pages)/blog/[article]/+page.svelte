@@ -4,20 +4,26 @@
   import "./article.css";
   import Sidebar from "$lib/components/sidebar/sidebar.svelte";
   import type { IArticleMedia } from "$lib/models/article.model";
+  import type { PageData } from "./$types";
+
+  interface Props {
+    data: PageData;
+  }
 
   let title = $page.url.pathname;
 
-  let { data } = $props();
-  let { Article, getMedia } = $state(data);
-  let post: any = $state(null);
-  let header: any = $state(null);
+  let { data }: Props = $props();
+  let { getMedia, loadArticle } = $derived(data);
+  let { Article } = $derived(loadArticle);
+
   let paragraphMedia: Array<IArticleMedia> = $state([]);
-  let media: any = $state([]);
+  let media: Array<any> = $derived([]);
   let bannerBox: HTMLDivElement | null = $state(null);
 
   let posX = $state(0);
   let posY = $state(0);
   let offset = $state(0);
+
   /**
    * TODO: figure out a better method than setTimeout
    */
@@ -32,8 +38,8 @@
 
         // posX = header.hotspot.x;
         // posY = header.hotspot.y;
-        posX = header.hotspot.width;
-        posY = header.hotspot.height;
+        posX = $Article.data?.allArticle[0].header?.hotspot?.width || 0;
+        posY = $Article.data?.allArticle[0].header?.hotspot?.height || 0;
         offset = bannerBox.offsetHeight;
 
         // const digitsBeforeDecimal =
@@ -49,72 +55,58 @@
     }, 0);
   }
 
-  onMount(() => {
-    Article()
+  function loadMedia(ref: string, key: string) {
+    getMedia(ref)
       .then((res: any) => {
-        let { data } = res;
-        post = data.allArticle[0];
-        header = data.allArticle[0].header;
-        media = data.allArticle[0].media;
+        console.log(res);
+        paragraphMedia.push({
+          contentUrl: res[0].contentUrl,
+          description: res[0].description,
+          title: res[0].title,
+          type: res[0].type,
+          ref: key,
+        });
       })
-      .finally(() => {
-        let key: string = "";
-        (post.paragraphRaw as any[]).map((p: any) => {
-          if (p.style === "normal") {
-            key = p._key;
-          }
-          if (p._type.includes("reference")) {
-            const ref = p._ref;
-            theMedia(ref, key);
-          }
-          console.log(post);
-        });
+      .catch((err) => {
+        console.log(err);
       });
+  }
 
-    const theMedia = (ref: string, key: string) => {
-      getMedia(ref)
-        .then((res: any) => {
-          console.log(res);
-          paragraphMedia.push({
-            contentUrl: res[0].contentUrl,
-            description: res[0].description,
-            title: res[0].title,
-            type: res[0].type,
-            ref: key,
-          });
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    };
+  function onload() {
+    let key: string = "";
+
+    ($Article.data!.allArticle[0].paragraphRaw as any[]).map((p: any) => {
+      if (p.style === "normal") {
+        key = p._key;
+      }
+
+      if (p._type.includes("reference")) {
+        const ref = p._ref;
+        loadMedia(ref, key);
+      }
+    });
+  }
+
+  onMount(() => {
+    console.log("loadArticle", $Article);
+
+    if (!$Article.fetching) {
+      onload();
+    }
 
     // alignBanner();
-
-    // header.hotspot.width =
-    // (bannerBox.offsetHeight * header.hotspot.width) / 100;
+    // header.hotspot.width = (bannerBox.offsetHeight * header.hotspot.width) / 100;
   });
 </script>
 
 <Sidebar />
-{#if post}
-  <!-- 
- <div
-    class="h-[9em] md:h-1/3 lg:h-96 overflow-hidden -z-10 w-full bg-fixed md:!bg-top bg-no-repeat"
-    style="background-image: url({header.asset
-    .url}); background-size: 125%; background-position:0rem 5rem"
-    ></div> -->
-
-  <!-- <div
-    bind:this={bannerBox}
-    class="banner h-[9em] md:h-60 lg:h-96 overflow-hidden -z-10 w-full bg-fixed bg-no-repeat"
-    style="background-image: url({header.asset
-    .url}); background-size: 100%; background-position:{`${header.hotspot.width * 100}% ${header.hotspot.height * 100}%`}"
-    ></div> -->
-
+<p class="text-white-dh">loading = {$Article.fetching}</p>
+{#if !$Article.fetching}
   <div
+    {onload}
     bind:this={bannerBox}
     class="banner h-[9em] md:h-60 lg:h-96 overflow-hidden -z-10 w-full bg-fixed bg-no-repeat"
-    style="background-image: url({header.asset
+    style="background-image: url({$Article.data!.allArticle[0].header!.asset!
       .url}); background-size: 100%; background-position:calc({posX}% ) calc(({posY}% + ({offset}px / 3.8)) - min({offset}px, 100vh / 2))"
   ></div>
   <div class="md:pl-12 lg:pl-40">
@@ -124,38 +116,38 @@
           <h1
             class="bg-black-dh relative bottom-7 md:bottom-12 lg:bottom-8 w-fit max-w-[45vw] md:w-[50vw] font-hanuman font-extrabold text-orange-dh text-[1.5em] md:text-6xl text-wrap lg:text-nowrap p-2 md:p-4 md:pb-6"
           >
-            {post.title}
+            {$Article.data!.allArticle[0].title}
           </h1>
           <div
             class="font-quirkyrobot bg-black-dh text-gray-dh pl-2 pr-8 w-fit"
           >
             <p class="letter--spacing--sm text-[1.3em]">
-              By: {post.author ?? "olepiob"}
+              By: {$Article.data!.allArticle[0].author ?? "olepiob"}
             </p>
             <p
               style="letter-spacing: 3px;
               word-spacing: -3px;"
               class="text-[.9em]"
             >
-              {post.published.split("T")[0]}
+              {$Article.data!.allArticle[0].published?.split("T")[0]}
             </p>
           </div>
         </div>
         <div
           class="text-nowrap px-2 md:pr-0 md:pl-4 flex flex-row gap-2 h-fit w-full overflow-auto top-[34%] md:top-[10px] relative"
         >
-          {#each post.tags as tag}
+          {#each $Article.data!.allArticle[0].tags! as tag}
             <p
               class="letter--spacing--md font-quirkyrobot text-orange-dh text-[.9em]"
             >
-              #{tag.tagName}
+              #{tag!.tagName}
             </p>
           {/each}
         </div>
       </div>
 
       <div class="col-span-12 md:col-span-8 lg:col-span-6 space-y-3">
-        {#each post.paragraphRaw as paragraph}
+        {#each $Article.data!.allArticle[0].paragraphRaw as paragraph}
           {#if paragraph.style?.includes("h")}
             <h3
               class=" font-quirkyrobot text-gray-dh h-24 w-[75vw] max-h-full pl-2 text-[6em] mb-[1rem]"

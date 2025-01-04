@@ -1,21 +1,24 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import "./blog.css";
+  // import type { PageData } from "./$houdini";
   interface Props {
     data: any;
   }
 
   let { data }: Props = $props();
+  // let { Articles } = data;
+  let { Articles } = $derived(data);
 
-  let { Articles } = data;
-  let posts: any[] = $state([]);
+  // let posts: any[] = $state([]);
   /* @type { import('./$houdini').PageData } */
   // console.log($Articles.data.allArticle);
-  console.log(posts);
+  // console.log(posts);
   onMount(() => {
-    if (!$Articles.fetching) {
-      posts = $Articles.data.allArticle;
-    }
+    // console.log($inspect($Articles.data));
+    // if (!$data.Articles.fetching) {
+    //   posts = $Articles.data.allArticle;
+    // }
   });
 </script>
 
@@ -24,8 +27,8 @@
 >
   blog
 </h3>
-{#if posts}
-  {#each posts as post}
+{#if !$Articles.fetching}
+  {#each $Articles.data?.allArticle as any as post}
     <a href="/blog/{post.slug.current}" class="block w-fit">
       <div
         class="blog__item__block w-[90vw] md:w-[70vw] h-fit flex flex-row pl-[4vw] pt-6"
@@ -55,11 +58,15 @@
               </div>
             </div>
             <div class="col-span-4 flex justify-between items-center">
-              <p
-                class="text-white-dh tracking-wider text-sm font-space-mono font-thin min-w-[11%] overflow-hidden text-nowrap text-ellipsis"
-              >
-                description
-              </p>
+              {#each post.tags as tag}
+                <div>
+                  <p
+                    class="text-white-dh tracking-wider text-sm font-space-mono font-thin min-w-[11%] overflow-hidden text-nowrap text-ellipsis"
+                  >
+                    {tag.tagName}
+                  </p>
+                </div>
+              {/each}
               <span
                 style="width:clamp(6vw, 100%, 33em);"
                 class="blog__item__underline ml-4 bg-orange-dh h-3 !min-w-[25%]"
