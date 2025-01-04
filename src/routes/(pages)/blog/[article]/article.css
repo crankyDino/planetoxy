@@ -8,9 +8,15 @@
   word-spacing: -9px;
 }
 
-/* .banner {
-  background-position: 0rem -46rem;
-} */
+.title__backdrop::before {
+  /* content: ""; */
+  background: pink;
+  height: 38px;
+  width: 15%;
+  position: absolute !important;
+  /* top: 753px; */
+  z-index: -1;
+}
 
 @media (max-width: 768px) {
   .banner {

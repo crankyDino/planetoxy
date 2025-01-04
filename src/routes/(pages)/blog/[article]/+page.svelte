@@ -100,7 +100,6 @@
 </script>
 
 <Sidebar />
-<p class="text-white-dh">loading = {$Article.fetching}</p>
 {#if !$Article.fetching}
   <div
     {onload}
@@ -150,7 +149,7 @@
         {#each $Article.data!.allArticle[0].paragraphRaw as paragraph}
           {#if paragraph.style?.includes("h")}
             <h3
-              class=" font-quirkyrobot text-gray-dh h-24 w-[75vw] max-h-full pl-2 text-[6em] mb-[1rem]"
+              class="title__backdrop font-quirkyrobot text-gray-dh h-24 w-[75vw] max-h-full pl-2 text-[6em] mb-[1rem]"
             >
               {paragraph.children[0].text}
             </h3>
@@ -181,18 +180,20 @@
     </section>
   </div>
 
-  <div
-    class="flex flex-row gap-x-8 h-full absolute z-10 top-[40em] left-[58em]"
-  >
-    {#each media as card}
-      {#if card.contentUrl}
-        <img
-          class=" pl-2 h-80 w-full"
-          width="150"
-          src={card.contentUrl}
-          alt={card.contentUrl}
-        />
-      {/if}
-    {/each}
-  </div>
+  {#if $Article.data!.allArticle[0].media!.length > 0}
+    <div
+      class="flex flex-row gap-x-8 h-full absolute z-10 top-[40em] left-[58em]"
+    >
+      {#each $Article.data!.allArticle[0].media! as card}
+        {#if card!.contentUrl}
+          <img
+            class=" pl-2 h-80 w-full"
+            width="150"
+            src={card!.contentUrl}
+            alt={card!.contentUrl}
+          />
+        {/if}
+      {/each}
+    </div>
+  {/if}
 {/if}
