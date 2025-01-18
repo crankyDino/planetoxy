@@ -14,7 +14,7 @@ const client = createClient({
 export async function load(event: LoadEvent) {
     const { params } = event;
     async function fetchMedia(refId: string) {
-        const query = `*[_type=='frame' && _id == '${refId}']{title, type, contentUrl, description}`;
+        const query = `*[_type=='graphic' && _id == '${refId}']{title, type, contentUrl, description}`;
         return await client.fetch(query);
     }
 

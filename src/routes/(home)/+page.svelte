@@ -58,7 +58,7 @@
       class="hero__cta w-max flex flex-row sm:flex-col lg:flex-row xl:flex-col gap-3 justify-even content-end"
     >
       <button class="btn bg-orange-dh text-white-dh">
-        <a href="https://medium.com/@bamodise">MY BLOG</a>
+        <a href="/projects">Projects</a>
       </button>
       <button
         onclick={() => dialog.open()}

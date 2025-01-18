@@ -38,7 +38,7 @@ type Article implements Document {
   _updatedAt: DateTime
   author: String
   header: Image
-  media: [Frame]
+  media: [Graphic]
   paragraphRaw: JSON
   published: DateTime
   slug: Slug
@@ -85,7 +85,7 @@ type Block {
   style: String
 }
 
-union BlockOrFrame = Block | Frame
+union BlockOrGraphic = Block | Graphic
 
 input BooleanFilter {
   """Checks if the value is equal to the given input."""
@@ -114,7 +114,7 @@ type Carousel implements Document {
 
   """Date the document was last modified"""
   _updatedAt: DateTime
-  media: [Frame]
+  media: [Graphic]
   slug: String
   title: String
 }
@@ -302,7 +302,31 @@ input FloatFilter {
   neq: Float
 }
 
-type Frame implements Document {
+type Geopoint {
+  _key: String
+  _type: String
+  alt: Float
+  lat: Float
+  lng: Float
+}
+
+input GeopointFilter {
+  _key: StringFilter
+  _type: StringFilter
+  alt: FloatFilter
+  lat: FloatFilter
+  lng: FloatFilter
+}
+
+input GeopointSorting {
+  _key: SortOrder
+  _type: SortOrder
+  alt: SortOrder
+  lat: SortOrder
+  lng: SortOrder
+}
+
+type Graphic implements Document {
   """Date the document was created"""
   _createdAt: DateTime
 
@@ -329,7 +353,7 @@ type Frame implements Document {
   type: String
 }
 
-input FrameFilter {
+input GraphicFilter {
   """Apply filters on document level"""
   _: Sanity_DocumentFilter
   _createdAt: DatetimeFilter
@@ -349,7 +373,7 @@ input FrameFilter {
   type: StringFilter
 }
 
-input FrameSorting {
+input GraphicSorting {
   _createdAt: SortOrder
   _id: SortOrder
   _key: SortOrder
@@ -365,30 +389,6 @@ input FrameSorting {
   projectType: SortOrder
   title: SortOrder
   type: SortOrder
-}
-
-type Geopoint {
-  _key: String
-  _type: String
-  alt: Float
-  lat: Float
-  lng: Float
-}
-
-input GeopointFilter {
-  _key: StringFilter
-  _type: StringFilter
-  alt: FloatFilter
-  lat: FloatFilter
-  lng: FloatFilter
-}
-
-input GeopointSorting {
-  _key: SortOrder
-  _type: SortOrder
-  alt: SortOrder
-  lat: SortOrder
-  lng: SortOrder
 }
 
 input IDFilter {
@@ -468,10 +468,10 @@ type RootQuery {
     """Document document ID"""
     id: ID!
   ): Document
-  Frame(
-    """Frame document ID"""
+  Graphic(
+    """Graphic document ID"""
     id: ID!
-  ): Frame
+  ): Graphic
   SanityFileAsset(
     """SanityFileAsset document ID"""
     id: ID!
@@ -511,15 +511,15 @@ type RootQuery {
     sort: [DocumentSorting!]
     where: DocumentFilter
   ): [Document!]!
-  allFrame(
+  allGraphic(
     """Max documents to return"""
     limit: Int
 
     """Offset at which to start returning documents from"""
     offset: Int
-    sort: [FrameSorting!]
-    where: FrameFilter
-  ): [Frame!]!
+    sort: [GraphicSorting!]
+    where: GraphicFilter
+  ): [Graphic!]!
   allSanityFileAsset(
     """Max documents to return"""
     limit: Int
