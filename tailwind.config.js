@@ -42,7 +42,7 @@ export default {
         chintzy: ["chintzy"],
         "pokemon-classic": ["Pokemon Classic"],
         comic: ["Comic"],
-        "space-mono": ["SpaceMono-Regular"],
+        "space-mono": ["Space Mono"],
         hanuman: ["Hanuman"],
         montserrat: ["Montserrat"],
         quirkyrobot: ["QuirkyRobot"],

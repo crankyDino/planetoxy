@@ -5,5 +5,5 @@
 </script>
 
 <Sidebar />
-{@render children()}
-<!-- <slot /> -->
+<!-- {@render children()} -->
+<slot />

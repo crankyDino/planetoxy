@@ -1,14 +1,15 @@
 @import url("animations/typewriter.css");
 @import url("util/util.css");
 @import url("util/icons.css");
-@import "tailwindcss";
 /* @import url("/assets/fonts/pokemon_classic/Pokemon/Classic.ttf"); */
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
   --dh-orange: #e77236;
 }
-
 
 body,
 img:hover,
@@ -34,12 +35,6 @@ button:hover {
   font-style: normal;
   src: url(/assets/fonts/quirky-robot/QuirkyRobot.ttf) format("ttf");
 }
-/* 
-@font-face {
-  font-family: "SpaceMono-Regular";
-  font-style: normal;
-  src: url(/assets/fonts/spacemono/SpaceMono-Regular.ttf) format("ttf");
-} */
 
 @layer components {
   .btn {
