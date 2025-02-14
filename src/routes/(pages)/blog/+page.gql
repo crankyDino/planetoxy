@@ -1,7 +1,7 @@
 query Articles {
   allArticle {
     title
-    slug {
+      slug {
       current
     }
     tags {
