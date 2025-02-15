@@ -1,7 +1,5 @@
 @import "tailwindcss";
 
-@layer components {
-  .link--active {
-    @apply text-orange-dh font-semibold;
-  }
+@components .link--active {
+  font: var(--dh-orange) var(--font-semibold);
 }

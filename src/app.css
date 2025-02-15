@@ -1,2 +1,9 @@
-@import url(./styles/style.css);
-@import "tailwindcss"; 
+@import url("./styles/style.css");
+@import "./styles/util/fonts.css";
+@import "./styles/util/colors.css";
+@import "tailwindcss";
+
+
+/* @import "./styles/util/util.css"; */
+/* @import "./styles/util/icons.css"; */
+/* @import "./styles/animations/typewriter.css"; */

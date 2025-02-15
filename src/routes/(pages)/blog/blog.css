@@ -1,6 +1,4 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
 @layer components {
   .blog__item--hover::before {
@@ -9,7 +7,7 @@
     /* filter: contrast(86%) saturate(68%) brightness(88%) hue-rotate(20deg)
       hue-rotate(314deg) blur(4px) opacity(.3); */
     /* mix-blend-mode: soft-light; */
-    @apply bg-orange-dh;
+    background-color: var(--color-dh-orange);
     width: 100%;
     z-index: -1;
     position: absolute;
@@ -34,6 +32,7 @@
 } */
 
 @layer components {
+
   .blog__item--hover:hover:before,
   .blog__item--hover:hover:after {
     transform: scaleX(1);
@@ -43,20 +42,24 @@
   .blog__item--hover span {
     transition: color, background, cubic-bezier(0.44, 0.64, 0.56, 1.25) 180ms;
   }
+
   .blog__item--hover:hover div h4 {
-    @apply text-black-dh;
+    font: var(--color-dh-black);
   }
+
   .blog__item__block:hover {
     .blog__item__elem {
-      @apply !bg-red-700;
+      background-color: var(--color-red-700);
     }
+
     & .blog__item__underline {
-      @apply !w-[33%] !h-[20px];
+      /* width: var (--w-[33%]) !important;
+      height: var (--h-[20px]) !important; */
     }
   }
 
   .blog__item--hover:hover span {
-    @apply bg-black-dh;
+    background-color: var(--color-dh-black);
   }
 }
 
@@ -64,6 +67,7 @@ pre b {
   padding: 1.6px;
   animation: wave 4000ms infinite ease-in-out alternate;
 }
+
 /* pre {
   transform: rotate(80deg);
 } */
@@ -72,6 +76,7 @@ pre b {
   from {
     padding: 0.3px;
   }
+
   to {
     padding: 1.6px;
   }

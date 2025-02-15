@@ -7,7 +7,7 @@
     margin: 0 auto; /* Gives that scrolling effect as the typing happens */
     letter-spacing: 0.15em; /* Adjust as needed */
     animation: typing 1.5s steps(18, end), blink-caret 0.75s step-end infinite;
-    @apply border-r-orange-dh
+    @apply border-r-dh-orange
   }}
 
 /* The typing effect */

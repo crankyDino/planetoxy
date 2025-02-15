@@ -235,7 +235,7 @@
             w-auto
             resize
             caret-transparent--off
-            focus-visible:outline-none
+            focus-visible:outline-hidden
             "
             contenteditable
           ></span>

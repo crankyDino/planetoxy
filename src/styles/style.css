@@ -1,14 +1,19 @@
-@import url("animations/typewriter.css");
-@import url("util/util.css");
-@import url("util/icons.css");
+/* @import url("animations/typewriter.css"); */
+/* @import url("util/util.css"); */
+/* @import url("util/icons.css"); */
+@import url("util/colors.css");
+@import url("util/fonts.css");
 @import "tailwindcss";
 /* @import url("/assets/fonts/pokemon_classic/Pokemon/Classic.ttf"); */
 
 
-:root {
+/* :root {
   --dh-orange: #e77236;
-}
+} */
 
+/* body{
+  background-color: pink;
+} */
 
 body,
 img:hover,
@@ -17,35 +22,15 @@ button:hover {
   cursor: url(/assets/bitmap/cursor-pointer-finger.png) format("ttf");
 }
 
-/* @font-face {
-  font-family: "Chintzy";
-  font-style: normal;
-  src: url(/assets/fonts/Chintzy/chintzy.ttf) format("ttf");
-} */
-
-/* @font-face {
-  font-family: "Pokemon Classic";
-  font-style: normal;
-  src: url(/assets/fonts/pokemon_classic/Pokemon\ Classic.ttf) format("ttf");
-} */
-
-/* @font-face {
-  font-family: "QuirkyRobot";
-  font-style: normal;
-  src: url(/assets/fonts/quirky-robot/QuirkyRobot.ttf) format("ttf");
-} */
-
-/* 
-@font-face {
-  font-family: "SpaceMono-Regular";
-  font-style: normal;
-  src: url(/assets/fonts/spacemono/SpaceMono-Regular.ttf) format("ttf");
-} */
 
 @layer components {
   .btn {
     letter-spacing: 0.15438;
-    @apply w-36 h-9 flex-shrink-0 bg-light-gray-dh text-black-dh font-space-mono font-bold text-center;
+    width: var(--w-36);
+    font-family: var(--font-space-mono);
+    height: var(--h-9);
+    color: var(--color-dh-black);
+    /*  flex-shrink-0 bg-dh-light-gray   font-bold text-center; */
   }
 
   .filter--orange {
@@ -69,7 +54,7 @@ canvas {
   position: absolute;
   z-index: -1;
   transform: translateX(-11px) translateX(0px);
-  @apply bg-orange-dh;
+  /* @apply bg-dh-orange; */
 }
 
 .shadow--solid__about-me::before {
@@ -78,7 +63,8 @@ canvas {
   position: absolute;
   z-index: -1;
   transform: translateX(-8px) translatey(4px);
-  @apply text-orange-dh;
+  /* @apply text-dh-orange; */
+  color: var(--color-dh-orange);
 }
 
 .shadow--solid__ashley::before {
@@ -86,8 +72,9 @@ canvas {
   width: fit-content;
   position: absolute;
   z-index: -1;
-  transform: translateX(-5px) translatey(3px);
-  @apply text-orange-dh;
+  transform: translateX(-8px) translatey(3px);
+  /* font: var(--dh-orange); */
+  color: var(--color-dh-orange);
 }
 
 .shadow--solid__portfolio::before {
@@ -95,8 +82,8 @@ canvas {
   width: fit-content;
   position: absolute;
   z-index: -1;
-  transform: translateX(-5px) translatey(3px);
-  @apply text-orange-dh;
+  transform: translateX(-8px) translatey(3px);
+  color: var(--color-dh-orange);
 }
 
 .hero__name {
@@ -217,7 +204,7 @@ canvas {
   border-bottom: solid 3.6px;
   z-index: -1;
   transition: transform 0.3s ease;
-  border-bottom-color: var(--dh-orange);
+  border-bottom-color: var(--color-dh-orangee);
 }
 
 .dh__underline {

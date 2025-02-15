@@ -4,5 +4,5 @@ import houdini from 'houdini/vite'
 import { defineConfig } from 'vite'
 
 export default defineConfig({
-	plugins: [tailwindcss(), houdini(), sveltekit()]
+	plugins: [tailwindcss(), houdini(), sveltekit(),]
 });

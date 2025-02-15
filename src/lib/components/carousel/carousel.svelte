@@ -53,8 +53,7 @@
             />
             <div class="carousel__label w-full pl-2 overflow-clip">
               <h6
-                style="text-overflow: ellipsis;"
-                class="text-orange-dh font-space-mono text-lg w-full overflow-hidden text-nowrap"
+                class="text-dh-orange font-space-mono text-ellipsis text-lg w-full overflow-hidden text-nowrap"
               >
                 {item[1].title}
               </h6>

@@ -23,7 +23,7 @@
 </script>
 
 <h3
-  class="font-space-mono text-light-gray-dh pl-8 font-semibold text-xl opacity-15"
+  class="font-space-mono text-dh-light-gray/15 pl-8 font-semibold text-xl "
 >
   blog
 </h3>
@@ -34,7 +34,7 @@
         class="blog__item__block w-[90vw] md:w-[70vw] h-fit flex flex-row pl-[4vw] pt-6"
       >
         <span
-          class="blog__item__elem bg-orange-dh grid h-14 align-top w-3 content-end"
+          class="blog__item__elem bg-dh-orange grid h-14 align-top w-3 content-end"
         ></span>
         <div class="max-w-full grid grid-cols-12 ml-3 w-[90%]">
           <div
@@ -42,17 +42,17 @@
           >
             <div class="col-span-8 grid grid-cols-12">
               <h4
-                class="col-span-8 md:col-span-10 text-white-dh pt-3 font-hanuman font-extrabold text-2xl md:text-6xl min-w-[33%] overflow-hidden text-nowrap text-ellipsis w-[75%]"
+                class="col-span-8 md:col-span-10 text-dh-white pt-3 font-hanuman font-extrabold text-2xl md:text-6xl min-w-[33%] overflow-hidden text-nowrap text-ellipsis w-[75%]"
               >
                 {post.title}
               </h4>
               <div
                 class="col-span-4 md:col-span-2 m-auto w-fit md:min-w-[33%] text-end text-nowrap"
               >
-                <p class="font-quirkyrobot tracking-[.2em] text-white-dh">
+                <p class="font-quirkyrobot tracking-[.2em] text-dh-white">
                   {post.published?.split("T")[0]}
                 </p>
-                <p class="font-quirkyrobot text-white-dh tracking-[.11em]">
+                <p class="font-quirkyrobot text-dh-white tracking-[.11em]">
                   /// read more
                 </p>
               </div>
@@ -61,7 +61,7 @@
               {#each post.tags as tag}
                 <div>
                   <p
-                    class="text-white-dh tracking-wider text-sm font-space-mono font-thin min-w-[11%] overflow-hidden text-nowrap text-ellipsis"
+                    class="text-dh-white tracking-wider text-sm font-space-mono font-thin min-w-[11%] overflow-hidden text-nowrap text-ellipsis"
                   >
                     {tag.tagName}
                   </p>
@@ -69,7 +69,7 @@
               {/each}
               <span
                 style="width:clamp(6vw, 100%, 33em);"
-                class="blog__item__underline ml-4 bg-orange-dh h-3 !min-w-[25%]"
+                class="blog__item__underline ml-4 bg-dh-orange h-3 !min-w-[25%]"
               ></span>
             </div>
           </div>

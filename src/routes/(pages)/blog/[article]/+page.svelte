@@ -113,12 +113,12 @@
       <div class="grid sm:flex flex-col col-span-12 md:flex-row w-fit">
         <div class="w-full">
           <h1
-            class="bg-black-dh relative bottom-7 md:bottom-12 lg:bottom-8 w-fit max-w-[45vw] md:w-[50vw] font-hanuman font-extrabold text-orange-dh text-[1.5em] md:text-6xl text-wrap lg:text-nowrap p-2 md:p-4 md:pb-6"
+            class="bg-dh-black relative bottom-7 md:bottom-12 lg:bottom-8 w-fit max-w-[45vw] md:w-[50vw] font-hanuman font-extrabold text-dh-orange text-[1.5em] md:text-6xl text-wrap lg:text-nowrap p-2 md:p-4 md:pb-6"
           >
             {$Article.data!.allArticle[0].title}
           </h1>
           <div
-            class="font-quirkyrobot bg-black-dh text-gray-dh pl-2 pr-8 w-fit"
+            class="font-quirkyrobot bg-dh-black text-dh-gray pl-2 pr-8 w-fit"
           >
             <p class="letter--spacing--sm text-[1.3em]">
               By: {$Article.data!.allArticle[0].author ?? "olepiob"}
@@ -137,7 +137,7 @@
         >
           {#each $Article.data!.allArticle[0].tags! as tag}
             <p
-              class="letter--spacing--md font-quirkyrobot text-orange-dh text-[.9em]"
+              class="letter--spacing--md font-quirkyrobot text-dh-orange text-[.9em]"
             >
               #{tag!.tagName}
             </p>
@@ -149,7 +149,7 @@
         {#each $Article.data!.allArticle[0].paragraphRaw as paragraph}
           {#if paragraph.style?.includes("h")}
             <h3
-              class="title__backdrop font-quirkyrobot text-gray-dh h-24 w-[75vw] max-h-full pl-2 text-[6em] mb-[1rem]"
+              class="title__backdrop font-quirkyrobot text-dh-gray h-24 w-[75vw] max-h-full pl-2 text-[6em] mb-[1rem]"
             >
               {paragraph.children[0].text}
             </h3>
@@ -157,12 +157,12 @@
 
           {#if paragraph.style === "normal"}
             {#each paragraph.children as body}
-              <div class="font-space-mono text-gray-dh pl-2 text-[.85]">
+              <div class="font-space-mono text-dh-gray pl-2 text-[.85]">
                 {body.text}
               </div>
             {/each}
             {#if paragraphMedia.length > 0 && paragraphMedia.some((p) => p.ref === paragraph._key)}
-              <div class="flex flex-row gap-x-8 text-gray-dh">
+              <div class="flex flex-row gap-x-8 text-dh-gray">
                 {#each paragraphMedia as card}
                   {#if card.contentUrl && card.ref === paragraph._key}
                     <img
