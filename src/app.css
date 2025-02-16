@@ -1,6 +1,7 @@
 @import url("./styles/style.css");
 @import "./styles/util/fonts.css";
 @import "./styles/util/colors.css";
+@import "./styles/util/components.css";
 @import "tailwindcss";
 
 

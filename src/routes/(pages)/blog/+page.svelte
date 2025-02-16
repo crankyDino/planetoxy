@@ -22,9 +22,7 @@
   });
 </script>
 
-<h3
-  class="font-space-mono text-dh-light-gray/15 pl-8 font-semibold text-xl "
->
+<h3 class="font-space-mono text-dh-light-gray/15 pl-8 font-semibold text-xl">
   blog
 </h3>
 {#if !$Articles.fetching}

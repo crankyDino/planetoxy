@@ -11,7 +11,7 @@
   });
 </script>
 
-<div class="w-full bg-[#292929] flex flex-row text-green-dh sticky top-0 z-50">
+<div class="w-full bg-[#292929] flex flex-row text-dh-green sticky top-0 z-50">
   <p class=" pl-2 pr-1 lg:pl-8 pb-1 text-nowrap">
     guest@<a href="/">home</a>{path ?? "/..."}{">"}
   </p>

@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+@layer components {
+    .btn {
+        letter-spacing: 0.15438;
+        width: 9rem;
+        font-family: var(--font-space-mono);
+        font-weight: bold;
+        height: 2.25rem;
+        /* color: var(--color-dh-black); */
+        /* flex-shrink-0 bg-dh-light-gray   font-bold text-center; */
+    }
+}

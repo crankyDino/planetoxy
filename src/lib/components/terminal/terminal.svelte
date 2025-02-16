@@ -131,7 +131,8 @@
       <p class="terminal-window__title">Terminal</p>
     </div>
     <div class="terminal__navbar__controls">
-      <button class="terminal__min">
+      
+      <button class="terminal__min" aria-label="terminal minimize">
         <svg
           style="margin-top: auto"
           class="terminal__control-icon p-[0px, 2px]"
@@ -149,7 +150,7 @@
           />
         </svg>
       </button>
-      <button class="terminal__expand">
+      <button class="terminal__expand" aria-label="terminal open">
         <svg
           class="terminal__control-icon"
           viewBox="0 0 16 17"
@@ -174,7 +175,7 @@
           />
         </svg>
       </button>
-      <button class="terminal__close">
+      <button class="terminal__close" aria-label="terminal close">
         <svg
           class="terminal__control-icon"
           viewBox="0 0 15 17"

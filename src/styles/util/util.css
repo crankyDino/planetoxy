@@ -1,5 +1,15 @@
+@import url("util/colors.css");
 @import "tailwindcss";
 
-@components .link--active {
-  font: var(--dh-orange) var(--font-semibold);
+@utility link--active {
+  /* font: var(--font-semibold); */
+  color: var(--color-dh-orange);
+}
+
+@utility filter--orange {
+  filter: brightness(0) saturate(100%) invert(48%) sepia(92%) saturate(501%) hue-rotate(334deg) brightness(95%) contrast(90%);
+}
+
+@utility filter--white {
+  filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(0%) hue-rotate(193deg) brightness(107%) contrast(101%);
 }

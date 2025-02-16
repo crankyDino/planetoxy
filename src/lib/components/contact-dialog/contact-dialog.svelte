@@ -39,7 +39,7 @@
 
 <dialog
   bind:this={dialog}
-  class="backdrop:bg-dh-black/65 backdrop:blur-md w-[88vw] md:w-2/3 lg:w-[44%] max-h-[85%] font-space-mono"
+  class="m-auto backdrop:bg-dh-black/65 backdrop:blur-md w-[88vw] md:w-2/3 lg:w-[44%] max-h-[85%] font-space-mono"
   id="hitMeUpDialog"
 >
   <div class="bg__grid">

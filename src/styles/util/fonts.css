@@ -10,24 +10,15 @@
 @font-face {
     font-family: "Chintzy";
     font-style: normal;
-    src: url("/static/assets/fonts/Chintzy/chintzy.ttf") format("ttf");
+    src: url("/assets/fonts/Chintzy/chintzy.ttf") format("truetype");
 }
 
 
 @font-face {
     font-family: "QuirkyRobot";
     font-style: normal;
-    src: url("/static/assets/fonts/quirky-robot/QuirkyRobot.ttf") format("ttf");
+    src: url("/assets/fonts/quirky-robot/QuirkyRobot.ttf") format("truetype");
 }
-
-
-
-/* @font-face {
-    font-family: "SpaceMono-Regular";
-    font-style: normal;
-    src: url("/static/assets/fonts/spacemono/SpaceMono-Regular.ttf") format("ttf");
-} */
-
 
 @theme {
     --font-pokemon-classic: "Pokemon Classic";
