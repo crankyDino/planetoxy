@@ -38,7 +38,7 @@
           <div
             class="blog__item--hover relative max-w-full col-span-12 gird grid-row-2"
           >
-            <div class="col-span-8 grid grid-cols-12">
+            <div class="relative z-[1] col-span-8 grid grid-cols-12">
               <h4
                 class="col-span-8 md:col-span-10 text-dh-white pt-3 font-hanuman font-extrabold text-2xl md:text-6xl min-w-[33%] overflow-hidden text-nowrap text-ellipsis w-[75%]"
               >
@@ -55,7 +55,9 @@
                 </p>
               </div>
             </div>
-            <div class="col-span-4 flex justify-between items-center">
+            <div
+              class="relative z-[1] col-span-4 flex justify-between items-center"
+            >
               {#each post.tags as tag}
                 <div>
                   <p

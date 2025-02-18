@@ -9,7 +9,7 @@
     /* mix-blend-mode: soft-light; */
     background-color: var(--color-dh-orange);
     width: 100%;
-    z-index: -1;
+    /* z-index: -1; */
     position: absolute;
     height: 100%;
     transition: transform 300ms ease-in-out;
@@ -43,23 +43,26 @@
     transition: color, background, cubic-bezier(0.44, 0.64, 0.56, 1.25) 180ms;
   }
 
+  /* 
+  #does weiiiiiiird things to the title
+
   .blog__item--hover:hover div h4 {
-    font: var(--color-dh-black);
-  }
+    font: var(--color-dh-black) !important;
+  } */
 
   .blog__item__block:hover {
     .blog__item__elem {
       background-color: var(--color-red-700);
     }
 
-    & .blog__item__underline {
-      /* width: var (--w-[33%]) !important;
-      height: var (--h-[20px]) !important; */
-    }
+    /* & .blog__item__underline {
+      width: var (--w-[33%]) !important;
+      height: var (--h-[20px]) !important;
+    } */
   }
 
   .blog__item--hover:hover span {
-    background-color: var(--color-dh-black);
+    background-color: var(--color-dh-black) !important;
   }
 }
 

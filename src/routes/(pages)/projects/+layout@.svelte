@@ -4,5 +4,5 @@
 </script>
 
 <TerminalBar />
-<!-- {@render children()} -->
-<slot />
+{@render children()}
+<!-- <slot /> -->
