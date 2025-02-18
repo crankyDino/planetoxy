@@ -6,7 +6,7 @@
 
 <section class="grid m-3 mt-6 mx-auto w-[88%]">
   <div
-    class="border-[.15em] border-dh-orange h-32 rounded-md px-3 py-2 col-start-1 row-start-1"
+    class="border-[.15em] border-dh-orange h-36 rounded-md px-3 py-2 col-start-1 row-start-1"
   >
     <div class="flex flex-col grid-rows-12">
       <h3 class="font-hanuman text-dh-orange text-3xl font-extrabold">
@@ -30,7 +30,7 @@
   </div>
 
   <div
-    class="col-start-1 row-start-1 rounded-lg justify-self-end overflow-hidden w-[135px] h-[92px] relative top-[42%] left-[0%] mix-blend-color"
+    class="col-start-1 scale-[1.3] row-start-1 rounded-lg justify-self-end overflow-hidden w-[135px] h-[92px] relative top-[42%] left-[-1%] mix-blend-color"
   >
     <img
       class="z-10 border border-dh-orange bottom-[50%] relative h-auto w-[400px]"
@@ -40,7 +40,7 @@
     />
   </div>
   <div
-    class="col-start-1 row-start-1 rounded-lg justify-self-end overflow-hidden w-[135px] h-[92px] relative top-[52%] left-[4%]"
+    class="col-start-1 scale-[1.3] row-start-1 rounded-lg justify-self-end overflow-hidden w-[135px] h-[92px] relative top-[52%] left-[-8%]"
   >
     <img
       class="z-10 border border-dh-orange bottom-[50%] relative h-auto w-[400px]"
