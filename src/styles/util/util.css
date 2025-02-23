@@ -1,4 +1,4 @@
-@import url("util/colors.css");
+/* @import url("util/colors.css"); */
 @import "tailwindcss";
 
 @utility link--active {
@@ -13,3 +13,19 @@
 @utility filter--white {
   filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(0%) hue-rotate(193deg) brightness(107%) contrast(101%);
 }
+
+/* @utility dh-shadow-* { */
+/* &::before { */
+.dh-shadow-title::before {
+  /* content: --value([string]); */
+  content: "A Thing I Did";
+  width: fit-content;
+  position: absolute;
+  z-index: -1;
+  transform: translateX(-8px) translate(4px);
+  /* @apply text-dh-orange; */
+  color: var(--color-dh-orange);
+}
+
+/* }
+} */
