@@ -8,7 +8,13 @@ const config = {
 	preprocess: vitePreprocess(),
 
 	kit: {
-		adapter: adapter(),
+		adapter: adapter({
+			//create a Netlify Edge Function
+			edge: false,
+			
+			// creating a single functions for the entire app
+			split: false,
+		}),
 		alias: {
 			$houdini: './$houdini',
 		}
