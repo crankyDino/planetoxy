@@ -1,11 +1,17 @@
-<script>
-  import "../styles/style.css";
+<script lang="ts">
+  import "../app.css";
   import Navbar from "../lib/components/navbar/navbar.svelte";
   import Sidebar from "../lib/components/sidebar/sidebar.svelte";
   import Footer from "$lib/components/footer/footer.svelte";
+  interface Props {
+    children: null | import("svelte").Snippet;
+  }
+  let { children }: Props = $props();
 </script>
 
 <Navbar />
-<Sidebar />
-<slot />
+
+<div class="h-100% min-h-[100vh] bg-dh-black bg-light">
+  {@render children!()}
+</div>
 <Footer />

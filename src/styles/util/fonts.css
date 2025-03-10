@@ -1,0 +1,30 @@
+@import url("https://fonts.googleapis.com/css2?family=Comic+Neue:wght@300;400;700&family=Hanuman:wght@300;400;900&family=Montserrat:wght@200;300;400;900&family=Space+Mono:wght@400;700&display=swap");
+@import "tailwindcss";
+
+@font-face {
+    font-family: "Pokemon Classic";
+    font-style: normal;
+    src: url("/assets/fonts/pokemon_classic/Pokemon-Classic.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Chintzy";
+    font-style: normal;
+    src: url("/assets/fonts/Chintzy/chintzy.ttf") format("truetype");
+}
+
+
+@font-face {
+    font-family: "QuirkyRobot";
+    font-style: normal;
+    src: url("/assets/fonts/quirky-robot/QuirkyRobot.ttf") format("truetype");
+}
+
+@theme {
+    --font-pokemon-classic: "Pokemon Classic";
+    --font-comic-neue: "Comic Neue";
+    --font-space-mono: "Space Mono";
+    --font-hanuman: "Hanuman";
+    --font-montserrat: "Montserrat";
+    --font-quirkyrobot: "QuirkyRobot";
+}

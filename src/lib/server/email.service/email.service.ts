@@ -1,20 +1,21 @@
 import { IEmail } from "../../models/email-payload.model.js";
+import { MOONBASE_URL } from "$env/static/private";
 
 export function sendEmail(content: IEmail): Promise<any> {
     try {
-        const URL = "http://localhost:5200/api/communication"
+        const URL = `${MOONBASE_URL}/communication`
 
-        const myHeaders = new Headers();
-        myHeaders.append("Content-Type", "application/json");
+        const httpHeaders = new Headers();
+        httpHeaders.append("Content-Type", "application/json");
 
-        const requestOptions = {
+        const options: RequestInit = {
             method: "POST",
-            headers: myHeaders,
+            headers: httpHeaders,
             body: JSON.stringify(content),
             // redirect: "follow"
         };
 
-        return fetch(URL + "/send", requestOptions)
+        return fetch(URL + "/send", options)
         // .then((response) => response.text())
         // .then((result) => console.log(result))
         // .catch((error) => console.error(error));

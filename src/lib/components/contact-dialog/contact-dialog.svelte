@@ -1,24 +1,32 @@
 <script lang="ts">
+  import { run } from "svelte/legacy";
+
   import { onMount } from "svelte";
   import { chips, submitHitMeUp } from "./contact-dialog";
   import {
-    state,
-    toggleDialog,
+    dialogState,
+    type TDialogState,
   } from "$lib/handlers/dialog.handler/dialog.handler";
   import { focusOnElement } from "$lib/util/element";
   import { initForm, resetForm } from "$lib/handlers/form.handler/form.handler";
 
-  let dialog: HTMLDialogElement;
-  let form: HTMLFormElement | null = null;
-  let reason: HTMLInputElement | null = null;
-
-  $: toggleDialog(dialog, $state);
+  let pos: TDialogState = $state("closed");
+  let dialog = $state<HTMLDialogElement>();
+  // let { open } = $props();
+  let form: HTMLFormElement;
+  let reason: HTMLInputElement | null = $state(null);
 
   onMount(() => {
     if (form) {
       initForm(form);
     }
   });
+
+  export function open() {
+    if (dialog) {
+      dialogState().open(dialog);
+    }
+  }
 
   function reset(form: HTMLFormElement): void {
     if (!form) {
@@ -31,20 +39,20 @@
 
 <dialog
   bind:this={dialog}
-  class="backdrop:bg-black-dh backdrop:bg-opacity-65 backdrop:blur-md w-[88vw] md:w-2/3 lg:w-[44%] max-h-[85%] font-space-mono"
+  class="m-auto backdrop:bg-dh-black/65 backdrop:blur-md w-[88vw] md:w-2/3 lg:w-[44%] max-h-[85%] font-space-mono"
   id="hitMeUpDialog"
 >
   <div class="bg__grid">
     <!-- <div class="grid__block"></div> -->
   </div>
   <div
-    class="btn__close flex flex-row justify-between bg-orange-dh mb-3 p-3 pr-6"
+    class="btn__close flex flex-row justify-between bg-dh-orange mb-3 p-3 pr-6"
   >
     <h3 class="card-title font-bold text-[#fff] pl-9">Hit Me Up</h3>
     <button
-      on:mousedown={() => state.close()}
+      onclick={() => (dialog ? dialogState().close(dialog, form) : "")}
       id="btnCloseHmuForm"
-      class="text-[#fff] text-center w-6 rounded-md hover:text-orange-dh hover:bg-[#fff]"
+      class="text-[#fff] text-center w-6 rounded-md hover:text-dh-orange hover:bg-[#fff]"
     >
       <img
         src="../assets/vectors/close-small.svg"
@@ -63,7 +71,7 @@
   >
     <div class="grid grid-rows-1 sm:grid-cols-2 gap-3">
       <div class="form__group">
-        <label class="text-black-dh text-sm" for="hmuFirstname"
+        <label class="text-dh-black text-sm" for="hmuFirstname"
           >First name<sup>*</sup></label
         >
         <input
@@ -71,7 +79,7 @@
           type="text"
           id="hmuFirstname"
           name="Firstname"
-          class="pointer-events-auto border-[2px] border-black-dh w-full px-4 py-2"
+          class="pointer-events-auto border-[2px] border-dh-black w-full px-4 py-2"
           maxlength="20"
           minlength="3"
           required
@@ -79,12 +87,12 @@
         <small
           hidden
           id="hmuFirstnameErr"
-          class="form--error text-orange-dh text-sm text-[0.7em] tracking-[0.08em]"
+          class="form--error text-dh-orange text-sm text-[0.7em] tracking-[0.08em]"
           >please enter your firstname</small
         >
       </div>
       <div class="form__group">
-        <label class="text-black-dh text-sm" for="hmuLastname"
+        <label class="text-dh-black text-sm" for="hmuLastname"
           >Last name<sup>*</sup></label
         >
         <input
@@ -92,7 +100,7 @@
           type="text"
           id="hmuLastname"
           name="Lastname"
-          class="pointer-events-auto border-[2px] border-black-dh w-full px-4 py-2"
+          class="pointer-events-auto border-[2px] border-dh-black w-full px-4 py-2"
           maxlength="20"
           minlength="3"
           required
@@ -100,14 +108,14 @@
         <small
           hidden
           id="hmuLastnameErr"
-          class="form--error text-orange-dh text-sm text-[0.7em] tracking-[0.08em]"
+          class="form--error text-dh-orange text-sm text-[0.7em] tracking-[0.08em]"
           >please enter your lastname</small
         >
       </div>
     </div>
 
     <div class="form__group grid">
-      <label class="text-black-dh text-sm" for="hmuEmail"
+      <label class="text-dh-black text-sm" for="hmuEmail"
         >E-Mail<sup>*</sup></label
       >
       <input
@@ -115,33 +123,33 @@
         id="hmuEmail"
         type="email"
         name="E-mail"
-        class="pointer-events-auto border-[2px] border-black-dh px-4 py-2"
+        class="pointer-events-auto border-[2px] border-dh-black px-4 py-2"
         required
       />
       <small
         hidden
         id="hmuEmailErr"
-        class="form--error text-orange-dh text-sm text-[0.7em] tracking-[0.08em]"
+        class="form--error text-dh-orange text-sm text-[0.7em] tracking-[0.08em]"
         >please enter your email</small
       >
     </div>
 
     <div class="form__group grid h-fit">
-      <label class="text-black-dh text-sm" for="hmuReason">Reason</label>
-      <!-- svelte-ignore a11y-no-static-element-interactions -->
+      <label class="text-dh-black text-sm" for="hmuReason">Reason</label>
+      <!-- svelte-ignore a11y_no_static_element_interactions -->
       <div
         id="hmuReasonList"
-        class="bg-[#fff] flex flex-row flex-wrap bg-white border-[2px] border-black-dh w-full gap-3 px-4 py-2 h-fit min-h-10 items-center"
-        on:focus={() => {
+        class="bg-[#fff] flex flex-row flex-wrap bg-white border-[2px] border-dh-black w-full gap-3 px-4 py-2 h-fit min-h-10 items-center"
+        onfocus={() => {
           reason ? reason.focus() : "";
         }}
       >
         {#each $chips as chip (chip[0])}
           <span
-            class="rounded-xl bg-orange-dh font-semibold text-[#fff] flex flex-row h-[1.6em] px-2 items-start"
+            class="rounded-xl bg-dh-orange font-semibold text-[#fff] flex flex-row h-[1.6em] px-2 items-start"
             >{chip[1]}<button
               class="pl-1 pr-[3px]"
-              on:mousedown={(ev) => {
+              onmousedown={(ev) => {
                 chips.deleteChip(chip[0]);
               }}>x</button
             ></span
@@ -149,7 +157,7 @@
         {/each}
         <input
           bind:this={reason}
-          on:keydown={(k) => {
+          onkeydown={(k) => {
             if (k.code === "Enter" && reason && reason?.value != "") {
               chips.createChip(reason.value);
               reason.value = "";
@@ -167,13 +175,13 @@
       <small
         hidden
         id="hmuReasonErr"
-        class="form--error text-orange-dh text-sm text-[0.7em] tracking-[0.08em]"
+        class="form--error text-dh-orange text-sm text-[0.7em] tracking-[0.08em]"
         >reason can't be blank</small
       >
     </div>
 
     <div class="form__group grid">
-      <label class="text-black-dh text-sm" for="hmuDescription"
+      <label class="text-dh-black text-sm" for="hmuDescription"
         >What's up?<sup>*</sup></label
       >
       <textarea
@@ -182,21 +190,21 @@
         name="description"
         rows="3.6"
         style="resize: none"
-        class="pointer-events-auto border-[2px] border-black-dh pl-1"
+        class="pointer-events-auto border-[2px] border-dh-black pl-1"
         maxlength="240"
         required
       ></textarea>
       <small
         hidden
         id="hmuDescriptionErr"
-        class="form--error text-orange-dh text-sm text-[0.7em] tracking-[0.08em]"
+        class="form--error text-dh-orange text-sm text-[0.7em] tracking-[0.08em]"
         >Tell me what's up</small
       >
     </div>
 
     <div class="card-body py-3 self-end">
       <button
-        on:mousedown={() => (form ? reset(form) : "")}
+        onmousedown={() => (form ? reset(form) : "")}
         id="clear"
         class="pointer-events-auto btn bg-gray-400 text-zinc-50"
       >
@@ -205,8 +213,8 @@
       <button
         type="submit"
         id="btnSubmitHmuForm"
-        class="pointer-events-auto btn bg-orange-dh text-zinc-50"
-        on:mousedown={() => (form ? submitHitMeUp(form) : "")}
+        class="pointer-events-auto btn bg-dh-orange text-zinc-50"
+        onmousedown={() => (form ? submitHitMeUp(form) : "")}
       >
         HIT ME UP!
       </button>

@@ -1,0 +1,35 @@
+query Article($article: String!) @cache(policy: CacheOrNetwork) {
+  allArticle(where: { slug: { current: { eq: $article } } }) {
+    _id
+    title
+    slug {
+      current
+    }
+    tags {
+      tagName
+    }
+    author
+    published
+    header {
+      hotspot {
+        x
+        y
+        width
+        height
+      }
+      asset {
+        url
+      }
+    }
+    paragraphRaw
+    media {
+      _id
+      contentUrl
+      content {
+        asset {
+          url
+        }
+      }
+    }
+  }
+}

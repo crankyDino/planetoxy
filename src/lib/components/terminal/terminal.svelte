@@ -4,18 +4,42 @@
   import * as e from "../../util/element";
   import * as t from "./terminal";
 
-  let command: HTMLSpanElement | null = null;
-  let terminalContainer: HTMLDivElement | null = null;
-  
+  let command: HTMLSpanElement | null = $state(null);
+  let terminalContainer: HTMLDivElement | null = $state(null);
+
+  function commandInput(ev: any) {
+    if (!command) {
+      return;
+    }
+    switch (ev.key) {
+      case "Enter": {
+        ev.preventDefault();
+        t.runCommand(command.textContent, terminalContainer);
+
+        command = document.querySelector("#terminal_input");
+        command?.addEventListener("keydown", commandInput);
+        break;
+      }
+      default: {
+        t.getCommand(command.textContent);
+        break;
+      }
+    }
+  }
+
   onMount(() => {
-    console.log("terminal works");
+    command = document.querySelector("#terminal_input");
+    command?.addEventListener("keydown", commandInput);
   });
 </script>
 
-<!-- svelte-ignore a11y-click-events-have-key-events -->
-<!-- svelte-ignore a11y-no-static-element-interactions -->
+<!-- svelte-ignore a11y_click_events_have_key_events -->
+<!-- svelte-ignore a11y_no_static_element_interactions -->
+<!-- on:click={() => e.focusOnElement<HTMLSpanElement|null>(command)} -->
+
+<!-- prettier-ignore-->
 <div
-  on:click={() => e.focusOnElement(command)}
+  onclick={() => command?.focus()}
   id="terminal_window"
   class="terminal overflow-hidden w-full"
 >
@@ -107,7 +131,8 @@
       <p class="terminal-window__title">Terminal</p>
     </div>
     <div class="terminal__navbar__controls">
-      <button class="terminal__min">
+      
+      <button class="terminal__min" aria-label="terminal minimize">
         <svg
           style="margin-top: auto"
           class="terminal__control-icon p-[0px, 2px]"
@@ -125,7 +150,7 @@
           />
         </svg>
       </button>
-      <button class="terminal__expand">
+      <button class="terminal__expand" aria-label="terminal open">
         <svg
           class="terminal__control-icon"
           viewBox="0 0 16 17"
@@ -150,7 +175,7 @@
           />
         </svg>
       </button>
-      <button class="terminal__close">
+      <button class="terminal__close" aria-label="terminal close">
         <svg
           class="terminal__control-icon"
           viewBox="0 0 15 17"
@@ -190,7 +215,7 @@
     <div
       bind:this={terminalContainer}
       id="terminal_input_area_container"
-      class="terminal__input-area__container"
+      class="terminal_input_area_container flex flex-col"
     >
       <div id="terminal_input_area" class="terminal__cli">
         <p class="terminal__text">
@@ -200,17 +225,9 @@
               target="_blank"
               class="terminal__text">digitalhippie.xyz</a
             ></strong
-          >:~$
-          <!-- svelte-ignore missing-declaration -->
-          <!-- svelte-ignore a11y-interactive-supports-focus -->
-          <span
-            bind:this={command}
-            on:keydown={() =>
-              command ? t.getCommand(command.textContent) : ""}
-            on:mouseenter={() =>
-              command
-                ? t.runCommand(command.textContent, terminalContainer)
-                : ""}
+            >:~$
+            <span
+            id="terminal_input"
             role="textbox"
             class="inline-block
             border-none
@@ -218,13 +235,13 @@
             min-w-1
             w-auto
             resize
-            caret-transparent
-            focus-visible:outline-none
+            caret-transparent--off
+            focus-visible:outline-hidden
             "
             contenteditable
           ></span>
         </p>
-        <span id="terminal_input" class="cli terminal__text"></span>
+        <span id="terminal_input_carte" class="cli terminal__text"></span>
       </div>
     </div>
   </div>

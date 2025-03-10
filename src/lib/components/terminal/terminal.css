@@ -1,8 +1,9 @@
-@import url("https://fonts.googleapis.com/css2?family=Comic+Neue:wght@300;400;700&family=Hanuman:wght@300;400;900&family=Montserrat:wght@200;300;400;900&family=Space+Mono:wght@400;700&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Comic+Neue:wght@300;400;700&family=Hanuman:wght@300;400;900&family=Montserrat:wght@200;300;400;900&family=Space+Mono:wght@400;700&display=swap"); */
+@import "tailwindcss";
 
 .terminal {
-  --font-comic-neue: "Comic Neue";
-  --font-space-mono: "Space Mono";
+  /* --font-comic-neue: "Comic Neue";
+  --font-space-mono: "Space Mono"; */
 
   --black: #161616;
   --light-gray: #d9d9d9;
@@ -30,6 +31,7 @@
   display: flex;
   gap: 10px;
   margin: auto 0;
+
   button {
     height: 30px;
     width: 24px;
@@ -44,6 +46,7 @@
         & path {
           fill: var(--green);
         }
+
         & rect,
         line,
         circle {
@@ -74,6 +77,7 @@ pre.terminal__art__ascii {
 .terminal__art {
   font-size: clamp(0.7vw, 8px, 2vw);
   margin-top: none;
+
   pre,
   pre span {
     color: var(--green) !important;
@@ -93,10 +97,10 @@ pre.terminal__art__ascii {
   text-overflow: ellipsis;
 }
 
-.terminal__input-area__container {
+/* .terminal__input-area__container {
   display: flex;
   flex-direction: column;
-}
+} */
 
 div.terminal__screen {
   text-overflow: clip;
@@ -104,6 +108,7 @@ div.terminal__screen {
   overflow: auto;
   padding-left: 0.75rem;
   margin-top: 0.75rem;
+
   & pre {
     margin-bottom: 0;
   }
@@ -111,6 +116,7 @@ div.terminal__screen {
   & p,
   h6 {
     margin-top: 0;
+
     /* margin-bottom: 3px; */
     & strong {
       font-weight: 700;
@@ -133,15 +139,17 @@ div.terminal__screen {
 
 .cli {
   color: var(--green);
+
   /* border-right: solid var(--green) 8px; */
   /* animation: blink 1s linear infinite; */
-  &#terminal_input::after {
+  &#terminal_input_carte::after {
     content: "";
     color: var(--green);
     width: fit-content;
     max-width: 50%;
     border-right: solid var(--green) 8px;
     animation: blink 1s linear infinite;
+
     &:hover {
       cursor: text;
     }

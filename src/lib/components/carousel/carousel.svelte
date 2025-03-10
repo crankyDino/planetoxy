@@ -7,14 +7,23 @@
     type TCarouselDirection,
     type TCarouselType,
   } from "./carousel";
-  let carousel: HTMLDivElement | null = null;
-  export let carouselType: TCarouselType = "icon";
-  export let grayscale: boolean = false;
-  export let direction: TCarouselDirection = "right";
-  export let carouselItems: Map<number, ICarouselItem> = new Map<
+  let carousel: HTMLDivElement | null = $state(null);
+  interface Props {
+    carouselType?: TCarouselType;
+    grayscale?: boolean;
+    direction?: TCarouselDirection;
+    carouselItems?: Map<number, ICarouselItem>;
+  }
+
+  let {
+    carouselType = "icon",
+    grayscale = false,
+    direction = "right",
+    carouselItems = new Map<
     number,
     ICarouselItem
-  >();
+  >()
+  }: Props = $props();
 
   onMount(() => {
     if (carousel) {
@@ -39,13 +48,12 @@
           {#if carouselType === "card"}
             <img
               class="carousel__image h-fit w-[12rem] max-w-[14rem]"
-              src={item[1].content}
+              src={item[1].contentUrl}
               alt=""
             />
             <div class="carousel__label w-full pl-2 overflow-clip">
               <h6
-                style="text-overflow: ellipsis;"
-                class="text-orange-dh font-space-mono text-lg w-full overflow-hidden text-nowrap"
+                class="text-dh-orange font-space-mono text-ellipsis text-lg w-full overflow-hidden text-nowrap"
               >
                 {item[1].title}
               </h6>
@@ -53,13 +61,13 @@
                 {item[1].type}
               </p>
               <p class="text-sm text-gray-400 w-fit">
-                {item[1].date.getFullYear()}
+                {item[1].dateCreated.getFullYear()}
               </p>
             </div>
           {:else}
             <img
               class="carousel__image h-fit w-[4rem] max-w-[4rem]"
-              src={item[1].content}
+              src={item[1].contentUrl}
               alt=""
             />
           {/if}

@@ -1,34 +1,39 @@
 {
-	"name": "planet-oxy",
-	"version": "0.0.1",
-	"private": true,
-	"scripts": {
-		"dev": "vite dev --port 4200",
-		"launch": "vite dev --port 4200 --open",
-		"build": "vite build",
-		"preview": "vite preview",
-		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
-		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
-		"lint": "eslint ."
-	},
-	"devDependencies": {
-		"@sveltejs/adapter-auto": "^3.0.0",
-		"@sveltejs/adapter-netlify": "^4.3.1",
-		"@sveltejs/kit": "^2.0.0",
-		"@sveltejs/vite-plugin-svelte": "^3.0.0",
-		"@types/eslint": "^8.56.7",
-		"autoprefixer": "^10.4.19",
-		"eslint": "^9.0.0",
-		"eslint-plugin-svelte": "^2.36.0",
-		"globals": "^15.0.0",
-		"postcss": "^8.4.39",
-		"svelte": "^4.2.7",
-		"svelte-check": "^3.6.0",
-		"tailwindcss": "^3.4.4",
-		"tslib": "^2.4.1",
-		"typescript": "^5.0.0",
-		"typescript-eslint": "^8.0.0-alpha.20",
-		"vite": "^5.0.3"
-	},
-	"type": "module"
+    "name": "planet-oxy",
+    "version": "0.0.1",
+    "private": true,
+    "scripts": {
+        "dev": "vite dev --port 4200",
+        "launch": "vite dev --port 4200 --open",
+        "build": "vite build",
+        "preview": "vite preview",
+        "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+        "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+        "lint": "eslint ."
+    },
+    "devDependencies": {
+        "@sveltejs/adapter-auto": "^3.3.1",
+        "@sveltejs/adapter-netlify": "^4.3.1",
+        "@sveltejs/kit": "^2.5.27",
+        "@sveltejs/vite-plugin-svelte": "^4.0.0",
+        "@types/eslint": "^8.56.7",
+        "autoprefixer": "^10.4.19",
+        "eslint": "^9.0.0",
+        "eslint-plugin-svelte": "^2.45.1",
+        "globals": "^15.0.0",
+        "houdini": "^1.3.1",
+        "houdini-svelte": "^2.0.1",
+        "svelte": "^5.0.0",
+        "svelte-check": "^4.0.0",
+        "tailwindcss": "^4.0.6",
+        "tslib": "^2.4.1",
+        "typescript": "^5.5.0",
+        "typescript-eslint": "^8.0.0-alpha.20",
+        "vite": "^5.4.4"
+    },
+    "type": "module",
+    "dependencies": {
+        "@sanity/client": "^6.22.4",
+        "@tailwindcss/vite": "^4.0.6"
+    }
 }

@@ -1,43 +1,40 @@
-import { writable } from "svelte/store";
+import { resetForm } from "../form.handler/form.handler";
+
 export type TDialogState = "open" | "closed"
 
-function dialogState() {
-    let modalState: TDialogState = "closed";
-    const { subscribe, set, update } = writable<TDialogState>(modalState)
+export function dialogState() {
+    let modalState: TDialogState = 'closed';
 
     return {
-        subscribe,
-        close: () => update(() => "closed"),
-        open: () => update(() => "open"),
+        open,
+        close,
+        set toggle(_state: TDialogState) { modalState = _state }
     }
 }
 
-export const state = dialogState()
-
-
-export function toggleDialog(dialog: HTMLDialogElement, dialogState: TDialogState) {
+function toggleDialog(dialog: HTMLDialogElement, dialogState: TDialogState) {
     if (!dialog) {
         return;
     }
 
     switch (dialogState) {
         case "open":
-            openDialog(dialog);
+            open(dialog);
             break;
         default:
-            closeDialog(dialog);
+            close(dialog);
             break;
     }
 }
 
-export function openDialog(dialog: HTMLDialogElement) {
+function open(dialog: HTMLDialogElement) {
     if (!dialog) {
         return;
     }
     dialog.showModal();
 }
 
-export function closeDialog(dialog: HTMLDialogElement, form?: HTMLFormElement) {
+function close(dialog: HTMLDialogElement, form?: HTMLFormElement) {
     if (!dialog) {
         return;
     }
@@ -46,5 +43,6 @@ export function closeDialog(dialog: HTMLDialogElement, form?: HTMLFormElement) {
     if (!form) {
         return
     }
+    resetForm(form);
 }
 

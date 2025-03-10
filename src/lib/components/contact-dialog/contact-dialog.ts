@@ -1,9 +1,7 @@
-import type { TDialogState } from "$lib/handlers/dialog.handler/dialog.handler.js"
 import { writable } from "svelte/store"
 import { IContact } from "../../models/contact.model.js"
 import { IEmail } from "../../models/email-payload.model.js"
-import { IFullname } from "../../models/fullname.model.js"
-import { sendEmail } from "../../services/email.service/email.service.js"
+// import { sendEmail } from "$lib/server/email.service/email.service.js"
 import { validateForm } from "$lib/handlers/form.handler/form.handler.js"
 
 let reasons: Map<number, string> = new Map<number, string>()
@@ -23,6 +21,8 @@ export const chips = initChips();
 // resetForm(form);  //handle when clearing 
 
 export function submitHitMeUp(form: HTMLFormElement) {
+    console.log(validateForm(form));
+
     if (!validateForm(form)) {
         return
     }
@@ -85,8 +85,8 @@ function sendContactEmail(form: HTMLFormElement): void {
     })
 
     payload.contacts = [contact]
-    sendEmail(payload)
-        .then((response) => response.text())
-        .then((result) => console.log(result))
-        .catch((error) => console.error(error));
+    // sendEmail(payload)
+    //     .then((response) => response.text())
+    //     .then((result) => console.log(result))
+    //     .catch((error) => console.error(error));
 }

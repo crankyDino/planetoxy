@@ -1,0 +1,25 @@
+.letter--spacing--sm {
+  letter-spacing: 3px;
+  word-spacing: -3px;
+}
+
+.letter--spacing--md {
+  letter-spacing: 3.6px;
+  word-spacing: -9px;
+}
+
+.title__backdrop::before {
+  /* content: ""; */
+  background: pink;
+  height: 38px;
+  width: 15%;
+  position: absolute !important;
+  /* top: 753px; */
+  z-index: -1;
+}
+
+@media (max-width: 768px) {
+  .banner {
+    background-position: 0rem -18rem;
+  }
+}

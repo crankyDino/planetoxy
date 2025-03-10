@@ -1,7 +1,5 @@
-import type { MouseEventHandler } from 'svelte/elements';
-import './terminal.css'
+import './terminal.css';
 import { commands } from '$lib/models/commands';
-import * as m from './matrix';
 
 // export let command: string = ""
 // export let terminalWindow: HTMLDivElement | null = null;
@@ -16,94 +14,51 @@ export function getCommand(command: string | null | undefined) {
         console.log("not it");
         return
     }
-
-}
-
-// let history: Array<string> = []
-// const keydown_Handler = (ev: KeyboardEvent) => {
-//     const cmd = document.getElementById("terminal_input");
-//     switch (ev.code) {
-//         case "Space":
-//             cmd.innerText += `\u00a0`;
-//             console.log("click clack biatch");
-//             window.scrollTo(0, window.scrollX);
-//             break;
-//         case "Backspace":
-//             cmd.innerText = `${cmd?.innerText.slice(0, cmd.innerText.length - 1)}`;
-//             break;
-//         case "Enter":
-//             if (cmd.innerText.trim() && cmd.innerText.trim().length > 0) {
-//                 history.push(cmd.innerText.trim())
-//             }
-//             const runner = cmd.innerText.trim()
-//             runCommand(runner)
-//             newLine();
-//             break;
-//         case "ArrowUp":
-//             console.log(history);
-
-//             cmd.innerText = rewind("forward", cmd.innerText.trim())
-//             break;
-//         case "ArrowDown":
-//             console.log(history);
-
-//             cmd.innerText = rewind("backward", cmd.innerText.trim())
-//             break;
-//         default:
-//             if (ev.code.includes("Key") || ev.code.includes("Digit")) {
-//                 cmd.innerText += ev.key;
-//                 // console.log(cmd.innerText);
-//             }
-//             break;
-//     }
-// };
-
-// function rewind(direction: "forward" | "backward", position: string) {
-//     if (!history.length || history.length <= 0) {
-//         return ""
-//     }
-
-//     if (!position || position === "") {
-//         return history[history.length - 1]
-//     }
-
-//     const i = history.findIndex((x, i) => x === position ? i : "")
-
-//     if (direction === "forward") {
-//         return history[i - 1]
-//     }
-
-//     return history[i + 1]
-// }
-
-function newLine(): void {
-    // const terminal_input_area_container = document.getElementById(
-    //     "terminal_input_area_container"
-    // );
-    // const rowIdNo: number = terminal_input_area_container.childElementCount;
-    // const rowId: string = "command_row_" + rowIdNo.toString();
-
-    // // document.getElementById("terminal_input_area").dataset.rowId = rowIdNo.toString();
-
-    // document.getElementById("terminal_input_area").id = rowId;
-
-    // const inputArea = document.createElement("div");
-    // inputArea.innerHTML = document.getElementById(rowId).innerHTML;
-    // inputArea.classList.add(...document.getElementById(rowId).classList.values());
-    // inputArea.id = "terminal_input_area";
-    // (inputArea.querySelector("#terminal_input") as HTMLElement).innerText = "";
-
-    // document.getElementById("terminal_input").id =
-    //     "row_input_" + rowIdNo.toString();
-
-    // terminal_input_area_container.appendChild(inputArea);
-    // inputArea.scrollIntoView();
-    // window.scrollTo(0, window.scrollX);
-    // // terminal_input_area_container.scroll(0,findPosition(document.getElementById(inputArea.id))[0])
 }
 
 
+function newLine({ terminal_input, terminal_input_area, parent, response = "" }: { parent: HTMLDivElement, terminal_input_area: HTMLDivElement, terminal_input: HTMLSpanElement, response?: string | null }): void {
 
+    const rowIdNo: number = parent.childElementCount;
+    const rowId: string = "command_row_" + rowIdNo.toString();
+
+    const newInputArea = terminal_input_area.cloneNode(true) as HTMLDivElement;
+    //process rev command
+    terminal_input_area.id = rowId;
+    parent.querySelector("#terminal_input_carte")?.remove()
+    terminal_input.removeAttribute("contenteditable");
+    terminal_input.id = "row_input_" + rowIdNo.toString();
+
+    //setup new input
+    if (response) {
+        const responseBlock = terminal_input_area.cloneNode() as HTMLDivElement
+        responseBlock.innerText = response;
+        responseBlock.classList.replace("terminal__cli", "terminal__text");
+        responseBlock.style.paddingBottom = '.28em'
+        responseBlock.style.lineHeight = '1.2em'
+        parent.appendChild(responseBlock);
+    }
+
+    newInputArea.id = "terminal_input_area";
+    (newInputArea.querySelector("#terminal_input") as HTMLElement).innerText = "";
+    parent.appendChild(newInputArea);
+
+
+    newInputArea.focus();
+    newInputArea.scrollIntoView();
+    window.scrollTo(0, window.scrollX);
+    (newInputArea.querySelector("#terminal_input") as HTMLSpanElement).focus()
+    parent.scroll(0, findPosition(newInputArea)[0])
+}
+
+
+let history: Array<string> = []
+/**
+ * Helps scroll into view i guess...?
+ * 
+ * @param elem 
+ * @returns 
+ */
 function findPosition(elem: HTMLElement): number[] {
     let currTop = 0;
     if (elem.offsetParent) {
@@ -114,41 +69,26 @@ function findPosition(elem: HTMLElement): number[] {
     return [currTop];
 }
 
-export function runCommand(command: string | null, parent: HTMLElement | null) {
-    console.log("response");
-    if (!command || !parent) {
-        return
+export function runCommand(command: string | null, parent: HTMLDivElement | null) {
+    if (!command
+        || !parent
+        || !parent.querySelector("#terminal_input")
+        || !parent.querySelector("#terminal_input_area")
+    ) {
+        return;
     }
-    const availableCommands = Object.values(commands)
-    const prompt = availableCommands.some((x) => x.includes(command)) ? command.trim() : null
 
-    // if (prompt)
-    //   switch (prompt) {
-    switch (command) {
-        case "freeze":
-            m.freeze()
-            break;
-        case "help":
-            console.log("uhmmmmmmmmmmm");
-            // const cmd = document.getElementById("terminal_input");
-            let response: string = ""
-            response = "List of Commands \n"
-            response += "------------------\n"
-            availableCommands.forEach((x) => {
-                response += ";\n"
-                response += x
-            })
-            console.log(response);
-            parent.innerText = response
-            // cmd.innerText = `${response}`
-            break;
-        case "hello alice":
-            // case "rain":
-            // m.rain()
-            break;
-        default:
-            console.log("??????????");
-            break;
+    const terminal_input: HTMLDivElement = parent.querySelector("#terminal_input")!
+    const terminal_input_area: HTMLDivElement = parent.querySelector("#terminal_input_area")!
+    let response: string = `'${command}' is not a command`;
+
+    console.log(commands.has(command));
+
+    if (commands.has(command)) {
+        const cmd = commands.get(command)
+        response = cmd?.fn ? cmd.fn() : " "
     }
+
+    newLine({ parent, terminal_input_area, terminal_input, response });
 }
 

@@ -1,0 +1,13 @@
+query Articles {
+  allArticle {
+    title
+    slug {
+      current
+    }
+    tags {
+      tagName
+    }
+    author,
+    published
+  }
+}

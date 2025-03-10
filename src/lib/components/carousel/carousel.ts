@@ -1,10 +1,13 @@
 export type TCarouselType = "card" | "icon";
 export type TCarouselDirection = "left" | "right";
 export interface ICarouselItem {
-    title: string;
-    type: string;
-    content: string;
-    date: Date;
+    title: string,
+    description: string,
+    type: string,
+    projectType: string,
+    contentUrl: string,
+    dateCreated: Date,
+    link: string,
 }
 
 export function playCarousel(carousel: HTMLDivElement) {
