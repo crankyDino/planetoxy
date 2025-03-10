@@ -302,6 +302,71 @@ input FloatFilter {
   neq: Float
 }
 
+type Frame implements Document {
+  """Date the document was created"""
+  _createdAt: DateTime @deprecated(reason: "Use graphic type instead")
+
+  """Document ID"""
+  _id: ID @deprecated(reason: "Use graphic type instead")
+  _key: String @deprecated(reason: "Use graphic type instead")
+
+  """Current document revision"""
+  _rev: String @deprecated(reason: "Use graphic type instead")
+
+  """Document type"""
+  _type: String @deprecated(reason: "Use graphic type instead")
+
+  """Date the document was last modified"""
+  _updatedAt: DateTime @deprecated(reason: "Use graphic type instead")
+  client: String @deprecated(reason: "Use graphic type instead")
+  content: File @deprecated(reason: "Use graphic type instead")
+  contentUrl: String @deprecated(reason: "Use graphic type instead")
+  dateCreated: Date @deprecated(reason: "Use graphic type instead")
+  description: String @deprecated(reason: "Use graphic type instead")
+  link: String @deprecated(reason: "Use graphic type instead")
+  projectType: String @deprecated(reason: "Use graphic type instead")
+  title: String @deprecated(reason: "Use graphic type instead")
+  type: String @deprecated(reason: "Use graphic type instead")
+}
+
+input FrameFilter {
+  """Apply filters on document level"""
+  _: Sanity_DocumentFilter
+  _createdAt: DatetimeFilter
+  _id: IDFilter
+  _key: StringFilter
+  _rev: StringFilter
+  _type: StringFilter
+  _updatedAt: DatetimeFilter
+  client: StringFilter
+  content: FileFilter
+  contentUrl: StringFilter
+  dateCreated: DateFilter
+  description: StringFilter
+  link: StringFilter
+  projectType: StringFilter
+  title: StringFilter
+  type: StringFilter
+}
+
+input FrameSorting {
+  _createdAt: SortOrder
+  _id: SortOrder
+  _key: SortOrder
+  _rev: SortOrder
+  _type: SortOrder
+  _updatedAt: SortOrder
+  client: SortOrder
+  content: FileSorting
+  contentUrl: SortOrder
+  dateCreated: SortOrder
+  description: SortOrder
+  link: SortOrder
+  projectType: SortOrder
+  title: SortOrder
+  type: SortOrder
+}
+
 type Geopoint {
   _key: String
   _type: String
@@ -468,6 +533,10 @@ type RootQuery {
     """Document document ID"""
     id: ID!
   ): Document
+  Frame(
+    """Frame document ID"""
+    id: ID!
+  ): Frame @deprecated(reason: "Use graphic type instead")
   Graphic(
     """Graphic document ID"""
     id: ID!
@@ -511,6 +580,15 @@ type RootQuery {
     sort: [DocumentSorting!]
     where: DocumentFilter
   ): [Document!]!
+  allFrame(
+    """Max documents to return"""
+    limit: Int
+
+    """Offset at which to start returning documents from"""
+    offset: Int
+    sort: [FrameSorting!]
+    where: FrameFilter
+  ): [Frame!]! @deprecated(reason: "Use graphic type instead")
   allGraphic(
     """Max documents to return"""
     limit: Int
