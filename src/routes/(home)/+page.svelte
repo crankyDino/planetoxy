@@ -32,13 +32,13 @@
   <!-- terminal -->
   <Terminal />
   <div
-    class="hero__tagline grid md:grid-flow-col md:gap-x-4 lg:gap-7 justify-items-center sm:justify-items-end md:items-start xl:items-end lg:w-[47vw] h-full text-dh-white"
+    class="hero__tagline grid md:grid-flow-col md:gap-x-4 lg:gap-7 justify-items-center  md:items-start xl:items-end lg:w-[47vw] h-full text-dh-white"
   >
     <div
       class="hero__name flex flex-col h-fit justify-start lg:w-fit md:w-[88%]"
     >
       <p class="text-nowrap font-space-mono text-lg">Hi, I'm</p>
-      <div class=" flex flex-row justify-right">
+      <div class=" flex flex-row justify-right py-2.5 md:py-0">
         <h1
           class="shadow--solid__ashley font-pokemon-classic font-bold text-3xl pl-6 z-10"
         >
@@ -55,7 +55,7 @@
     </p>
 
     <div
-      class="hero__cta w-max flex flex-row sm:flex-col lg:flex-row xl:flex-col gap-3 justify-even content-end"
+      class="hero__cta w-max flex flex-row pt-4 md:pt-0 md:flex-col lg:flex-row xl:flex-col gap-3 justify-even content-end"
     >
       <button class="btn bg-dh-orange text-dh-white">
         <a href="/projects">Projects</a>
@@ -79,7 +79,7 @@
     <h2
       style="word-spacing: -0.5rem; "
       id="about_me_headline"
-      class="shadow--solid__about-me z-10 relative tracking-[3.6px] font-semibold mb-4 !font-pokemon-classic text-[10vw] md:text-4xl lg:text-5xl"
+      class="shadow--solid__about-me z-10 relative tracking-[3.6px] font-semibold mb-4 !font-pokemon-classic sm:text-[2.6rem] text-[6vw] md:text-4xl lg:text-5xl"
     >
       A
       <!-- <strong
@@ -128,7 +128,7 @@
   <div
     id="pictureFrame"
     style="width: fit-content"
-    class="m-auto relative mr-[2%] col-start-2 col-span-2"
+    class="m-auto pt-6 relative md:mr-[2%] col-start-2 col-span-2"
   >
     <div>
       <img
