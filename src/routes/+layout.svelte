@@ -14,4 +14,5 @@
 <div class="h-100% min-h-[100vh] bg-dh-black bg-light">
   {@render children!()}
 </div>
+
 <Footer />

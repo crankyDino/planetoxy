@@ -10,11 +10,14 @@
         href="https://digitalhippie.xyz"
         class="!flex gap-3 items-center"
       >
-        <p class="hidden text-dh-white text-nowrap text-[0px]">
+        <p
+          style="letter-spacing: .1rem;"
+          class="hidden text-dh-white font-bold text-nowrap text-[0px]"
+        >
           Digital Hippie
         </p>
         <img
-          style="max-width: 3rem; width: 1.72rem;"
+          style="scale: 1.5;max-width: 3rem; width: 1.72rem;"
           src="../assets/vectors/dh_logo.svg"
           alt=""
         />
@@ -26,8 +29,17 @@
         target="_blank"
         class="!flex gap-3 items-center"
       >
-        <p class="hidden text-dh-white text-nowrap text-[0px]">Github</p>
-        <img style="width: 1.72rem" src="/assets/vectors/github.svg" alt="" />
+        <p
+          style="letter-spacing: .1rem;"
+          class="hidden text-dh-white font-bold text-nowrap text-[0px]"
+        >
+          Github
+        </p>
+        <img
+          style="scale: 1.6"
+          src="/assets/vectors/icons/github120.svg"
+          alt=""
+        />
       </a>
     </li>
     <li>
@@ -36,8 +48,13 @@
         target="_blank"
         class="!flex gap-3 items-center"
       >
-        <p class="hidden text-dh-white text-nowrap text-[0px]">Linkedin</p>
-        <img style="width: 1.72rem" src="/assets/vectors/linkedin.svg" alt="" />
+        <p
+          style="letter-spacing: .1rem;"
+          class="hidden text-dh-white font-bold text-nowrap text-[0px]"
+        >
+          Linkedin
+        </p>
+        <img src="/assets/vectors/linkedin.svg" alt="" />
       </a>
     </li>
     <li>
@@ -46,9 +63,17 @@
         target="_blank"
         class="!flex gap-3 items-center"
       >
-        <p class="hidden text-dh-white text-nowrap text-[0px]">Twitter</p>
-        <span class="instagram--solid"></span>
-        <!-- <img style="width: 1.72rem" src="/assets/vectors/icon-instagram-outlined.svg" alt="" /> -->
+        <p
+          style="letter-spacing: .1rem;"
+          class="hidden text-dh-white font-bold text-nowrap text-[0px]"
+        >
+          Instagram
+        </p>
+        <img
+          style="scale: 1.3"
+          src="/assets/vectors/icons/instagram120.svg"
+          alt=""
+        />
       </a>
     </li>
   </ul>

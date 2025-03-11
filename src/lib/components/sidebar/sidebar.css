@@ -10,6 +10,7 @@
     /* width: fit-content; */
     z-index: 999;
   }
+
   /* .sidebar ul {
     padding: 10px !important;
   } */
@@ -23,15 +24,17 @@
     /* width: 2.6vw; */
     transition: width 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     font-size: 0.8s;
+
     &:hover {
       width: 100% !important;
+
       p {
         display: inline-block;
         font-size: 0.75em;
       }
     }
   }
-  
+
   li a:hover img {
     width: 4.8vw;
   }
@@ -44,6 +47,7 @@
   .sidebar li a img {
     width: 20px !important;
   }
+
   /* .sidebar__container {
     position: absolute !important;
     height: 100vh !important;

@@ -12,7 +12,7 @@ const config = {
 			//create a Netlify Edge Function
 			edge: false,
 			
-			// creating a single functions for the entire app
+			// creating a single function for the entire app
 			split: false,
 		}),
 		alias: {
