@@ -55,21 +55,31 @@
     }, 0);
   }
 
-  function loadMedia(ref: string, key: string) {
-    getMedia(ref)
-      .then((res: any) => {
-        console.log(res);
-        paragraphMedia.push({
-          contentUrl: res[0].contentUrl,
-          description: res[0].description,
-          title: res[0].title,
-          type: res[0].type,
-          ref: key,
-        });
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+  async function loadMedia(ref: string, key: string) {
+    // getMedia(ref)
+    //   .then((res: any) => {
+    //     console.log(res);
+    //     paragraphMedia.push({
+    //       contentUrl: res[0].contentUrl,
+    //       description: res[0].description,
+    //       title: res[0].title,
+    //       type: res[0].type,
+    //       ref: key,
+    //     });
+    //   })
+    //   .catch((err) => {
+    //     console.error(err);
+    //   });
+    const { res } = await getMedia(ref);
+    console.log(res);
+
+    paragraphMedia.push({
+      contentUrl: res[0].contentUrl,
+      description: res[0].description,
+      title: res[0].title,
+      type: res[0].type,
+      ref: key,
+    });
   }
 
   function onload() {
@@ -88,7 +98,7 @@
   }
 
   onMount(() => {
-    console.log("loadArticle", $Article);
+    // console.log("loadArticle", $Article);
 
     if (!$Article.fetching) {
       onload();

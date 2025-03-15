@@ -2,7 +2,7 @@
   import { run } from "svelte/legacy";
 
   import { onMount } from "svelte";
-  import { chips, submitHitMeUp } from "./contact-dialog";
+  import { chips, reset, submitHitMeUp } from "./contact-dialog";
   import {
     dialogState,
     type TDialogState,
@@ -12,7 +12,6 @@
 
   let pos: TDialogState = $state("closed");
   let dialog = $state<HTMLDialogElement>();
-  // let { open } = $props();
   let form: HTMLFormElement;
   let reason: HTMLInputElement | null = $state(null);
 
@@ -26,14 +25,6 @@
     if (dialog) {
       dialogState().open(dialog);
     }
-  }
-
-  function reset(form: HTMLFormElement): void {
-    if (!form) {
-      return;
-    }
-    resetForm(form);
-    chips.clear();
   }
 </script>
 
@@ -71,8 +62,10 @@
   >
     <div class="grid grid-rows-1 sm:grid-cols-2 gap-3">
       <div class="form__group">
-        <label class="text-dh-black text-sm" for="hmuFirstname"
-          >First name<sup>*</sup></label
+        <label
+          class="text-dh-black text-sm"
+          for="hmuFirstname"
+          title="firstname">First name<sup>*</sup></label
         >
         <input
           placeholder="Bruce"
@@ -92,7 +85,7 @@
         >
       </div>
       <div class="form__group">
-        <label class="text-dh-black text-sm" for="hmuLastname"
+        <label class="text-dh-black text-sm" for="hmuLastname" title="lastname"
           >Last name<sup>*</sup></label
         >
         <input
@@ -115,14 +108,14 @@
     </div>
 
     <div class="form__group grid">
-      <label class="text-dh-black text-sm" for="hmuEmail"
+      <label class="text-dh-black text-sm" for="hmuEmail" title="email"
         >E-Mail<sup>*</sup></label
       >
       <input
         placeholder="Batman@Wayne.co"
         id="hmuEmail"
         type="email"
-        name="E-mail"
+        name="email"
         class="pointer-events-auto border-[2px] border-dh-black px-4 py-2"
         required
       />
@@ -135,7 +128,9 @@
     </div>
 
     <div class="form__group grid h-fit">
-      <label class="text-dh-black text-sm" for="hmuReason">Reason</label>
+      <label class="text-dh-black text-sm" for="hmuReason" title="reason"
+        >Reason</label
+      >
       <!-- svelte-ignore a11y_no_static_element_interactions -->
       <div
         id="hmuReasonList"
@@ -181,13 +176,13 @@
     </div>
 
     <div class="form__group grid">
-      <label class="text-dh-black text-sm" for="hmuDescription"
+      <label class="text-dh-black text-sm" for="hmuMessage" title="message"
         >What's up?<sup>*</sup></label
       >
       <textarea
         placeholder="How can I help you?"
-        id="hmuDescription"
-        name="description"
+        id="hmuMessage"
+        name="message"
         rows="3.6"
         style="resize: none"
         class="pointer-events-auto border-[2px] border-dh-black pl-1"
@@ -196,7 +191,7 @@
       ></textarea>
       <small
         hidden
-        id="hmuDescriptionErr"
+        id="hmuMessageErr"
         class="form--error text-dh-orange text-sm text-[0.7em] tracking-[0.08em]"
         >Tell me what's up</small
       >
@@ -214,7 +209,7 @@
         type="submit"
         id="btnSubmitHmuForm"
         class="pointer-events-auto btn bg-dh-orange text-zinc-50"
-        onmousedown={() => (form ? submitHitMeUp(form) : "")}
+        onmousedown={() => (form ? submitHitMeUp(form, dialog!) : "")}
       >
         HIT ME UP!
       </button>

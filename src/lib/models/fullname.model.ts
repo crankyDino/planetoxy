@@ -3,11 +3,11 @@ export interface IFullname {
     lastname: string
 }
 
-export class IFullname {
-    firstname: string
-    lastname: string
-    constructor() {
-        this.firstname = ""
-        this.lastname = ""
-    }
-}
+// export class IFullname {
+//     firstname: string
+//     lastname: string
+//     constructor() {
+//         this.firstname = ""
+//         this.lastname = ""
+//     }
+// }

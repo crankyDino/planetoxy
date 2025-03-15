@@ -1,9 +1,9 @@
-import { IEmail } from "../../models/email-payload.model.js";
+import type { IEmail } from "../../models/email-payload.model.js";
 import { MOONBASE_URL } from "$env/static/private";
 
-export function sendEmail(content: IEmail): Promise<any> {
+export async function sendEmail(content: IEmail): Promise<any> {
     try {
-        const URL = `${MOONBASE_URL}/communication`
+        const _url = `${MOONBASE_URL}/communication/send`
 
         const httpHeaders = new Headers();
         httpHeaders.append("Content-Type", "application/json");
@@ -15,13 +15,13 @@ export function sendEmail(content: IEmail): Promise<any> {
             // redirect: "follow"
         };
 
-        return fetch(URL + "/send", options)
+        return await fetch(_url , options)
         // .then((response) => response.text())
         // .then((result) => console.log(result))
         // .catch((error) => console.error(error));
 
     } catch (error) {
-        console.log(error);
+        console.error(error);
         throw error;
     }
 }

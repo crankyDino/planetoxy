@@ -1,0 +1,8 @@
+@media only screen and (min-width: 412px) {
+    .btn {
+        display: flex;
+        gap: 1em;
+        margin: auto;
+        width: 100%;
+    }
+}

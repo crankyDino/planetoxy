@@ -31,11 +31,10 @@ export function initForm(form: HTMLFormElement): void {
  * @param {HTMLFormElement} form 
  * @returns 
  */
-export function validateForm(form: HTMLFormElement): boolean {
+export function validateForm(form: HTMLFormElement, callback?: (isValid: boolean) => void): void {
     let isValid: boolean = false;
     form.setAttribute("novalidate", "");
-
-    form.get
+    // form.get()
 
     form.onsubmit = (ev) => {
         ev.preventDefault();
@@ -50,8 +49,9 @@ export function validateForm(form: HTMLFormElement): boolean {
         formGroups.forEach((group) => {
             isValid = validateFormGroup(group)
         })
+
+        if (callback) { callback(isValid); }
     }
-    return isValid;
 }
 
 /**
@@ -69,6 +69,9 @@ function validateFormGroup(formGroup: Element): boolean {
     }
 
     for (const opt of Object.values(validationOptions)) {
+        // console.log()
+        // console.log(opt.attribute, ': ', formControl.hasAttribute(opt.attribute))
+        // console.log(formControl, ' - isValid : ', opt.isValid(formControl))
         if (formControl.hasAttribute(opt.attribute) && !opt.isValid(formControl)) {
             errLabel.textContent = opt.errorMsg(formControl, label.textContent!.split("*")[0]);
             opt.onError(errLabel);

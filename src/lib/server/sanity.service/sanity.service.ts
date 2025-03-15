@@ -1,13 +1,13 @@
-import { PUBLIC_SANITY_API_KEY, PUBLIC_SANITY_APP_ID } from "$env/static/public";
+import { SANITY_API_KEY, SANITY_APP_ID } from "$env/static/private";
 import { createClient } from '@sanity/client';
 
 
 const client = createClient({
-    projectId: PUBLIC_SANITY_APP_ID,
+    projectId: SANITY_APP_ID,
     dataset: 'production',
     useCdn: true, // set to `false` to bypass the edge cache
     apiVersion: '2023-05-03', // use current date (YYYY-MM-DD) to target the latest API version
-    token: PUBLIC_SANITY_API_KEY
+    token: SANITY_API_KEY
 })
 
 export async function fetchMedia(refId: string) {
