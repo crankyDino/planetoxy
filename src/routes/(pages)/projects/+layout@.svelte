@@ -5,4 +5,3 @@
 
 <TerminalBar />
 {@render children()}
-<!-- <slot /> -->
