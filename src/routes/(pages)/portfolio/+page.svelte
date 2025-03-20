@@ -8,7 +8,7 @@
 <div class="marquee absolute flex flex-row top-48 w-full">
   <h1
     class="marquee-text font-pokemon-classic text-9xl text-dh-white font-extrabold invert-100 mix-blend-exclusion"
-    style="    -webkit-text-stroke: 2px #dddddd;"
+    style="-webkit-text-stroke: 2px #dddddd;"
   >
     RARECLUB
   </h1>
@@ -52,7 +52,7 @@
     </div>
     <a
       class="flex col-start-12 row-start-12 items-center justify-center self-end btn bg-dh-orange border-[3px] border-dh-orange text-dh-white"
-      href="http://">View</a
+      href="portfolio/idk">View</a
     >
   </div>
 </div>
