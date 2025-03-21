@@ -5,11 +5,13 @@
 <Sidebar />
 
 <div
-  class="banner h-[9em] md:h-60 lg:h-[33rem] overflow-hidden -z-10 w-full bg-fixed bg-no-repeat bg-[50%]"
+  class="banner h-[9em] md:h-60 lg:h-[33rem] overflow-hidden -z-10 w-full bg-fixed bg-no-repeat bg-[10%]"
   style="background-image: url(https://media.digitalhippie.xyz/beat%20tape%20cover.jpg); background-size: 100%; "
 ></div>
 
-<div class="grid grid-flow-col mt-8 mx-12 gap-x-12">
+<div
+  class="grid grid-flow-col lg:w-fit mt-8 mx-12 lg:mx-auto gap-x-12 lg:gap-x-16"
+>
   <img
     class="margin-auto w-2xs col-span-1"
     src="https://media.digitalhippie.xyz/DH%20Stretch.jpg"
@@ -25,7 +27,7 @@
       <p class="font-space-mono text-dh-white">> 2019</p>
     </div>
     <img
-      class="margin-auto w-xs col-start-4"
+      class="margin-auto w-xs col-start-4 lg:col-start-12 lg:self-end"
       src="https://media.digitalhippie.xyz/Vinyl.jpg"
       alt="rare club poster"
     />
