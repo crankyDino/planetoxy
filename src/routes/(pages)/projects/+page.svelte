@@ -5,13 +5,13 @@
 <Sidebar />
 
 <section
-  class="grid md:grid-cols-2 lg:grid-cols-1 gap-8 gap-y-12 m-3 mt-6 mx-auto w-[60%]"
+  class="grid md:grid-cols-2 lg:grid-cols-1 gap-8 gap-y-12 m-3 mt-6 mx-auto sm:w-[80%] md:w-[88%] lg:w-[70%]"
 >
   {#each [1, 2, 3, 4] as i}
     <a
       id="projectCard"
       href="projects/a-thing"
-      class="overflow-[unset] grid lg:w-[80%] xlg:w-1/2 lg:h-[20vh] lg:m-auto"
+      class="overflow-[unset] grid w-full lg:w-2/3 xlg:w-1/2 lg:h-[20vh] lg:m-auto"
     >
       <div
         class="flex flex-col lg:justify-between lg:py-4 lg:pl-6 col-span-9 border-[.15em] border-dh-orange h-36 lg:h-full rounded-xs px-3 py-2 col-start-1 row-start-1"
@@ -33,7 +33,7 @@
           class="font-space-mono text-dh-gray flex flex-col text-[.7em] lg:text-lg border-l-[.5em] border-dh-orange pl-1"
         >
           <div class="flex flex-row pl-2">
-            <p class="hidden lg:block">Project </p>
+            <p class="hidden lg:block">Project</p>
             <p>> Website</p>
           </div>
           <div class="flex flex-row pl-2">
