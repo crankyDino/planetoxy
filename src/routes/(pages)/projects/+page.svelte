@@ -5,7 +5,7 @@
 <Sidebar />
 
 <section
-  class="grid md:grid-cols-2 lg:grid-cols-1 gap-8 gap-y-12 m-3 mt-6 mx-auto w-[88%]"
+  class="grid md:grid-cols-2 lg:grid-cols-1 gap-8 gap-y-12 m-3 mt-6 mx-auto w-[60%]"
 >
   {#each [1, 2, 3, 4] as i}
     <a
