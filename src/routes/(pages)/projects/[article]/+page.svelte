@@ -4,14 +4,14 @@
 
 <Sidebar />
 
-<section class="pt-6 pl-16">
+<section class="pt-6 px-8 xl:w-4/5 xl:m-auto">
   <div class="grid grid-flow-col gap-x-4">
     <div class="row-span-12 col-span-6 col-start-1 row-start-1">
       <div class="pb-2">
         <img
+          class="h-96 xl:h-[50vh]"
           src="https://media.digitalhippie.xyz/beat%20tape%20cover.jpg"
           alt=""
-          class="h-96"
         />
         <div class="grid grid-flow-col grid-cols-4 py-1 gap-0">
           {#each [1, 1] as tag}
@@ -41,33 +41,37 @@
     </div>
 
     <h1
-      class="col-span-8 font-bold text-dh-white font-pokemon-classic text-5xl"
+      class="font-bold text-dh-white font-pokemon-classic text-5xl col-start-9"
     >
       A Thing I Did
     </h1>
-    <p class="row-span-2 col-span-3 font-space-mono text-dh-white row-start-9">
+    <p
+      class="font-space-mono text-dh-white xl:text-xl xl:w-1/2 row-span-2 col-start-9 row-start-8"
+    >
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore
       reprehenderit us maxime modi corrupti perferendis ipsum, laudantium ea.
       Lorem ipsum dolor sit amet consectetur adipisicing elit. laudantium ea.
     </p>
   </div>
 
-  <div class="grid grid-flow-col gap-x-4 pt-6">
-    <div class="row-span-3">
+  <div class="grid grid-flow-col xl:grid-cols-12 gap-x-4 pt-6">
+    <div class="flex flex-col w-fit col-span-3">
       <h2 class="text-dh-orange text-4xl font-bold font-pokemon-classic">
         Tools Used
       </h2>
-      <ul class="font-space-mono text-dh-white text-2xl pt-3">
+      <ul class="font-space-mono text-dh-white text-xl pt-3">
         <li>> Adobe Photoshop</li>
         <li>> Adobe Illustrator</li>
         <li>> Canon M40 MII</li>
       </ul>
     </div>
-    <div class="scale-[3.2] rounded-xs relative top-[100%] overflow-hidden w-[135px] h-[92px]">
+    <div
+      class="xl:col-start-4 rounded-3xl overflow-hidden w-[135px] xl:w-[33vw] xl:h-[30%]"
+    >
       <img
+        class="h-auto w-full relative bottom-[120%]"
         src="https://media.digitalhippie.xyz/beat%20tape%20cover.jpg"
         alt=""
-        class="z-10 h-auto w-[400px]"
       />
     </div>
   </div>
