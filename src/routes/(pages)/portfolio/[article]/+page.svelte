@@ -5,19 +5,19 @@
 <Sidebar />
 
 <div
-  class="banner h-[9em] md:h-60 lg:h-[33rem] overflow-hidden -z-10 w-full bg-fixed bg-no-repeat bg-[10%]"
+  class="banner h-[9em] md:h-60 lg:h-[33rem] overflow-hidden -z-10 w-full md:bg-fixed bg-no-repeat bg-[10%]"
   style="background-image: url(https://media.digitalhippie.xyz/beat%20tape%20cover.jpg); background-size: 100%; "
 ></div>
 
 <div
-  class="grid grid-flow-col lg:w-fit mt-8 mx-12 lg:mx-auto gap-x-12 lg:gap-x-16"
+  class="grid md:grid-flow-col gap-y-6 justify-center lg:w-fit mt-8 mx-12 lg:mx-auto md:gap-x-12 lg:gap-x-16"
 >
   <img
-    class="margin-auto w-2xs col-span-1"
+    class="margin-auto w-3/4 justify-self-center md:w-2xs col-span-1"
     src="https://media.digitalhippie.xyz/DH%20Stretch.jpg"
     alt=""
   />
-  <div class="grid grid-flow-row col-span-12">
+  <div class="grid grid-flow-row gap-y-6 md:col-span-12">
     <div class="flex flex-col gap-y-2 col-span-6">
       <h1 class="font-space-mono text-dh-orange font-bold text-3xl">
         RARECLUB MAGAZINE
@@ -27,7 +27,7 @@
       <p class="font-space-mono text-dh-white">> 2019</p>
     </div>
     <img
-      class="margin-auto w-xs col-start-4 lg:col-start-12 lg:self-end"
+      class="margin-auto col-span-12 w-xs md:col-start-4 lg:col-start-12 lg:self-end"
       src="https://media.digitalhippie.xyz/Vinyl.jpg"
       alt="rare club poster"
     />
