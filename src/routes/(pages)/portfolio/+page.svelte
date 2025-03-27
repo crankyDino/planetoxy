@@ -27,7 +27,7 @@
       />
     </div>
     <div
-      class="col-start-3 col-span-3 row-start-1 rounded-lg justify-self-start overflow-hidden w-fit xl:w-[28vw] h-[15em] xl:h-[33vh] relative top-[10rem] xl:top-[20rem]  mix-blend-hard-light invert-75 scale-125"
+      class="col-start-3 col-span-3 row-start-1 rounded-lg justify-self-start overflow-hidden w-fit xl:w-[28vw] h-[15em] xl:h-[33vh] relative top-[10rem] xl:top-[20rem] mix-blend-hard-light invert-75 scale-125"
     >
       <img
         class="z-10 border border-dh-orange bottom-[50%] relative h-auto w-[400px] xl:w-full"
@@ -38,22 +38,32 @@
     </div>
   </div>
   <div
-    class="relative grid col-span-5 row-span-8 col-start-5 xl:col-start-3 row-start-1 pl-8 pb-12"
+    class="relative grid grid-flow-row col-span-5 row-span-8 col-start-5 xl:col-start-3 row-start-1 h-[41vh] md:h-fit md:pl-8 pb-6 md:pb-12"
   >
-    <div class="flex flex-col row-start-2">
+    <div class="flex flex-col items-end md:items-start md:row-start-2">
       <h4
-        class="font-space-mono text-dh-orange text-3xl font-bold"
+        class="hidden sm:block font-space-mono text-dh-orange md:text-3xl font-bold"
         style="letter-spacing: .4em;"
       >
         RARECLUB
       </h4>
-      <p class="font-space-mono text-dh-dark-gray text-xl">poster design</p>
-      <p class="font-space-mono text-dh-dark-gray text-xl">2020</p>
+      <p class="font-space-mono text-dh-dark-gray text-lg md:text-xl">
+        poster design
+      </p>
+      <p class="font-space-mono text-dh-dark-gray text-lg md:text-xl">2020</p>
     </div>
-    <a
-      class="flex col-start-12 row-start-12 items-center justify-center self-end btn bg-dh-orange border-[3px] border-dh-orange text-dh-white"
-      href="portfolio/idk">View</a
-    >
+    <div class="flex flex-row align-bottom">
+      <h4
+        class="sm:hidden font-space-mono text-dh-orange md:text-3xl font-bold self-end"
+        style="letter-spacing: .4em;"
+      >
+        RARECLUB
+      </h4>
+      <a
+        class="flex md:col-start-12 row-start-12 items-center justify-self-end justify-center self-end btn bg-dh-orange border-[3px] border-dh-orange text-dh-white"
+        href="portfolio/idk">View</a
+      >
+    </div>
   </div>
 </div>
 
