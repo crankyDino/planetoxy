@@ -9,7 +9,7 @@
     <div class="row-span-12 col-span-6 col-start-1 row-start-1">
       <div class="pb-2">
         <img
-          class="h-96 xl:h-[50vh]"
+          class="h-full max-h-96 xl:h-[50vh]"
           src="https://media.digitalhippie.xyz/beat%20tape%20cover.jpg"
           alt=""
         />
@@ -41,12 +41,12 @@
     </div>
 
     <h1
-      class="font-bold text-dh-white font-pokemon-classic text-5xl col-start-9"
+      class="font-bold text-dh-white font-pokemon-classic text-lg md:text-5xl col-span-6 md:col-start-9"
     >
       A Thing I Did
     </h1>
     <p
-      class="font-space-mono text-dh-white xl:text-xl xl:w-1/2 row-span-2 col-start-9 row-start-8"
+      class="font-space-mono text-dh-white text-xs xl:text-xl xl:w-1/2 row-span-2 col-span-6 md:col-start-9 row-start-8"
     >
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore
       reprehenderit us maxime modi corrupti perferendis ipsum, laudantium ea.
@@ -54,22 +54,24 @@
     </p>
   </div>
 
-  <div class="grid grid-flow-col xl:grid-cols-12 gap-x-4 pt-6">
+  <div class="grid md:grid-flow-col xl:grid-cols-12 gap-y-4 md:gap-x-4 pt-6">
     <div class="flex flex-col w-fit col-span-3">
-      <h2 class="text-dh-orange text-4xl font-bold font-pokemon-classic">
+      <h2
+        class="text-dh-orange text-lg md:text-4xl font-bold font-pokemon-classic"
+      >
         Tools Used
       </h2>
-      <ul class="font-space-mono text-dh-white text-xl pt-3">
+      <ul class="font-space-mono text-dh-white w-full text-md md:text-xl pt-3">
         <li>> Adobe Photoshop</li>
         <li>> Adobe Illustrator</li>
         <li>> Canon M40 MII</li>
       </ul>
     </div>
     <div
-      class="xl:col-start-4 rounded-3xl overflow-hidden w-[135px] xl:w-[33vw] xl:h-[30%]"
+      class="xl:col-start-4 rounded-3xl overflow-hidden h-1/2 w-fit md:w-[135px] xl:w-[33vw] xl:h-[30%]"
     >
       <img
-        class="h-auto w-full relative bottom-[120%]"
+        class="md:h-auto w-full relative bottom-[50%] md:bottom-[120%]"
         src="https://media.digitalhippie.xyz/beat%20tape%20cover.jpg"
         alt=""
       />
