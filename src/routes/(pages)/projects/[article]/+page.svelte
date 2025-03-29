@@ -55,7 +55,7 @@
   </div>
 
   <div class="grid md:grid-flow-col xl:grid-cols-12 gap-y-4 md:gap-x-4 pt-6">
-    <div class="flex flex-col w-fit col-span-3">
+    <div class="flex flex-col w-fit col-span-12 md:col-span-3">
       <h2
         class="text-dh-orange text-lg md:text-4xl font-bold font-pokemon-classic"
       >
@@ -68,7 +68,7 @@
       </ul>
     </div>
     <div
-      class="xl:col-start-4 rounded-3xl overflow-hidden h-1/2 w-fit md:w-[135px] xl:w-[33vw] xl:h-[30%]"
+      class="mx-auto w-4/5 col-span-12 md:col-span-9 xl:col-start-4 rounded-3xl overflow-hidden h-1/2 md:w-fit md:w-[135px] xl:w-[33vw] xl:h-[30%]"
     >
       <img
         class="md:h-auto w-full relative bottom-[50%] md:bottom-[120%]"
