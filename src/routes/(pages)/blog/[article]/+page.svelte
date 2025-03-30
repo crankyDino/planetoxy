@@ -56,22 +56,7 @@
   }
 
   async function loadMedia(ref: string, key: string) {
-    // getMedia(ref)
-    //   .then((res: any) => {
-    //     console.log(res);
-    //     paragraphMedia.push({
-    //       contentUrl: res[0].contentUrl,
-    //       description: res[0].description,
-    //       title: res[0].title,
-    //       type: res[0].type,
-    //       ref: key,
-    //     });
-    //   })
-    //   .catch((err) => {
-    //     console.error(err);
-    //   });
     const { res } = await getMedia(ref);
-    console.log(res);
 
     paragraphMedia.push({
       contentUrl: res[0].contentUrl,
@@ -98,9 +83,7 @@
   }
 
   onMount(() => {
-    // console.log("loadArticle", $Article);
-
-    if (!$Article.fetching) {
+    if (!$Article.fetching ) {
       onload();
     }
 
@@ -123,7 +106,7 @@
       <div class="grid sm:flex flex-col col-span-12 md:flex-row w-fit">
         <div class="w-full">
           <h1
-            class="bg-dh-black relative bottom-7 md:bottom-12 lg:bottom-8 w-fit max-w-[45vw] md:w-[50vw] font-hanuman font-extrabold text-dh-orange text-[1.5em] md:text-6xl text-wrap lg:text-nowrap p-2 md:p-4 md:pb-6"
+            class="bg-dh-black relative bottom-7 md:bottom-12 lg:bottom-8 w-fit md:max-w-[45vw] md:w-[50vw] font-hanuman font-extrabold text-dh-orange text-[1.5em] md:text-6xl text-wrap lg:text-nowrap p-2 md:p-4 md:pb-6"
           >
             {$Article.data!.allArticle[0].title}
           </h1>
@@ -159,7 +142,8 @@
         {#each $Article.data!.allArticle[0].paragraphRaw as paragraph}
           {#if paragraph.style?.includes("h")}
             <h3
-              class="title__backdrop font-quirkyrobot text-dh-gray h-24 w-[75vw] max-h-full pl-2 text-[6em] mb-[1rem]"
+              style="letter-spacing: 0.08em; line-height: 100%;"
+              class="title__backdrop font-quirkyrobot text-dh-orange mb-auto h-min md:h-24 md:w-[75vw] md:max-h-full pl-2 text-[2.8em] md:text-[6em] font-bold"
             >
               {paragraph.children[0].text}
             </h3>
@@ -167,7 +151,7 @@
 
           {#if paragraph.style === "normal"}
             {#each paragraph.children as body}
-              <div class="font-space-mono text-dh-gray pl-2 text-[.85]">
+              <div class="font-space-mono text-dh-gray pl-2 text-[.7em]">
                 {body.text}
               </div>
             {/each}

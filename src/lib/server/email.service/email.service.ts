@@ -12,16 +12,13 @@ export async function sendEmail(content: IEmail): Promise<any> {
             method: "POST",
             headers: httpHeaders,
             body: JSON.stringify(content),
-            // redirect: "follow"
         };
 
-        return await fetch(_url , options)
-        // .then((response) => response.text())
-        // .then((result) => console.log(result))
-        // .catch((error) => console.error(error));
+        return await fetch(_url, options)
 
     } catch (error) {
         console.error(error);
         throw error;
     }
 }
+

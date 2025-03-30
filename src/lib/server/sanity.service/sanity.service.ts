@@ -1,8 +1,7 @@
 import { SANITY_API_KEY, SANITY_APP_ID } from "$env/static/private";
 import { createClient } from '@sanity/client';
 
-
-const client = createClient({
+export const client = createClient({
     projectId: SANITY_APP_ID,
     dataset: 'production',
     useCdn: true, // set to `false` to bypass the edge cache

@@ -5,11 +5,11 @@
 <Sidebar />
 
 <section class="pt-6 px-8 xl:w-4/5 xl:m-auto">
-  <div class="grid grid-flow-col gap-x-4">
-    <div class="row-span-12 col-span-6 col-start-1 row-start-1">
-      <div class="pb-2">
+  <div class="grid md:grid-flow-col gap-y-[.2em] md:gap-x-4">
+    <div class="col-start-1 row-start-1 md:row-span-12 col-span-12 md:col-span-6 pb-3">
+      <div class="pb-2 w-full ">
         <img
-          class="h-full max-h-96 xl:h-[50vh]"
+          class="m-auto md:m-initial h-78 md:h-full max-h-96 xl:h-[50vh]"
           src="https://media.digitalhippie.xyz/beat%20tape%20cover.jpg"
           alt=""
         />
@@ -24,7 +24,7 @@
         </div>
       </div>
 
-      <ul class="grid grid-flow-col grid-cols-6 gap-x-4">
+      <ul class="grid grid-flow-col md:grid-cols-6 gap-x-4">
         {#each [1, 1, 1] as tag}
           <li>
             <a target="_blank" href="https://digitalhippie.xyz">
@@ -41,12 +41,12 @@
     </div>
 
     <h1
-      class="font-bold text-dh-white font-pokemon-classic text-lg md:text-5xl col-span-6 md:col-start-9"
+      class="font-bold text-dh-white font-pokemon-classic text-lg md:text-5xl col-span-12 md:col-span-6 md:col-start-9"
     >
       A Thing I Did
     </h1>
     <p
-      class="font-space-mono text-dh-white text-xs xl:text-xl xl:w-1/2 row-span-2 col-span-6 md:col-start-9 row-start-8"
+      class="font-space-mono text-dh-white text-xs xl:text-xl xl:w-1/2 row-span-2 col-span-12 md:col-span-1 md:col-start-9 row-start-8"
     >
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore
       reprehenderit us maxime modi corrupti perferendis ipsum, laudantium ea.

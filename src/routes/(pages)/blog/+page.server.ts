@@ -2,12 +2,12 @@
 // export async function load(event) {
 //     const { params, } = event;
 
-    // const getArticles = {
-    //     ...await load_Articles({ event })
-    // }
-    // return { getArticles };
+// const getArticles = {
+//     ...await load_Articles({ event })
+// }
+// return { getArticles };
 
-    // variables: { ref: 'portfolioCarousel' }, // Replace `params.slug` with your actual dynamic slug
+// variables: { ref: 'portfolioCarousel' }, // Replace `params.slug` with your actual dynamic slug
 // }
 
 // export async function load() {
