@@ -32,7 +32,7 @@
   <!-- terminal -->
   <Terminal />
   <div
-    class="hero__tagline grid md:grid-flow-col md:gap-x-4 lg:gap-7 justify-items-center  md:items-start xl:items-end lg:w-[47vw] h-full text-dh-white"
+    class="hero__tagline grid md:grid-flow-col md:gap-x-4 lg:gap-7 justify-items-center md:items-start xl:items-end lg:w-[47vw] h-full text-dh-white"
   >
     <div
       class="hero__name flex flex-col h-fit justify-start lg:w-fit md:w-[88%]"
@@ -169,7 +169,9 @@
   <!-- <Carousel carouselItems={things} carouselType={"card"} /> -->
   {#if !$PortfolioCarousel.fetching && $PortfolioCarousel?.data}
     <StaggeredCarousel
-      carouselItems={$PortfolioCarousel.data.allCarousel[0].media}
+      carouselItems={$PortfolioCarousel.data.allCarousel[0].media?.filter(
+        Boolean
+      ) as Array<ICarouselItem>}
       carouselType={"card"}
     ></StaggeredCarousel>
   {/if}

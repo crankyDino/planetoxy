@@ -9,7 +9,12 @@ export const client = createClient({
     token: SANITY_API_KEY
 })
 
-export async function fetchMedia(refId: string) {
-    const query = `*[_type=='graphic' && _id == '${refId}']{title, type, contentUrl, description}`;
-    return await client.fetch(query);
+export async function fetchMedia(refId: string): Promise<Response> {
+    try {
+        const query = `*[_type=='graphic' && _id == '${refId}']{title, type, contentUrl, description}`;
+        return client.fetch(query);
+    } catch (error) {
+        console.error(error);
+        throw error;
+    }
 }

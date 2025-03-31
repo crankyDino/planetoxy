@@ -38,7 +38,7 @@
     </div>
   </div>
   <div
-    class="relative grid grid-flow-row col-span-5 row-span-8 col-start-5 xl:col-start-3 row-start-1 h-[41vh] md:h-full md:pl-8 pb-6 "
+    class="relative grid grid-flow-row col-span-5 row-span-8 col-start-5 xl:col-start-3 row-start-1 h-[50vh] md:h-full md:pl-8 pb-6"
   >
     <div class="flex flex-col items-end md:items-start md:row-start-2">
       <h4
@@ -60,7 +60,7 @@
         RARECLUB
       </h4>
       <a
-        class="flex  items-center justify-self-end justify-center self-end btn bg-dh-orange border-[3px] border-dh-orange text-dh-white"
+        class="flex items-center justify-self-end justify-center self-end btn bg-dh-orange border-[3px] border-dh-orange text-dh-white"
         href="portfolio/idk">View</a
       >
     </div>

@@ -11,7 +11,7 @@
 
 <Navbar />
 
-<div class="h-100% min-h-[100vh] bg-dh-black bg-light">
+<div class="h-full min-h-fit bg-dh-black bg-light">
   {@render children!()}
 </div>
 

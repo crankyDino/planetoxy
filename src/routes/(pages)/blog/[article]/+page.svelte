@@ -9,7 +9,7 @@
   interface Props {
     data: PageData;
   }
-
+  let loading: boolean = $state(true);
   let title = $page.url.pathname;
 
   let { data }: Props = $props();
@@ -28,34 +28,35 @@
    * TODO: figure out a better method than setTimeout
    */
   function alignBanner() {
-    let x = setTimeout(() => {
-      if (bannerBox) {
-        // console.log("x", header.hotspot.x);
-        // console.log("y", header.hotspot.y);
-        // console.log("h", header.hotspot.height);
-        // console.log("w", header.hotspot.width);
-        // console.log("offset", bannerBox.offsetHeight);
+    // let x = setTimeout(() => {
+    if (bannerBox) {
+      // console.log("x", header.hotspot.x);
+      // console.log("y", header.hotspot.y);
+      // console.log("h", header.hotspot.height);
+      // console.log("w", header.hotspot.width);
+      // console.log("offset", bannerBox.offsetHeight);
 
-        // posX = header.hotspot.x;
-        // posY = header.hotspot.y;
-        posX = $Article.data?.allArticle[0].header?.hotspot?.width || 0;
-        posY = $Article.data?.allArticle[0].header?.hotspot?.height || 0;
-        offset = bannerBox.offsetHeight;
+      // posX = header.hotspot.x;
+      // posY = header.hotspot.y;
+      posX = $Article.data?.allArticle[0].header?.hotspot?.width || 0;
+      posY = $Article.data?.allArticle[0].header?.hotspot?.height || 0;
+      offset = bannerBox.offsetHeight;
 
-        // const digitsBeforeDecimal =
-        //   Math.floor(Math.log10(header.hotspot.height)) + 1; // Number of digits before the decimal point
-        // const scaledNum =
-        //   header.hotspot.height / Math.pow(10, digitsBeforeDecimal); // Scale the number down
-        // const result = parseFloat(scaledNum.toFixed(4));
+      // const digitsBeforeDecimal =
+      //   Math.floor(Math.log10(header.hotspot.height)) + 1; // Number of digits before the decimal point
+      // const scaledNum =
+      //   header.hotspot.height / Math.pow(10, digitsBeforeDecimal); // Scale the number down
+      // const result = parseFloat(scaledNum.toFixed(4));
 
-        // console.log(result);
-        // header.hotspot.height = (bannerBox.offsetHeight * result) / 100;
-      }
-      clearTimeout(x);
-    }, 0);
+      // console.log(result);
+      // header.hotspot. height = (bannerBox.offsetHeight * result) / 100;
+    }
+    //   clearTimeout(x);
+    // }, 0);
   }
 
   async function loadMedia(ref: string, key: string) {
+    loading = true;
     const { res } = await getMedia(ref);
 
     paragraphMedia.push({
@@ -65,37 +66,36 @@
       type: res[0].type,
       ref: key,
     });
-  }
 
-  function onload() {
-    let key: string = "";
-
-    ($Article.data!.allArticle[0].paragraphRaw as any[]).map((p: any) => {
-      if (p.style === "normal") {
-        key = p._key;
-      }
-
-      if (p._type.includes("reference")) {
-        const ref = p._ref;
-        loadMedia(ref, key);
-      }
-    });
+    loading = false;
   }
 
   onMount(() => {
-    if (!$Article.fetching ) {
-      onload();
-    }
+    $effect(() => {
+      if (!$Article.fetching) {
+        let key: string = "";
 
-    // alignBanner();
+        ($Article.data!.allArticle[0].paragraphRaw as any[]).map((p: any) => {
+          if (p.style === "normal") {
+            key = p._key;
+          }
+
+          if (p._type.includes("reference")) {
+            const ref = p._ref;
+            loadMedia(ref, key);
+          }
+        });
+        // alignBanner();
+      }
+    });
+
     // header.hotspot.width = (bannerBox.offsetHeight * header.hotspot.width) / 100;
   });
 </script>
 
 <Sidebar />
-{#if !$Article.fetching}
+{#if !$Article.fetching && !loading}
   <div
-    {onload}
     bind:this={bannerBox}
     class="banner h-[9em] md:h-60 lg:h-96 overflow-hidden -z-10 w-full bg-fixed bg-no-repeat"
     style="background-image: url({$Article.data!.allArticle[0].header!.asset!

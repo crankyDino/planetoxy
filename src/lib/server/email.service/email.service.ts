@@ -1,7 +1,7 @@
 import type { IEmail } from "../../models/email-payload.model.js";
 import { MOONBASE_URL } from "$env/static/private";
 
-export async function sendEmail(content: IEmail): Promise<any> {
+export async function sendEmail(content: IEmail): Promise<Response> {
     try {
         const _url = `${MOONBASE_URL}/communication/send`
 
