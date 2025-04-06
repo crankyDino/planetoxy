@@ -5,13 +5,13 @@
 <Sidebar />
 
 <section
-  class="grid md:grid-cols-2 lg:grid-cols-1 gap-8 gap-y-12 m-3 mt-6 mx-auto sm:w-[80%] md:w-[88%] lg:w-[70%] px-[1.8em]"
+  class="grid md:grid-cols-2 lg:grid-cols-1 2xl:grid-cols-2 gap-8 gap-y-12 2xl:gap-x-30 pb-12 m-3 mt-6 mx-auto sm:w-[80%] md:w-[88%] lg:w-[70%] px-[1.8em]"
 >
   {#each [1, 2, 3, 4] as i}
     <a
       id="projectCard"
       href="projects/a-thing"
-      class="overflow-[unset] grid w  md:w-4/5 lg:w-2/3 xlg:w-1/2 lg:h-[20vh] lg:m-auto"
+      class="overflow-[unset] grid md:w-full xl:w-4/5 2xl:w-full   lg:m-auto"
     >
       <div
         class="flex flex-col lg:justify-between lg:py-4 lg:pl-6 col-span-9 border-[.15em] border-dh-orange h-36 lg:h-full rounded-xs px-3 py-2 col-start-1 row-start-1"
@@ -47,7 +47,7 @@
         </div>
       </div>
       <div
-        class="col-start-7 lg:col-start-6 col-span-3 scale-[1.3] lg:scale-200 row-start-1 rounded-xs justify-self-end overflow-hidden w-[135px] h-[92px] relative top-[4rem] left-[-1%] lg:left-[25%] mix-blend-color"
+        class="col-start-7 lg:col-start-6 col-span-3 scale-[1.3] lg:scale-200 row-start-1 rounded-xs justify-self-end overflow-hidden w-3/5 sm:w-[135px] h-[92px] relative top-[4rem] left-[-1%] lg:left-[25%] mix-blend-color"
       >
         <img
           class="z-10 bottom-[50%] relative h-auto w-[400px]"
@@ -57,7 +57,7 @@
         />
       </div>
       <div
-        class="col-start-6 lg:col-start-7 col-span-3 scale-[1.3] lg:scale-200 row-start-1 rounded-xs justify-self-end overflow-hidden w-[135px] h-[92px] relative top-[5rem]"
+        class="col-start-6 left-8 sm:left-0 lg:col-start-7 col-span-3 scale-[1.3] lg:scale-200 row-start-1 rounded-xs justify-self-end overflow-hidden w-3/5 sm:w-[135px] h-[92px] relative top-[5rem]"
       >
         <img
           class="z-10 bottom-[50%] relative h-auto w-[400px]"
