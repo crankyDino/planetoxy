@@ -1,9 +1,9 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import "./blog.css";
-  // import type { PageData } from "./$houdini";
+  import type { PageData } from "./$houdini";
   interface Props {
-    data: any;
+    data: PageData;
   }
 
   let { data }: Props = $props();

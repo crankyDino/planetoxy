@@ -1,0 +1,22 @@
+query Portfolios {
+  allPortfolio {
+    _id
+    slug {
+      current
+    }
+    title
+    tags {
+      tagName
+    }
+    details {
+      client
+      project
+      projectType
+      date
+    }
+    hero {
+      contentUrl
+      description
+    }
+  }
+}

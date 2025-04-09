@@ -1,6 +1,15 @@
 <script lang="ts">
   import "./portfolio.css";
   import Sidebar from "$lib/components/sidebar/sidebar.svelte";
+  import type { PageData } from "./$houdini";
+  interface Props {
+    data: PageData;
+  }
+
+  let { data }: Props = $props();
+
+  let { Portfolios } = $derived(data);
+  $inspect(Portfolios);
 </script>
 
 <Sidebar />
@@ -30,7 +39,7 @@
       class="col-start-3 col-span-3 row-start-1 rounded-lg justify-self-start overflow-hidden w-fit xl:w-[28vw] h-[33%] sm:h-2/5 md:h-[45%] xl:h-[28vh] 2xl:h-[36vh] relative top-1/3 sm:top-[10rem] md:top-[22vh] lg:top-[16vh] xl:top-[16vh] 2xl:top-[42vh] mix-blend-hard-light invert-75 scale-125"
     >
       <img
-        class="z-10  bottom-1/2 sm:bottom-2/3 2xl:bottom-4/5 relative h-auto  w-[400px] xl:w-full"
+        class="z-10 bottom-1/2 sm:bottom-2/3 2xl:bottom-4/5 relative h-auto w-[400px] xl:w-full"
         style="clip-path: inset(15px 0px);"
         src="https://media.digitalhippie.xyz/beat%20tape%20cover.jpg"
         alt="a thing"

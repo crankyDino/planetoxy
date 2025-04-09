@@ -16,7 +16,7 @@ const config = {
 			split: false,
 		}),
 		alias: {
-			$houdini: './$houdini',
+			$houdini: ".houdini/",
 		}
 	}
 };
