@@ -2,21 +2,37 @@
 
 welcome to my world.
 
+## Set Up
+
+### Initialise
+```sh
+npm i
+```
+### Initialise Houdini
+```sh
+npm init:houdini
+```
+
+### Generate Houdini types or whatever..idk
+```sh
+npm generate:houdini
+```
+
 ## Run It
 
-```bash
+```sh
 npm run launch
 ```
 
 ## Build It
 
-```bash
+```sh
 npm run build
 ```
 
 ## Preview
 
-```bash
+```sh
 npm run preview
 ```
 
