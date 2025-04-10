@@ -1,0 +1,20 @@
+query Projects {
+  allProject {
+    title
+    slug {
+      current
+    }
+    tags {
+      tagName
+    }
+    hero {
+      contentUrl
+    }
+    details {
+      client
+      project
+      projectType
+      date
+    }
+  }
+}

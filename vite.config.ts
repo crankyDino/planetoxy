@@ -4,9 +4,5 @@ import tailwindcss from '@tailwindcss/vite';
 import { defineConfig } from 'vite';
 
 export default defineConfig({
-    plugins: [
-        houdini(),
-        tailwindcss(),
-        sveltekit()
-    ]
+    plugins: [houdini(), tailwindcss(), sveltekit()]
 });

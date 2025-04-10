@@ -14,7 +14,7 @@
   interface Props {
     data: PageData;
   }
-  const { data } = $props();
+  const { data }:Props = $props();
   const { PortfolioCarousel } = $derived(data);
 
   onMount(() => {

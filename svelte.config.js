@@ -11,7 +11,7 @@ const config = {
 		adapter: adapter({
 			//create a Netlify Edge Function
 			edge: false,
-			
+
 			// creating a single function for the entire app
 			split: false,
 		}),

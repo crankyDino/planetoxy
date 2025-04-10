@@ -1,5 +1,15 @@
 <script lang="ts">
   import Sidebar from "$lib/components/sidebar/sidebar.svelte";
+  import type { PageData } from "./$houdini";
+  interface Props {
+    data: PageData;
+  }
+
+  let { data }: Props = $props();
+
+  let { Projects } = $derived(data);
+
+  $inspect(Projects);
 </script>
 
 <Sidebar />
@@ -11,7 +21,7 @@
     <a
       id="projectCard"
       href="projects/a-thing"
-      class="overflow-[unset] grid md:w-full xl:w-4/5 2xl:w-full   lg:m-auto"
+      class="overflow-[unset] grid md:w-full xl:w-4/5 2xl:w-full lg:m-auto"
     >
       <div
         class="flex flex-col lg:justify-between lg:py-4 lg:pl-6 col-span-9 border-[.15em] border-dh-orange h-36 lg:h-full rounded-xs px-3 py-2 col-start-1 row-start-1"
