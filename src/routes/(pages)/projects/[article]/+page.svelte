@@ -1,13 +1,22 @@
 <script lang="ts">
   import Sidebar from "$lib/components/sidebar/sidebar.svelte";
+  import type { Props } from "$lib/models/prop.model";
+  // import type { PageData } from "../$houdini";
+  import type { PageData } from "./$types";
+
+  let { data }: Props<PageData> = $props();
+  let { loadProject } = $derived(data);
+  $inspect(loadProject);
 </script>
 
 <Sidebar />
 
 <section class="pt-6 px-8 xl:w-4/5 xl:m-auto">
   <div class="grid md:grid-flow-col gap-y-[.2em] md:gap-x-4">
-    <div class="col-start-1 row-start-1 md:row-span-12 col-span-12 md:col-span-6 pb-3">
-      <div class="pb-2 w-full ">
+    <div
+      class="col-start-1 row-start-1 md:row-span-12 col-span-12 md:col-span-6 pb-3"
+    >
+      <div class="pb-2 w-full">
         <img
           class="m-auto md:m-initial h-78 md:h-full max-h-96 xl:h-[50vh]"
           src="https://media.digitalhippie.xyz/beat%20tape%20cover.jpg"

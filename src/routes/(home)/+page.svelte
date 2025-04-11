@@ -4,17 +4,14 @@
   import ContactDialog from "$lib/components/contact-dialog/contact-dialog.svelte";
   import StaggeredCarousel from "$lib/components/staggered-carousel/staggered-carousel.svelte";
   import { onMount } from "svelte";
-
   import Terminal from "../../lib/components/terminal/terminal.svelte";
+  import type { PageData } from "./$houdini";
+  import type { Props } from "$lib/models/prop.model";
+
   let moreThings: Map<number, ICarouselItem> = new Map<number, ICarouselItem>();
   let dialog: any;
 
-  import type { PageData } from "./$houdini";
-
-  interface Props {
-    data: PageData;
-  }
-  const { data }:Props = $props();
+  let { data }: Props<PageData> = $props();
   const { PortfolioCarousel } = $derived(data);
 
   onMount(() => {

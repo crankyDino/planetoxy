@@ -1,11 +1,9 @@
 <script lang="ts">
   import Sidebar from "$lib/components/sidebar/sidebar.svelte";
+  import type { Props } from "$lib/models/prop.model";
   import type { PageData } from "./$houdini";
-  interface Props {
-    data: PageData;
-  }
 
-  let { data }: Props = $props();
+  let { data }: Props<PageData> = $props();
 
   let { Projects } = $derived(data);
 

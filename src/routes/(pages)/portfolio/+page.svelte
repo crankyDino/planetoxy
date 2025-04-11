@@ -2,11 +2,9 @@
   import "./portfolio.css";
   import Sidebar from "$lib/components/sidebar/sidebar.svelte";
   import type { PageData } from "./$houdini";
-  interface Props {
-    data: PageData;
-  }
+  import type { Props } from "$lib/models/prop.model";
 
-  let { data }: Props = $props();
+  let { data }: Props<PageData> = $props();
 
   let { Portfolios } = $derived(data);
   $inspect(Portfolios);

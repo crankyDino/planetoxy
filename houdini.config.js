@@ -5,7 +5,7 @@ const config = {
     watchSchema: {
         url: "env:PUBLIC_SANITY_GQL_API/v2023-08-01/graphql/production/experiment",
     },
-    runtimeDir: ".houdini",
+    // runtimeDir: ".houdini",
     plugins: {
         "houdini-svelte": { forceRunesMode: true },
     },

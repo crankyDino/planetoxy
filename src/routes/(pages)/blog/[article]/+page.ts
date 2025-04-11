@@ -1,16 +1,15 @@
 import { load_Article } from '$houdini';
 import type { LoadEvent } from '@sveltejs/kit';
 
+/**
+ * you're doing this cause you need to get the params from the slug/path
+ * i know you'll forget...
+ * 
+ * @param event 
+ * @returns 
+ */
 export async function load(event: LoadEvent) {
     const { params } = event;
-
-    async function getMedia(refId: string) {
-        const res = await fetch(`/api/sanity/media?ref=${refId}`, {
-            method: 'GET',
-            headers: { 'Content-Type': 'application/json' }
-        });
-        return await res.json();
-    }
 
     const loadArticle = {
         ...await load_Article({
@@ -19,5 +18,5 @@ export async function load(event: LoadEvent) {
         })
     };
 
-    return { getMedia, loadArticle };
+    return { loadArticle };
 }

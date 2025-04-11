@@ -5,15 +5,14 @@
   import Sidebar from "$lib/components/sidebar/sidebar.svelte";
   import type { IArticleMedia } from "$lib/models/article.model";
   import type { PageData } from "./$types";
+  import type { Props } from "$lib/models/prop.model";
+  import { getMedia } from "$lib/util/sanity.util";
 
-  interface Props {
-    data: PageData;
-  }
   let loading: boolean = $state(true);
   let title = $page.url.pathname;
 
-  let { data }: Props = $props();
-  let { getMedia, loadArticle } = $derived(data);
+  let { data }: Props<PageData> = $props();
+  let { loadArticle } = $derived(data);
   let { Article } = $derived(loadArticle);
 
   let paragraphMedia: Array<IArticleMedia> = $state([]);

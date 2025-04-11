@@ -7,7 +7,7 @@
     dialogState,
     type TDialogState,
   } from "$lib/handlers/dialog.handler/dialog.handler";
-  import { focusOnElement } from "$lib/util/element";
+  import { focusOnElement } from "$lib/util/element.util";
   import { initForm, resetForm } from "$lib/handlers/form.handler/form.handler";
 
   let pos: TDialogState = $state("closed");

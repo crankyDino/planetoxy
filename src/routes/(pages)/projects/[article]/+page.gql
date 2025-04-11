@@ -1,0 +1,34 @@
+query Project($article: String!) @cache(policy: CacheOrNetwork)  {
+  allProject(where: { slug: { current: { eq: $article } } }) {
+    title
+    slug {
+      current
+    }
+    tags {
+      tagName
+    }
+    hero {
+      contentUrl
+    }
+    details {
+      client
+      project
+      projectType
+      date
+    }
+    paragraphRaw
+    links {
+      title
+      url
+      icon
+    }
+    stack
+    mockup {
+      title
+      contentUrl
+      description
+      type
+      link
+    }
+  }
+}

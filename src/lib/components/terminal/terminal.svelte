@@ -1,7 +1,7 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import "./terminal.css";
-  import * as e from "../../util/element";
+  import * as e from "../../util/element.util";
   import * as t from "./terminal";
 
   let command: HTMLSpanElement | null = $state(null);

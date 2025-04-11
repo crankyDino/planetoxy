@@ -17,6 +17,7 @@ const config = {
 		}),
 		alias: {
 			$houdini: ".houdini/",
+			// $houdini: path.resolve(__dirname, '.houdini')
 		}
 	}
 };

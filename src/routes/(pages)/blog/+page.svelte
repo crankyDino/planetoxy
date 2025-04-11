@@ -2,11 +2,9 @@
   import { onMount } from "svelte";
   import "./blog.css";
   import type { PageData } from "./$houdini";
-  interface Props {
-    data: PageData;
-  }
+  import type { Props } from "$lib/models/prop.model";
 
-  let { data }: Props = $props();
+  let { data }: Props<PageData> = $props();
   // let { Articles } = data;
   let { Articles } = $derived(data);
 
