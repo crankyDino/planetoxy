@@ -1,0 +1,68 @@
+query Portfolio($article: String!) @cache(policy: CacheOrNetwork) {
+  allPortfolio(where: { slug: { current: { eq: $article } } }) {
+    _id
+    slug {
+      current
+    }
+    title
+    tags {
+      tagName
+    }
+    details {
+      client
+      project
+      projectType
+      date
+    }
+    hero {
+      contentUrl
+      description
+    }
+    banner {
+      hotspot {
+        x
+        y
+        height
+        width
+      }
+      crop {
+        top
+        bottom
+        left
+        right
+      }
+      asset {
+        title
+        label
+        mimeType
+        url
+        source {
+          url
+        }
+        altText
+        description
+      }
+    }
+    mockup {
+      title
+      type
+      dateCreated
+      description
+      contentUrl
+    }
+    variants {
+      title
+      type
+      dateCreated
+      description
+      contentUrl
+    }
+    media {
+      title
+      type
+      dateCreated
+      description
+      contentUrl
+    }
+  }
+}
