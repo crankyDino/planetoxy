@@ -105,7 +105,7 @@
         {$Project.data?.allProject[0].title}
       </h1>
       <p
-        class="font-space-mono text-dh-white text-xs xl:text-xl xl:w-1/2 row-span-2 col-span-12 md:col-span-1 md:col-start-9 row-start-8"
+        class="font-space-mono text-dh-white break-all text-xs xl:text-xl xl:w-1/2 row-span-2 col-span-12 md:col-span-1 md:col-start-9 row-start-8"
       >
         {$Project.data?.allProject[0].paragraph}
       </p>
