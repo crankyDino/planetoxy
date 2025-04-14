@@ -1,6 +1,7 @@
 query Projects {
   allProject {
     title
+    _createdAt
     slug {
       current
     }

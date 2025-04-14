@@ -584,7 +584,7 @@ type Project implements Document {
   hero: Graphic
   links: [Links]
   mockup: Graphic
-  paragraphRaw: JSON
+  paragraph: String
   slug: Slug
   stack: [String]
   tags: [Tag]
@@ -603,6 +603,7 @@ input ProjectFilter {
   details: DetailsFilter
   hero: GraphicFilter
   mockup: GraphicFilter
+  paragraph: StringFilter
   slug: SlugFilter
   title: StringFilter
 }
@@ -615,6 +616,7 @@ input ProjectSorting {
   _type: SortOrder
   _updatedAt: SortOrder
   details: DetailsSorting
+  paragraph: SortOrder
   slug: SlugSorting
   title: SortOrder
 }

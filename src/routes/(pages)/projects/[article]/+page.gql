@@ -1,4 +1,4 @@
-query Project($article: String!) @cache(policy: CacheOrNetwork)  {
+query Project($article: String!) @cache(policy: CacheOrNetwork) {
   allProject(where: { slug: { current: { eq: $article } } }) {
     title
     slug {
@@ -16,7 +16,7 @@ query Project($article: String!) @cache(policy: CacheOrNetwork)  {
       projectType
       date
     }
-    paragraphRaw
+    paragraph
     links {
       title
       url

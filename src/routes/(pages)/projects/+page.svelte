@@ -7,7 +7,7 @@
 
   let { Projects } = $derived(data);
 
-  $inspect(Projects);
+  console.log($Projects);
 </script>
 
 <Sidebar />
@@ -15,10 +15,10 @@
 <section
   class="grid md:grid-cols-2 lg:grid-cols-1 2xl:grid-cols-2 gap-8 gap-y-12 2xl:gap-x-30 pb-12 m-3 mt-6 mx-auto sm:w-[80%] md:w-[88%] lg:w-[70%] px-[1.8em]"
 >
-  {#each [1, 2, 3, 4] as i}
+  {#each $Projects.data?.allProject as any as project}
     <a
       id="projectCard"
-      href="projects/a-thing"
+      href="projects/{project.slug.current}"
       class="overflow-[unset] grid md:w-full xl:w-4/5 2xl:w-full lg:m-auto"
     >
       <div
@@ -28,13 +28,13 @@
           <h3
             class="font-hanuman text-dh-orange text-3xl lg:text-7xl font-extrabold"
           >
-            Did a thing
+            {project.title}
           </h3>
           <p
             class="font-quirkyrobot text-dh-light-gray/50 lg:text-[1.3rem]"
             style="letter-spacing:.2em;"
           >
-            20/04/2023
+            {new Date(project._createdAt).toISOString().split("T")[0]}
           </p>
         </div>
         <div
@@ -42,15 +42,15 @@
         >
           <div class="flex flex-row pl-2">
             <p class="hidden lg:block">Project</p>
-            <p>> Website</p>
+            <p>> {project.details.project}</p>
           </div>
           <div class="flex flex-row pl-2">
             <p class="hidden lg:block">Client</p>
-            <p>> Rareclub</p>
+            <p>> {project.details.client}</p>
           </div>
           <div class="flex flex-row pl-2">
             <p class="hidden lg:block">Date</p>
-            <p>> 2019</p>
+            <p>> {new Date(project.details.date).getFullYear()}</p>
           </div>
         </div>
       </div>
@@ -60,7 +60,7 @@
         <img
           class="z-10 bottom-[50%] relative h-auto w-[400px]"
           style="clip-path: inset(15px 0px);"
-          src="https://media.digitalhippie.xyz/beat%20tape%20cover.jpg"
+          src="{project.hero.contentUrl}"
           alt="a thing"
         />
       </div>
@@ -70,7 +70,7 @@
         <img
           class="z-10 bottom-[50%] relative h-auto w-[400px]"
           style="clip-path: inset(15px 0px);"
-          src="https://media.digitalhippie.xyz/beat%20tape%20cover.jpg"
+          src="{project.hero.contentUrl}"
           alt="a thing"
         />
       </div>
