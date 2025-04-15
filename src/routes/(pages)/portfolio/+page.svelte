@@ -14,10 +14,10 @@
 {#if !$Portfolios.fetching}
   <div class="marquee absolute flex flex-row top-48 w-full">
     <h1
-      class="marquee-text font-pokemon-classic text-9xl text-dh-white font-extrabold invert-100 mix-blend-exclusion"
-      style="-webkit-text-stroke: 2px #dddddd;"
+      class="marquee-text font-pokemon-classic text-9xl text-dh-white font-extrabold invert-100 mix-blend-exclusion text-nowrap"
+      style="-webkit-text-stroke: 2px #dddddd; "
     >
-      RARECLUB
+      {$Portfolios.data?.allPortfolio[0].title?.toUpperCase()}
     </h1>
   </div>
 
@@ -29,7 +29,7 @@
         <img
           class="relative h-auto w-[400px] xl:w-[28vw]"
           style="clip-path: inset(15px 0px);"
-          src="https://media.digitalhippie.xyz/beat%20tape%20cover.jpg"
+          src={$Portfolios.data?.allPortfolio[0].hero?.contentUrl}
           alt="a thing"
         />
       </div>
@@ -39,7 +39,7 @@
         <img
           class="z-10 bottom-1/2 sm:bottom-2/3 2xl:bottom-4/5 relative h-auto w-[400px] xl:w-full"
           style="clip-path: inset(15px 0px);"
-          src="https://media.digitalhippie.xyz/beat%20tape%20cover.jpg"
+          src={$Portfolios.data?.allPortfolio[0].hero?.contentUrl}
           alt="a thing"
         />
       </div>
@@ -54,12 +54,16 @@
           class="hidden sm:block font-space-mono text-dh-orange md:text-3xl font-bold"
           style="letter-spacing: .4em;"
         >
-          RARECLUB
+          {$Portfolios.data?.allPortfolio[0].title?.toUpperCase()}
         </h4>
         <p class="font-space-mono text-dh-dark-gray text-lg md:text-xl">
-          poster design
+          {$Portfolios.data?.allPortfolio[0].details?.projectType}
         </p>
-        <p class="font-space-mono text-dh-dark-gray text-lg md:text-xl">2020</p>
+        <p class="font-space-mono text-dh-dark-gray text-lg md:text-xl">
+          {new Date(
+            $Portfolios.data?.allPortfolio[0].details?.date!
+          ).getFullYear()}
+        </p>
       </div>
       <div class="flex flex-row align-bottom row-start-12 md:col-start-12">
         <h4
