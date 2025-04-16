@@ -7,7 +7,7 @@
   let { data }: Props<PageData> = $props();
   // let { Articles } = data;
   let { Articles } = $derived(data);
-
+  $inspect($Articles);
   // let posts: any[] = $state([]);
   /* @type { import('./$houdini').PageData } */
   // console.log($Articles.data.allArticle);
@@ -46,7 +46,7 @@
                 class="col-span-4 md:col-span-2 m-auto w-fit md:min-w-[33%] text-end text-nowrap"
               >
                 <p class="font-quirkyrobot tracking-[.2em] text-dh-white">
-                  {post.published?.split("T")[0]}
+                  {new Date(post.published).toISOString().split("T")[0]}
                 </p>
                 <p class="font-quirkyrobot text-dh-white tracking-[.11em]">
                   /// read more

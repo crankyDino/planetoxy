@@ -5,8 +5,8 @@
 
   let { data }: Props<PageData> = $props();
   let { Portfolio } = $derived(data);
-  $inspect(Portfolio);
-  console.log($Portfolio);
+  // $inspect(Portfolio);
+  // console.log($Portfolio);
 </script>
 
 <Sidebar />

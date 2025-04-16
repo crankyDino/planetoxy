@@ -154,9 +154,9 @@
         <ul
           class="font-space-mono text-dh-white w-full text-md md:text-xl pt-3"
         >
-          <li>> Adobe Photoshop</li>
-          <li>> Adobe Illustrator</li>
-          <li>> Canon M40 MII</li>
+          {#each $Project.data?.allProject[0].stack as any as tool}
+            <li>> {tool}</li>
+          {/each}
         </ul>
       </div>
       <div
@@ -164,7 +164,7 @@
       >
         <img
           class="md:h-auto w-full relative bottom-[50%] md:bottom-[120%]"
-          src="https://media.digitalhippie.xyz/beat%20tape%20cover.jpg"
+          src={$Project.data?.allProject[0].mockup?.contentUrl}
           alt=""
         />
       </div>

@@ -120,7 +120,9 @@
               word-spacing: -3px;"
               class="text-[.9em]"
             >
-              {$Article.data!.allArticle[0].published?.split("T")[0]}
+              {new Date($Article.data!.allArticle[0].published!)
+                .toISOString()
+                .split("T")[0]}
             </p>
           </div>
         </div>
@@ -138,7 +140,7 @@
       </div>
 
       <div class="col-span-12 md:col-span-8 lg:col-span-6 space-y-3">
-        {#each $Article.data!.allArticle[0].paragraphRaw as paragraph}
+        {#each $Article.data!.allArticle[0].paragraphRaw! as any as paragraph}
           {#if paragraph.style?.includes("h")}
             <h3
               style="letter-spacing: 0.08em; line-height: 100%;"
