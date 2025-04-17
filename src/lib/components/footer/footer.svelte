@@ -1,4 +1,4 @@
-<footer class="flex px-32 h-12 bg-dh-orange mt-8">
+<footer class="flex md:px-32 h-12 bg-dh-orange mt-8">
   <!-- <p>something</p> -->
   <div id="socials" class="m-auto flex flex-row gap-4 w-fit items-center">
     <a target="_blank" href="https://digitalhippie.xyz"
