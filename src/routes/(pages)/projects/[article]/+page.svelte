@@ -56,7 +56,7 @@
 
 <Sidebar />
 {#if !$Project.fetching}
-  <section class="pt-6 px-8 xl:w-4/5 xl:m-auto">
+  <section class="pt-6 px-8 sm:px-18 md:px-14 xl:w-4/5 xl:m-auto">
     <div class="grid md:grid-flow-col gap-y-[.2em] md:gap-x-4">
       <div
         class="col-start-1 row-start-1 md:row-span-12 col-span-12 md:col-span-6 pb-3"
@@ -69,12 +69,15 @@
           />
 
           {#if $Project.data?.allProject[0].tags}
-            <div class="grid grid-flow-col grid-cols-4 py-1 gap-0">
-              {#each $Project.data?.allProject[0].tags as tag}
+            <div class="flex flex-row py-1 gap-3">
+              {#each $Project.data?.allProject[0].tags as tag, i}
                 <p
                   class=" text-dh-white w-fit tracking-wider text-sm font-space-mono font-thin min-w-[11%] overflow-hidden text-nowrap text-ellipsis"
                 >
                   {tag?.tagName}
+                  {#if $Project.data?.allProject[0].tags.length > i + 1}
+                    <span class="text-dh-white"> | </span>
+                  {/if}
                 </p>
               {/each}
             </div>
@@ -105,7 +108,7 @@
         {$Project.data?.allProject[0].title}
       </h1>
       <p
-        class="font-space-mono text-dh-white break-all text-xs xl:text-xl xl:w-1/2 row-span-2 col-span-12 md:col-span-1 md:col-start-9 row-start-8"
+        class="font-space-mono text-dh-white break-all text-xs xl:text-xl  row-span-2 col-span-12 md:col-span-6 md:col-start-9 row-start-8"
       >
         {$Project.data?.allProject[0].paragraph}
       </p>

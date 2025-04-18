@@ -16,11 +16,22 @@
   background-color: pink;
 } */
 
-body,
+
+/* * {
+  cursor: auto !important;
+} */
+
 img:hover,
 a:hover,
 button:hover {
-  cursor: url(/assets/bitmap/cursor-pointer-finger.png) format("ttf");
+  cursor: url(/assets/bitmap/cursor-pointer-finger.png);
+}
+
+img:hover,
+a:hover,
+button:hover,
+body {
+  cursor: url("/assets/vectors/pointer-8bit.svg") 8 0, auto;
 }
 
 canvas {
