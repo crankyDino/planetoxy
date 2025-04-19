@@ -5,51 +5,52 @@ import type { IFullname } from "$lib/models/fullname.model.js"
 import { writable } from "svelte/store"
 import { resetForm, validateForm } from "$lib/handlers/form.handler/form.handler.js"
 import { dialogState } from "$lib/handlers/dialog.handler/dialog.handler.js"
+import { PUBLIC_EMAILTO } from "$env/static/public"
 
 let reasons: Map<number, string> = new Map<number, string>()
 function initChips() {
-    const { subscribe, set, update } = writable(reasons)
-    return {
-        subscribe,
-        createChip: (reason: string) => update((c) => { c.set(reasons.size + 1, reason); return c }),
-        deleteChip: (id: number) => update((c) => { c.delete(id); return c }),
-        popChip: () => update((c) => { c.delete(c.size); return c }),
-        clear: () => set(new Map<number, string>())
-    }
+  const { subscribe, set, update } = writable(reasons)
+  return {
+    subscribe,
+    createChip: (reason: string) => update((c) => { c.set(reasons.size + 1, reason); return c }),
+    deleteChip: (id: number) => update((c) => { c.delete(id); return c }),
+    popChip: () => update((c) => { c.delete(c.size); return c }),
+    clear: () => set(new Map<number, string>())
+  }
 }
 export const chips = initChips();
 
 export function reset(form: HTMLFormElement): void {
-    if (!form) {
-        return;
-    }
-    resetForm(form);
-    chips.clear();
+  if (!form) {
+    return;
+  }
+  resetForm(form);
+  chips.clear();
 }
 
 export function submitHitMeUp(form: HTMLFormElement, dialog: HTMLDialogElement): void {
-    validateForm(form, async (isValid) => {
-        if (!isValid) { return; }
+  validateForm(form, async (isValid) => {
+    if (!isValid) { return; }
 
-        const { err, payload } = buildEmail(form);
-        if (err) {
-            console.warn(err);
-            return;
-        }
+    const { err, payload } = buildEmail(form);
+    if (err) {
+      console.warn(err);
+      return;
+    }
 
-        const res = await fetch('/api/email', {
-            method: 'POST',
-            body: JSON.stringify(payload),
-            headers: { 'Content-Type': 'application/json' }
-        });
+    const res = await fetch('/api/email', {
+      method: 'POST',
+      body: JSON.stringify(payload),
+      headers: { 'Content-Type': 'application/json' }
+    });
 
-        const { status } = await res.json();
-        console.log(status);
+    const { status } = await res.json();
+    console.log(status);
 
-        if (status !== 200) { console.warn("Failed to send email"); return; }
+    if (status !== 200) { console.warn("Failed to send email"); return; }
 
-        dialogState().close(dialog, form);
-    })
+    dialogState().close(dialog, form);
+  })
 }
 
 /**
@@ -58,54 +59,54 @@ export function submitHitMeUp(form: HTMLFormElement, dialog: HTMLDialogElement):
  * @returns 
  */
 function buildEmail(form: HTMLFormElement): { err: string | null, payload: IEmail | null } {
-    const controls = Array.from(form.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>("input,textarea"))
-    let fullname: IFullname = { firstname: "", lastname: "" };
-    let contacts: IContact = { email: "modiseab@gmail.com", fullname: { firstname: "you", lastname: "yourself" } };
-    let payload: IEmail = { contacts: [], message: "", subject: "", template: "" };
-    let email: string = "";
-    if (!controls) { return { err: "No controls found", payload: null }; }
+  const controls = Array.from(form.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>("input,textarea"))
+  let fullname: IFullname = { firstname: "", lastname: "" };
+  let contacts: IContact = { email: `${PUBLIC_EMAILTO}`, fullname: { firstname: "you", lastname: "yourself" } };
+  let payload: IEmail = { contacts: [], message: "", subject: "", template: "" };
+  let email: string = "";
+  if (!controls) { return { err: "No controls found", payload: null }; }
 
-    controls.forEach(control => {
-        if (!control.labels) {
-            return;
+  controls.forEach(control => {
+    if (!control.labels) {
+      return;
+    }
+
+    switch (control.labels[0].title) {
+      case "firstname":
+        {
+          fullname.firstname = control.value
+          break;
         }
-
-        switch (control.labels[0].title) {
-            case "firstname":
-                {
-                    fullname.firstname = control.value
-                    break;
-                }
-            case "lastname":
-                {
-                    fullname.lastname = control.value
-                    break;
-                }
-            case "email":
-                {
-                    email = control.value
-                    break;
-                }
-            case "reason":
-                {
-                    payload.subject = `${Array.from(reasons.values()).join(", ")}`
-                    break
-                };
-            case "message":
-                {
-                    payload.message += control.value
-                    break;
-                }
+      case "lastname":
+        {
+          fullname.lastname = control.value
+          break;
         }
-    })
+      case "email":
+        {
+          email = control.value
+          break;
+        }
+      case "reason":
+        {
+          payload.subject = `${Array.from(reasons.values()).join(", ")}`
+          break
+        };
+      case "message":
+        {
+          payload.message += control.value
+          break;
+        }
+    }
+  })
 
-    payload.contacts = [contacts];
-    payload.template = buildTemplate(`${fullname.firstname} ${fullname.lastname}`, email, payload.message, payload.subject);
-    return { err: null, payload };
+  payload.contacts = [contacts];
+  payload.template = buildTemplate(`${fullname.firstname} ${fullname.lastname}`, email, payload.message, payload.subject);
+  return { err: null, payload };
 }
 
 function buildTemplate(name: string, email: string, message: string, reasons?: string): string {
-    return `
+  return `
     <h1 style="color: white; margin: auto">
       <strong>${name}</strong> wants to contact you.
     </h1>

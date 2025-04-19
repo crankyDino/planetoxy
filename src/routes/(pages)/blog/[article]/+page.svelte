@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { page } from "$app/stores";
+  import { page } from "$app/state";
   import { onMount } from "svelte";
   import "./article.css";
   import Sidebar from "$lib/components/sidebar/sidebar.svelte";
@@ -7,52 +7,18 @@
   import type { PageData } from "./$types";
   import type { Props } from "$lib/models/prop.model";
   import { getMedia } from "$lib/util/sanity.util";
+  import type { Article as hdAritcle } from "$houdini";
+  import { centerHotspot } from "$lib/util/apply-hotspot.util";
 
   let loading: boolean = $state(true);
-  let title = $page.url.pathname;
+  let title = $state(page);
 
   let { data }: Props<PageData> = $props();
   let { loadArticle } = $derived(data);
   let { Article } = $derived(loadArticle);
+  let _article = $derived($Article.data?.allArticle[0]!);
 
   let paragraphMedia: Array<IArticleMedia> = $state([]);
-  let media: Array<any> = $derived([]);
-  let bannerBox: HTMLDivElement | null = $state(null);
-
-  let posX = $state(0);
-  let posY = $state(0);
-  let offset = $state(0);
-
-  /**
-   * TODO: figure out a better method than setTimeout
-   */
-  function alignBanner() {
-    // let x = setTimeout(() => {
-    if (bannerBox) {
-      // console.log("x", header.hotspot.x);
-      // console.log("y", header.hotspot.y);
-      // console.log("h", header.hotspot.height);
-      // console.log("w", header.hotspot.width);
-      // console.log("offset", bannerBox.offsetHeight);
-
-      // posX = header.hotspot.x;
-      // posY = header.hotspot.y;
-      posX = $Article.data?.allArticle[0].header?.hotspot?.width || 0;
-      posY = $Article.data?.allArticle[0].header?.hotspot?.height || 0;
-      offset = bannerBox.offsetHeight;
-
-      // const digitsBeforeDecimal =
-      //   Math.floor(Math.log10(header.hotspot.height)) + 1; // Number of digits before the decimal point
-      // const scaledNum =
-      //   header.hotspot.height / Math.pow(10, digitsBeforeDecimal); // Scale the number down
-      // const result = parseFloat(scaledNum.toFixed(4));
-
-      // console.log(result);
-      // header.hotspot. height = (bannerBox.offsetHeight * result) / 100;
-    }
-    //   clearTimeout(x);
-    // }, 0);
-  }
 
   async function loadMedia(ref: string, key: string) {
     loading = true;
@@ -85,6 +51,7 @@
           }
         });
         // alignBanner();
+        // $Article.data?.allArticle[0].header;
       }
     });
 
@@ -95,11 +62,18 @@
 <Sidebar />
 {#if !$Article.fetching && !loading}
   <div
-    bind:this={bannerBox}
+    use:centerHotspot={_article}
     class="banner h-[9em] md:h-60 lg:h-96 overflow-hidden -z-10 w-full bg-fixed bg-no-repeat"
-    style="background-image: url({$Article.data!.allArticle[0].header!.asset!
-      .url}); background-size: 100%; background-position:calc({posX}% ) calc(({posY}% + ({offset}px / 3.8)) - min({offset}px, 100vh / 2))"
+    style="background-image: url({_article.header!.asset!
+      .url}); background-size: 100%;"
   ></div>
+  <!-- <div
+    bind:this={banner}
+    use:centerHotspot
+    class="banner h-[9em] md:h-60 lg:h-96 overflow-hidden -z-10 w-full bg-fixed bg-no-repeat"
+    style="background-image: url({_article.header!.asset!
+      .url}); background-size: 100%; background-position:calc({posX}% ) calc(({posY}% + ({offset}px / 3.8)) - min({offset}px, 100vh / 2))"
+  ></div> -->
   <div class="md:pl-12 lg:pl-40">
     <section class="grid grid-cols-12 w-full px-4 gap-y-6 py-0">
       <div class="grid sm:flex flex-col col-span-12 md:flex-row w-fit">
@@ -107,29 +81,27 @@
           <h1
             class="bg-dh-black relative bottom-7 md:bottom-12 lg:bottom-8 w-fit md:max-w-[45vw] md:w-[50vw] font-hanuman font-extrabold text-dh-orange text-[1.5em] md:text-6xl text-wrap lg:text-nowrap p-2 md:p-4 md:pb-6"
           >
-            {$Article.data!.allArticle[0].title}
+            {_article.title}
           </h1>
           <div
             class="font-quirkyrobot bg-dh-black text-dh-gray pl-2 pr-8 w-fit"
           >
             <p class="letter--spacing--sm text-[1.3em]">
-              By: {$Article.data!.allArticle[0].author ?? "olepiob"}
+              By: {_article.author ?? "olepiob"}
             </p>
             <p
               style="letter-spacing: 3px;
               word-spacing: -3px;"
               class="text-[.9em]"
             >
-              {new Date($Article.data!.allArticle[0].published!)
-                .toISOString()
-                .split("T")[0]}
+              {new Date(_article.published!).toISOString().split("T")[0]}
             </p>
           </div>
         </div>
         <div
           class="text-nowrap px-2 md:pr-0 md:pl-4 flex flex-row gap-2 h-fit w-full overflow-auto top-[34%] md:top-[10px] relative"
         >
-          {#each $Article.data!.allArticle[0].tags! as tag}
+          {#each _article.tags! as tag}
             <p
               class="letter--spacing--md font-quirkyrobot text-dh-orange text-[.9em]"
             >
@@ -140,7 +112,7 @@
       </div>
 
       <div class="col-span-12 md:col-span-8 lg:col-span-6 space-y-3">
-        {#each $Article.data!.allArticle[0].paragraphRaw! as any as paragraph}
+        {#each _article.paragraphRaw! as any as paragraph}
           {#if paragraph.style?.includes("h")}
             <h3
               style="letter-spacing: 0.08em; line-height: 100%;"
@@ -175,11 +147,11 @@
     </section>
   </div>
 
-  {#if $Article.data!.allArticle[0].media!.length > 0}
+  <!-- {#if _article.media!.length > 0}
     <div
       class="flex flex-row gap-x-8 h-full absolute z-10 top-[40em] left-[58em]"
     >
-      {#each $Article.data!.allArticle[0].media! as card}
+      {#each _article.media! as card}
         {#if card!.contentUrl}
           <img
             class=" pl-2 h-80 w-full"
@@ -191,4 +163,5 @@
       {/each}
     </div>
   {/if}
+  -->
 {/if}

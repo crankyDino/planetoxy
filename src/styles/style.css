@@ -34,6 +34,10 @@ body {
   cursor: url("/assets/vectors/pointer-8bit.svg") 8 0, auto;
 }
 
+button:focus {
+  outline: none;
+}
+
 canvas {
   display: block;
 }

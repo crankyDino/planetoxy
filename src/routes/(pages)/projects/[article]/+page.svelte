@@ -7,11 +7,13 @@
   import type { IArticleMedia } from "$lib/models/article.model";
   import { onMount } from "svelte";
   import { getMedia } from "$lib/util/sanity.util";
+  import { centerHotspot } from "$lib/util/apply-hotspot.util";
 
   let loading: boolean = $state(true);
   let { data }: Props<PageData> = $props();
   let { loadProject } = $derived(data);
   let { Project } = $derived(loadProject);
+  let _project = $derived($Project.data?.allProject[0]!);
   let paragraphMedia: Array<IArticleMedia> = $state([]);
 
   console.log($Project);
@@ -64,7 +66,7 @@
         <div class="pb-2 w-full">
           <img
             class="m-auto md:m-initial h-78 md:h-full max-h-96 xl:h-[50vh]"
-            src={$Project.data?.allProject[0].hero?.contentUrl}
+            src={_project.hero?.contentUrl}
             alt=""
           />
 
@@ -105,12 +107,12 @@
       <h1
         class="font-bold text-dh-white font-pokemon-classic text-lg md:text-5xl col-span-12 md:col-span-6 md:col-start-9"
       >
-        {$Project.data?.allProject[0].title}
+        {_project.title}
       </h1>
       <p
-        class="font-space-mono text-dh-white break-all text-xs xl:text-xl  row-span-2 col-span-12 md:col-span-6 md:col-start-9 row-start-8"
+        class="font-space-mono text-dh-white break-all text-xs xl:text-xl row-span-2 col-span-12 md:col-span-6 md:col-start-9 row-start-8"
       >
-        {$Project.data?.allProject[0].paragraph}
+        {_project.paragraph}
       </p>
       <!-- <div class="col-span-12 md:col-span-8 lg:col-span-6 space-y-3">
         {#each $Project.data!.allProject[0].paragraphRaw as paragraph}
@@ -166,8 +168,9 @@
         class="mx-auto w-4/5 col-span-12 md:col-span-9 xl:col-start-4 rounded-3xl overflow-hidden h-1/2 md:w-fit md:w-[135px] xl:w-[33vw] xl:h-[30%]"
       >
         <img
+          use:centerHotspot={_project}
           class="md:h-auto w-full relative bottom-[50%] md:bottom-[120%]"
-          src={$Project.data?.allProject[0].mockup?.contentUrl}
+          src={_project.mockup?.contentUrl}
           alt=""
         />
       </div>
