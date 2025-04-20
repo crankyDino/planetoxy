@@ -70,14 +70,14 @@
             alt=""
           />
 
-          {#if $Project.data?.allProject[0].tags}
+          {#if _project.tags}
             <div class="flex flex-row py-1 gap-3">
-              {#each $Project.data?.allProject[0].tags as tag, i}
+              {#each _project.tags as tag, i}
                 <p
                   class=" text-dh-white w-fit tracking-wider text-sm font-space-mono font-thin min-w-[11%] overflow-hidden text-nowrap text-ellipsis"
                 >
                   {tag?.tagName}
-                  {#if $Project.data?.allProject[0].tags.length > i + 1}
+                  {#if _project.tags.length > i + 1}
                     <span class="text-dh-white"> | </span>
                   {/if}
                 </p>
@@ -86,9 +86,9 @@
           {/if}
         </div>
 
-        {#if $Project.data?.allProject[0].links}
+        {#if _project.links}
           <ul class="grid grid-flow-col md:grid-cols-6 gap-x-4">
-            {#each $Project.data?.allProject[0].links as link}
+            {#each _project.links as link}
               <li>
                 <a target="_blank" href={link?.url}>
                   <img
@@ -105,71 +105,38 @@
       </div>
 
       <h1
-        class="font-bold text-dh-white font-pokemon-classic text-lg md:text-5xl col-span-12 md:col-span-6 md:col-start-9"
+        class="font-bold text-dh-white font-pokemon-classic text-lg md:text-5xl col-span-12 md:col-span-6 md:col-start-7"
       >
         {_project.title}
       </h1>
       <p
-        class="font-space-mono text-dh-white break-all text-xs xl:text-xl row-span-2 col-span-12 md:col-span-6 md:col-start-9 row-start-8"
+        class="font-space-mono text-dh-white break-all text-xs xl:text-lg row-span-2 col-span-12 md:col-span-6 md:col-start-7 row-start-8"
       >
         {_project.paragraph}
       </p>
-      <!-- <div class="col-span-12 md:col-span-8 lg:col-span-6 space-y-3">
-        {#each $Project.data!.allProject[0].paragraphRaw as paragraph}
-          {#if paragraph.style?.includes("h")}
-            <h3
-              style="letter-spacing: 0.08em; line-height: 100%;"
-              class="title__backdrop font-quirkyrobot text-dh-orange mb-auto h-min md:h-24 md:w-[75vw] md:max-h-full pl-2 text-[2.8em] md:text-[6em] font-bold"
-            >
-              {paragraph.children[0].text}
-            </h3>
-          {/if}
-
-          {#if paragraph.style === "normal"}
-            {#each paragraph.children as body}
-              <div class="font-space-mono text-dh-gray pl-2 text-[.7em]">
-                {body.text}
-              </div>
-            {/each}
-            {#if paragraphMedia.length > 0 && paragraphMedia.some((p) => p.ref === paragraph._key)}
-              <div class="flex flex-row gap-x-8 text-dh-gray">
-                {#each paragraphMedia as card}
-                  {#if card.contentUrl && card.ref === paragraph._key}
-                    <img
-                      class="pl-2 !h-full !w-[45%]"
-                      src={card.contentUrl}
-                      alt={card.contentUrl}
-                    />
-                  {/if}
-                {/each}
-              </div>
-            {/if}
-          {/if}
-        {/each}
-      </div> -->
     </div>
 
     <div class="grid md:grid-flow-col xl:grid-cols-12 gap-y-4 md:gap-x-4 pt-6">
       <div class="flex flex-col w-fit col-span-12 md:col-span-3">
         <h2
-          class="text-dh-orange text-lg md:text-4xl font-bold font-pokemon-classic"
+          class="text-dh-orange text-lg md:text-4xl font-bold font-pokemon-classic text-nowrap"
         >
           Tools Used
         </h2>
         <ul
           class="font-space-mono text-dh-white w-full text-md md:text-xl pt-3"
         >
-          {#each $Project.data?.allProject[0].stack as any as tool}
+          {#each _project.stack! as any as tool}
             <li>> {tool}</li>
           {/each}
         </ul>
       </div>
       <div
-        class="mx-auto w-4/5 col-span-12 md:col-span-9 xl:col-start-4 rounded-3xl overflow-hidden h-1/2 md:w-fit md:w-[135px] xl:w-[33vw] xl:h-[30%]"
+        class="mx-auto w-4/5 col-span-12 md:col-span-9 xl:col-start-4 rounded-3xl overflow-hidden h-2/3 md:w-fit xl:w-[33vw] lg:h-[50%]"
       >
         <img
           use:centerHotspot={_project}
-          class="md:h-auto w-full relative bottom-[50%] md:bottom-[120%]"
+          class="md:h-auto w-full relative bottom-[25%] sm:bottom-[10vh] md:bottom-[50%]"
           src={_project.mockup?.contentUrl}
           alt=""
         />
