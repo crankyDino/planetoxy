@@ -19,7 +19,7 @@
 			"type": "msedge",
 			"request": "launch",
 			"name": "Launch Edge",
-			"url": "http://127.0.0.1:4200",
+			"url": "http://127.0.0.1:8008",
 			"webRoot": "${workspaceFolder}"
 		}
 	],
