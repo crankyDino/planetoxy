@@ -22,18 +22,18 @@
   </div>
 
   <div class="grid grid-flow-row md:grid-cols-8 m-auto w-6/7">
-    <div class="relative grid col-span-8 row-span-8 col-start-1 row-start-1">
-      <div
-        class="col-start-1 col-span-3 row-start-1 rounded-lg justify-self-start overflow-hidden relative left-[-1%] sm:m-auto md:m-0 sm:w-11/12"
-      >
-        <img
-          class="relative h-auto w-[400px] xl:w-[28vw]"
-          style="clip-path: inset(15px 0px);"
-          src={$Portfolios.data?.allPortfolio[0].hero?.contentUrl}
-          alt={$Portfolios.data?.allPortfolio[0].hero?.description}
-        />
-      </div>
-      <div
+    <!-- <div class="relative grid col-span-8 row-span-8 col-start-1 row-start-1"> -->
+    <div
+      class="col-start-1 col-span-3 row-start-1 rounded-lg justify-self-start overflow-hidden relative left-[-1%] sm:m-auto md:m-0 sm:w-11/12"
+    >
+      <img
+        class="relative h-auto w-[400px] xl:w-[28vw]"
+        style="clip-path: inset(15px 0px);"
+        src={$Portfolios.data?.allPortfolio[0].hero?.contentUrl}
+        alt={$Portfolios.data?.allPortfolio[0].hero?.description}
+      />
+    </div>
+    <!-- <div
         class="col-start-3 col-span-3 row-start-1 rounded-lg justify-self-start overflow-hidden w-fit xl:w-[28vw] h-[33%] sm:h-2/5 md:h-[45%] xl:h-[28vh] 2xl:h-[36vh] relative top-1/3 sm:top-[10rem] md:top-[22vh] lg:top-[16vh] xl:top-[16vh] 2xl:top-[42vh] mix-blend-hard-light invert-75 scale-125"
       >
         <img
@@ -43,9 +43,9 @@
           alt="a thing"
         />
       </div>
-    </div>
+    </div> -->
     <div
-      class="relative grid grid-flow-row col-span-5 row-span-8 col-start-5 lg:col-start-4 row-start-1 h-[36vh] sm:h-[62vh] md:h-full md:pl-8 pb-6"
+      class="relative grid grid-flow-row col-span-5 col-start-5 lg:col-start-4 row-start-1 h-[36vh] sm:h-[62vh] md:h-full md:pl-8 pb-6"
     >
       <div
         class="flex flex-col justify-end md:justify-normal items-end md:items-start md:row-start-2 md:col-end-13 lg:col-end-7 xl:col-end-11 xl:row-start-1"
