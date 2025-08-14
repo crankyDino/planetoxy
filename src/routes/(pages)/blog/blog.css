@@ -61,7 +61,7 @@
     } */
   }
 
-  .blog__item--hover:hover span {
+  .blog__item--hover:hover .blog__item__underline {
     background-color: var(--color-dh-black) !important;
   }
 }
