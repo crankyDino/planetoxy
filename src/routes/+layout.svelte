@@ -8,11 +8,13 @@
   }
   let { children }: Props = $props();
 </script>
-
-<Navbar />
-
-<div class="h-full min-h-fit bg-dh-black bg-light">
-  {@render children!()}
+<div class="flex flex-col min-h-screen">
+  
+  <Navbar />
+  
+  <div class="flex-1">
+    {@render children!()}
+  </div>
+  
+  <Footer />
 </div>
-
-<Footer />
