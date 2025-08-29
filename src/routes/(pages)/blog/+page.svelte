@@ -29,14 +29,14 @@
   {#each $Articles.data?.allArticle as any as post}
     <a href="/blog/{post.slug.current}" class="block min-w-fit w-full">
       <div
-        class="blog__item__block max-w-[80vw] h-fit flex flex-row pl-[4vw] pt-6"
+        class="blog__item__block xl:w-[66vw] lg:w-[90vw] md:w-[80vw] h-fit flex flex-row pl-[4vw] pt-6"
       >
         <span
           class="blog__item__elem bg-dh-orange grid h-16 align-top w-3 content-end mt-3"
         ></span>
-        <div class="grid grid-cols-12 ml-3 md:h-28">
+        <div class="grid grid-cols-12 ml-3 md:h-28 w-full">
           <div
-            class="blog__item--hover relative max-w-full col-span-12 gird grid-row-2 sm:w-11/12 md:min-w-full"
+            class="blog__item--hover relative col-span-12 gird grid-row-2 sm:w-11/12 md:min-w-full max-w-full"
           >
             <div class="pl-3 relative col-span-8 grid md:grid-cols-10">
               <h4
@@ -45,7 +45,7 @@
                 {post.title}
               </h4>
               <div
-                class="flex mt-auto md:col-span-3 justify-self-end col-span-4 md:font-extrabold w-fit lg:text-xl min-w-fit md:min-w-[33%] text-end text-nowrap"
+                class="flex mt-auto md:col-span-2 justify-self-end col-span-4 md:font-extrabold w-fit lg:text-xl min-w-fit md:min-w-[33%] text-end text-nowrap"
               >
                 <p class="font-quirkyrobot tracking-[.2em] text-dh-white">
                   {new Date(post.published).toISOString().split("T")[0]}
