@@ -29,7 +29,7 @@
   {#each $Articles.data?.allArticle as any as post}
     <a href="/blog/{post.slug.current}" class="block min-w-fit w-full">
       <div
-        class="blog__item__block xl:w-[66vw] lg:w-[90vw] md:w-[80vw] h-fit flex flex-row pl-[4vw] pt-6"
+        class="blog__item__block xl:w-[66vw] lg:w-[90vw] w-[80vw] h-fit flex flex-row pl-[4vw] pt-6"
       >
         <span
           class="blog__item__elem bg-dh-orange grid h-16 align-top w-3 content-end mt-3"
@@ -38,14 +38,14 @@
           <div
             class="blog__item--hover relative col-span-12 gird grid-row-2 sm:w-11/12 md:min-w-full max-w-full"
           >
-            <div class="pl-3 relative col-span-8 grid md:grid-cols-10">
+            <div class="pl-3 relative col-span-8 grid grid-cols-10">
               <h4
-                class="col-span-6 lg:col-span-8 md:col-span-7 sm:col-span-8 text-dh-white pt-3 font-hanuman font-extrabold text-2xl sm:text-5xl md:text-5xl lg:text-7xl min-w-fit overflow-hidden text-nowrap text-ellipsis w-[75%]"
+                class="col-span-10 lg:col-span-8 md:col-span-8 sm:col-span-6 text-dh-white pt-3 font-hanuman font-extrabold text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl min-w-fit overflow-hidden text-nowrap text-ellipsis w-[75%]"
               >
                 {post.title}
               </h4>
               <div
-                class="flex mt-auto md:col-span-2 justify-self-end col-span-4 md:font-extrabold w-fit lg:text-xl min-w-fit md:min-w-[33%] text-end text-nowrap"
+                class="flex mt-auto sm:col-end-[none] md:col-span-2 sm:col-span-2 sm:justify-self-end col-span-10 md:font-extrabold w-fit lg:text-xl min-w-fit md:min-w-[33%] text-end text-nowrap"
               >
                 <p class="font-quirkyrobot tracking-[.2em] text-dh-white">
                   {new Date(post.published).toISOString().split("T")[0]}
@@ -56,22 +56,22 @@
               </div>
             </div>
             <div
-              class="text-white relative pl-3 pb-1 col-span-4 flex justify-between items-center"
+              class=" text-white relative pl-3 pb-1 col-span-4 flex justify-between items-center"
             >
               <div class="flex text-center items-center gap-2">
-                {#each post.tags as tag}
+                {#each post.tags as tag, i}
                   <p
-                    class="text-dh-white sm:text-sm md:text-lg tracking-wider text-lg font-space-mono font-thin min-w-fit overflow-hidden text-nowrap text-ellipsis"
+                    class="max-w-fit text-dh-white text-xs sm:text-sm md:text-lg tracking-wider font-space-mono font-thin min-w-fit overflow-hidden text-nowrap text-ellipsis"
                   >
                     {tag.tagName}
                   </p>
-
-                  <span>|</span>
+                  {#if i !== post.tags.length - 1}
+                    <span>|</span>
+                  {/if}
                 {/each}
               </div>
               <span
-                style="width:clamp(6vw, 100%, 33em);"
-                class="blog__item__underline ml-4 bg-dh-orange h-3 !min-w-[25%] hover:bg-black"
+                class="w-full blog__item__underline ml-4 bg-dh-orange h-3 hover:bg-black"
               ></span>
             </div>
           </div>
