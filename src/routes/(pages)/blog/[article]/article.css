@@ -1,3 +1,8 @@
+h2{
+  font-size: 3em;
+  font-weight: bolder;
+}
+
 .letter--spacing--sm {
   letter-spacing: 3px;
   word-spacing: -3px;
