@@ -1,31 +1,54 @@
-import { env } from '$env/dynamic/public'
-import type { TPost } from '$lib/types/post/TPost.type'
-import { json } from '@sveltejs/kit'
+import { GITHUB_API_KEY } from '$env/static/private';
+import { PUBLIC_BLOG_REPO } from '$env/static/public';
+import type { IRepo } from '$lib/models/github/repo.model';
+import type { TPostMeta } from '$lib/types/post/TPost.type';
+import { json } from '@sveltejs/kit';
+import { compile } from 'mdsvex';
 
 /**
  * 
  * @returns
  */
 async function getPosts() {
-    const paths = import.meta.glob('/../blog/*.md', { eager: true })
-    let posts: Array<TPost> = []
+    const headers = new Headers({
+        "X-GitHub-Api-Version": "2022-11-28",
+        "Authorization": `Bearer ${GITHUB_API_KEY}`
+    });
+    
+    const allBlog = await fetch(PUBLIC_BLOG_REPO, { headers });
 
-    for (const path in paths) {
-        const file = paths[path]
+    const repo: Array<IRepo> = JSON.parse(await allBlog.text()) satisfies Array<IRepo>;
+    let posts: Array<TPostMeta> = []
 
-        if (!file || typeof file !== 'object' || !('metadata' in file)) { continue } //check for metadata fn 
+    const req: Promise<string>[] = repo.filter(r => !r.path.startsWith(".") && r.download_url)
+        .map(async r => (await fetch(r.download_url)).text())
 
-        const metadata = file.metadata as TPost
-        const post = { ...metadata } satisfies TPost
+    await Promise.all(req).then(async res => {
+        while (res.length) {
+            const post = res.shift();
 
-        if (!!post.published && env.PUBLIC_IS_PROD) { continue }
+            if (!post) return
 
-        posts.push(post)
-    }
+            const response = await compile(post, {
+                extensions: ['.md'],
+            })
 
-    posts = posts.sort((first, second) =>
-        new Date(second.date).getTime() - new Date(first.date).getTime()
-    )
+            if (!response) {
+                console.error("you're fucked boet");
+                return;
+            }
+
+            const meta: TPostMeta = (response.data as any).fm satisfies TPostMeta;
+
+            console.log(response.data);
+
+            console.log(repo);
+
+            meta.url = repo.find(x => x.name.split(".md")[0] === meta.title)?.download_url ?? null;
+
+            posts.push(meta satisfies TPostMeta);
+        };
+    });
 
     return posts
 }
