@@ -9,15 +9,16 @@ import { compile } from 'mdsvex';
  * 
  * @returns
  */
-async function getPosts() {
+async function fetchBlogPosts() {
     const headers = new Headers({
         "X-GitHub-Api-Version": "2022-11-28",
         "Authorization": `Bearer ${GITHUB_API_KEY}`
     });
-    
+
     const allBlog = await fetch(PUBLIC_BLOG_REPO, { headers });
 
     const repo: Array<IRepo> = JSON.parse(await allBlog.text()) satisfies Array<IRepo>;
+
     let posts: Array<TPostMeta> = []
 
     const req: Promise<string>[] = repo.filter(r => !r.path.startsWith(".") && r.download_url)
@@ -40,10 +41,6 @@ async function getPosts() {
 
             const meta: TPostMeta = (response.data as any).fm satisfies TPostMeta;
 
-            console.log(response.data);
-
-            console.log(repo);
-
             meta.url = repo.find(x => x.name.split(".md")[0] === meta.title)?.download_url ?? null;
 
             posts.push(meta satisfies TPostMeta);
@@ -54,6 +51,8 @@ async function getPosts() {
 }
 
 export async function GET() {
-    const posts = await getPosts()
+    console.log("brooo");
+    
+    const posts = await fetchBlogPosts()
     return json(posts)
 }

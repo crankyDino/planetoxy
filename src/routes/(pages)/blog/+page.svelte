@@ -1,14 +1,18 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import "./blog.css";
-  import type { PageData } from "./$houdini";
-  import type { Props } from "$lib/models/prop.model";
+  // import type { PageData } from "./$houdini";
+  // import type { Props } from "$lib/models/prop.model";
   import Sidebar from "$lib/components/sidebar/sidebar.svelte";
+  import { json } from "@sveltejs/kit";
 
-  let { data }: Props<PageData> = $props();
-  // let { Articles } = data;
+  let { data } = $props();
   let { Articles } = $derived(data);
-  $inspect($Articles);
+  // console.log(Articles);
+  // console.log(data.Articles);
+
+  // $inspect($Articles);
+
   // let posts: any[] = $state([]);
   /* @type { import('./$houdini').PageData } */
   // console.log($Articles.data.allArticle);
@@ -25,61 +29,61 @@
   blog
 </h3>
 <Sidebar />
-{#if !$Articles.fetching}
-  {#each $Articles.data?.allArticle as any as post}
-    <a href="/blog/{post.slug.current}" class="block min-w-fit w-full">
-      <div
-        class="blog__item__block xl:w-[66vw] lg:w-[90vw] w-[80vw] h-fit flex flex-row pl-[4vw] pt-6"
-      >
-        <span
-          class="blog__item__elem bg-dh-orange grid h-16 align-top w-3 content-end mt-3"
-        ></span>
-        <div class="grid grid-cols-12 ml-3 md:h-28 w-full">
-          <div
-            class="blog__item--hover relative col-span-12 gird grid-row-2 sm:w-11/12 md:min-w-full max-w-full"
-          >
-            <div class="pl-3 relative col-span-8 grid grid-cols-10">
-              <h4
-                class="col-span-10 lg:col-span-8 md:col-span-8 sm:col-span-6 text-dh-white pt-3 font-hanuman font-extrabold text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl min-w-fit overflow-hidden text-nowrap text-ellipsis w-[75%]"
-              >
-                {post.title}
-              </h4>
-              <div
-                class="flex mt-auto sm:col-end-[none] md:col-span-2 sm:col-span-2 sm:justify-self-end col-span-10 md:font-extrabold w-fit lg:text-xl min-w-fit md:min-w-[33%] text-end text-nowrap"
-              >
-                <p class="font-quirkyrobot tracking-[.2em] text-dh-white">
-                  {new Date(post.published).toISOString().split("T")[0]}
-                </p>
-                <!-- <p class="font-quirkyrobot text-dh-white tracking-[.11em]">
-                  /// read more
-                </p> -->
-              </div>
-            </div>
-            <div
-              class=" text-white relative pl-3 pb-1 col-span-4 flex justify-between items-center"
+<!-- {#if !data} -->
+{#each Articles as post}
+  <a href="/blog/{post.title}" class="block min-w-fit w-full">
+    <div
+      class="blog__item__block xl:w-[66vw] lg:w-[90vw] w-[80vw] h-fit flex flex-row pl-[4vw] pt-6"
+    >
+      <span
+        class="blog__item__elem bg-dh-orange grid h-16 align-top w-3 content-end mt-3"
+      ></span>
+      <div class="grid grid-cols-12 ml-3 md:h-28 w-full">
+        <div
+          class="blog__item--hover relative col-span-12 gird grid-row-2 sm:w-11/12 md:min-w-full max-w-full"
+        >
+          <div class="pl-3 relative col-span-8 grid grid-cols-10">
+            <h4
+              class="col-span-10 lg:col-span-8 md:col-span-8 sm:col-span-6 text-dh-white pt-3 font-hanuman font-extrabold text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl min-w-fit overflow-hidden text-nowrap text-ellipsis w-[75%]"
             >
-              <div class="flex text-center items-center gap-2">
-                {#each post.tags as tag, i}
-                  <p
-                    class="max-w-fit text-dh-white text-xs sm:text-sm md:text-lg tracking-wider font-space-mono font-thin min-w-fit overflow-hidden text-nowrap text-ellipsis"
-                  >
-                    {tag.tagName}
-                  </p>
-                  {#if i !== post.tags.length - 1}
-                    <span>|</span>
-                  {/if}
-                {/each}
-              </div>
-              <span
-                class="w-full blog__item__underline ml-4 bg-dh-orange h-3 hover:bg-black"
-              ></span>
+              {post.title}
+            </h4>
+            <div
+              class="flex mt-auto sm:col-end-[none] md:col-span-2 sm:col-span-2 sm:justify-self-end col-span-10 md:font-extrabold w-fit lg:text-xl min-w-fit md:min-w-[33%] text-end text-nowrap"
+            >
+              <p class="font-quirkyrobot tracking-[.2em] text-dh-white">
+                {new Date(post.date).toISOString().split("T")[0]}
+              </p>
+              <p class="font-quirkyrobot text-dh-white tracking-[.11em]">
+                /// read more
+              </p>
             </div>
+          </div>
+          <div
+            class=" text-white relative pl-3 pb-1 col-span-4 flex justify-between items-center"
+          >
+            <div class="flex text-center items-center gap-2">
+              {#each post.tags as tag, i}
+                <p
+                  class="max-w-fit text-dh-white text-xs sm:text-sm md:text-lg tracking-wider font-space-mono font-thin min-w-fit overflow-hidden text-nowrap text-ellipsis"
+                >
+                  {tag}
+                </p>
+                {#if i !== post.tags.length - 1}
+                  <span>|</span>
+                {/if}
+              {/each}
+            </div>
+            <span
+              class="w-full blog__item__underline ml-4 bg-dh-orange h-3 hover:bg-black"
+            ></span>
           </div>
         </div>
       </div>
-    </a>
-  {/each}
-{/if}
+    </div>
+  </a>
+{/each}
+<!-- {/if} -->
 
 <pre
   hidden
