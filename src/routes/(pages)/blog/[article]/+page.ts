@@ -2,22 +2,10 @@ import { PUBLIC_BLOG_URL } from '$env/static/public';
 import type { TPostMeta } from '$lib/types/post/TPost.type.js';
 import { error } from '@sveltejs/kit';
 import { compile } from 'mdsvex';
-// import fs from 'fs/promises';
-// import os from 'os';
-// import path from 'path';
-// import crypto from 'crypto';
-
-// const CACHE_DIR = path.join(os.tmpdir(), 'mdsvex-cache');
-// await fs.mkdir(CACHE_DIR, { recursive: true });
-
-// function hashCode(s: string) {
-//     return crypto.createHash('sha256').update(s).digest('hex').slice(0, 16);
-// }
 
 
 /**
- * you're doing this cause you need to get the params from the slug/path
- * i know you'll forget...
+ *
  * 
  * @param event 
  * @returns 
@@ -38,6 +26,11 @@ export async function load({ params }) {
         if (!response) {
             throw new Error(`Could not fetch ${params.article}`);
         }
+        // let content = response.code
+        //     .replace(/{@html `([^`]*)`}/g, '$1')
+        //     .replace(/&lt;/g, '<')
+        //     .replace(/&gt;/g, '>')
+        //     .replace(/&amp;/g, '&');
 
         const content = response.code
 

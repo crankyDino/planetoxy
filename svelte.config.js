@@ -8,8 +8,7 @@ const msdsvexOpt = {
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
-	// Consult https://kit.svelte.dev/docs/integrations#preprocessors
-	// for more information about preprocessors
+	extensions: ['.svelte', '.svx','.md'],
 	preprocess: [vitePreprocess(), mdsvex(msdsvexOpt)],
 	kit: {
 		adapter: adapter({
@@ -18,7 +17,6 @@ const config = {
 		}),
 		alias: { $houdini: ".houdini/" } // $houdini: path.resolve(__dirname, '.houdini')
 	},
-	extensions: ['.svelte', '.svx','.md']
 };
 
 export default config;
