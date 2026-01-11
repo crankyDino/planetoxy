@@ -77,7 +77,7 @@ export async function load({ params }) {
         const content = response.code
         // console.log(content);
         // const tf=(response.data as TPost ).fm;
-        const meta=(response.data as any).fm;
+        const meta = (response.data as any).fm;
         return {
             metadata: meta satisfies TPost,
             content,

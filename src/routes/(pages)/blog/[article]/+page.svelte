@@ -3,11 +3,32 @@
   import "./article.css";
   import Sidebar from "$lib/components/sidebar/sidebar.svelte";
   import { json } from "@sveltejs/kit";
+  import { compile } from "mdsvex";
 
+  // const svelte = require("svelte/compiler");
+  // const { mdsvex } = require("mdsvex");
+
+  // let DynamicComponent = $state();
   let { data } = $props();
   console.log(data);
 
-  // onMount(() => {});
+  // onMount(() => {
+  //    loadComponent(data.content);
+  // });
+
+  // async function loadComponent(code:string) {
+  //   // Remove the script tags and extract just the HTML
+  //   const htmlMatch = code.match(/<\/script>\s*([\s\S]*)/);
+  //   if (htmlMatch) {
+  //     const html = htmlMatch[1];
+  //     // For simple rendering, just use the HTML part
+  //     DynamicComponent = html;
+  //   }
+  // }
+
+  // const content = await compile(data.content);
+
+  // const preprocessed =  svelte.preprocess(data.content);
 </script>
 
 <Sidebar />

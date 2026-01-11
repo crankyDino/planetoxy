@@ -18,7 +18,10 @@ const config = {
 		}),
 		alias: { $houdini: ".houdini/" } // $houdini: path.resolve(__dirname, '.houdini')
 	},
-	extensions: ['.svelte', '.svx','.md']
+	extensions: ['.svelte', '.svx', '.md'],
+	// compilerOptions: {
+	// 	experimental: {async:true}
+	// }
 };
 
 export default config;
