@@ -12,7 +12,8 @@ import { compile } from 'mdsvex';
  */
 export async function load({ params }) {
     try {
-        const url = `${PUBLIC_BLOG_URL}/refs/heads/master/${params.article}.md`
+        // const url = `${PUBLIC_BLOG_URL}/refs/heads/master/${params.article}.md`
+        const url = `${PUBLIC_BLOG_URL}/${params.article}.md`
 
         const res = await fetch(url);
 

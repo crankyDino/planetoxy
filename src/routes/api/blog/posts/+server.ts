@@ -15,7 +15,7 @@ async function fetchBlogPosts() {
         "Authorization": `Bearer ${GITHUB_API_KEY}`
     });
 
-    const allBlog = await fetch(PUBLIC_BLOG_REPO, { headers });
+    const allBlog = await fetch(PUBLIC_BLOG_REPO + "/contents", { headers });
 
     const repo: Array<IRepo> = JSON.parse(await allBlog.text()) satisfies Array<IRepo>;
 
@@ -52,7 +52,7 @@ async function fetchBlogPosts() {
 
 export async function GET() {
     console.log("brooo");
-    
+
     const posts = await fetchBlogPosts()
     return json(posts)
 }
