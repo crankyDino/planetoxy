@@ -11,6 +11,8 @@ jobs:
   build:
     runs-on: self-hosted
     environment: prod
+    container:
+      image: ubuntu:25.04
     env:
       PUBLIC_IS_PROD: ${{ secrets.PUBLIC_IS_PROD }}
       PUBLIC_SANITY_GQL_API: ${{ secrets.PUBLIC_SANITY_GQL_API }}
