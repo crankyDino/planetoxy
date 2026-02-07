@@ -1,0 +1,36 @@
+name: Build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      PUBLIC_IS_PROD: ${{ secrets.PUBLIC_IS_PROD }}
+      PUBLIC_SANITY_GQL_API: ${{ secrets.PUBLIC_SANITY_GQL_API }}
+      PUBLIC_EMAILTO: ${{ secrets.PUBLIC_EMAILTO }}
+      PUBLIC_BLOG_REPO: ${{ secrets.PUBLIC_BLOG_REPO }}
+      GITHUB_API_KEY: ${{ secrets.GH_API_KEY }}
+      SANITY_API_KEY: ${{ secrets.SANITY_API_KEY }}
+      SANITY_APP_ID: ${{ secrets.SANITY_APP_ID }}
+      MOONBASE_URL: ${{ secrets.MOONBASE_URL }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+      - run: npm run build
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: build
+          path: .svelte-kit
