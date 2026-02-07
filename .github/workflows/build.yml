@@ -1,7 +1,5 @@
 name: Build
 
-runs-on: self-hosted
-
 on:
   push:
     branches: [main]
@@ -11,7 +9,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     environment: prod
     env:
       PUBLIC_IS_PROD: ${{ secrets.PUBLIC_IS_PROD }}
