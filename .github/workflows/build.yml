@@ -9,6 +9,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    environment: prod
     env:
       PUBLIC_IS_PROD: ${{ secrets.PUBLIC_IS_PROD }}
       PUBLIC_SANITY_GQL_API: ${{ secrets.PUBLIC_SANITY_GQL_API }}
