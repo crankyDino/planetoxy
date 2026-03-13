@@ -10,8 +10,8 @@ type TArticle = {
  * @param event 
  * @returns 
  */
-export async function load({ params }) {
-    try {        
+export async function load({ params, fetch }) {
+    try {
         const res = await fetch(`/api/blog/content?title=${params.article}`, {
             method: 'GET',
             headers: { 'Content-Type': 'application/json' }

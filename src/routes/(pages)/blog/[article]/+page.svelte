@@ -1,34 +1,57 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import "./article.css";
+  import "highlight.js/styles/github-dark.css";
   import Sidebar from "$lib/components/sidebar/sidebar.svelte";
-  import { json } from "@sveltejs/kit";
-  import { compile } from "mdsvex";
-
-  // const svelte = require("svelte/compiler");
-  // const { mdsvex } = require("mdsvex");
-
-  // let DynamicComponent = $state();
+  import { LANGUAGE_NAMES } from "$lib/shared/Programming_Languages";
   let { data } = $props();
-  console.log(data);
 
-  // onMount(() => {
-  //    loadComponent(data.content);
-  // });
+  function getLanguageName(code: HTMLElement): string | null {
+    const match = Array.from(code.classList).find((c) =>
+      c.startsWith("language-"),
+    );
+    if (!match) return null;
+    const key = match.replace("language-", "").toLowerCase();
+    return LANGUAGE_NAMES[key] ?? key;
+  }
 
-  // async function loadComponent(code:string) {
-  //   // Remove the script tags and extract just the HTML
-  //   const htmlMatch = code.match(/<\/script>\s*([\s\S]*)/);
-  //   if (htmlMatch) {
-  //     const html = htmlMatch[1];
-  //     // For simple rendering, just use the HTML part
-  //     DynamicComponent = html;
-  //   }
-  // }
+  function addCopyButton() {
+    document.querySelectorAll<HTMLElement>(".prose pre").forEach((pre) => {
+      const codeEl = pre.querySelector<HTMLElement>("code");
 
-  // const content = await compile(data.content);
+      const bar = document.createElement("div");
+      bar.className = "code__block__bar";
 
-  // const preprocessed =  svelte.preprocess(data.content);
+      const lang = codeEl ? getLanguageName(codeEl) : null;
+      if (lang) {
+        const langLabel = document.createElement("span");
+        langLabel.className = "code__lang__label";
+        langLabel.textContent = lang;
+        bar.appendChild(langLabel);
+      }
+
+      const btn = document.createElement("button");
+      btn.className = "copy__code__btn";
+      btn.textContent = "copy";
+      btn.addEventListener("click", async () => {
+        const text = codeEl?.innerText ?? pre.innerText ?? "";
+        await navigator.clipboard.writeText(text);
+        btn.textContent = "copied!";
+        btn.classList.add("copied");
+        setTimeout(() => {
+          btn.textContent = "copy";
+          btn.classList.remove("copied");
+        }, 2000);
+      });
+
+      bar.appendChild(btn);
+      pre.prepend(bar);
+    });
+  }
+
+  onMount(() => {
+    addCopyButton();
+  });
 </script>
 
 <Sidebar />
@@ -72,33 +95,3 @@
     </article>
   {/if}
 </section>
-
-<style>
-  * {
-    color: white;
-  }
-  article {
-    max-inline-size: var(--size-content-3);
-    margin-inline: auto;
-
-    h1 {
-      text-transform: capitalize;
-    }
-
-    h1 + p {
-      margin-top: var(--size-2);
-      color: var(--text-2);
-    }
-
-    .tags {
-      display: flex;
-      gap: var(--size-3);
-      margin-top: var(--size-7);
-
-      > * {
-        padding: var(--size-2) var(--size-3);
-        border-radius: var(--radius-round);
-      }
-    }
-  }
-</style>
