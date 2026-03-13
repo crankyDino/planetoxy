@@ -1,6 +1,47 @@
-h2{
+h2 {
   font-size: 3em;
   font-weight: bolder;
+}
+
+article {
+  * {
+    color: white;
+  }
+
+  width: 100%;
+
+  pre {
+    text-wrap: auto;
+    text-wrap-style: balance;
+    background: #1e1d1d;
+    padding: 0.8em;
+    padding-top: 0;
+    border-radius: 0.3em;
+    border: #e7723624 solid 2px;
+  }
+
+  max-inline-size: var(--size-content-3);
+  margin-inline: auto;
+
+  h1 {
+    text-transform: capitalize;
+  }
+
+  h1+p {
+    margin-top: var(--size-2);
+    color: var(--text-2);
+  }
+
+  .tags {
+    display: flex;
+    gap: var(--size-3);
+    margin-top: var(--size-7);
+
+    >* {
+      padding: var(--size-2) var(--size-3);
+      border-radius: var(--radius-round);
+    }
+  }
 }
 
 .letter--spacing--sm {

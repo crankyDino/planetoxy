@@ -2,51 +2,37 @@ import { GITHUB_API_KEY } from '$env/static/private';
 import { PUBLIC_BLOG_REPO } from '$env/static/public';
 import type { TPostMeta } from '$lib/types/post/TPost.type';
 import { json } from '@sveltejs/kit';
-import { compile } from 'mdsvex';
+import { marked } from 'marked';
+import { markedHighlight } from 'marked-highlight';
+import hljs from 'highlight.js';
+import matter from 'gray-matter';
 
-/**
- * 
- * @returns
- */
+marked.use(markedHighlight({
+    emptyLangClass: 'hljs',
+    highlight(code, lang) {
+        const language = hljs.getLanguage(lang) ? lang : 'plaintext';
+        return hljs.highlight(code, { language }).value;
+    }
+}));
+
 async function fetchBlogPostContent(title: string) {
     console.log(`${PUBLIC_BLOG_REPO}/contents/${title}.md`);
     const headers = new Headers({
         "X-GitHub-Api-Version": "2022-11-28",
         "Authorization": `Bearer ${GITHUB_API_KEY}`,
     });
-    
-    // "Accept": "application/vnd.github.html+json"
 
     const repo = await fetch(`${PUBLIC_BLOG_REPO}/contents/${title}.md`, { headers });
-
-    const repo_content = await repo.json()
-
+    const repo_content = await repo.json();
     const article = await fetch(repo_content.download_url);
-
     const article_content = await article.text();
 
-    const response = await compile(article_content, {
-        extensions: ['.md'],
-        filename: `${title}.md`
-    })
+    const { data: meta, content: body } = matter(article_content);
+    const content = await marked.parse(body);
 
-    if (!response) {
-        throw new Error(`Could not fetch ${title}`);
-    }
-    // let content = response.code
-    //     .replace(/{@html `([^`]*)`}/g, '$1')
-    //     .replace(/&lt;/g, '<')
-    //     .replace(/&gt;/g, '>')
-    //     .replace(/&amp;/g, '&');
-
-    const content = response.code
-    // console.log(content);
-    // const tf=(response.data as TPost ).fm;
-    const meta = (response.data as any).fm;
     return {
         metadata: meta satisfies TPostMeta,
         content,
-        map: response.map
     }
 }
 

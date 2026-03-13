@@ -1,34 +1,9 @@
 <script lang="ts">
-  import { onMount } from "svelte";
   import "./article.css";
+  import "highlight.js/styles/github-dark.css";
   import Sidebar from "$lib/components/sidebar/sidebar.svelte";
-  import { json } from "@sveltejs/kit";
-  import { compile } from "mdsvex";
 
-  // const svelte = require("svelte/compiler");
-  // const { mdsvex } = require("mdsvex");
-
-  // let DynamicComponent = $state();
   let { data } = $props();
-  console.log(data);
-
-  // onMount(() => {
-  //    loadComponent(data.content);
-  // });
-
-  // async function loadComponent(code:string) {
-  //   // Remove the script tags and extract just the HTML
-  //   const htmlMatch = code.match(/<\/script>\s*([\s\S]*)/);
-  //   if (htmlMatch) {
-  //     const html = htmlMatch[1];
-  //     // For simple rendering, just use the HTML part
-  //     DynamicComponent = html;
-  //   }
-  // }
-
-  // const content = await compile(data.content);
-
-  // const preprocessed =  svelte.preprocess(data.content);
 </script>
 
 <Sidebar />
@@ -73,32 +48,3 @@
   {/if}
 </section>
 
-<style>
-  * {
-    color: white;
-  }
-  article {
-    max-inline-size: var(--size-content-3);
-    margin-inline: auto;
-
-    h1 {
-      text-transform: capitalize;
-    }
-
-    h1 + p {
-      margin-top: var(--size-2);
-      color: var(--text-2);
-    }
-
-    .tags {
-      display: flex;
-      gap: var(--size-3);
-      margin-top: var(--size-7);
-
-      > * {
-        padding: var(--size-2) var(--size-3);
-        border-radius: var(--radius-round);
-      }
-    }
-  }
-</style>
