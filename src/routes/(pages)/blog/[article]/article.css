@@ -19,7 +19,7 @@ article {
     border: #e7723624 solid 2px;
   }
 
-  .code-block-bar {
+  .code__block__bar {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -30,7 +30,7 @@ article {
     border-radius: 0.3em 0.3em 0 0;
   }
 
-  .code-lang-label {
+  .code__lang__label {
     font-size: 0.75em;
     color: #888;
     font-family: inherit;
@@ -38,7 +38,7 @@ article {
     user-select: none;
   }
 
-  .copy-code-btn {
+  .copy__code__btn {
     padding: 0.2em 0.6em;
     font-size: 0.75em;
     font-family: inherit;

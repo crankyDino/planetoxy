@@ -20,18 +20,18 @@
       const codeEl = pre.querySelector<HTMLElement>("code");
 
       const bar = document.createElement("div");
-      bar.className = "code-block-bar";
+      bar.className = "code__block__bar";
 
       const lang = codeEl ? getLanguageName(codeEl) : null;
       if (lang) {
         const langLabel = document.createElement("span");
-        langLabel.className = "code-lang-label";
+        langLabel.className = "code__lang__label";
         langLabel.textContent = lang;
         bar.appendChild(langLabel);
       }
 
       const btn = document.createElement("button");
-      btn.className = "copy-code-btn";
+      btn.className = "copy__code__btn";
       btn.textContent = "copy";
       btn.addEventListener("click", async () => {
         const text = codeEl?.innerText ?? pre.innerText ?? "";

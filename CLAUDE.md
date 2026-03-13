@@ -12,6 +12,10 @@
 - If a feature requires multiple stage be implemented in parallel, request clarification and approval before continuing.
 - Ask clarifying questions when implementing large features to ensure understanding of stated retirements
 
+## Stylesheet rule
+
+- Syntax: use BEM when creating classnames - eg. block__element--modifier
+
 ## Memory rules
 
 - Use `git status` to check for changes to the source code made outside of your context window.
