@@ -1,6 +1,5 @@
 <script lang="ts">
-  import type { ICarouselItem } from "$lib/components/carousel/carousel";
-  import Carousel from "$lib/components/carousel/carousel.svelte";
+  import type { ICarouselItem } from "$lib/components/staggered-carousel/staggered-carousel";
   import ContactDialog from "$lib/components/contact-dialog/contact-dialog.svelte";
   import StaggeredCarousel from "$lib/components/staggered-carousel/staggered-carousel.svelte";
   import { onMount } from "svelte";
@@ -14,7 +13,23 @@
   let { data }: Props<PageData> = $props();
   const { PortfolioCarousel } = $derived(data);
 
+  let carouselContent = $state(Array<ICarouselItem>());
+
   onMount(() => {
+    if (
+      !$PortfolioCarousel.data ||
+      $PortfolioCarousel.data.allCarousel.length === -1
+    ) {
+      return;
+    }
+
+    carouselContent = ($PortfolioCarousel.data.allCarousel[0].media ?? [])
+      .filter((item): item is NonNullable<typeof item> => item !== null)
+      .map((item) => ({
+        ...item,
+        dateCreated: item.dateCreated ? new Date(item.dateCreated) : null,
+      }));
+
     // console.log($inspect($PortfolioCarousel));
     // portfolioCarousel.PortfolioCarousel.fetch().then(({ data }: any) => {
     //   carouselMedia = data.allCarousel[0].media;
@@ -165,23 +180,17 @@
   </h3>
   <!-- <Carousel carouselItems={things} carouselType={"card"} /> -->
   {#if !$PortfolioCarousel.fetching && $PortfolioCarousel?.data}
-    <StaggeredCarousel
-      carouselItems={$PortfolioCarousel.data.allCarousel[0].media?.filter(
-        Boolean
-      ) as Array<ICarouselItem>}
-      carouselType={"card"}
+    <StaggeredCarousel carouselItems={carouselContent} carouselType={"card"}
     ></StaggeredCarousel>
   {/if}
 </section>
-<section class="grid grid-rows-1 py-12">
+<!-- <section class="grid grid-rows-1 py-12">
   <Carousel
     carouselItems={moreThings}
     carouselType={"icon"}
     direction={"left"}
     grayscale={true}
   />
-</section>
-<ContactDialog bind:this={dialog} />
+</section> -->
 
-<style>
-</style>
+<ContactDialog bind:this={dialog} />

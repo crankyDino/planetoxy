@@ -73,11 +73,13 @@
       <hgroup
         class="flex flex-col relative bottom-7 md:bottom-12 lg:bottom-8 gap-y-1"
       >
+        
         <h1
           class="bg-dh-black w-fit font-hanuman font-extrabold text-dh-orange text-[1.5em] md:text-6xl text-wrap lg:text-nowrap p-4 pb-0"
         >
           {data.metadata.title}
         </h1>
+
         <p>{new Date(data.metadata.date).toISOString().split("T")[0]}</p>
 
         <div
@@ -87,8 +89,8 @@
             <span class="surface-4">&num;{tag}</span>
           {/each}
         </div>
+      
       </hgroup>
-
       <div class="prose flex flex-col gap-y-6">
         {@html data.content}
       </div>

@@ -54,3 +54,9 @@
 .carousel:hover {
   animation: none;
 }
+
+@keyframes scroll {
+  to {
+    transform: translateX(-50%);
+  }
+}
