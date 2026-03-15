@@ -1,12 +1,12 @@
 <script lang="ts">
-  import type { ICarouselItem } from "$lib/components/carousel/carousel";
-  import Carousel from "$lib/components/carousel/carousel.svelte";
+  import type { ICarouselItem } from "$lib/components/staggered-carousel/staggered-carousel";
   import ContactDialog from "$lib/components/contact-dialog/contact-dialog.svelte";
   import StaggeredCarousel from "$lib/components/staggered-carousel/staggered-carousel.svelte";
   import { onMount } from "svelte";
   import Terminal from "../../lib/components/terminal/terminal.svelte";
   import type { PageData } from "./$houdini";
   import type { Props } from "$lib/models/prop.model";
+  import Carousel from "$lib/components/carousel/carousel.svelte";
 
   let moreThings: Map<number, ICarouselItem> = new Map<number, ICarouselItem>();
   let dialog: any;
@@ -14,7 +14,23 @@
   let { data }: Props<PageData> = $props();
   const { PortfolioCarousel } = $derived(data);
 
+  let carouselContent = $state(Array<ICarouselItem>());
+
   onMount(() => {
+    if (
+      !$PortfolioCarousel.data ||
+      $PortfolioCarousel.data.allCarousel.length === -1
+    ) {
+      return;
+    }
+
+    carouselContent = ($PortfolioCarousel.data.allCarousel[0].media ?? [])
+      .filter((item): item is NonNullable<typeof item> => item !== null)
+      .map((item) => ({
+        ...item,
+        dateCreated: item.dateCreated ? new Date(item.dateCreated) : null,
+      }));
+
     // console.log($inspect($PortfolioCarousel));
     // portfolioCarousel.PortfolioCarousel.fetch().then(({ data }: any) => {
     //   carouselMedia = data.allCarousel[0].media;
@@ -76,7 +92,7 @@
     <h2
       style="word-spacing: -0.5rem; "
       id="about_me_headline"
-      class="shadow--solid__about-me z-10 relative tracking-[3.6px] font-semibold mb-4 !font-pokemon-classic sm:text-[2.6rem] text-[6vw] md:text-4xl lg:text-5xl"
+      class="shadow--solid__about-me z-10 relative tracking-[3.6px] font-semibold mb-4 font-pokemon-classic! sm:text-[2.6rem] text-[6vw] md:text-4xl lg:text-5xl"
     >
       A
       <!-- <strong
@@ -86,7 +102,7 @@
       Bit About Me
     </h2>
     <p
-      class="paragraph text-justify md:!mt-auto md:text-start md:w-11/12 lg:w-3/5 font-space-mono mb-2 before:w-8 first-letter:text-[2rem] first-letter:font-bold"
+      class="paragraph text-justify md:mt-auto! md:text-start md:w-11/12 lg:w-3/5 font-space-mono mb-2 before:w-8 first-letter:text-[2rem] first-letter:font-bold"
     >
       I am a self-taught Web Developer, Graphic Designer and Videographer from
       South Africa. I also enjoy playing around with Machine Learning and
@@ -129,14 +145,14 @@
   >
     <div>
       <img
-        class="headshot w-36 relative z-[2]"
+        class="headshot w-36 xl:w-52 relative z-2"
         src="/assets/bitmap/IMG_20200408_170956paint.jpg"
         alt=""
       />
       <span
         style="transform: translateX(-42%) translateY(-89%)"
         id="pictureFrame"
-        class="w-36 absolute z-[1] left-9"
+        class="w-36 xl:w-52 absolute z-1 left-9"
       >
         <svg
           class="pictureFrame"
@@ -166,22 +182,19 @@
   <!-- <Carousel carouselItems={things} carouselType={"card"} /> -->
   {#if !$PortfolioCarousel.fetching && $PortfolioCarousel?.data}
     <StaggeredCarousel
-      carouselItems={$PortfolioCarousel.data.allCarousel[0].media?.filter(
-        Boolean
-      ) as Array<ICarouselItem>}
+      animate={false}
+      carouselItems={carouselContent}
       carouselType={"card"}
     ></StaggeredCarousel>
   {/if}
 </section>
 <section class="grid grid-rows-1 py-12">
   <Carousel
-    carouselItems={moreThings}
+    carouselItems={carouselContent}
     carouselType={"icon"}
     direction={"left"}
     grayscale={true}
   />
 </section>
-<ContactDialog bind:this={dialog} />
 
-<style>
-</style>
+<ContactDialog bind:this={dialog} />

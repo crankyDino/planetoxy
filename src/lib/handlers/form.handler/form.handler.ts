@@ -10,9 +10,12 @@ export function initForm(form: HTMLFormElement): void {
     const formControlGroups = Array.from(form.querySelectorAll(".form__group"))
 
     formControlGroups.forEach((group) => {
-        const label = group.querySelector("label")
+        const label = group.querySelector("label");
+
         const controller = group.querySelector("input,textarea") as HTMLInputElement | HTMLTextAreaElement;
+
         const errLabel = group.querySelector(".form--error") as HTMLElement;
+
         controller.onblur = (ev) => {
             if (controller.hasAttribute(validationOptions.hasValue.attribute) && !validationOptions.hasValue.isValid(controller)) {
                 // errLabel.textContent = validationOptions.hasValue.errorMsg(controller, controller.labels[0]); //dynamic error message
@@ -23,7 +26,10 @@ export function initForm(form: HTMLFormElement): void {
             }
         }
     })
-    validateForm(form);
+
+    validateForm(form, (isValid => {
+
+    }));
 }
 
 /**
@@ -33,14 +39,13 @@ export function initForm(form: HTMLFormElement): void {
  */
 export function validateForm(form: HTMLFormElement, callback?: (isValid: boolean) => void): void {
     let isValid: boolean = false;
+
     form.setAttribute("novalidate", "");
-    // form.get()
 
     form.onsubmit = (ev) => {
         ev.preventDefault();
         if (!form.checkValidity()) {
             isValid = false;
-            console.log("form: " + form.id + ":submitted successfully");
             return isValid;
         }
 

@@ -2,15 +2,16 @@
   import { onMount } from "svelte";
   import "./staggered-carousel.css";
   import {
-    playCarousel,
-    type ICarouselItem,
-    type TCarouselDirection,
-    type TCarouselType,
+      playCarousel,
+      type ICarouselItem,
+      type TCarouselDirection,
+      type TCarouselType,
   } from "./staggered-carousel";
   let carousel: HTMLDivElement | null = $state(null);
   interface Props {
     carouselType?: TCarouselType;
     grayscale?: boolean;
+    animate?: boolean;
     direction?: TCarouselDirection;
     carouselItems?: Array<ICarouselItem>;
   }
@@ -18,6 +19,7 @@
   let {
     carouselType = "icon",
     grayscale = false,
+    animate = true,
     direction = "right",
     carouselItems = Array<ICarouselItem>(),
   }: Props = $props();
@@ -36,17 +38,18 @@
 {#if carouselItems}
   <div
     bind:this={carousel}
-    class="carousel items-center overflow-hidden pl-1.5"
     data-direction={direction}
+    class="carousel items-center overflow-hidden pl-1.5"
   >
-    <div class="carousel overflow-hidden pl-1.5 h-full w-[85vw] m-auto">
+    <div class="carousel__content--row overflow-hidden pl-1.5 h-full w-[85vw] m-auto">
       <div
+        data-animated={animate}
         class="carousel__content__wrapper h-96 relative flex flex-row flex-wrap justify-center items-center"
       >
         {#each carouselItems as item}
           <div
             class="carousel__content shadow-xl -translate-x-[{shift()}] translate-y-[{shift()}] w-[{Math.floor(
-              Math.random() * 10
+              Math.random() * 10,
             )}rem]
            min-w-[9.5rem] max-w-[12.5rem] relative {grayscale
               ? 'grayscale'

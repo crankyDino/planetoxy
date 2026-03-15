@@ -1,10 +1,9 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import "./blog.css";
-  // import type { PageData } from "./$houdini";
+// import type { PageData } from "./$houdini";
   // import type { Props } from "$lib/models/prop.model";
   import Sidebar from "$lib/components/sidebar/sidebar.svelte";
-  import { json } from "@sveltejs/kit";
 
   let { data } = $props();
   let { Articles } = $derived(data);
@@ -54,9 +53,9 @@
               <p class="font-quirkyrobot tracking-[.2em] text-dh-white">
                 {new Date(post.date).toISOString().split("T")[0]}
               </p>
-              <p class="font-quirkyrobot text-dh-white tracking-[.11em]">
+              <!-- <p class="font-quirkyrobot text-dh-white tracking-[.11em]">
                 /// read more
-              </p>
+              </p> -->
             </div>
           </div>
           <div

@@ -1,14 +1,11 @@
 <script lang="ts">
-  import { run } from "svelte/legacy";
-
   import { onMount } from "svelte";
   import { chips, reset, submitHitMeUp } from "./contact-dialog";
   import {
-    dialogState,
-    type TDialogState,
+      dialogState,
+      type TDialogState,
   } from "$lib/handlers/dialog.handler/dialog.handler";
-  import { focusOnElement } from "$lib/util/element.util";
-  import { initForm, resetForm } from "$lib/handlers/form.handler/form.handler";
+  import { initForm } from "$lib/handlers/form.handler/form.handler";
 
   let pos: TDialogState = $state("closed");
   let dialog = $state<HTMLDialogElement>();
@@ -30,7 +27,7 @@
 
 <dialog
   bind:this={dialog}
-  class="m-auto backdrop:bg-dh-black/65 backdrop:blur-md w-[88vw] md:w-2/3 lg:w-[44%] max-h-[85%] font-space-mono"
+  class="m-auto max-w-2xl backdrop:bg-dh-black/65 backdrop:blur-md w-[88vw] md:w-2/3 lg:w-[44%] max-h-[85%] font-space-mono"
   id="hitMeUpDialog"
 >
   <div class="bg__grid">
@@ -39,15 +36,15 @@
   <div
     class="btn__close flex flex-row justify-between bg-dh-orange mb-3 p-3 pr-6"
   >
-    <h3 class="card-title font-bold text-[#fff] pl-9">Hit Me Up</h3>
+    <h3 class="card-title font-bold text-white pl-9">Hit Me Up</h3>
     <button
       onclick={() => (dialog ? dialogState().close(dialog, form) : "")}
       id="btnCloseHmuForm"
-      class="text-[#fff] text-center w-6 rounded-md hover:text-dh-orange hover:bg-[#fff]"
+      class="text-white text-center w-6 rounded-md hover:text-dh-orange hover:bg-white"
     >
       <img
         src="../assets/vectors/close-small.svg"
-        class="filter--white hover:!filter--orange"
+        class="filter--white hover:filter--orange!"
         alt="dialog close icon"
       />
     </button>
@@ -72,7 +69,7 @@
           type="text"
           id="hmuFirstname"
           name="Firstname"
-          class="pointer-events-auto border-[2px] border-dh-black w-full px-4 py-2"
+          class="pointer-events-auto border-2 border-dh-black w-full px-4 py-2"
           maxlength="20"
           minlength="3"
           required
@@ -93,7 +90,7 @@
           type="text"
           id="hmuLastname"
           name="Lastname"
-          class="pointer-events-auto border-[2px] border-dh-black w-full px-4 py-2"
+          class="pointer-events-auto border-2 border-dh-black w-full px-4 py-2"
           maxlength="20"
           minlength="3"
           required
@@ -116,7 +113,7 @@
         id="hmuEmail"
         type="email"
         name="email"
-        class="pointer-events-auto border-[2px] border-dh-black px-4 py-2"
+        class="pointer-events-auto border-2 border-dh-black px-4 py-2"
         required
       />
       <small
@@ -134,16 +131,16 @@
       <!-- svelte-ignore a11y_no_static_element_interactions -->
       <div
         id="hmuReasonList"
-        class="bg-[#fff] flex flex-row flex-wrap bg-white border-[2px] border-dh-black w-full gap-3 px-4 py-2 h-fit min-h-10 items-center"
+        class="flex flex-row flex-wrap bg-white border-2 border-dh-black w-full gap-3 px-4 py-2 h-fit min-h-10 items-center"
         onfocus={() => {
           reason ? reason.focus() : "";
         }}
       >
         {#each $chips as chip (chip[0])}
           <span
-            class="rounded-xl bg-dh-orange font-semibold text-[#fff] flex flex-row h-[1.6em] px-2 items-start"
+            class="rounded-xl bg-dh-orange font-semibold text-white flex flex-row h-[1.6em] px-2 items-start"
             >{chip[1]}<button
-              class="pl-1 pr-[3px]"
+              class="pl-1 pr-3"
               onmousedown={(ev) => {
                 chips.deleteChip(chip[0]);
               }}>x</button
@@ -185,7 +182,7 @@
         name="message"
         rows="3.6"
         style="resize: none"
-        class="pointer-events-auto border-[2px] border-dh-black pl-1"
+        class="pointer-events-auto border-2 border-dh-black pl-1"
         maxlength="240"
         required
       ></textarea>

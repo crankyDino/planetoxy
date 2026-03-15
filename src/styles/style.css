@@ -23,15 +23,13 @@
 
 img:hover,
 a:hover,
-button:hover {
-  cursor: url(/assets/bitmap/cursor-pointer-finger.png);
+button:hover,
+.plx__pointer {
+  cursor: url("/assets/bitmap/cursor-pointer-finger.png") 8 0, pointer !important;
 }
 
-img:hover,
-a:hover,
-button:hover,
 body {
-  cursor: url("/assets/vectors/pointer-8bit.svg") 8 0, auto;
+  cursor: url("/assets/vectors/pointer-8bit.svg") 8 0, auto !important;
 }
 
 button:focus {
