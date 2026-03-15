@@ -1,26 +1,33 @@
+.carousel {
+  -webkit-mask: linear-gradient(90deg,
+      transparent,
+      white 5%,
+      white 95%,
+      transparent);
+  mask: linear-gradient(90deg, transparent, white 5%, white 95%, transparent);
+
+  & .carousel__content--row {
+    width: max-content;
+    flex-wrap: nowrap;
+  }
+}
+
 .carousel__content.grayscale {
   filter: grayscale(100%);
   opacity: 25%;
 }
+
 .carousel__content img {
   transition: scale 60ms ease-out;
 }
-.carousel {
-  -webkit-mask: linear-gradient(
-    90deg,
-    transparent,
-    white 5%,
-    white 95%,
-    transparent
-  );
-  mask: linear-gradient(90deg, transparent, white 5%, white 95%, transparent);
-}
 
-.carousel[data-animated="true"] .carousel__content__wrapper {
-  width: max-content;
-  flex-wrap: nowrap;
-  animation: scroll var(--_animation-duration, 14s)
-    var(--_animation-direction, forwards) linear infinite;
+.carousel__content__wrapper[data-animated="true"] {
+  animation: scroll var(--_animation-duration, 14s) var(--_animation-direction, forwards) linear infinite;
+
+  &:hover {
+    animation-play-state: paused;
+  }
+
   &:hover {
     animation-play-state: paused;
   }
@@ -46,6 +53,7 @@
   cursor: url(../assets/vectors/smiley.svg), auto;
   scale: 133%;
 }
+
 .carousel__content:hover {
   filter: invert(90%);
   z-index: 2;

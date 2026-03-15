@@ -6,6 +6,7 @@
   import Terminal from "../../lib/components/terminal/terminal.svelte";
   import type { PageData } from "./$houdini";
   import type { Props } from "$lib/models/prop.model";
+  import Carousel from "$lib/components/carousel/carousel.svelte";
 
   let moreThings: Map<number, ICarouselItem> = new Map<number, ICarouselItem>();
   let dialog: any;
@@ -180,17 +181,20 @@
   </h3>
   <!-- <Carousel carouselItems={things} carouselType={"card"} /> -->
   {#if !$PortfolioCarousel.fetching && $PortfolioCarousel?.data}
-    <StaggeredCarousel carouselItems={carouselContent} carouselType={"card"}
+    <StaggeredCarousel
+      animate={false}
+      carouselItems={carouselContent}
+      carouselType={"card"}
     ></StaggeredCarousel>
   {/if}
 </section>
-<!-- <section class="grid grid-rows-1 py-12">
+<section class="grid grid-rows-1 py-12">
   <Carousel
-    carouselItems={moreThings}
+    carouselItems={carouselContent}
     carouselType={"icon"}
     direction={"left"}
     grayscale={true}
   />
-</section> -->
+</section>
 
 <ContactDialog bind:this={dialog} />
