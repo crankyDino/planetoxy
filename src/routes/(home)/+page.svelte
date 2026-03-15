@@ -1,14 +1,12 @@
 <script lang="ts">
-  import type { ICarouselItem } from "$lib/components/staggered-carousel/staggered-carousel";
+  import type { ICarouselItem } from "$lib/components/carousel/carousel";
   import ContactDialog from "$lib/components/contact-dialog/contact-dialog.svelte";
-  import StaggeredCarousel from "$lib/components/staggered-carousel/staggered-carousel.svelte";
   import { onMount } from "svelte";
   import Terminal from "../../lib/components/terminal/terminal.svelte";
   import type { PageData } from "./$houdini";
   import type { Props } from "$lib/models/prop.model";
   import Carousel from "$lib/components/carousel/carousel.svelte";
 
-  let moreThings: Map<number, ICarouselItem> = new Map<number, ICarouselItem>();
   let dialog: any;
 
   let { data }: Props<PageData> = $props();
@@ -26,15 +24,17 @@
 
     carouselContent = ($PortfolioCarousel.data.allCarousel[0].media ?? [])
       .filter((item): item is NonNullable<typeof item> => item !== null)
-      .map((item) => ({
-        ...item,
-        dateCreated: item.dateCreated ? new Date(item.dateCreated) : null,
-      }));
-
-    // console.log($inspect($PortfolioCarousel));
-    // portfolioCarousel.PortfolioCarousel.fetch().then(({ data }: any) => {
-    //   carouselMedia = data.allCarousel[0].media;
-    // });
+      .map(
+        (item): ICarouselItem => ({
+          title: item.title!,
+          description: item.description!,
+          type: item.type!,
+          projectType: item.projectType!,
+          contentUrl: item.contentUrl!,
+          link: item.link!,
+          dateCreated: new Date(item.dateCreated!),
+        }),
+      );
   });
 </script>
 
@@ -181,20 +181,9 @@
   </h3>
   <!-- <Carousel carouselItems={things} carouselType={"card"} /> -->
   {#if !$PortfolioCarousel.fetching && $PortfolioCarousel?.data}
-    <StaggeredCarousel
-      animate={false}
-      carouselItems={carouselContent}
-      carouselType={"card"}
-    ></StaggeredCarousel>
+    <Carousel animate={false} carouselItems={carouselContent}></Carousel>
   {/if}
 </section>
-<section class="grid grid-rows-1 py-12">
-  <Carousel
-    carouselItems={carouselContent}
-    carouselType={"icon"}
-    direction={"left"}
-    grayscale={true}
-  />
-</section>
+<section class="grid grid-rows-1 py-12"></section>
 
 <ContactDialog bind:this={dialog} />
