@@ -30,8 +30,9 @@ export function reset(form: HTMLFormElement): void {
 
 export function submitHitMeUp(form: HTMLFormElement, dialog: HTMLDialogElement): void {
   validateForm(form, async (isValid) => {
-    if (!isValid) { return; }
 
+    console.log("huh");
+    if (!isValid) { return; }
     const { err, payload } = buildEmail(form);
     if (err) {
       console.warn(err);

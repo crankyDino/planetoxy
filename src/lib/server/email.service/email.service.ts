@@ -4,6 +4,7 @@ import { MOONBASE_URL } from "$env/static/private";
 export async function sendEmail(content: IEmail): Promise<Response> {
     try {
         const _url = `${MOONBASE_URL}/communication/send`
+        console.log(_url);
 
         const httpHeaders = new Headers();
         httpHeaders.append("Content-Type", "application/json");
