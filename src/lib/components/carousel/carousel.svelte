@@ -27,9 +27,7 @@
   let shift = () => Math.floor(Math.random() * (78 - 71 + 1)) + 71;
 
   onMount(() => {
-    console.log(carouselItems);
     if (carousel) {
-      // console.log(carouselItems);
       playCarousel(carousel);
     }
   });
@@ -52,8 +50,7 @@
           <div
             class="carousel__content shadow-xl -translate-x-[{shift()}] translate-y-[{shift()}] w-[{Math.floor(
               Math.random() * 10,
-            )}rem]
-           min-w-[9.5rem] max-w-[12.5rem] relative {grayscale
+            )}rem] min-w-[9.5rem] max-w-[12.5rem] relative {grayscale
               ? 'grayscale'
               : ''} z-[{Math.floor(i * 10 + 1)}]
             "
@@ -75,7 +72,7 @@
                   {item.type}
                 </p>
                 <p class="text-sm text-gray-400 w-fit">
-                  {item.dateCreated.getFullYear()}
+                  {item.dateCreated!.getFullYear()}
                 </p>
               </div>
             {:else}

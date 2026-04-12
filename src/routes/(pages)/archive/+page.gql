@@ -1,0 +1,20 @@
+query Articles @cache(policy: CacheOrNetwork) {
+  allArticle {
+    _id
+    _createdAt
+    title
+    slug {
+      current
+    }
+    brief {
+      project
+      client
+      date
+    }
+    intro {
+      media {
+        contentUrl
+      }
+    }
+  }
+}

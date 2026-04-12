@@ -16,6 +16,19 @@
 
 - Syntax: use BEM when creating classnames - eg. block__element--modifier
 
+## Standards, Styling and coding preference ruls
+
+### Syntax
+
+- Variable declaration:
+  - Use camelCase
+  - local variable declaration - prefix underscore(_) eg: **_localVar**
+
+- Functions:
+  - prefer normal functions over arrow functions
+  - break down functions into reusable components - functional/reactive programming styles
+  - sacrifice complexity and abstraction for the sake of readability and understanding
+
 ## Memory rules
 
 - Use `git status` to check for changes to the source code made outside of your context window.
