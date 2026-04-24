@@ -1,0 +1,46 @@
+query Article($article: String!) @cache(policy: CacheOrNetwork) {
+  allArticle(where: { slug: { current: { eq: $article } } }) {
+    _id
+    title
+    slug {
+      current
+    }
+    tags {
+      tagName
+    }
+    author
+    published
+    showcase {
+      media {
+        asset {
+          url
+        }
+        hotspot {
+          x
+          y
+          width
+          height
+        }
+      }
+    }
+    body {
+      paragraph
+      title
+    }
+    brief {
+      client
+      date
+      project
+      projectType
+    }
+    links {
+      icon
+      title
+      url
+    }
+    preface {
+      title
+      optionsList
+    }
+  }
+}

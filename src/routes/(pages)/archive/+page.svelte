@@ -5,9 +5,9 @@
 
   let { data }: Props<PageData> = $props();
 
-  let { Projects } = $derived(data);
+  let { Articles } = $derived(data);
 
-  console.log($Projects);
+  $inspect("heres the shit",Articles);
 </script>
 
 <Sidebar />
@@ -15,10 +15,10 @@
 <section
   class="grid md:grid-cols-2 lg:grid-cols-1 2xl:grid-cols-2 gap-8 gap-y-12 2xl:gap-x-30 pb-12 m-3 mt-6 mx-auto sm:w-[80%] md:w-[88%] lg:w-[70%] px-[1.8em]"
 >
-  {#each $Projects.data?.allProject as any as project}
+  {#each $Articles.data?.allArticle as any as project}
     <a
       id="projectCard"
-      href="projects/{project.slug.current}"
+      href="archive/{project.slug.current}"
       class="overflow-[unset] grid md:w-full xl:w-4/5 2xl:w-full lg:m-auto"
     >
       <div
@@ -42,15 +42,15 @@
         >
           <div class="flex flex-row pl-2">
             <p class="hidden lg:block">Project</p>
-            <p>> {project.details.project}</p>
+            <p>> {project.brief?.project}</p>
           </div>
           <div class="flex flex-row pl-2">
             <p class="hidden lg:block">Client</p>
-            <p>> {project.details.client}</p>
+            <p>> {project.brief?.client}</p>
           </div>
           <div class="flex flex-row pl-2">
             <p class="hidden lg:block">Date</p>
-            <p>> {new Date(project.details.date).getFullYear()}</p>
+            <p>> {new Date(project.brief?.date).getFullYear()}</p>
           </div>
         </div>
       </div>
@@ -60,7 +60,7 @@
         <img
           class="z-10 bottom-[50%] relative h-auto w-[400px]"
           style="clip-path: inset(15px 0px);"
-          src="{project.hero.contentUrl}"
+          src={project.intro?.media?.contentUrl}
           alt="a thing"
         />
       </div>
@@ -70,7 +70,7 @@
         <img
           class="z-10 bottom-[50%] relative h-auto w-[400px]"
           style="clip-path: inset(15px 0px);"
-          src="{project.hero.contentUrl}"
+          src={project.intro?.media?.contentUrl}
           alt="a thing"
         />
       </div>

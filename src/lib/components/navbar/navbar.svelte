@@ -1,8 +1,7 @@
 <script lang="ts">
   import { run } from "svelte/legacy";
 
-  import { page, navigating } from "$app/stores";
-  import { onMount } from "svelte";
+  import { page } from "$app/stores";
   let navbar: HTMLElement;
   let pageTop: number = $state(0);
   let pageTopPrev: number = 0;
@@ -44,15 +43,15 @@
           ? 'dh__underline--active'
           : ''} dh__underline h-[1.8em]"
       >
-        <a href="/projects">projects</a>
+        <a href="/archive">archive</a>
       </li>
-      <li
+      <!-- <li
         class="{pageTitle?.includes('portfolio')
           ? 'dh__underline--active'
           : ''} dh__underline h-[1.8em]"
       >
         <a href="/portfolio">portfolio</a>
-      </li>
+      </li> -->
     </ul>
   </nav>
 </section>
