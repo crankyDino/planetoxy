@@ -22,6 +22,7 @@ jobs:
     runs-on: self-hosted
     environment: qa
     env:
+      HOME: /home/ghrunner 
       PUBLIC_IS_PROD: ${{ secrets.PUBLIC_IS_PROD }}
       PUBLIC_SANITY_GQL_API: ${{ secrets.PUBLIC_SANITY_GQL_API }}
       PUBLIC_EMAILTO: ${{ secrets.PUBLIC_EMAILTO }}
@@ -54,6 +55,7 @@ jobs:
     runs-on: self-hosted
     environment: prod
     env:
+      HOME: /home/ghrunner 
       PUBLIC_IS_PROD: ${{ secrets.PUBLIC_IS_PROD }}
       PUBLIC_SANITY_GQL_API: ${{ secrets.PUBLIC_SANITY_GQL_API }}
       PUBLIC_EMAILTO: ${{ secrets.PUBLIC_EMAILTO }}
