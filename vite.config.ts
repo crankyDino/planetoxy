@@ -6,4 +6,9 @@ import { defineConfig } from 'vite';
 
 export default defineConfig({
     plugins: [houdini(), tailwindcss(), sveltekit()],
-},);
+    build: {
+        rollupOptions: {
+            maxParallelFileOps: 3,
+        },
+    },
+});
