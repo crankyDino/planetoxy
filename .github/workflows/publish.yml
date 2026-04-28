@@ -4,71 +4,18 @@ on:
   workflow_run:
     workflows: [Build]
     types: [completed]
-    branches: [master,more-cowbell]
+    branches: [master]
   workflow_dispatch:
-    inputs:
-      target:
-        description: Deploy target
-        type: choice
-        options: [qa, prod]
-        default: qa
-        required: true
 
 jobs:
-  deploy-qa:
-    if: >
-      (github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'success') ||
-      (github.event_name == 'workflow_dispatch' && github.event.inputs.target == 'qa')
-    runs-on: self-hosted
-    environment: qa
-    env:
-      HOME: /home/ghrunner 
-      PUBLIC_IS_PROD: ${{ secrets.PUBLIC_IS_PROD }}
-      PUBLIC_SANITY_GQL_API: ${{ secrets.PUBLIC_SANITY_GQL_API }}
-      PUBLIC_EMAILTO: ${{ secrets.PUBLIC_EMAILTO }}
-      PUBLIC_BLOG_REPO: ${{ secrets.PUBLIC_BLOG_REPO }}
-      GITHUB_API_KEY: ${{ secrets.GH_API_KEY }}
-      SANITY_API_KEY: ${{ secrets.SANITY_API_KEY }}
-      SANITY_APP_ID: ${{ secrets.SANITY_APP_ID }}
-      MOONBASE_URL: ${{ secrets.MOONBASE_URL }}
-
-    steps:
-      - uses: actions/checkout@v6
-
-      - uses: oven-sh/setup-bun@v2
-
-      - name: Install deps
-        run: bun install --frozen-lockfile
-
-      - name: Build
-        run: nice -n 10 bun run build
-
-      - name: Deploy to QA
-        run: |
-          mkdir -p /var/www/html/qa
-          rsync -a --delete ./build/ /var/www/html/qa/
-          cat > /var/www/html/qa/.env <<EOF
-          PUBLIC_IS_PROD=$PUBLIC_IS_PROD
-          PUBLIC_SANITY_GQL_API=$PUBLIC_SANITY_GQL_API
-          PUBLIC_EMAILTO=$PUBLIC_EMAILTO
-          PUBLIC_BLOG_REPO=$PUBLIC_BLOG_REPO
-          GITHUB_API_KEY=$GITHUB_API_KEY
-          SANITY_API_KEY=$SANITY_API_KEY
-          SANITY_APP_ID=$SANITY_APP_ID
-          MOONBASE_URL=$MOONBASE_URL
-          EOF
-          printf "import('./index.js')" > /var/www/html/qa/start.cjs
-          pm2 delete planetoxy-qa 2>/dev/null || true
-          pm2 start /var/www/html/qa/start.cjs --name planetoxy-qa --interpreter /home/ghrunner/.bun/bin/bun --cwd /var/www/html/qa
-          pm2 save
-
   deploy-prod:
     if: >
-      github.event_name == 'workflow_dispatch' && github.event.inputs.target == 'prod'
+      (github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'success') ||
+      github.event_name == 'workflow_dispatch'
     runs-on: self-hosted
     environment: prod
     env:
-      HOME: /home/ghrunner 
+      HOME: /home/ghrunner
       PUBLIC_IS_PROD: ${{ secrets.PUBLIC_IS_PROD }}
       PUBLIC_SANITY_GQL_API: ${{ secrets.PUBLIC_SANITY_GQL_API }}
       PUBLIC_EMAILTO: ${{ secrets.PUBLIC_EMAILTO }}
