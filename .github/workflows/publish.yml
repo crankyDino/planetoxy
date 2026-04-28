@@ -38,9 +38,9 @@ jobs:
 
       - name: Deploy to Prod
         run: |
-          mkdir -p /var/www/html/prod
-          rsync -a --delete ./build/ /var/www/html/prod/
-          cat > /var/www/html/prod/.env <<EOF
+          mkdir -p /var/www/html/planetoxy
+          rsync -a --delete ./build/ /var/www/html/planetoxy/
+          cat > /var/www/html/planetoxy/.env <<EOF
           PUBLIC_IS_PROD=$PUBLIC_IS_PROD
           PUBLIC_SANITY_GQL_API=$PUBLIC_SANITY_GQL_API
           PUBLIC_EMAILTO=$PUBLIC_EMAILTO
@@ -50,7 +50,7 @@ jobs:
           SANITY_APP_ID=$SANITY_APP_ID
           MOONBASE_URL=$MOONBASE_URL
           EOF
-          printf "import('./index.js')" > /var/www/html/prod/start.cjs
-          pm2 delete planetoxy-prod 2>/dev/null || true
-          pm2 start /var/www/html/prod/start.cjs --name planetoxy-prod --interpreter /home/ghrunner/.bun/bin/bun --cwd /var/www/html/prod
+          printf "import('./index.js')" > /var/www/html/planetoxy/start.cjs
+          pm2 delete planetoxy 2>/dev/null || true
+          pm2 start /var/www/html/planetoxy/start.cjs --name planetoxy --interpreter /home/ghrunner/.bun/bin/bun --cwd /var/www/html/planetoxy
           pm2 save
