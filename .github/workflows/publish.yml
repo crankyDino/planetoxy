@@ -47,8 +47,18 @@ jobs:
         run: |
           mkdir -p /var/www/html/qa
           rsync -a --delete ./build/ /var/www/html/qa/
+          cat > /var/www/html/qa/.env <<EOF
+          PUBLIC_IS_PROD=$PUBLIC_IS_PROD
+          PUBLIC_SANITY_GQL_API=$PUBLIC_SANITY_GQL_API
+          PUBLIC_EMAILTO=$PUBLIC_EMAILTO
+          PUBLIC_BLOG_REPO=$PUBLIC_BLOG_REPO
+          GITHUB_API_KEY=$GITHUB_API_KEY
+          SANITY_API_KEY=$SANITY_API_KEY
+          SANITY_APP_ID=$SANITY_APP_ID
+          MOONBASE_URL=$MOONBASE_URL
+          EOF
           pm2 delete planetoxy-qa || true
-          pm2 start /var/www/html/qa/index.js --name planetoxy-qa --interpreter /home/ghrunner/.bun/bin/bun --exec-mode fork
+          pm2 start /var/www/html/qa/index.js --name planetoxy-qa --interpreter /home/ghrunner/.bun/bin/bun --cwd /var/www/html/qa
           pm2 save
 
   deploy-prod:
@@ -82,6 +92,16 @@ jobs:
         run: |
           mkdir -p /var/www/html/prod
           rsync -a --delete ./build/ /var/www/html/prod/
+          cat > /var/www/html/prod/.env <<EOF
+          PUBLIC_IS_PROD=$PUBLIC_IS_PROD
+          PUBLIC_SANITY_GQL_API=$PUBLIC_SANITY_GQL_API
+          PUBLIC_EMAILTO=$PUBLIC_EMAILTO
+          PUBLIC_BLOG_REPO=$PUBLIC_BLOG_REPO
+          GITHUB_API_KEY=$GITHUB_API_KEY
+          SANITY_API_KEY=$SANITY_API_KEY
+          SANITY_APP_ID=$SANITY_APP_ID
+          MOONBASE_URL=$MOONBASE_URL
+          EOF
           pm2 delete planetoxy-prod || true
-          pm2 start /var/www/html/prod/index.js --name planetoxy-prod --interpreter /home/ghrunner/.bun/bin/bun --exec-mode fork
+          pm2 start /var/www/html/prod/index.js --name planetoxy-prod --interpreter /home/ghrunner/.bun/bin/bun --cwd /var/www/html/prod
           pm2 save
