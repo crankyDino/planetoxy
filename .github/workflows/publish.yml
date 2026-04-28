@@ -1,0 +1,81 @@
+name: Publish
+
+on:
+  workflow_run:
+    workflows: [Build]
+    types: [completed]
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      target:
+        description: Deploy target
+        type: choice
+        options: [qa, prod]
+        default: qa
+        required: true
+
+jobs:
+  deploy-qa:
+    if: >
+      (github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'success') ||
+      (github.event_name == 'workflow_dispatch' && github.event.inputs.target == 'qa')
+    runs-on: self-hosted
+    environment: qa
+    env:
+      PUBLIC_IS_PROD: ${{ secrets.PUBLIC_IS_PROD }}
+      PUBLIC_SANITY_GQL_API: ${{ secrets.PUBLIC_SANITY_GQL_API }}
+      PUBLIC_EMAILTO: ${{ secrets.PUBLIC_EMAILTO }}
+      PUBLIC_BLOG_REPO: ${{ secrets.PUBLIC_BLOG_REPO }}
+      GITHUB_API_KEY: ${{ secrets.GH_API_KEY }}
+      SANITY_API_KEY: ${{ secrets.SANITY_API_KEY }}
+      SANITY_APP_ID: ${{ secrets.SANITY_APP_ID }}
+      MOONBASE_URL: ${{ secrets.MOONBASE_URL }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: oven-sh/setup-bun@v2
+
+      - name: Install deps
+        run: bun install --frozen-lockfile
+
+      - name: Build
+        run: bun run build
+
+      - name: Deploy to QA
+        run: |
+          mkdir -p /var/www/html/qa
+          rsync -a --delete ./build/ /var/www/html/qa/
+          pm2 reload planetoxy-qa || pm2 start ecosystem.config.cjs --only planetoxy-qa
+
+  deploy-prod:
+    if: >
+      github.event_name == 'workflow_dispatch' && github.event.inputs.target == 'prod'
+    runs-on: self-hosted
+    environment: prod
+    env:
+      PUBLIC_IS_PROD: ${{ secrets.PUBLIC_IS_PROD }}
+      PUBLIC_SANITY_GQL_API: ${{ secrets.PUBLIC_SANITY_GQL_API }}
+      PUBLIC_EMAILTO: ${{ secrets.PUBLIC_EMAILTO }}
+      PUBLIC_BLOG_REPO: ${{ secrets.PUBLIC_BLOG_REPO }}
+      GITHUB_API_KEY: ${{ secrets.GH_API_KEY }}
+      SANITY_API_KEY: ${{ secrets.SANITY_API_KEY }}
+      SANITY_APP_ID: ${{ secrets.SANITY_APP_ID }}
+      MOONBASE_URL: ${{ secrets.MOONBASE_URL }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: oven-sh/setup-bun@v2
+
+      - name: Install deps
+        run: bun install --frozen-lockfile
+
+      - name: Build
+        run: bun run build
+
+      - name: Deploy to Prod
+        run: |
+          mkdir -p /var/www/html/prod
+          rsync -a --delete ./build/ /var/www/html/prod/
+          pm2 reload planetoxy-prod || pm2 start ecosystem.config.cjs --only planetoxy-prod
