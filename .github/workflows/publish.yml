@@ -57,8 +57,9 @@ jobs:
           SANITY_APP_ID=$SANITY_APP_ID
           MOONBASE_URL=$MOONBASE_URL
           EOF
-          pm2 delete planetoxy-qa || true
-          pm2 start /var/www/html/qa/index.js --name planetoxy-qa --interpreter /home/ghrunner/.bun/bin/bun --cwd /var/www/html/qa
+          printf "import('./index.js')" > /var/www/html/qa/start.cjs
+          pm2 delete planetoxy-qa 2>/dev/null || true
+          pm2 start /var/www/html/qa/start.cjs --name planetoxy-qa --interpreter /home/ghrunner/.bun/bin/bun --cwd /var/www/html/qa
           pm2 save
 
   deploy-prod:
@@ -102,6 +103,7 @@ jobs:
           SANITY_APP_ID=$SANITY_APP_ID
           MOONBASE_URL=$MOONBASE_URL
           EOF
-          pm2 delete planetoxy-prod || true
-          pm2 start /var/www/html/prod/index.js --name planetoxy-prod --interpreter /home/ghrunner/.bun/bin/bun --cwd /var/www/html/prod
+          printf "import('./index.js')" > /var/www/html/prod/start.cjs
+          pm2 delete planetoxy-prod 2>/dev/null || true
+          pm2 start /var/www/html/prod/start.cjs --name planetoxy-prod --interpreter /home/ghrunner/.bun/bin/bun --cwd /var/www/html/prod
           pm2 save

@@ -4,9 +4,9 @@ module.exports = {
   apps: [
     {
       name: 'planetoxy-prod',
-      script: '/var/www/html/prod/index.js',
-      // interpreter: 'bun',
+      script: '/var/www/html/prod/start.cjs',
       interpreter,
+      cwd: '/var/www/html/prod',
       instances: 1,
       env: {
         NODE_ENV: 'production',
@@ -15,9 +15,9 @@ module.exports = {
     },
     {
       name: 'planetoxy-qa',
-      script: '/var/www/html/qa/index.js',
+      script: '/var/www/html/qa/start.cjs',
       interpreter,
-      // interpreter: 'bun',
+      cwd: '/var/www/html/qa',
       instances: 1,
       env: {
         NODE_ENV: 'production',
