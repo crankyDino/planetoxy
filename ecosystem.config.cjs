@@ -13,16 +13,16 @@ module.exports = {
         PORT: 3000
       }
     },
-    {
-      name: 'planetoxy-qa',
-      script: '/var/www/html/qa/start.cjs',
-      interpreter,
-      cwd: '/var/www/html/qa',
-      instances: 1,
-      env: {
-        NODE_ENV: 'production',
-        PORT: 3001
-      }
-    }
+    // {
+    //   name: 'planetoxy-qa',
+    //   script: '/var/www/html/qa/start.cjs',
+    //   interpreter,
+    //   cwd: '/var/www/html/qa',
+    //   instances: 1,
+    //   env: {
+    //     NODE_ENV: 'production',
+    //     PORT: 3001
+    //   }
+    // }
   ]
 };
