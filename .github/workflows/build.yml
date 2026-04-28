@@ -3,16 +3,11 @@ name: Build
 on:
   push:
     branches: [main]
-  pull_request:
-    branches: [main]
-
 
 jobs:
   build:
     runs-on: self-hosted
     environment: prod
-    container:
-      image: ubuntu:25.04
     env:
       PUBLIC_IS_PROD: ${{ secrets.PUBLIC_IS_PROD }}
       PUBLIC_SANITY_GQL_API: ${{ secrets.PUBLIC_SANITY_GQL_API }}
@@ -26,14 +21,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 22
+      - uses: oven-sh/setup-bun@v2
 
-      - run: npm install
-      - run: npm run build
+      - name: Install deps
+        run: bun install --frozen-lockfile
 
-      - uses: actions/upload-artifact@v4
-        with:
-          name: build
-          path: .svelte-kit
+      - name: Build
+        run: bun run build

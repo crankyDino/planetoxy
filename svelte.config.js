@@ -1,5 +1,5 @@
 import { mdsvex } from 'mdsvex';
-import adapter from '@sveltejs/adapter-auto';
+import adapter from '@sveltejs/adapter-node';
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 
 const msdsvexOpt = {
@@ -11,10 +11,7 @@ const config = {
 	extensions: ['.svelte', '.svx','.md'],
 	preprocess: [vitePreprocess(), mdsvex(msdsvexOpt)],
 	kit: {
-		adapter: adapter({
-			edge: false,//create a Netlify Edge Function
-			split: false // creating a single function for the entire app
-		}),
+		adapter: adapter({ out: 'build' }),
 		alias: { $houdini: ".houdini/" } // $houdini: path.resolve(__dirname, '.houdini')
 	},
 	extensions: ['.svelte', '.svx', '.md'],
