@@ -1,18 +1,25 @@
 import { SANITY_API_KEY, SANITY_APP_ID } from "$env/static/private";
-import { createClient } from '@sanity/client';
+import { createClient, type SanityClient } from '@sanity/client';
 
-export const client = createClient({
-    projectId: SANITY_APP_ID,
-    dataset: 'production',
-    useCdn: true, // set to `false` to bypass the edge cache
-    apiVersion: '2023-05-03', // use current date (YYYY-MM-DD) to target the latest API version
-    token: SANITY_API_KEY
-})
+let _client: SanityClient;
+
+function getClient(): SanityClient {
+    if (!_client) {
+        _client = createClient({
+            projectId: SANITY_APP_ID,
+            dataset: 'production',
+            useCdn: true,
+            apiVersion: '2023-05-03',
+            token: SANITY_API_KEY
+        });
+    }
+    return _client;
+}
 
 export async function fetchMedia(refId: string): Promise<Response> {
     try {
         const query = `*[_type=='graphic' && _id == '${refId}']{title, type, contentUrl, description}`;
-        return client.fetch(query);
+        return getClient().fetch(query);
     } catch (error) {
         console.error(error);
         throw error;
