@@ -1,5 +1,4 @@
-# Planet Oxy [![Netlify Status](https://api.netlify.com/api/v1/badges/09b0bf34-752a-4b34-b884-40327acc795f/deploy-status)](https://planetoxy.netlify.app/)
-
+# Planet Oxy [![Build](https://github.com/crankyDino/planetoxy/actions/workflows/build.yml/badge.svg)](https://github.com/crankyDino/planetoxy/actions/workflows/build.yml) [![Publish](https://github.com/crankyDino/planetoxy/actions/workflows/publish.yml/badge.svg)](https://github.com/crankyDino/planetoxy/actions/workflows/publish.yml)
 welcome to my world.
 
 ## Set Up
