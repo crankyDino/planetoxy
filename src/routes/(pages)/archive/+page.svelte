@@ -6,8 +6,6 @@
   let { data }: Props<PageData> = $props();
 
   let { Articles } = $derived(data);
-
-  $inspect("heres the shit",Articles);
 </script>
 
 <Sidebar />

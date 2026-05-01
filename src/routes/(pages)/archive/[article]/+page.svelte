@@ -4,15 +4,14 @@
   import type { PageData } from "./$houdini";
   import type { IArticleMedia } from "$lib/models/article.model";
   import { getMedia } from "$lib/util/sanity.util";
+  import { onMount } from "svelte";
 
-  let loading: boolean = $state(true);
   let { data }: Props<PageData> = $props();
-  // let { Article } = $derived(data);
+  let { Article } = $derived(data);
   // let article = $derived($Article.data?.allArticle[0]);
   let paragraphMedia: Array<IArticleMedia> = $state([]);
 
   async function loadMedia(ref: string, key: string) {
-    loading = true;
     const { res } = await getMedia(ref);
 
     paragraphMedia.push({
@@ -22,34 +21,97 @@
       type: res[0].type,
       ref: key,
     });
-
-    loading = false;
   }
 
-  // onMount(() => {
-  //   $effect(() => {
-  //     if (!$Project.fetching) {
-  //       let key: string = "";
+  $inspect($Article);
 
-  //       ($Project.data!.allProject[0].paragraph as any[]).map((p: any) => {
-  //         if (p.style === "normal") {
-  //           key = p._key;
-  //         }
+  onMount(() => {
+    $effect(() => {
+      if (!$Article.fetching) {
+        let key: string = "";
 
-  //         if (p._type.includes("reference")) {
-  //           const ref = p._ref;
-  //           loadMedia(ref, key);
-  //         }
-  //       });
-  //       // alignBanner();
-  //     }
-  //   });
+        (($Article.data! as any).allProject[0].paragraph as any[]).map(
+          (p: any) => {
+            if (p.style === "normal") {
+              key = p._key;
+            }
 
-  //   // header.hotspot.width = (bannerBox.offsetHeight * header.hotspot.width) / 100;
-  // });
+            if (p._type.includes("reference")) {
+              const ref = p._ref;
+              loadMedia(ref, key);
+            }
+          },
+        );
+        // alignBanner();
+      }
+    });
+
+    // header.hotspot.width = (bannerBox.offsetHeight * header.hotspot.width) / 100;
+  });
 </script>
 
 <Sidebar />
+{#if !$Article.fetching}
+<section class="pt-6 px-8 sm:px-18 md:px-14 xl:w-4/5 xl:m-auto">
+    <div class="grid md:grid-flow-col gap-y-[.2em] md:gap-x-4">
+      <div
+        class="col-start-1 row-start-1 md:row-span-12 col-span-12 md:col-span-6 pb-3"
+      >
+        <div class="pb-2 w-full">
+          <img
+            class="m-auto md:m-initial h-78 md:h-full max-h-96 xl:h-[50vh]"
+            src={$Article.data?.allArticle[0].}
+            alt=""
+          />
+
+          {#if article.tags}
+            <div class="flex flex-row py-1 gap-3">
+              {#each article.tags as tag, i}
+                <p
+                  class=" text-dh-white w-fit tracking-wider text-sm font-space-mono font-thin min-w-[11%] overflow-hidden text-nowrap text-ellipsis"
+                >
+                  {tag?.tagName}
+                  {#if article.tags.length > i + 1}
+                    <span class="text-dh-white"> | </span>
+                  {/if}
+                </p>
+              {/each}
+            </div>
+          {/if}
+        </div>
+
+        {#if article.links}
+          <ul class="grid grid-flow-col md:grid-cols-6 gap-x-4">
+            {#each article.links as link}
+              <li>
+                <a target="_blank" href={link?.url}>
+                  <img
+                    style="max-width: 4rem; width: 2.2rem;"
+                    src="../assets/vectors/dh_logo.svg"
+                    alt={link?.title}
+                    class="filter--white"
+                  />
+                </a>
+              </li>
+            {/each}
+          </ul>
+        {/if}
+      </div>
+
+      <h1
+        class="font-bold text-dh-white font-pokemon-classic text-lg md:text-5xl col-span-12 md:col-span-6 md:col-start-7"
+      >
+        {article.title}
+      </h1>
+      <p
+        class="font-space-mono text-dh-white break-all text-xs xl:text-lg row-span-2 col-span-12 md:col-span-6 md:col-start-7 row-start-8"
+      >
+        {article.paragraph}
+      </p>
+    </div>
+</section>
+{/if}
+
 <!-- {#if article}
   <section class="pt-6 px-8 sm:px-18 md:px-14 xl:w-4/5 xl:m-auto">
     <div class="grid md:grid-flow-col gap-y-[.2em] md:gap-x-4">

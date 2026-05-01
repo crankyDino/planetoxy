@@ -12,6 +12,7 @@ jobs:
     runs-on: self-hosted
     environment: prod
     env:
+      HOME: /home/ghrunner
       PUBLIC_IS_PROD: ${{ secrets.PUBLIC_IS_PROD }}
       PUBLIC_SANITY_GQL_API: ${{ secrets.PUBLIC_SANITY_GQL_API }}
       PUBLIC_EMAILTO: ${{ secrets.PUBLIC_EMAILTO }}
@@ -26,8 +27,16 @@ jobs:
 
       - uses: oven-sh/setup-bun@v2
 
+      - name: Cache bun deps
+        uses: actions/cache@v4
+        with:
+          path: ~/.bun/install/cache
+          key: ${{ runner.os }}-bun-${{ hashFiles('**/package.json') }}
+          restore-keys: |
+            ${{ runner.os }}-bun-
+
       - name: Install deps
-        run: bun install --frozen-lockfile
+        run: bun install
 
       - name: Build
         run: bun run build
