@@ -58,20 +58,20 @@
         class="col-start-1 row-start-1 md:row-span-12 col-span-12 md:col-span-6 pb-3"
       >
         <div class="pb-2 w-full">
-          <img
+          <!-- <img
             class="m-auto md:m-initial h-78 md:h-full max-h-96 xl:h-[50vh]"
             src={$Article.data?.allArticle[0].}
             alt=""
-          />
+          /> -->
 
-          {#if article.tags}
+          {#if $Article.data?.allArticle[0].tags}
             <div class="flex flex-row py-1 gap-3">
-              {#each article.tags as tag, i}
+              {#each $Article.data?.allArticle[0].tags as tag, i}
                 <p
                   class=" text-dh-white w-fit tracking-wider text-sm font-space-mono font-thin min-w-[11%] overflow-hidden text-nowrap text-ellipsis"
                 >
                   {tag?.tagName}
-                  {#if article.tags.length > i + 1}
+                  {#if $Article.data?.allArticle[0].tags.length > i + 1}
                     <span class="text-dh-white"> | </span>
                   {/if}
                 </p>
@@ -80,9 +80,9 @@
           {/if}
         </div>
 
-        {#if article.links}
+        {#if $Article.data?.allArticle[0].links}
           <ul class="grid grid-flow-col md:grid-cols-6 gap-x-4">
-            {#each article.links as link}
+            {#each $Article.data?.allArticle[0].links as link}
               <li>
                 <a target="_blank" href={link?.url}>
                   <img
@@ -101,12 +101,12 @@
       <h1
         class="font-bold text-dh-white font-pokemon-classic text-lg md:text-5xl col-span-12 md:col-span-6 md:col-start-7"
       >
-        {article.title}
+        {$Article.data?.allArticle[0].title}
       </h1>
       <p
         class="font-space-mono text-dh-white break-all text-xs xl:text-lg row-span-2 col-span-12 md:col-span-6 md:col-start-7 row-start-8"
       >
-        {article.paragraph}
+        {$Article.data?.allArticle[0].body}
       </p>
     </div>
 </section>

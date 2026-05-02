@@ -1,5 +1,5 @@
 import { GITHUB_API_KEY } from '$env/static/private';
-import { PUBLIC_BLOG_REPO } from '$env/static/public';
+import { PUBLIC_BLOG_REPO, PUBLIC_IS_PROD } from '$env/static/public';
 import type { TPostMeta } from '$lib/types/post/TPost.type';
 import { json } from '@sveltejs/kit';
 import { marked } from 'marked';
@@ -30,8 +30,10 @@ async function fetchBlogPostContent(title: string) {
     const { data: meta, content: body } = matter(article_content);
     const content = await marked.parse(body);
 
+    if (!meta.published && PUBLIC_IS_PROD === "true") { return }
+
     return {
-        metadata: meta satisfies TPostMeta,
+        metadata: meta as TPostMeta,
         content,
     }
 }

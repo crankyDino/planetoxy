@@ -1,5 +1,5 @@
 import { GITHUB_API_KEY } from '$env/static/private';
-import { PUBLIC_BLOG_REPO } from '$env/static/public';
+import { PUBLIC_BLOG_REPO, PUBLIC_IS_PROD } from '$env/static/public';
 import type { IRepo } from '$lib/models/github/repo.model';
 import type { TPostMeta } from '$lib/types/post/TPost.type';
 import { json } from '@sveltejs/kit';
@@ -15,7 +15,7 @@ async function fetchBlogPosts() {
         "Authorization": `Bearer ${GITHUB_API_KEY}`
     });
 
-    const allBlog = await fetch(PUBLIC_BLOG_REPO+"/contents", { headers });
+    const allBlog = await fetch(PUBLIC_BLOG_REPO + "/contents", { headers });
 
     const repo: Array<IRepo> = JSON.parse(await allBlog.text()) satisfies Array<IRepo>;
 
@@ -43,6 +43,8 @@ async function fetchBlogPosts() {
 
             meta.url = repo.find(x => x.name.split(".md")[0] === meta.title)?.download_url ?? null;
 
+            if (!meta.published && PUBLIC_IS_PROD === "true") { continue; }
+            
             posts.push(meta satisfies TPostMeta);
         };
     });
@@ -51,8 +53,6 @@ async function fetchBlogPosts() {
 }
 
 export async function GET() {
-    console.log("brooo");
-
     const posts = await fetchBlogPosts()
     return json(posts)
 }
