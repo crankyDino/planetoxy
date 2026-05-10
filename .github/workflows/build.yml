@@ -21,6 +21,7 @@ jobs:
       SANITY_API_KEY: ${{ secrets.SANITY_API_KEY }}
       SANITY_APP_ID: ${{ secrets.SANITY_APP_ID }}
       MOONBASE_URL: ${{ secrets.MOONBASE_URL }}
+      HOMEWORLD_URL: ${{ secrets.HOMEWORLD_URL }}
 
     steps:
       - uses: actions/checkout@v6

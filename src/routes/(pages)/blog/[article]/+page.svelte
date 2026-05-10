@@ -64,7 +64,7 @@
 
 <div
   class="banner h-[9em] md:h-60 lg:h-[45vh] overflow-hidden -z-10 w-full bg-fixed bg-no-repeat"
-  style="background-image: url({data.metadata.banner}); background-size: 100%;"
+  style="background-image: url({data.metadata?.banner}); background-size: 100%;"
 ></div>
 
 <section class="container m-auto px-48">

@@ -26,6 +26,7 @@ jobs:
       SANITY_API_KEY: ${{ secrets.SANITY_API_KEY }}
       SANITY_APP_ID: ${{ secrets.SANITY_APP_ID }}
       MOONBASE_URL: ${{ secrets.MOONBASE_URL }}
+      HOMEWORLD_URL: ${{ secrets.HOMEWORLD_URL }}
 
     steps:
       - uses: actions/checkout@v6
@@ -59,6 +60,7 @@ jobs:
           SANITY_API_KEY=$SANITY_API_KEY
           SANITY_APP_ID=$SANITY_APP_ID
           MOONBASE_URL=$MOONBASE_URL
+          HOMEWORLD_URL=$HOMEWORLD_URL
           EOF
           printf "import('./index.js')" > /var/www/html/planetoxy/start.cjs
           pm2 delete planetoxy 2>/dev/null || true

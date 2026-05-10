@@ -10,6 +10,27 @@ query Article($article: String!) @cache(policy: CacheOrNetwork) {
     }
     author
     published
+    intro{
+      title
+      optionsList
+      paragraph
+      media{
+        contentUrl
+      }
+    }
+    preface{
+      title
+      optionsList
+      media{
+        asset{
+          title
+          
+          source{
+            url
+         }
+        }
+      }
+    }
     showcase {
       media {
         asset {
@@ -34,8 +55,16 @@ query Article($article: String!) @cache(policy: CacheOrNetwork) {
       projectType
     }
     links {
-      icon
+    icon{
+      contentUrl{
+        asset{
+          url
+          title          
+        }
+      }
+      link
       title
+    }
       url
     }
     preface {
