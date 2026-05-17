@@ -5,10 +5,10 @@
 			"name": "Launch server",
 			"request": "launch",
 			"runtimeArgs": [
-				"run-script",
-				"dev"
+				"run",
+				"launch"
 			],
-			"runtimeExecutable": "npm",
+			"runtimeExecutable": "bun",
 			"skipFiles": [
 				"<node_internals>/**"
 			],
