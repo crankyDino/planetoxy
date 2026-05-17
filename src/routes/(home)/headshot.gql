@@ -1,0 +1,11 @@
+query Headshot{
+    allGraphic(where:{slug:{current:{eq:"headshot"}}}){
+    _key
+    slug{
+      current
+    }
+    title
+    contentUrl
+    mediaType
+  }
+}

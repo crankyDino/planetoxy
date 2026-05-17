@@ -439,9 +439,10 @@ type Graphic implements Document {
   dateCreated: Date
   description: String
   link: String
+  mediaType: String
   projectType: String
+  slug: Slug
   title: String
-  type: String
 }
 
 input GraphicFilter {
@@ -459,9 +460,10 @@ input GraphicFilter {
   dateCreated: DateFilter
   description: StringFilter
   link: StringFilter
+  mediaType: StringFilter
   projectType: StringFilter
+  slug: SlugFilter
   title: StringFilter
-  type: StringFilter
 }
 
 input GraphicSorting {
@@ -477,9 +479,10 @@ input GraphicSorting {
   dateCreated: SortOrder
   description: SortOrder
   link: SortOrder
+  mediaType: SortOrder
   projectType: SortOrder
+  slug: SlugSorting
   title: SortOrder
-  type: SortOrder
 }
 
 input IDFilter {

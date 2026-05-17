@@ -10,7 +10,7 @@ query PortfolioCarousel($ref: String!) {
       projectType
       dateCreated
       description
-      type
+      mediaType
     }
   }
 }

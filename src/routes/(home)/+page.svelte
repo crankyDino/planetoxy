@@ -7,12 +7,12 @@
   import type { Props } from "$lib/models/prop.model";
   import Carousel from "$lib/components/carousel/carousel.svelte";
 
-  let dialog: any;
-
   let { data }: Props<PageData> = $props();
-  const { PortfolioCarousel } = $derived(data);
 
+  let dialog: any;
   let carouselContent = $state(Array<ICarouselItem>());
+
+  const { PortfolioCarousel, Headshot } = $derived(data);
 
   onMount(() => {
     if (
@@ -28,7 +28,7 @@
         (item): ICarouselItem => ({
           title: item.title!,
           description: item.description!,
-          type: item.type!,
+          type: item.mediaType!,
           projectType: item.projectType!,
           contentUrl: item.contentUrl!,
           link: item.link!,
@@ -146,7 +146,7 @@
     <div>
       <img
         class="headshot w-36 xl:w-52 relative z-2"
-        src="/assets/bitmap/IMG_20200408_170956paint.jpg"
+        src="{$Headshot.data?.allGraphic[0].contentUrl ?? "/assets/bitmap/IMG_20200408_170956paint.jpg"}"
         alt=""
       />
       <span
