@@ -57,6 +57,11 @@
       <div
         class="col-start-1 row-start-1 md:row-span-12 col-span-12 md:col-span-6 pb-3"
       >
+        <h1
+          class="sm:hidden block pb-4 wrap-break-word md:m-initial text-left text-dh-orange font-space-mono text-3xl font-extrabold text-dh-orange md:text-5xl col-span-12 md:col-span-6 md:col-start-7"
+        >
+          {$Article.data?.allArticle[0].title}
+        </h1>
         <div class="pb-2 w-full">
           <img
             class="m-auto md:m-initial h-78 md:h-full max-h-96 xl:h-[50vh]"
@@ -67,26 +72,34 @@
           {#if $Article.data?.allArticle[0]}
             <div class="flex flex-row py-1 gap-3">
               {#each $Article.data?.allArticle[0].tags as tag, i}
-                <p
-                  class=" text-dh-white w-fit tracking-wider text-sm font-space-mono font-thin min-w-[11%] overflow-hidden text-nowrap text-ellipsis"
+                <!-- TODO! Add tag filter for articles -->
+                <button
+                  class="text-dh-white hover:text-dh-orange! hover:cursor-pointer"
+                  onclick={() => {
+                    console.log(tag?.tagName);
+                  }}
                 >
-                  {tag?.tagName}
-                  {#if $Article.data?.allArticle[0].tags!.length > i + 1}
-                    <span class="text-dh-white"> | </span>
-                  {/if}
-                </p>
+                  <p
+                    class="w-fit tracking-wider text-sm font-space-mono font-thin min-w-[11%] overflow-hidden text-nowrap text-ellipsis"
+                  >
+                    #{tag?.tagName}
+                    {#if $Article.data?.allArticle[0].tags!.length > i + 1}
+                      <span class="text-dh-white">|</span>
+                    {/if}
+                  </p>
+                </button>
               {/each}
             </div>
           {/if}
         </div>
 
         {#if $Article.data?.allArticle[0].links}
-          <ul class="grid grid-flow-col md:grid-cols-6 gap-x-4">
+          <ul class="hidden sm:grid sm:grid-flow-col md:grid-cols-6 gap-x-4">
             {#each $Article.data?.allArticle[0].links as link}
               <li>
                 <a target="_blank" href={link?.url}>
                   <img
-                    style="max-width: 4rem; width: 2.2rem;"
+                    style="max-width: 4rem; width: 1.8rem;"
                     src={link?.icon?.contentUrl?.asset?.url}
                     alt={link?.icon?.title}
                     class="filter--white"
@@ -98,9 +111,10 @@
         {/if}
       </div>
 
-      <div class="flex flex-col w-3/4 gap-y-12">
+      <div class="col-start-1 md:row-span-12 col-span-12 md:col-span-6 pb-3 flex flex-col gap-y-5">
+        <!-- <div class="flex flex-col col-start-1 w-full md:w-3/4 gap-y-4 md:gap-y-12"> -->
         <h1
-          class="font-bold text-dh-white font-pokemon-classic text-lg md:text-5xl col-span-12 md:col-span-6 md:col-start-7"
+          class="hidden sm:block font-bold text-dh-white font-pokemon-classic text-lg md:text-5xl col-span-12 md:col-span-6 md:col-start-7"
         >
           {$Article.data?.allArticle[0].title}
         </h1>
@@ -109,6 +123,23 @@
         >
           {$Article.data?.allArticle[0].intro?.paragraph}
         </p>
+
+        {#if $Article.data?.allArticle[0].links}
+          <ul class="sm:hidden m-auto grid grid-flow-col md:grid-cols-6 gap-x-4">
+            {#each $Article.data?.allArticle[0].links as link}
+              <li>
+                <a target="_blank" href={link?.url}>
+                  <img
+                    style="max-width: 4rem; width: 1.8rem;"
+                    src={link?.icon?.contentUrl?.asset?.url}
+                    alt={link?.icon?.title}
+                    class="filter--white"
+                  />
+                </a>
+              </li>
+            {/each}
+          </ul>
+        {/if}
       </div>
     </div>
   </section>
