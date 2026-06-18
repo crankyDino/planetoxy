@@ -14,20 +14,20 @@
   class="grid md:grid-cols-2 lg:grid-cols-1 2xl:grid-cols-2 gap-8 gap-y-12 2xl:gap-x-30 pb-12 m-3 mt-6 mx-auto sm:w-[80%] md:w-[88%] lg:w-[70%] px-[1.8em]"
 > -->
 <section
-  class="flex flex-col gap-y-12 pb-12 m-3 mt-6 mx-auto sm:w-[80%] md:w-[88%] lg:w-[60%] px-[1.8em]"
+  class="flex flex-col gap-y-12 pb-12 xl:m-auto xl:my-12 lg:m-12 m-auto my-12 sm:w-[80%] md:w-[88%] lg:w-[60%] px-[1.8em]"
 >
   {#each $Articles.data?.allArticle as any as project}
     <a
-      id="projectCard"
+      id="projectCard_{project.slug.current}"
       href="archive/{project.slug.current}"
-      class="overflow-[unset] grid xl:w-4/5 2xl:w-full lg:m-auto"
+      class="overflow-[unset] grid xl:w-4/5 2xl:w-full lg:m-auto project__card"
     >
       <div
         class="flex flex-col w-[84vw] xl:w-[58vw] lg:justify-between lg:py-4 lg:pl-6 col-span-9 border-[.18em] border-dh-orange h-36 lg:h-48 rounded-xs px-3 py-2 col-start-1 row-start-1"
       >
         <div class="flex flex-col grid-rows-12">
           <h3
-            class="font-hanuman text-dh-orange text-2xl font-extrabold text-nowrap overflow-x-hidden text-ellipsis max-w-[66%] lg:text-4xl"
+            class="font-hanuman text-dh-orange text-2xl font-extrabold text-nowrap overflow-x-hidden text-ellipsis max-w-[66%] lg:text-4xl pb-1.5"
           >
             {project.title}
           </h3>
