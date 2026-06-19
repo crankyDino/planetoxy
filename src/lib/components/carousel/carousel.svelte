@@ -2,10 +2,10 @@
   import { onMount } from "svelte";
   import "./carousel.css";
   import {
-      playCarousel,
-      type ICarouselItem,
-      type TCarouselDirection,
-      type TCarouselType,
+    playCarousel,
+    type ICarouselItem,
+    type TCarouselDirection,
+    type TCarouselType,
   } from "./carousel";
   let carousel: HTMLDivElement | null = $state(null);
   interface Props {
@@ -37,20 +37,20 @@
   <div
     bind:this={carousel}
     data-direction={direction}
-    class="carousel items-center overflow-hidden pl-1.5 m-auto w-fit"
+    class="carousel m-auto w-fit items-center overflow-hidden pl-1.5"
   >
     <div
-      class="carousel__content--row overflow-hidden pl-1.5 h-full w-[85vw] m-auto"
+      class="carousel__content--row m-auto h-full w-[85vw] overflow-hidden pl-1.5"
     >
       <div
         data-animated={animate}
-        class="carousel__content__wrapper h-96 relative flex flex-row flex-wrap justify-center items-center"
+        class="carousel__content__wrapper relative flex h-96 flex-row flex-wrap items-center justify-center"
       >
         {#each carouselItems as item, i}
           <div
             class="carousel__content shadow-xl -translate-x-[{shift()}] translate-y-[{shift()}] w-[{Math.floor(
               Math.random() * 10,
-            )}rem] min-w-[9.5rem] max-w-[12.5rem] relative {grayscale
+            )}rem] relative max-w-[12.5rem] min-w-[9.5rem] {grayscale
               ? 'grayscale'
               : ''} z-[{Math.floor(i * 10 + 1)}]
             "
@@ -61,17 +61,17 @@
                 src={item.contentUrl}
                 alt=""
               />
-              <div class="carousel__label w-full pl-2 overflow-clip">
+              <div class="carousel__label w-full overflow-clip pl-2">
                 <h6
                   style="text-overflow: ellipsis;"
-                  class="text-dh-orange font-space-mono text-lg w-full overflow-hidden text-nowrap"
+                  class="text-dh-orange font-space-mono w-full overflow-hidden text-lg text-nowrap"
                 >
                   {item.title}
                 </h6>
-                <p class="text-sm text-gray-400 w-fit text-clip">
+                <p class="w-fit text-sm text-clip text-gray-400">
                   {item.type}
                 </p>
-                <p class="text-sm text-gray-400 w-fit">
+                <p class="w-fit text-sm text-gray-400">
                   {item.dateCreated!.getFullYear()}
                 </p>
               </div>

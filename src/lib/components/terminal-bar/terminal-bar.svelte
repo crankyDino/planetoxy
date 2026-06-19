@@ -1,7 +1,6 @@
 <script lang="ts">
-  import { run } from 'svelte/legacy';
+  import { run } from "svelte/legacy";
 
-  
   import "../terminal/terminal.css";
   import { page } from "$app/stores";
   let command: HTMLInputElement | null = $state(null);
@@ -11,14 +10,16 @@
   });
 </script>
 
-<div class="w-full bg-[#292929] flex flex-row text-dh-green sticky top-0 z-50 text-xs md:text-sm">
-  <p class=" pl-2 pr-1 lg:pl-8 pb-1 text-nowrap">
+<div
+  class="text-dh-green sticky top-0 z-50 flex w-full flex-row bg-[#292929] text-xs md:text-sm"
+>
+  <p class=" pr-1 pb-1 pl-2 text-nowrap lg:pl-8">
     guest@<a href="/">home</a>{path ?? "/..."}{">"}
   </p>
   <input
     bind:this={command}
     type="text"
-    class="bg-transparent w-full focus-within:outline-none"
+    class="w-full bg-transparent focus-within:outline-none"
     onkeydown={(key) => {
       if (key.code === "Enter" && command) {
         command.value = "";

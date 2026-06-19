@@ -2,8 +2,8 @@
   import { onMount } from "svelte";
   import { chips, reset, submitHitMeUp } from "./contact-dialog";
   import {
-      dialogState,
-      type TDialogState,
+    dialogState,
+    type TDialogState,
   } from "$lib/handlers/dialog.handler/dialog.handler";
   import { initForm } from "$lib/handlers/form.handler/form.handler";
 
@@ -27,20 +27,20 @@
 
 <dialog
   bind:this={dialog}
-  class="m-auto max-w-2xl backdrop:bg-dh-black/65 backdrop:blur-md w-[88vw] md:w-2/3 lg:w-[44%] max-h-[85%] font-space-mono"
+  class="backdrop:bg-dh-black/65 font-space-mono m-auto max-h-[85%] w-[88vw] max-w-2xl backdrop:blur-md md:w-2/3 lg:w-[44%]"
   id="hitMeUpDialog"
 >
   <div class="bg__grid">
     <!-- <div class="grid__block"></div> -->
   </div>
   <div
-    class="btn__close flex flex-row justify-between bg-dh-orange mb-3 p-3 pr-6"
+    class="btn__close bg-dh-orange mb-3 flex flex-row justify-between p-3 pr-6"
   >
-    <h3 class="card-title font-bold text-white pl-9">Hit Me Up</h3>
+    <h3 class="card-title pl-9 font-bold text-white">Hit Me Up</h3>
     <button
       onclick={() => (dialog ? dialogState().close(dialog, form) : "")}
       id="btnCloseHmuForm"
-      class="text-white text-center w-6 rounded-md hover:text-dh-orange hover:bg-white"
+      class="hover:text-dh-orange w-6 rounded-md text-center text-white hover:bg-white"
     >
       <img
         src="../assets/vectors/close-small.svg"
@@ -52,12 +52,12 @@
 
   <form
     bind:this={form}
-    class="flex flex-col p-3 px-12 gap-3"
+    class="flex flex-col gap-3 p-3 px-12"
     id="formHitMeUp"
     action="/"
     method="GET"
   >
-    <div class="grid grid-rows-1 sm:grid-cols-2 gap-3">
+    <div class="grid grid-rows-1 gap-3 sm:grid-cols-2">
       <div class="form__group">
         <label
           class="text-dh-black text-sm"
@@ -69,7 +69,7 @@
           type="text"
           id="hmuFirstname"
           name="Firstname"
-          class="pointer-events-auto border-2 border-dh-black w-full px-4 py-2"
+          class="border-dh-black pointer-events-auto w-full border-2 px-4 py-2"
           maxlength="20"
           minlength="3"
           required
@@ -90,7 +90,7 @@
           type="text"
           id="hmuLastname"
           name="Lastname"
-          class="pointer-events-auto border-2 border-dh-black w-full px-4 py-2"
+          class="border-dh-black pointer-events-auto w-full border-2 px-4 py-2"
           maxlength="20"
           minlength="3"
           required
@@ -113,7 +113,7 @@
         id="hmuEmail"
         type="email"
         name="email"
-        class="pointer-events-auto border-2 border-dh-black px-4 py-2"
+        class="border-dh-black pointer-events-auto border-2 px-4 py-2"
         required
       />
       <small
@@ -131,16 +131,16 @@
       <!-- svelte-ignore a11y_no_static_element_interactions -->
       <div
         id="hmuReasonList"
-        class="flex flex-row flex-wrap bg-white border-2 border-dh-black w-full gap-3 px-4 py-2 h-fit min-h-10 items-center"
+        class="border-dh-black flex h-fit min-h-10 w-full flex-row flex-wrap items-center gap-3 border-2 bg-white px-4 py-2"
         onfocus={() => {
           reason ? reason.focus() : "";
         }}
       >
         {#each $chips as chip (chip[0])}
           <span
-            class="rounded-xl bg-dh-orange font-semibold text-white flex flex-row h-[1.6em] px-2 items-start"
+            class="bg-dh-orange flex h-[1.6em] flex-row items-start rounded-xl px-2 font-semibold text-white"
             >{chip[1]}<button
-              class="pl-1 pr-3"
+              class="pr-3 pl-1"
               onmousedown={(ev) => {
                 chips.deleteChip(chip[0]);
               }}>x</button
@@ -161,7 +161,7 @@
           id="hmuReason"
           type="text"
           name="Reason"
-          class="pointer-events-auto w-fit focus-visible:outline-none pl-1"
+          class="pointer-events-auto w-fit pl-1 focus-visible:outline-none"
         />
       </div>
       <small
@@ -182,7 +182,7 @@
         name="message"
         rows="3.6"
         style="resize: none"
-        class="pointer-events-auto border-2 border-dh-black pl-1"
+        class="border-dh-black pointer-events-auto border-2 pl-1"
         maxlength="240"
         required
       ></textarea>
@@ -194,18 +194,18 @@
       >
     </div>
 
-    <div class="card-body py-3 self-end">
+    <div class="card-body self-end py-3">
       <button
         onmousedown={() => (form ? reset(form) : "")}
         id="clear"
-        class="pointer-events-auto btn bg-gray-400 text-zinc-50"
+        class="btn pointer-events-auto bg-gray-400 text-zinc-50"
       >
         Clear
       </button>
       <button
         type="submit"
         id="btnSubmitHmuForm"
-        class="pointer-events-auto btn bg-dh-orange text-zinc-50"
+        class="btn bg-dh-orange pointer-events-auto text-zinc-50"
         onmousedown={() => (form ? submitHitMeUp(form, dialog!) : "")}
       >
         HIT ME UP!

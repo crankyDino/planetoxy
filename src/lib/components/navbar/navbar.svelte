@@ -24,12 +24,12 @@
 <section
   bind:this={navbar}
   style="transition:top 0.3s;scroll-behavior: smooth;"
-  class="flex flex-row bg-dh-black px-8 md:px-16 pt-4 pb-6 sticky top-0"
+  class="bg-dh-black sticky top-0 flex flex-row px-8 pt-4 pb-6 md:px-16"
 >
-  <nav class="flex flex-row w-full justify-between">
+  <nav class="flex w-full flex-row justify-between">
     <a href="/" class="flex"><img src="/assets/vectors/GLOBE.svg" alt="" /></a>
     <ul
-      class="flex flex-row my-auto gap-4 font-space-mono text-dh-white underline__list"
+      class="font-space-mono text-dh-white underline__list my-auto flex flex-row gap-4"
     >
       <li
         class="{pageTitle?.includes('blog')

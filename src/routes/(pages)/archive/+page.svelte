@@ -14,20 +14,20 @@
   class="grid md:grid-cols-2 lg:grid-cols-1 2xl:grid-cols-2 gap-8 gap-y-12 2xl:gap-x-30 pb-12 m-3 mt-6 mx-auto sm:w-[80%] md:w-[88%] lg:w-[70%] px-[1.8em]"
 > -->
 <section
-  class="flex flex-col gap-y-12 pb-12 xl:m-auto xl:my-12 lg:m-12 m-auto my-12 sm:w-[80%] md:w-[88%] lg:w-[60%] px-[1.8em]"
+  class="m-auto my-12 flex flex-col gap-y-12 px-[1.8em] pb-12 sm:w-[80%] md:w-[88%] lg:m-12 lg:w-[60%] xl:m-auto xl:my-12"
 >
   {#each $Articles.data?.allArticle as any as project}
     <a
       id="projectCard_{project.slug.current}"
       href="archive/{project.slug.current}"
-      class="overflow-[unset] grid xl:w-4/5 2xl:w-full lg:m-auto project__card"
+      class="overflow-[unset] project__card grid lg:m-auto xl:w-4/5 2xl:w-full"
     >
       <div
-        class="flex flex-col w-[84vw] xl:w-[58vw] lg:justify-between lg:py-4 lg:pl-6 col-span-9 border-[.18em] border-dh-orange h-36 lg:h-48 rounded-xs px-3 py-2 col-start-1 row-start-1"
+        class="border-dh-orange col-span-9 col-start-1 row-start-1 flex h-36 w-[84vw] flex-col rounded-xs border-[.18em] px-3 py-2 lg:h-48 lg:justify-between lg:py-4 lg:pl-6 xl:w-[58vw]"
       >
-        <div class="flex flex-col grid-rows-12">
+        <div class="flex grid-rows-12 flex-col">
           <h3
-            class="font-hanuman text-dh-orange text-2xl font-extrabold text-nowrap overflow-x-hidden text-ellipsis max-w-[66%] lg:text-4xl pb-1.5"
+            class="font-hanuman text-dh-orange max-w-[66%] overflow-x-hidden pb-1.5 text-2xl font-extrabold text-nowrap text-ellipsis lg:text-4xl"
           >
             {project.title}
           </h3>
@@ -39,7 +39,7 @@
           </p>
         </div>
         <div
-          class="font-space-mono text-dh-gray flex flex-col text-[.7em] lg:text-lg border-l-[.5em] border-dh-orange pl-1"
+          class="font-space-mono text-dh-gray border-dh-orange flex flex-col border-l-[.5em] pl-1 text-[.7em] lg:text-lg"
         >
           <div class="flex flex-row pl-2">
             <p class="hidden lg:block">Project</p>
@@ -56,20 +56,20 @@
         </div>
       </div>
       <div
-        class="col-start-7 lg:col-start-6 col-span-3 scale-[1.3] lg:scale-200 row-start-1 rounded-xs justify-self-end overflow-hidden w-3/5 sm:w-[135px] h-[92px] relative top-[4rem] left-[-1%] lg:left-[25%] mix-blend-color"
+        class="relative top-[4rem] left-[-1%] col-span-3 col-start-7 row-start-1 h-[92px] w-3/5 scale-[1.3] justify-self-end overflow-hidden rounded-xs mix-blend-color sm:w-[135px] lg:left-[25%] lg:col-start-6 lg:scale-200"
       >
         <img
-          class="z-10 bottom-[50%] relative h-auto w-[400px]"
+          class="relative bottom-[50%] z-10 h-auto w-[400px]"
           style="clip-path: inset(15px 0px);"
           src={project.intro?.media?.contentUrl}
           alt="a thing"
         />
       </div>
       <div
-        class="col-start-6 left-8 sm:left-0 lg:col-start-7 col-span-3 scale-[1.3] lg:scale-200 row-start-1 rounded-xs justify-self-end overflow-hidden w-3/5 sm:w-[135px] h-[92px] relative top-[5rem]"
+        class="relative top-[5rem] left-8 col-span-3 col-start-6 row-start-1 h-[92px] w-3/5 scale-[1.3] justify-self-end overflow-hidden rounded-xs sm:left-0 sm:w-[135px] lg:col-start-7 lg:scale-200"
       >
         <img
-          class="z-10 bottom-[50%] relative h-auto w-[400px]"
+          class="relative bottom-[50%] z-10 h-auto w-[400px]"
           style="clip-path: inset(15px 0px);"
           src={project.intro?.media?.contentUrl}
           alt="a thing"

@@ -63,7 +63,7 @@
 </svelte:head>
 
 <div
-  class="banner h-[9em] md:h-60 lg:h-[45vh] overflow-hidden -z-10 w-full bg-fixed bg-no-repeat"
+  class="banner -z-10 h-[9em] w-full overflow-hidden bg-fixed bg-no-repeat md:h-60 lg:h-[45vh]"
   style="background-image: url({data.metadata?.banner}); background-size: 100%;"
 ></div>
 
@@ -71,11 +71,10 @@
   {#if data.content && data.metadata}
     <article>
       <hgroup
-        class="flex flex-col relative bottom-7 md:bottom-12 lg:bottom-8 gap-y-1"
+        class="relative bottom-7 flex flex-col gap-y-1 md:bottom-12 lg:bottom-8"
       >
-        
         <h1
-          class="bg-dh-black w-fit font-hanuman font-extrabold text-dh-orange text-[1.5em] md:text-6xl text-wrap lg:text-nowrap p-4 pb-0"
+          class="bg-dh-black font-hanuman text-dh-orange w-fit p-4 pb-0 text-[1.5em] font-extrabold text-wrap md:text-6xl lg:text-nowrap"
         >
           {data.metadata.title}
         </h1>
@@ -83,13 +82,12 @@
         <p>{new Date(data.metadata.date).toISOString().split("T")[0]}</p>
 
         <div
-          class="tags flex letter--spacing--md font-quirkyrobot text-dh-orange text-[.9em] !gap-x-3"
+          class="tags letter--spacing--md font-quirkyrobot text-dh-orange flex !gap-x-3 text-[.9em]"
         >
           {#each data.metadata.tags as tag}
             <span class="surface-4">&num;{tag}</span>
           {/each}
         </div>
-      
       </hgroup>
       <div class="prose flex flex-col gap-y-6">
         {@html data.content}

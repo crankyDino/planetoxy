@@ -1,6 +1,6 @@
-<footer class="flex md:px-32 h-12 bg-dh-orange mt-12">
+<footer class="bg-dh-orange mt-12 flex h-12 md:px-32">
   <!-- <p>something</p> -->
-  <div id="socials" class="m-auto flex flex-row gap-4 w-fit items-center">
+  <div id="socials" class="m-auto flex w-fit flex-row items-center gap-4">
     <a target="_blank" href="https://digitalhippie.xyz"
       ><img style="width: 1.8rem" src="/assets/vectors/dh_logo.svg" alt="" /></a
     >

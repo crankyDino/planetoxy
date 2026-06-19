@@ -1,7 +1,7 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import "./blog.css";
-// import type { PageData } from "./$houdini";
+  // import type { PageData } from "./$houdini";
   // import type { Props } from "$lib/models/prop.model";
   import Sidebar from "$lib/components/sidebar/sidebar.svelte";
 
@@ -24,33 +24,33 @@
   });
 </script>
 
-<h3 class="font-space-mono text-dh-light-gray/15 pl-8 font-semibold text-xl">
+<h3 class="font-space-mono text-dh-light-gray/15 pl-8 text-xl font-semibold">
   blog
 </h3>
 <Sidebar />
 <!-- {#if !data} -->
 {#each Articles as post}
-  <a href="/blog/{post.title}" class="block min-w-fit w-full">
+  <a href="/blog/{post.title}" class="block w-full min-w-fit">
     <div
-      class="blog__item__block xl:w-[66vw] lg:w-[90vw] w-[80vw] h-fit flex flex-row pl-[4vw] pt-6"
+      class="blog__item__block flex h-fit w-[80vw] flex-row pt-6 pl-[4vw] lg:w-[90vw] xl:w-[66vw]"
     >
       <span
-        class="blog__item__elem bg-dh-orange grid h-16 align-top w-3 content-end mt-3"
+        class="blog__item__elem bg-dh-orange mt-3 grid h-16 w-3 content-end align-top"
       ></span>
-      <div class="grid grid-cols-12 ml-3 md:h-28 w-full">
+      <div class="ml-3 grid w-full grid-cols-12 md:h-28">
         <div
-          class="blog__item--hover relative col-span-12 gird grid-row-2 sm:w-11/12 md:min-w-full max-w-full"
+          class="blog__item--hover gird grid-row-2 relative col-span-12 max-w-full sm:w-11/12 md:min-w-full"
         >
-          <div class="pl-3 relative col-span-8 grid grid-cols-10">
+          <div class="relative col-span-8 grid grid-cols-10 pl-3">
             <h4
-              class="col-span-10 lg:col-span-8 md:col-span-8 sm:col-span-6 text-dh-white pt-3 font-hanuman font-extrabold text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl min-w-fit overflow-hidden text-nowrap text-ellipsis w-[75%]"
+              class="text-dh-white font-hanuman col-span-10 w-[75%] min-w-fit overflow-hidden pt-3 text-2xl font-extrabold text-nowrap text-ellipsis sm:col-span-6 sm:text-4xl md:col-span-8 md:text-5xl lg:col-span-8 lg:text-6xl xl:text-7xl"
             >
               {post.title}
             </h4>
             <div
-              class="flex mt-auto sm:col-end-[none] md:col-span-2 sm:col-span-2 sm:justify-self-end col-span-10 md:font-extrabold w-fit lg:text-xl min-w-fit md:min-w-[33%] text-end text-nowrap"
+              class="col-span-10 mt-auto flex w-fit min-w-fit text-end text-nowrap sm:col-span-2 sm:col-end-[none] sm:justify-self-end md:col-span-2 md:min-w-[33%] md:font-extrabold lg:text-xl"
             >
-              <p class="font-quirkyrobot tracking-[.2em] text-dh-white">
+              <p class="font-quirkyrobot text-dh-white tracking-[.2em]">
                 {new Date(post.date).toISOString().split("T")[0]}
               </p>
               <!-- <p class="font-quirkyrobot text-dh-white tracking-[.11em]">
@@ -59,12 +59,12 @@
             </div>
           </div>
           <div
-            class=" text-white relative pl-3 pb-1 col-span-4 flex justify-between items-center"
+            class=" relative col-span-4 flex items-center justify-between pb-1 pl-3 text-white"
           >
-            <div class="flex text-center items-center gap-2">
+            <div class="flex items-center gap-2 text-center">
               {#each post.tags as tag, i}
                 <p
-                  class="max-w-fit text-dh-white text-xs sm:text-sm md:text-lg tracking-wider font-space-mono font-thin min-w-fit overflow-hidden text-nowrap text-ellipsis"
+                  class="text-dh-white font-space-mono max-w-fit min-w-fit overflow-hidden text-xs font-thin tracking-wider text-nowrap text-ellipsis sm:text-sm md:text-lg"
                 >
                   {tag}
                 </p>
@@ -74,7 +74,7 @@
               {/each}
             </div>
             <span
-              class="w-full blog__item__underline ml-4 bg-dh-orange h-3 hover:bg-black"
+              class="blog__item__underline bg-dh-orange ml-4 h-3 w-full hover:bg-black"
             ></span>
           </div>
         </div>

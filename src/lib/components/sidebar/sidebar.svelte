@@ -8,11 +8,11 @@
       <a
         target="_blank"
         href="https://digitalhippie.xyz"
-        class="!flex gap-3 items-center"
+        class="!flex items-center gap-3"
       >
         <p
           style="letter-spacing: .1rem;"
-          class="hidden text-dh-white font-bold text-nowrap text-[0px]"
+          class="text-dh-white hidden text-[0px] font-bold text-nowrap"
         >
           Digital Hippie
         </p>
@@ -27,11 +27,11 @@
       <a
         href="https://github.com/crankyDino"
         target="_blank"
-        class="!flex gap-3 items-center"
+        class="!flex items-center gap-3"
       >
         <p
           style="letter-spacing: .1rem;"
-          class="hidden text-dh-white font-bold text-nowrap text-[0px]"
+          class="text-dh-white hidden text-[0px] font-bold text-nowrap"
         >
           Github
         </p>
@@ -46,11 +46,11 @@
       <a
         href="https://www.linkedin.com/in/bamodise/"
         target="_blank"
-        class="!flex gap-3 items-center"
+        class="!flex items-center gap-3"
       >
         <p
           style="letter-spacing: .1rem;"
-          class="hidden text-dh-white font-bold text-nowrap text-[0px]"
+          class="text-dh-white hidden text-[0px] font-bold text-nowrap"
         >
           Linkedin
         </p>
@@ -61,11 +61,11 @@
       <a
         href="https://www.instagram.com/digitalhippie.xyz"
         target="_blank"
-        class="!flex gap-3 items-center"
+        class="!flex items-center gap-3"
       >
         <p
           style="letter-spacing: .1rem;"
-          class="hidden text-dh-white font-bold text-nowrap text-[0px]"
+          class="text-dh-white hidden text-[0px] font-bold text-nowrap"
         >
           Instagram
         </p>

@@ -40,20 +40,20 @@
 
 <section
   id="antihero"
-  class="container flex flex-col lg:flex-row justify-between justify-items-end items-center gap-8 m-auto pb-24 px-4 md:px-24"
+  class="container m-auto flex flex-col items-center justify-between justify-items-end gap-8 px-4 pb-24 md:px-24 lg:flex-row"
 >
   <!-- terminal -->
   <Terminal />
   <div
-    class="hero__tagline grid md:grid-flow-col md:gap-x-4 lg:gap-7 justify-items-center md:items-start xl:items-end lg:w-[47vw] h-full text-dh-white"
+    class="hero__tagline text-dh-white grid h-full justify-items-center md:grid-flow-col md:items-start md:gap-x-4 lg:w-[47vw] lg:gap-7 xl:items-end"
   >
     <div
-      class="hero__name flex flex-col h-fit justify-start lg:w-fit md:w-[88%]"
+      class="hero__name flex h-fit flex-col justify-start md:w-[88%] lg:w-fit"
     >
-      <p class="text-nowrap font-space-mono text-lg">Hi, I'm</p>
-      <div class=" flex flex-row justify-right py-2.5 md:py-0">
+      <p class="font-space-mono text-lg text-nowrap">Hi, I'm</p>
+      <div class=" justify-right flex flex-row py-2.5 md:py-0">
         <h1
-          class="shadow--solid__ashley font-pokemon-classic font-bold text-3xl pl-6 z-10"
+          class="shadow--solid__ashley font-pokemon-classic z-10 pl-6 text-3xl font-bold"
         >
           ASHLEY.
         </h1>
@@ -61,14 +61,14 @@
     </div>
     <!-- <div class="w-full flex md:flex-row lg:flex-col flex-col md:justify-center items-end gap-4"> -->
     <p
-      class="hero__intro mb-2 text-justify sm:text-right font-space-mono text-xl w-4/5 sm:w-4/6 md:w-[88%] xl:w-4/5 xl:text-end lg:w-full md:text-justify"
+      class="hero__intro font-space-mono mb-2 w-4/5 text-justify text-xl sm:w-4/6 sm:text-right md:w-[88%] md:text-justify lg:w-full xl:w-4/5 xl:text-end"
     >
       <strong class="text-dh-orange">I Make</strong>
       cool websites, take pretty pictures and film epic videos
     </p>
 
     <div
-      class="hero__cta w-max flex flex-row pt-4 md:pt-0 md:flex-col lg:flex-row xl:flex-col gap-3 justify-even content-end"
+      class="hero__cta justify-even flex w-max flex-row content-end gap-3 pt-4 md:flex-col md:pt-0 lg:flex-row xl:flex-col"
     >
       <button class="btn bg-dh-orange text-dh-white">
         <a href="/projects">Projects</a>
@@ -76,7 +76,7 @@
       <button
         onclick={() => dialog.open()}
         id="btnOpenHmuForm"
-        class="btn bg-transparent border-[3px] border-dh-orange text-dh-white"
+        class="btn border-dh-orange text-dh-white border-[3px] bg-transparent"
       >
         HIT ME UP!
       </button>
@@ -86,13 +86,13 @@
 </section>
 
 <section
-  class="container flex flex-col md:flex-row justify-between justify-items-end items-center gap-2 m-auto mb-2 px-8 md:px-16 lg:pl-32"
+  class="container m-auto mb-2 flex flex-col items-center justify-between justify-items-end gap-2 px-8 md:flex-row md:px-16 lg:pl-32"
 >
-  <div id="about_me" class="w-full md:w-3/4 col-auto text-dh-white space-y-5">
+  <div id="about_me" class="text-dh-white col-auto w-full space-y-5 md:w-3/4">
     <h2
       style="word-spacing: -0.5rem; "
       id="about_me_headline"
-      class="shadow--solid__about-me z-10 relative tracking-[3.6px] font-semibold mb-4 font-pokemon-classic! sm:text-[2.6rem] text-[6vw] md:text-4xl lg:text-5xl"
+      class="shadow--solid__about-me font-pokemon-classic! relative z-10 mb-4 text-[6vw] font-semibold tracking-[3.6px] sm:text-[2.6rem] md:text-4xl lg:text-5xl"
     >
       A
       <!-- <strong
@@ -102,7 +102,7 @@
       Bit About Me
     </h2>
     <p
-      class="paragraph text-justify md:mt-auto! md:text-start md:w-11/12 lg:w-3/5 font-space-mono mb-2 before:w-8 first-letter:text-[2rem] first-letter:font-bold"
+      class="paragraph font-space-mono mb-2 text-justify first-letter:text-[2rem] first-letter:font-bold before:w-8 md:mt-auto! md:w-11/12 md:text-start lg:w-3/5"
     >
       I am a self-taught Web Developer, Graphic Designer and Videographer from
       South Africa. I also enjoy playing around with Machine Learning and
@@ -110,15 +110,15 @@
       Javascript.
     </p>
 
-    <div class="skills w-full mb-1">
+    <div class="skills mb-1 w-full">
       <h3
-        class="text-dh-orange font-space-mono font-bold text-base md:text-2xl"
+        class="text-dh-orange font-space-mono text-base font-bold md:text-2xl"
       >
         Technologies I've worked with
       </h3>
       <ul
         style="line-height: 1.5em"
-        class="flex flex-col flex-wrap pl-1.5 m-0 max-w-xl h-24 font-space-mono list-none overflow-hidden"
+        class="font-space-mono m-0 flex h-24 max-w-xl list-none flex-col flex-wrap overflow-hidden pl-1.5"
       >
         <li>> Angular</li>
         <li>> ASP.NET</li>
@@ -133,7 +133,7 @@
     </div>
 
     <button
-      class="btn bg-dh-orange border-[3px] border-dh-orange text-dh-white"
+      class="btn bg-dh-orange border-dh-orange text-dh-white border-[3px]"
     >
       View CV
     </button>
@@ -141,18 +141,19 @@
   <div
     id="pictureFrame"
     style="width: fit-content"
-    class="m-auto pt-6 relative md:mr-[2%] col-start-2 col-span-2"
+    class="relative col-span-2 col-start-2 m-auto pt-6 md:mr-[2%]"
   >
     <div>
       <img
-        class="headshot w-36 xl:w-52 relative z-2"
-        src="{$Headshot.data?.allGraphic[0].contentUrl ?? "/assets/bitmap/IMG_20200408_170956paint.jpg"}"
+        class="headshot relative z-2 w-36 xl:w-52"
+        src={$Headshot.data?.allGraphic[0].contentUrl ??
+          "/assets/bitmap/IMG_20200408_170956paint.jpg"}
         alt=""
       />
       <span
         style="transform: translateX(-42%) translateY(-89%)"
         id="pictureFrame"
-        class="w-36 xl:w-52 absolute z-1 left-9"
+        class="absolute left-9 z-1 w-36 xl:w-52"
       >
         <svg
           class="pictureFrame"
@@ -175,7 +176,7 @@
 
 <section class="grid grid-rows-1 pt-8">
   <h3
-    class="shadow--solid__portfolio z-10 m-auto font-bold font-pokemon-classic container pb-2 text-center mb-2 px-8 md:px-16 lg:pl-32 text-dh-white text-[8vw] md:text-2xl lg:text-4xl"
+    class="shadow--solid__portfolio font-pokemon-classic text-dh-white z-10 container m-auto mb-2 px-8 pb-2 text-center text-[8vw] font-bold md:px-16 md:text-2xl lg:pl-32 lg:text-4xl"
   >
     Portfolio
   </h3>
