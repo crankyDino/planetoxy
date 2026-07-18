@@ -2,6 +2,9 @@
     "name": "planet-oxy",
     "version": "0.0.1",
     "private": true,
+    "engines": {
+        "node": ">=20.12"
+    },
     "scripts": {
         "dev": "vite dev --port 8008",
         "launch": "vite dev --port 8008 --open",
