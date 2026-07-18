@@ -68,25 +68,48 @@
             src={$Article.data?.allArticle[0].intro!.media!.contentUrl}
             alt=""
           />
+
+          {#if $Article.data?.allArticle[0]}
+            <div class="w-fit flex-row py-1 pt-2 md:hidden">
+              {#each $Article.data?.allArticle[0].tags as tag, i}
+                <!-- TODO! Add tag filter for articles -->
+                <button
+                  class="text-dh-white hover:text-dh-orange! hover:cursor-pointer"
+                  onclick={() => {
+                    console.log(tag?.tagName);
+                  }}
+                >
+                  <p
+                    class="font-space-mono w-fit min-w-[11%] overflow-hidden pr-3 text-xs font-thin tracking-wider text-nowrap text-ellipsis"
+                  >
+                    #{tag?.tagName}
+                    <!-- {#if $Article.data?.allArticle[0].tags!.length > i + 1}
+                      <span class="text-dh-white">|</span>
+                    {/if} -->
+                  </p>
+                </button>
+              {/each}
+            </div>
+          {/if}
         </div>
       </div>
 
       <div
         class="col-span-12 col-start-1 flex w-[52w-20vw] flex-col gap-y-5 text-justify md:col-span-6 md:row-span-12 lg:mx-16"
       >
-        <!-- <div class="flex flex-col col-start-1 w-full md:w-3/4 gap-y-4 md:gap-y-12"> -->
         <h1
           class="text-dh-white font-pokemon-classic col-span-12 hidden text-lg font-bold sm:block md:col-span-6 md:col-start-7 md:text-5xl"
         >
           {$Article.data?.allArticle[0].title}
         </h1>
+
         <p
           class="font-space-mono text-dh-white col-span-12 row-span-2 row-start-8 text-xs break-all md:col-span-6 md:col-start-7 xl:text-lg"
         >
           {$Article.data?.allArticle[0].intro?.paragraph}
         </p>
 
-        {#if $Article.data?.allArticle[0].links}
+        <!-- {#if $Article.data?.allArticle[0].links}
           <ul class="m-auto grid grid-flow-col gap-x-4 sm:hidden">
             {#each $Article.data?.allArticle[0].links as link}
               <li>
@@ -101,13 +124,13 @@
               </li>
             {/each}
           </ul>
-        {/if}
+        {/if} -->
       </div>
     </div>
 
-    <div class="flex justify-between gap-y-3 sm:flex-col md:flex-row">
+    <div class="flex justify-between gap-y-3 pt-4 sm:flex-col md:flex-row">
       {#if $Article.data?.allArticle[0]}
-        <div class="flex w-fit flex-row gap-3 py-1">
+        <div class="hidden w-fit flex-row gap-3 py-1 md:flex">
           {#each $Article.data?.allArticle[0].tags as tag, i}
             <!-- TODO! Add tag filter for articles -->
             <button
@@ -130,7 +153,7 @@
       {/if}
 
       {#if $Article.data?.allArticle[0].links}
-        <ul class="hidden w-fit gap-x-4 sm:grid sm:grid-flow-col">
+        <ul class="w-fit gap-x-4 sm:grid sm:grid-flow-col">
           {#each $Article.data?.allArticle[0].links as link}
             <li>
               <a target="_blank" href={link?.url}>
@@ -161,20 +184,25 @@
       </ul>
     </div>
 
-    <div class="h-48 w-66 overflow-hidden rounded-md md:w-96">
+    <div class="m-auto h-48 w-66 overflow-hidden rounded-md md:m-0 md:w-96">
       <img src={$Article.data?.allArticle[0].intro!.media!.contentUrl} alt="" />
     </div>
   </section>
 
   <section
-    class="flex justify-between px-8 py-6 sm:px-18 md:px-14 lg:mx-16 xl:m-auto xl:w-4/5"
+    class="flex flex-col justify-between px-8 py-6 sm:px-18 md:flex-row md:px-14 lg:mx-16 xl:m-auto xl:w-4/5"
   >
+    <h4 class="text-dh-orange text-3xl font-extrabold md:hidden">
+      Title Of Thang
+    </h4>
     <div class="w-52 overflow-hidden rounded-md">
       <img src={$Article.data?.allArticle[0].intro!.media!.contentUrl} alt="" />
     </div>
 
     <div class="font-space-mono ml-6 flex flex-col">
-      <h4 class="text-dh-orange text-3xl font-extrabold">Title Of Thang</h4>
+      <h4 class="text-dh-orange hidden text-3xl font-extrabold md:block">
+        Title Of Thang
+      </h4>
 
       <ul class="text-white">
         <li>Client | ipsum dolor sit</li>
