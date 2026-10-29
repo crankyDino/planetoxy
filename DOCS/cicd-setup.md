@@ -110,6 +110,21 @@ sudo certbot --nginx -d your-domain.com -d qa.your-domain.com
 
 Create a `qa` environment in GitHub (repo → Settings → Environments) and mirror the same secrets as `prod`. Optionally add required reviewers on `prod` for manual approval before prod deploys execute.
 
+### 8. Env vars (GitHub `prod` environment secrets)
+
+Build-time (`$env/static/*`, Vite) + runtime (`.env` written on deploy):
+
+| Var | Use |
+| --- | --- |
+| `PUBLIC_IS_PROD` | prod flag |
+| `VITE_SANITY_GQL_API` | houdini GQL endpoint (was `PUBLIC_SANITY_GQL_API`) |
+| `PUBLIC_EMAILTO` | contact dialog |
+| `PUBLIC_BLOG_REPO` | blog API |
+| `PUBLIC_GH`, `PUBLIC_DH`, `PUBLIC_IG`, `PUBLIC_LINKEDIN`, `PUBLIC_TWITTER` | footer/sidebar social links |
+| `GITHUB_API_KEY` (secret `GH_API_KEY`) | blog API |
+| `SANITY_API_KEY`, `SANITY_APP_ID` | sanity service |
+| `MOONBASE_URL`, `HOMEWORLD_URL` | email service |
+
 ## To-Do
 
 - [x] Stage 1: Switch adapter to `adapter-node` (`svelte.config.js`, `package.json`)
@@ -117,3 +132,6 @@ Create a `qa` environment in GitHub (repo → Settings → Environments) and mir
 - [x] Stage 3: Split `build.yml` (CI only) and create `publish.yml` (QA auto + prod manual)
 - [x] Stage 4: Update this doc
 - [ ] Stage 5 (manual): Install Bun + PM2, create deployment dirs, configure Nginx, seed GitHub `qa` environment secrets
+- [x] Stage 6: `build.yml` env sync (`VITE_SANITY_GQL_API`, social `PUBLIC_*`), cache key on `bun.lock`, `--frozen-lockfile`
+- [ ] Stage 7: `publish.yml` same + deploy `.env` heredoc sync
+- [ ] Stage 8 (manual): add GH secrets `VITE_SANITY_GQL_API`, `PUBLIC_GH`, `PUBLIC_DH`, `PUBLIC_IG`, `PUBLIC_LINKEDIN`, `PUBLIC_TWITTER`; drop old `PUBLIC_SANITY_GQL_API`
