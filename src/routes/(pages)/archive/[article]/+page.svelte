@@ -11,6 +11,8 @@
   // let article = $derived($Article.data?.allArticle[0]);
   let paragraphMedia: Array<IArticleMedia> = $state([]);
 
+  let center = $state(20);
+
   async function loadMedia(ref: string, key: string) {
     const { res } = await getMedia(ref);
 
@@ -52,7 +54,9 @@
 
 <Sidebar />
 {#if !$Article.fetching}
-  <section class="px-8 py-6 sm:px-18 md:px-14 lg:mx-16 xl:m-auto xl:w-4/5">
+  <section
+    class="px-8 py-3 sm:px-18 md:px-18 md:py-6 lg:mx-16 xl:m-auto xl:w-4/5"
+  >
     <div class="flex flex-col gap-y-[1.2em] md:flex-row md:gap-x-4 xl:gap-x-16">
       <div
         class="col-span-12 col-start-1 row-start-1 w-full md:col-span-6 md:row-span-12"
@@ -64,7 +68,7 @@
         </h1>
         <div class="w-full">
           <img
-            class="md:m-initial m-auto h-78 max-h-96 md:h-full lg:my-auto xl:h-[50vh]"
+            class="md:m-initial m-auto h-full max-h-96 md:h-full lg:my-auto xl:h-[50vh]"
             src={$Article.data?.allArticle[0].intro!.media!.contentUrl}
             alt=""
           />
@@ -134,13 +138,13 @@
           {#each $Article.data?.allArticle[0].tags as tag, i}
             <!-- TODO! Add tag filter for articles -->
             <button
-              class="text-dh-white hover:text-dh-orange! hover:cursor-pointer"
+              class="text-dh-white hover:cursor-pointer"
               onclick={() => {
                 console.log(tag?.tagName);
               }}
             >
               <p
-                class="font-space-mono w-fit min-w-[11%] overflow-hidden text-xs font-thin tracking-wider text-nowrap text-ellipsis"
+                class="hover:text-dh-orange font-space-mono w-fit min-w-[11%] overflow-hidden text-xs font-thin tracking-wider text-nowrap text-ellipsis"
               >
                 #{tag?.tagName}
                 <!-- {#if $Article.data?.allArticle[0].tags!.length > i + 1}
@@ -153,7 +157,7 @@
       {/if}
 
       {#if $Article.data?.allArticle[0].links}
-        <ul class="w-fit gap-x-4 sm:grid sm:grid-flow-col">
+        <ul class=" w-fit gap-x-4 sm:grid sm:grid-flow-col">
           {#each $Article.data?.allArticle[0].links as link}
             <li>
               <a target="_blank" href={link?.url}>
@@ -161,7 +165,7 @@
                   style="max-width: 4rem; width: 1.8rem;"
                   src={link?.icon?.contentUrl?.asset?.url}
                   alt={link?.icon?.title}
-                  class="filter--white"
+                  class="hover:text-dh-orange hover:filter--orange filter--white"
                 />
               </a>
             </li>
@@ -172,53 +176,69 @@
   </section>
 
   <section
-    class="flex flex-col justify-between gap-y-7 px-8 py-6 sm:px-18 md:flex-row md:px-14 lg:mx-16 xl:m-auto xl:w-4/5"
+    class="flex flex-col justify-between gap-y-7 px-8 py-3 sm:px-18 md:flex-row md:px-18 md:py-6 lg:mx-16 xl:m-auto xl:w-4/5"
   >
-    <div class="font-space-mono ml-6">
-      <h4 class="text-dh-orange text-2xl font-extrabold">Stack</h4>
+    <div class="font-space-mono">
+      <h4 class="text-dh-orange text-7xl font-extrabold">Stack</h4>
 
       <ul class="text-white">
         <li>> thing thang</li>
-        <li>> thangalang</li>
+        <li>> thanga lang</li>
         <li>> thang thang</li>
       </ul>
     </div>
 
-    <div class="m-auto h-48 w-66 overflow-hidden rounded-md md:m-0 md:w-96">
-      <img src={$Article.data?.allArticle[0].intro!.media!.contentUrl} alt="" />
+    <div class="m-auto h-40 w-full overflow-hidden rounded-xl md:m-0 md:w-3/5">
+      <img
+        src={$Article.data?.allArticle[0].intro!.media!.contentUrl}
+        alt=""
+        class="relative bottom-40"
+      />
     </div>
   </section>
 
   <section
-    class="flex flex-col justify-between px-8 py-6 sm:px-18 md:flex-row md:px-14 lg:mx-16 xl:m-auto xl:w-4/5"
+    class=" font-space-mono flex flex-col justify-between px-8 py-3 sm:px-18 md:flex-row md:px-18 md:py-6 lg:mx-16 xl:m-auto xl:w-4/5"
   >
-    <h4 class="text-dh-orange text-3xl font-extrabold md:hidden">
+    <h4
+      style="letter-spacing: 3px;"
+      class="text-dh-orange text-end text-xl font-extrabold md:hidden"
+    >
       Title Of Thang
     </h4>
-    <div class="w-52 overflow-hidden rounded-md">
-      <img src={$Article.data?.allArticle[0].intro!.media!.contentUrl} alt="" />
-    </div>
 
-    <div class="font-space-mono ml-6 flex flex-col">
-      <h4 class="text-dh-orange hidden text-3xl font-extrabold md:block">
+    <div class="font-space-mono flex flex-col">
+      <h4
+        style="letter-spacing: 3px;"
+        class="text-dh-orange hidden text-3xl font-extrabold md:block"
+      >
         Title Of Thang
       </h4>
 
-      <ul class="text-white">
-        <li>Client | ipsum dolor sit</li>
-        <li>Medium | dolor / sit</li>
-        <li>Circa | 2006</li>
+      <ul
+        class="text-end text-sm text-white"
+        style=" letter-spacing: 3px; line-height: 24px;"
+      >
+        <li>ipsum dolor sit</li>
+        <li>dolor / sit</li>
+        <li>2006</li>
       </ul>
+    </div>
+
+    <div
+      class="m-auto mt-8 w-52 overflow-hidden rounded-md md:m-0 md:mt-0 md:ml-auto"
+    >
+      <img src={$Article.data?.allArticle[0].intro!.media!.contentUrl} alt="" />
     </div>
   </section>
 
   <section
-    class="flex justify-between px-8 py-6 sm:px-18 md:px-14 lg:mx-16 xl:m-auto xl:w-4/5"
+    class="flex flex-col justify-between px-8 py-6 sm:px-18 md:px-14 lg:mx-16 xl:m-auto xl:w-4/5"
   >
-    <div class="font-space-mono ml-6 flex w-fit flex-col">
-      <h4 class="text-dh-orange text-3xl font-extrabold">Stack</h4>
+    <div class="font-space-mono flex w-fit flex-col">
+      <!-- <h4 class="text-dh-orange text-3xl font-extrabold">Stack</h4> -->
 
-      <p class="w-4/5 text-white">
+      <p class="m-auto text-justify text-white">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto quis
         animi dicta sapiente? Explicabo amet nostrum ipsa corrupti inventore?
         Eum facere nisi accusamus ad, pariatur doloribus impedit possimus earum
@@ -228,32 +248,34 @@
       </p>
     </div>
 
-    <div class="w-72 overflow-hidden rounded-md">
+    <div class="m-auto mt-12 w-52 overflow-hidden rounded-md">
       <img src={$Article.data?.allArticle[0].intro!.media!.contentUrl} alt="" />
     </div>
   </section>
 
   <section
-    class="relative mt-6 px-8 py-6 sm:px-18 md:px-14 lg:mx-16 xl:m-auto xl:w-4/5"
+    class="relative mt-6 px-8 py-3 sm:px-18 md:px-14 md:py-6 lg:mx-16 xl:m-auto xl:w-4/5"
   >
     <div
       class="marquee absolute top-0 left-1/2 z-20 w-screen -translate-x-1/2 -translate-y-1/2"
     >
       <h2
-        class="marquee-text font-pokemon-classic text-dh-white text-5xl font-extrabold text-nowrap invert-0 sm:text-6xl lg:text-7xl xl:text-[9rem]"
+        class="marquee-text font-pokemon-classic text-dh-white text-7xl font-extrabold text-nowrap invert-0 sm:text-6xl lg:text-7xl xl:text-[9rem]"
       >
         some cool shit i'd say
       </h2>
     </div>
-    <div
-      class="m-auto h-32 w-4/5 overflow-hidden rounded-md lg:h-72 xl:h-80 xl:w-3/5"
-    >
-      <img src={$Article.data?.allArticle[0].intro!.media!.contentUrl} alt="" />
+    <div class="m-auto h-32 w-full overflow-hidden lg:h-72 xl:h-80 xl:w-3/5">
+      <img
+        class="relative bottom-38"
+        src={$Article.data?.allArticle[0].intro!.media!.contentUrl}
+        alt=""
+      />
     </div>
   </section>
 
   <section
-    class="mx-auto my-8 flex justify-center px-8 py-6 text-center sm:px-18 md:px-14 xl:w-fit"
+    class="mx-auto my-8 flex justify-center px-8 py-3 text-center sm:px-18 md:px-14 md:py-6 xl:w-fit"
   >
     <span class="text-3xl text-white xl:text-6xl">``</span>
     <p class="w-4/5 font-bold text-white xl:w-1/3 xl:text-3xl">
