@@ -9,7 +9,7 @@
     "scripts": {
         "dev": "vite dev --port 8008",
         "launch": "vite dev --port 8008 --open",
-        "build": "vite build",
+        "build": "bun --bun vite build",
         "preview": "vite preview",
         "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
         "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
