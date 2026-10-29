@@ -5,6 +5,7 @@ const config = {
   watchSchema: {
     url: (env) => `${env.VITE_SANITY_GQL_API}`,
   },
+  schemaPath: "./schema.graphql",
   runtimeDir: ".houdini",
   plugins: {
     "houdini-svelte": { forceRunesMode: true },
