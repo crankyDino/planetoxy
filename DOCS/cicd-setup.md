@@ -135,3 +135,4 @@ Build-time (`$env/static/*`, Vite) + runtime (`.env` written on deploy):
 - [x] Stage 6: `build.yml` env sync (`VITE_SANITY_GQL_API`, social `PUBLIC_*`), cache key on `bun.lock`, `--frozen-lockfile`
 - [ ] Stage 7: `publish.yml` same + deploy `.env` heredoc sync
 - [ ] Stage 8 (manual): add GH secrets `VITE_SANITY_GQL_API`, `PUBLIC_GH`, `PUBLIC_DH`, `PUBLIC_IG`, `PUBLIC_LINKEDIN`, `PUBLIC_TWITTER`; drop old `PUBLIC_SANITY_GQL_API`
+- [ ] Stage 9: bun-only — drop `setup-node`, `bun --bun run build` (vite shebang otherwise runs node), pin bun via `packageManager` + `bun-version-file`, job `timeout-minutes: 20`

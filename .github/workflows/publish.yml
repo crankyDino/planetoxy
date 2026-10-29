@@ -14,6 +14,7 @@ jobs:
       (github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'success') ||
       github.event_name == 'workflow_dispatch'
     runs-on: self-hosted
+    timeout-minutes: 20
     
     environment: prod
     env:
@@ -31,11 +32,9 @@ jobs:
     steps:
       - uses: actions/checkout@v6
 
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 22
-
       - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version-file: package.json
 
       - name: Cache bun deps
         uses: actions/cache@v4
@@ -49,7 +48,7 @@ jobs:
         run: bun install
 
       - name: Build
-        run: nice -n 10 bun run build
+        run: nice -n 10 bun --bun run build
 
       - name: Deploy to Prod
         run: |
