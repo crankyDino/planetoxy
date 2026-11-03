@@ -2,17 +2,16 @@
 
 ## Objective
 
-Three-pipeline CI/CD: a **Build** pipeline that verifies every push, a **Publish** pipeline that auto-deploys to QA after a successful build, and a manually-triggered Prod deploy. The SvelteKit app runs via PM2 (Bun) behind Nginx.
+Single `build-publish.yml` workflow: every PR to `master` is built as a check; every push to `master` (or manual run) builds once and deploys to prod. The SvelteKit app runs via PM2 (Bun) behind Nginx.
 
 ## Pipelines
 
 | Workflow | Trigger | Effect |
 | -------- | ------- | ------ |
-| `build.yml` | Push to `main` | Checkout → install → build (CI verification only) |
-| `publish.yml` `deploy-qa` | `build.yml` succeeds on `main` | Rebuild → rsync to `/var/www/html/qa` → PM2 reload |
-| `publish.yml` `deploy-prod` | Manual `workflow_dispatch` → target=prod | Rebuild → rsync to `/var/www/html/prod` → PM2 reload |
+| `build-publish.yml` | PR to `master` | Checkout → install → build (verification only) |
+| `build-publish.yml` | Push to `master` / manual `workflow_dispatch` | Checkout → install → build → rsync to `/var/www/html/planetoxy` → PM2 restart |
 
-`publish.yml` can also be manually triggered with `target=qa` to force a QA redeploy.
+Single job: builds once, deploy step skipped on PRs. No `actions/cache` (self-hosted runner keeps bun cache on disk; GH cache service times out).
 
 ## Stack
 
@@ -136,3 +135,4 @@ Build-time (`$env/static/*`, Vite) + runtime (`.env` written on deploy):
 - [x] Stage 7: `publish.yml` same + deploy `.env` heredoc sync
 - [ ] Stage 8 (manual): add GH secrets `VITE_SANITY_GQL_API`, `PUBLIC_GH`, `PUBLIC_DH`, `PUBLIC_IG`, `PUBLIC_LINKEDIN`, `PUBLIC_TWITTER`; drop old `PUBLIC_SANITY_GQL_API`
 - [ ] Stage 9: bun-only — drop `setup-node`, `bun --bun run build` (vite shebang otherwise runs node), pin bun via `packageManager` + `bun-version-file`, job `timeout-minutes: 20`
+- [x] Stage 10: combine build + publish into `build-publish.yml`, drop `actions/cache`
