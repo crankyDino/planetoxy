@@ -5,6 +5,7 @@ import tailwindcss from '@tailwindcss/vite';
 import { defineConfig } from 'vite';
 
 export default defineConfig({
+    envPrefix: ['VITE_', 'PUBLIC_'],
     plugins: [houdini(), tailwindcss(), sveltekit()],
     build: {
         rollupOptions: {

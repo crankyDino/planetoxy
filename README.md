@@ -1,6 +1,6 @@
 # Planet Oxy 
 
-[![Build](https://github.com/crankyDino/planetoxy/actions/workflows/build.yml/badge.svg)](https://boipelo.xyz) [![Publish](https://github.com/crankyDino/planetoxy/actions/workflows/publish.yml/badge.svg)](https://boipelo.xyz)
+[![Build + Publish](https://github.com/crankyDino/planetoxy/actions/workflows/build-publish.yml/badge.svg)](https://github.com/crankyDino/planetoxy/actions/workflows/build-publish.yml)
 
 welcome to my world.
 
