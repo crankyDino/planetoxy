@@ -37,10 +37,10 @@
   <div
     bind:this={carousel}
     data-direction={direction}
-    class="carousel m-auto w-fit items-center overflow-hidden pl-1.5"
+    class="carousel m-auto w-full items-center overflow-hidden pl-1.5"
   >
     <div
-      class="carousel__content--row m-auto h-full w-[85vw] overflow-hidden pl-1.5"
+      class="carousel__content--row m-auto h-full w-[85vw] overflow-auto pl-1.5"
     >
       <div
         data-animated={animate}

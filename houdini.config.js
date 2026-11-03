@@ -1,9 +1,11 @@
 /// <references types="houdini-svelte">
 /** @type {import('houdini').ConfigFile} */
 const config = {
+  url: import.meta.env.VITE_SANITY_GQL_API,
   watchSchema: {
-    url: (env) => `${env.PUBLIC_SANITY_GQL_API}`,
+    url: (env) => `${env.VITE_SANITY_GQL_API}`,
   },
+  schemaPath: "./schema.graphql",
   runtimeDir: ".houdini",
   plugins: {
     "houdini-svelte": { forceRunesMode: true },

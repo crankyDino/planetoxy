@@ -10,11 +10,23 @@
   let { data }: Props<PageData> = $props();
 
   let dialog: any;
+
   let carouselContent = $state(Array<ICarouselItem>());
+
+  const TABLET_WIDTH: number = 768;
+
+  let spin = $state(false);
 
   const { PortfolioCarousel, Headshot } = $derived(data);
 
   onMount(() => {
+    window.addEventListener("resize", () => {
+      spin = false;
+      if (window !== undefined && window.innerWidth <= TABLET_WIDTH) {
+        spin = true;
+      }
+    });
+
     if (
       !$PortfolioCarousel.data ||
       $PortfolioCarousel.data.allCarousel.length === -1
@@ -24,17 +36,15 @@
 
     carouselContent = ($PortfolioCarousel.data.allCarousel[0].media ?? [])
       .filter((item): item is NonNullable<typeof item> => item !== null)
-      .map(
-        (item): ICarouselItem => ({
-          title: item.title!,
-          description: item.description!,
-          type: item.mediaType!,
-          projectType: item.projectType!,
-          contentUrl: item.contentUrl!,
-          link: item.link!,
-          dateCreated: new Date(item.dateCreated!),
-        }),
-      );
+      .map((item): ICarouselItem => ({
+        title: item.title!,
+        description: item.description!,
+        type: item.mediaType!,
+        projectType: item.projectType!,
+        contentUrl: item.contentUrl!,
+        link: item.link!,
+        dateCreated: new Date(item.dateCreated!),
+      }));
   });
 </script>
 
@@ -71,14 +81,14 @@
       class="hero__cta justify-even flex w-max flex-row content-end gap-3 pt-4 md:flex-col md:pt-0 lg:flex-row xl:flex-col"
     >
       <button class="btn bg-dh-orange text-dh-white">
-        <a href="/projects">Projects</a>
+        <a href="/blog">Blog</a>
       </button>
       <button
         onclick={() => dialog.open()}
         id="btnOpenHmuForm"
         class="btn border-dh-orange text-dh-white border-[3px] bg-transparent"
       >
-        HIT ME UP!
+        Let's chat
       </button>
     </div>
     <!-- </div> -->
@@ -135,7 +145,7 @@
     <button
       class="btn bg-dh-orange border-dh-orange text-dh-white border-[3px]"
     >
-      View CV
+      Request CV
     </button>
   </div>
   <div
@@ -182,7 +192,7 @@
   </h3>
   <!-- <Carousel carouselItems={things} carouselType={"card"} /> -->
   {#if !$PortfolioCarousel.fetching && $PortfolioCarousel?.data}
-    <Carousel animate={false} carouselItems={carouselContent}></Carousel>
+    <Carousel animate={spin} carouselItems={carouselContent}></Carousel>
   {/if}
 </section>
 <section class="grid grid-rows-1 py-12"></section>

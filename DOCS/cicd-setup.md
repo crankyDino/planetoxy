@@ -2,17 +2,16 @@
 
 ## Objective
 
-Three-pipeline CI/CD: a **Build** pipeline that verifies every push, a **Publish** pipeline that auto-deploys to QA after a successful build, and a manually-triggered Prod deploy. The SvelteKit app runs via PM2 (Bun) behind Nginx.
+Single `build-publish.yml` workflow: every PR to `master` is built as a check; every push to `master` (or manual run) builds once and deploys to prod. The SvelteKit app runs via PM2 (Bun) behind Nginx.
 
 ## Pipelines
 
 | Workflow | Trigger | Effect |
 | -------- | ------- | ------ |
-| `build.yml` | Push to `main` | Checkout → install → build (CI verification only) |
-| `publish.yml` `deploy-qa` | `build.yml` succeeds on `main` | Rebuild → rsync to `/var/www/html/qa` → PM2 reload |
-| `publish.yml` `deploy-prod` | Manual `workflow_dispatch` → target=prod | Rebuild → rsync to `/var/www/html/prod` → PM2 reload |
+| `build-publish.yml` | PR to `master` | Checkout → install → build (verification only) |
+| `build-publish.yml` | Push to `master` / manual `workflow_dispatch` | Checkout → install → build → rsync to `/var/www/html/planetoxy` → PM2 restart |
 
-`publish.yml` can also be manually triggered with `target=qa` to force a QA redeploy.
+Single job: builds once, deploy step skipped on PRs. No `actions/cache` (self-hosted runner keeps bun cache on disk; GH cache service times out).
 
 ## Stack
 
@@ -110,6 +109,21 @@ sudo certbot --nginx -d your-domain.com -d qa.your-domain.com
 
 Create a `qa` environment in GitHub (repo → Settings → Environments) and mirror the same secrets as `prod`. Optionally add required reviewers on `prod` for manual approval before prod deploys execute.
 
+### 8. Env vars (GitHub `prod` environment secrets)
+
+Build-time (`$env/static/*`, Vite) + runtime (`.env` written on deploy):
+
+| Var | Use |
+| --- | --- |
+| `PUBLIC_IS_PROD` | prod flag |
+| `VITE_SANITY_GQL_API` | houdini GQL endpoint (was `PUBLIC_SANITY_GQL_API`) |
+| `PUBLIC_EMAILTO` | contact dialog |
+| `PUBLIC_BLOG_REPO` | blog API |
+| `PUBLIC_GH`, `PUBLIC_DH`, `PUBLIC_IG`, `PUBLIC_LINKEDIN`, `PUBLIC_TWITTER` | footer/sidebar social links |
+| `GITHUB_API_KEY` (secret `GH_API_KEY`) | blog API |
+| `SANITY_API_KEY`, `SANITY_APP_ID` | sanity service |
+| `MOONBASE_URL`, `HOMEWORLD_URL` | email service |
+
 ## To-Do
 
 - [x] Stage 1: Switch adapter to `adapter-node` (`svelte.config.js`, `package.json`)
@@ -117,3 +131,8 @@ Create a `qa` environment in GitHub (repo → Settings → Environments) and mir
 - [x] Stage 3: Split `build.yml` (CI only) and create `publish.yml` (QA auto + prod manual)
 - [x] Stage 4: Update this doc
 - [ ] Stage 5 (manual): Install Bun + PM2, create deployment dirs, configure Nginx, seed GitHub `qa` environment secrets
+- [x] Stage 6: `build.yml` env sync (`VITE_SANITY_GQL_API`, social `PUBLIC_*`), cache key on `bun.lock`, `--frozen-lockfile`
+- [x] Stage 7: `publish.yml` same + deploy `.env` heredoc sync
+- [ ] Stage 8 (manual): add GH secrets `VITE_SANITY_GQL_API`, `PUBLIC_GH`, `PUBLIC_DH`, `PUBLIC_IG`, `PUBLIC_LINKEDIN`, `PUBLIC_TWITTER`; drop old `PUBLIC_SANITY_GQL_API`
+- [ ] Stage 9: bun-only — drop `setup-node`, `bun --bun run build` (vite shebang otherwise runs node), pin bun via `packageManager` + `bun-version-file`, job `timeout-minutes: 20`
+- [x] Stage 10: combine build + publish into `build-publish.yml`, drop `actions/cache`

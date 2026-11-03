@@ -1,15 +1,23 @@
-<script>
+<script lang="ts">
   import "./sidebar.css";
+
+  import {
+    PUBLIC_DH,
+    PUBLIC_GH,
+    PUBLIC_IG,
+    PUBLIC_LINKEDIN,
+  } from "$env/static/public";
+
+  const ig: string = PUBLIC_IG;
+  const dh: string = PUBLIC_DH;
+  const linkedin: string = PUBLIC_LINKEDIN;
+  const gh: string = PUBLIC_GH;
 </script>
 
 <div class="sidebar">
   <ul>
     <li>
-      <a
-        target="_blank"
-        href="https://digitalhippie.xyz"
-        class="!flex items-center gap-3"
-      >
+      <a target="_blank" href={dh} class="!flex items-center gap-3">
         <p
           style="letter-spacing: .1rem;"
           class="text-dh-white hidden text-[0px] font-bold text-nowrap"
@@ -24,11 +32,7 @@
       </a>
     </li>
     <li>
-      <a
-        href="https://github.com/crankyDino"
-        target="_blank"
-        class="!flex items-center gap-3"
-      >
+      <a href={gh} target="_blank" class="!flex items-center gap-3">
         <p
           style="letter-spacing: .1rem;"
           class="text-dh-white hidden text-[0px] font-bold text-nowrap"
@@ -43,11 +47,7 @@
       </a>
     </li>
     <li>
-      <a
-        href="https://www.linkedin.com/in/bamodise/"
-        target="_blank"
-        class="!flex items-center gap-3"
-      >
+      <a href={linkedin} target="_blank" class="!flex items-center gap-3">
         <p
           style="letter-spacing: .1rem;"
           class="text-dh-white hidden text-[0px] font-bold text-nowrap"
@@ -58,11 +58,7 @@
       </a>
     </li>
     <li>
-      <a
-        href="https://www.instagram.com/digitalhippie.xyz"
-        target="_blank"
-        class="!flex items-center gap-3"
-      >
+      <a href={ig} target="_blank" class="!flex items-center gap-3">
         <p
           style="letter-spacing: .1rem;"
           class="text-dh-white hidden text-[0px] font-bold text-nowrap"

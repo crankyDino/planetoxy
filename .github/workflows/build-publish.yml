@@ -1,27 +1,28 @@
-name: Publish
+name: Build + Publish
 
 on:
-  workflow_run:
-    workflows: [Build]
-    types: [completed]
+  push:
+    branches: [master]
+  pull_request:
     branches: [master]
   workflow_dispatch:
 
 jobs:
-  deploy-prod:
-    name: Publish
-    if: >
-      (github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'success') ||
-      github.event_name == 'workflow_dispatch'
+  build-deploy:
     runs-on: self-hosted
-    
+    timeout-minutes: 20
     environment: prod
     env:
       HOME: /home/ghrunner
       PUBLIC_IS_PROD: ${{ secrets.PUBLIC_IS_PROD }}
-      PUBLIC_SANITY_GQL_API: ${{ secrets.PUBLIC_SANITY_GQL_API }}
+      VITE_SANITY_GQL_API: ${{ secrets.VITE_SANITY_GQL_API }}
       PUBLIC_EMAILTO: ${{ secrets.PUBLIC_EMAILTO }}
       PUBLIC_BLOG_REPO: ${{ secrets.PUBLIC_BLOG_REPO }}
+      PUBLIC_GH: ${{ secrets.PUBLIC_GH }}
+      PUBLIC_DH: ${{ secrets.PUBLIC_DH }}
+      PUBLIC_IG: ${{ secrets.PUBLIC_IG }}
+      PUBLIC_LINKEDIN: ${{ secrets.PUBLIC_LINKEDIN }}
+      PUBLIC_TWITTER: ${{ secrets.PUBLIC_TWITTER }}
       GITHUB_API_KEY: ${{ secrets.GH_API_KEY }}
       SANITY_API_KEY: ${{ secrets.SANITY_API_KEY }}
       SANITY_APP_ID: ${{ secrets.SANITY_APP_ID }}
@@ -31,35 +32,31 @@ jobs:
     steps:
       - uses: actions/checkout@v6
 
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 22
-
       - uses: oven-sh/setup-bun@v2
-
-      - name: Cache bun deps
-        uses: actions/cache@v4
         with:
-          path: ~/.bun/install/cache
-          key: ${{ runner.os }}-bun-${{ hashFiles('**/package.json') }}
-          restore-keys: |
-            ${{ runner.os }}-bun-
+          bun-version-file: package.json
 
       - name: Install deps
-        run: bun install
+        run: bun install --frozen-lockfile
 
       - name: Build
         run: nice -n 10 bun run build
 
       - name: Deploy to Prod
+        if: github.event_name != 'pull_request'
         run: |
           mkdir -p /var/www/html/planetoxy
           rsync -a --delete ./build/ /var/www/html/planetoxy/
           cat > /var/www/html/planetoxy/.env <<EOF
           PUBLIC_IS_PROD=$PUBLIC_IS_PROD
-          PUBLIC_SANITY_GQL_API=$PUBLIC_SANITY_GQL_API
+          VITE_SANITY_GQL_API=$VITE_SANITY_GQL_API
           PUBLIC_EMAILTO=$PUBLIC_EMAILTO
           PUBLIC_BLOG_REPO=$PUBLIC_BLOG_REPO
+          PUBLIC_GH=$PUBLIC_GH
+          PUBLIC_DH=$PUBLIC_DH
+          PUBLIC_IG=$PUBLIC_IG
+          PUBLIC_LINKEDIN=$PUBLIC_LINKEDIN
+          PUBLIC_TWITTER=$PUBLIC_TWITTER
           GITHUB_API_KEY=$GITHUB_API_KEY
           SANITY_API_KEY=$SANITY_API_KEY
           SANITY_APP_ID=$SANITY_APP_ID
