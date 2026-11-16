@@ -1,13 +1,8 @@
 <script lang="ts">
-  import { run } from "svelte/legacy";
-
   import "../terminal/terminal.css";
-  import { page } from "$app/stores";
+  import { page } from "$app/state";
   let command: HTMLInputElement | null = $state(null);
-  let path: string = $state("nowhere");
-  run(() => {
-    path = $page.url.pathname;
-  });
+  let path: string = $derived(page.url.pathname || "nowhere");
 </script>
 
 <div

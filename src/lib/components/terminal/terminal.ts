@@ -1,5 +1,5 @@
 import './terminal.css';
-import { commands } from '$lib/models/commands';
+import { commands } from '#lib/models/commands.ts';
 
 // export let command: string = ""
 // export let terminalWindow: HTMLDivElement | null = null;

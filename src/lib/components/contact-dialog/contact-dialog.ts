@@ -1,13 +1,13 @@
-import type { IContact } from "../../models/contact.model.js"
-import type { IEmail } from "../../models/email-payload.model.js"
-import type { IFullname } from "$lib/models/fullname.model.js"
+import type { IContact } from "../../models/contact.model.js";
+import type { IEmail } from "../../models/email-payload.model.js";
+import type { IFullname } from "#lib/models/fullname.model.js";
+import { writable } from "svelte/store";
+import { resetForm, validateForm } from "#lib/handlers/form.handler/form.handler.js";
+import { dialogState } from "#lib/handlers/dialog.handler/dialog.handler.js";
+import { PUBLIC_EMAILTO } from "$app/env/public";
 
-import { writable } from "svelte/store"
-import { resetForm, validateForm } from "$lib/handlers/form.handler/form.handler.js"
-import { dialogState } from "$lib/handlers/dialog.handler/dialog.handler.js"
-import { PUBLIC_EMAILTO } from "$env/static/public"
+let reasons: Map<number, string> = new Map<number, string>();
 
-let reasons: Map<number, string> = new Map<number, string>()
 function initChips() {
   const { subscribe, set, update } = writable(reasons)
   return {
@@ -48,7 +48,11 @@ export function submitHitMeUp(form: HTMLFormElement, dialog: HTMLDialogElement):
     const { status } = await res.json();
     console.log(status);
 
-    if (status !== 200) { console.warn("Failed to send email"); return; }
+    if (status !== 200) {
+      console.warn("Failed to send email");
+
+      return;
+    }
 
     dialogState().close(dialog, form);
   })
@@ -59,15 +63,18 @@ export function submitHitMeUp(form: HTMLFormElement, dialog: HTMLDialogElement):
  * @param {HTMLFormElement}form 
  * @returns 
  */
-function buildEmail(form: HTMLFormElement): { err: string | null, payload: IEmail | null } {
-  const controls = Array.from(form.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>("input,textarea"))
+function buildEmail(form: HTMLFormElement): { err: string | null; payload: IEmail | null } {
+  const controls = Array.from(form.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>("input,textarea"));
   let fullname: IFullname = { firstname: "", lastname: "" };
   let contacts: IContact = { email: `${PUBLIC_EMAILTO}`, fullname: { firstname: "you", lastname: "yourself" } };
   let payload: IEmail = { contacts: [], message: "", subject: "", template: "" };
   let email: string = "";
-  if (!controls) { return { err: "No controls found", payload: null }; }
 
-  controls.forEach(control => {
+  if (!controls) {
+    return { err: "No controls found", payload: null };
+  }
+
+  controls.forEach((control) => {
     if (!control.labels) {
       return;
     }

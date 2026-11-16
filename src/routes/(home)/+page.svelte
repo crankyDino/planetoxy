@@ -1,11 +1,11 @@
 <script lang="ts">
-  import type { ICarouselItem } from "$lib/components/carousel/carousel";
-  import ContactDialog from "$lib/components/contact-dialog/contact-dialog.svelte";
+  import type { ICarouselItem } from "#lib/components/carousel/carousel.ts";
+  import ContactDialog from "#lib/components/contact-dialog/contact-dialog.svelte";
   import { onMount } from "svelte";
   import Terminal from "../../lib/components/terminal/terminal.svelte";
   import type { PageData } from "./$houdini";
-  import type { Props } from "$lib/models/prop.model";
-  import Carousel from "$lib/components/carousel/carousel.svelte";
+  import type { Props } from "#lib/models/prop.model.ts";
+  import Carousel from "#lib/components/carousel/carousel.svelte";
 
   let { data }: Props<PageData> = $props();
 

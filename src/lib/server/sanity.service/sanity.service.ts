@@ -1,4 +1,4 @@
-import { SANITY_API_KEY, SANITY_APP_ID } from "$env/static/private";
+import { SANITY_API_KEY, SANITY_APP_ID } from '$app/env/private';
 import { createClient, type SanityClient } from '@sanity/client';
 
 let _client: SanityClient;

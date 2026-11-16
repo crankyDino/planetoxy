@@ -1,12 +1,11 @@
 <script lang="ts">
   import "./sidebar.css";
-
   import {
     PUBLIC_DH,
     PUBLIC_GH,
     PUBLIC_IG,
     PUBLIC_LINKEDIN,
-  } from "$env/static/public";
+  } from "$app/env/public";
 
   const ig: string = PUBLIC_IG;
   const dh: string = PUBLIC_DH;

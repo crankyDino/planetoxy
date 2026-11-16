@@ -2,13 +2,13 @@
   import { page } from "$app/state";
   import { onMount } from "svelte";
   import "./article.css";
-  import Sidebar from "$lib/components/sidebar/sidebar.svelte";
-  import type { IArticleMedia } from "$lib/models/article.model";
+  import Sidebar from "#lib/components/sidebar/sidebar.svelte";
+  import type { IArticleMedia } from "#lib/models/article.model.ts";
   import type { PageData } from "./$types";
-  import type { Props } from "$lib/models/prop.model";
-  import { getMedia } from "$lib/util/sanity.util";
+  import type { Props } from "#lib/models/prop.model.ts";
+  import { getMedia } from "#lib/util/sanity.util.ts";
   import type { Article as hdAritcle } from "$houdini";
-  import { centerHotspot } from "$lib/util/apply-hotspot.util";
+  import { centerHotspot } from "#lib/util/apply-hotspot.util.ts";
 
   let loading: boolean = $state(true);
   let title = $state(page);

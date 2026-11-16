@@ -1,6 +1,6 @@
-import { GITHUB_API_KEY } from '$env/static/private';
-import { PUBLIC_BLOG_REPO, PUBLIC_IS_PROD } from '$env/static/public';
-import type { TPostMeta } from '$lib/types/post/TPost.type';
+import { GITHUB_API_KEY } from '$app/env/private';
+import { PUBLIC_BLOG_REPO, PUBLIC_IS_PROD } from '$app/env/public';
+import type { TPostMeta } from '#lib/types/post/TPost.type.ts';
 import { json } from '@sveltejs/kit';
 import { marked } from 'marked';
 import { markedHighlight } from 'marked-highlight';
@@ -32,17 +32,18 @@ async function fetchBlogPostContent(title: string) {
 
     if (!meta.published && PUBLIC_IS_PROD === "true") { return }
 
-    return {
-        metadata: meta as TPostMeta,
-        content,
-    }
+    return { metadata: meta as TPostMeta, content };
 }
 
 export async function GET({ url }) {
     const title = url.searchParams.get('title');
     console.log("brooo", title);
-    if (!title) { return json(null); }
 
-    const posts = await fetchBlogPostContent(title)
-    return json(posts)
+    if (!title) {
+        return Response.json(null);
+    }
+
+    const posts = await fetchBlogPostContent(title);
+
+    return json(posts);
 }
