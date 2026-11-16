@@ -1,6 +1,6 @@
 <script lang="ts">
-  import Sidebar from "$lib/components/sidebar/sidebar.svelte";
-  import type { Props } from "$lib/models/prop.model";
+  import Sidebar from "#lib/components/sidebar/sidebar.svelte";
+  import type { Props } from "#lib/models/prop.model.ts";
   import type { PageData } from "./$houdini";
 
   let { data }: Props<PageData> = $props();

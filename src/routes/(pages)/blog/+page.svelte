@@ -2,8 +2,8 @@
   import { onMount } from "svelte";
   import "./blog.css";
   // import type { PageData } from "./$houdini";
-  // import type { Props } from "$lib/models/prop.model";
-  import Sidebar from "$lib/components/sidebar/sidebar.svelte";
+  // import type { Props } from "#lib/models/prop.model.ts";
+  import Sidebar from "#lib/components/sidebar/sidebar.svelte";
 
   let { data } = $props();
   let { Articles } = $derived(data);

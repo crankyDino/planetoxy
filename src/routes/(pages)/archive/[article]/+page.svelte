@@ -1,9 +1,9 @@
 <script lang="ts">
-  import Sidebar from "$lib/components/sidebar/sidebar.svelte";
-  import type { Props } from "$lib/models/prop.model";
+  import Sidebar from "#lib/components/sidebar/sidebar.svelte";
+  import type { Props } from "#lib/models/prop.model.ts";
   import type { PageData } from "./$houdini";
-  import type { IArticleMedia } from "$lib/models/article.model";
-  import { getMedia } from "$lib/util/sanity.util";
+  import type { IArticleMedia } from "#lib/models/article.model.ts";
+  import { getMedia } from "#lib/util/sanity.util.ts";
   import { onMount } from "svelte";
 
   let { data }: Props<PageData> = $props();

@@ -4,8 +4,8 @@
   import {
     dialogState,
     type TDialogState,
-  } from "$lib/handlers/dialog.handler/dialog.handler";
-  import { initForm } from "$lib/handlers/form.handler/form.handler";
+  } from "#lib/handlers/dialog.handler/dialog.handler.ts";
+  import { initForm } from "#lib/handlers/form.handler/form.handler.ts";
 
   let pos: TDialogState = $state("closed");
   let dialog = $state<HTMLDialogElement>();
@@ -184,8 +184,7 @@
         style="resize: none"
         class="border-dh-black pointer-events-auto border-2 pl-1"
         maxlength="240"
-        required
-      ></textarea>
+        required></textarea>
       <small
         hidden
         id="hmuMessageErr"

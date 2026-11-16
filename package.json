@@ -19,8 +19,8 @@
         "pull:gql": "bun --env-file=.env houdini pull-schema"
     },
     "devDependencies": {
-        "@sveltejs/adapter-node": "^5.5.7",
-        "@sveltejs/kit": "^2.70.3",
+        "@sveltejs/adapter-node": "^6.0.0",        
+        "@sveltejs/kit": ">=3.1.1",
         "@sveltejs/vite-plugin-svelte": "^7.3.0",
         "@types/bun": "^1.4.2",
         "@types/eslint": "^9.6.1",
@@ -34,11 +34,11 @@
         "prettier": "^3.9.8",
         "prettier-plugin-svelte": "^4.1.1",
         "prettier-plugin-tailwindcss": "^0.8.1",
-        "svelte": "^5.57.0",
+        "svelte": "^5.57.2",
         "svelte-check": "^4.7.6",
         "tailwindcss": "^4.3.3",
         "tslib": "^2.8.1",
-        "typescript": "^7.0.2",
+        "typescript": "^6.0.3",
         "typescript-eslint": "^8.70.0",
         "vite": "^8.3.0"
     },
@@ -50,5 +50,9 @@
         "highlight.js": "^11.12.0",
         "marked": "^18.0.13",
         "marked-highlight": "^2.2.4"
+    },
+    "imports": {
+        "#lib": "./src/lib/index.js",
+        "#lib/*": "./src/lib/*"
     }
 }

@@ -1,11 +1,9 @@
 <script lang="ts">
-  import { run } from "svelte/legacy";
-
-  import { page } from "$app/stores";
+  import { page } from "$app/state";
   let navbar: HTMLElement;
   let pageTop: number = $state(0);
   let pageTopPrev: number = 0;
-  let pageTitle: string = $state("nowhere");
+  let pageTitle: string = $derived(page.url.pathname || "nowhere");
   function byeBye(ev: UIEvent) {
     if (pageTop < pageTopPrev) {
       navbar.style.top = "0";
@@ -14,9 +12,6 @@
     }
     pageTopPrev = pageTop;
   }
-  run(() => {
-    pageTitle = $page.url.pathname;
-  });
 </script>
 
 <svelte:window bind:scrollY={pageTop} onscroll={byeBye} />

@@ -1,7 +1,19 @@
+function GetApiURL() {
+  let url = import.meta.env.VITE_SANITY_GQL_API
+
+  if (import.meta.env.PUBLIC_IS_PROD && import.meta.env.PUBLIC_IS_PROD.toString().toLowerCase() === 'true') {
+    url += 'production/default';
+  } else {
+    url += 'staging/default'
+  }
+
+  return url
+}
+
 /// <references types="houdini-svelte">
 /** @type {import('houdini').ConfigFile} */
 const config = {
-  url: import.meta.env.VITE_SANITY_GQL_API,
+  url: GetApiURL(),
   watchSchema: {
     url: (env) => `${env.VITE_SANITY_GQL_API}`,
   },

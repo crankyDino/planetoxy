@@ -1,5 +1,5 @@
 import type { IEmail } from "../../models/email-payload.model.js";
-import { MOONBASE_URL } from "$env/static/private";
+import { MOONBASE_URL } from "$app/env/private";
 
 export async function sendEmail(content: IEmail): Promise<Response> {
     try {

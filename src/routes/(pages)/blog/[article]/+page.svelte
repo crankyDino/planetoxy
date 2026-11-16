@@ -2,8 +2,8 @@
   import { onMount } from "svelte";
   import "./article.css";
   import "highlight.js/styles/github-dark.css";
-  import Sidebar from "$lib/components/sidebar/sidebar.svelte";
-  import { LANGUAGE_NAMES } from "$lib/shared/Programming_Languages";
+  import Sidebar from "#lib/components/sidebar/sidebar.svelte";
+  import { LANGUAGE_NAMES } from "#lib/shared/Programming_Languages.ts";
   let { data } = $props();
 
   function getLanguageName(code: HTMLElement): string | null {
